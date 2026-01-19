@@ -8,8 +8,9 @@ Orden de ejecucion:
 2) Analisis descriptivo.
 3) Analisis estadisticos.
 4) Analisis de correlaciones.
-5) Modelos.
-6) Comparacion de bases.
+5) Analisis de poblaciones segmentadas.
+6) Modelos.
+7) Comparacion de bases.
 
 """
 
@@ -65,6 +66,11 @@ def Main() -> None:
         os.path.join(Ruta_Base, "Codigo", "Analisis_Descriptivo.py"),
         os.path.join(Ruta_Base, "Codigo", "Analisis_Estadisticos.py"),
         os.path.join(Ruta_Base, "Codigo", "Analisis_Correlaciones.py"),
+        os.path.join(
+            Ruta_Base,
+            "Codigo",
+            "Analisis_Poblaciones_Segmentadas.py"
+        ),
         #os.path.join(Ruta_Base, "Codigo", "Modelos.py"),
         os.path.join(Ruta_Base, "Codigo", "Comparar_Bases.py")
     ]

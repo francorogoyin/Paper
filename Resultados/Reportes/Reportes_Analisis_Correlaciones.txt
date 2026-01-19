@@ -8,64 +8,291 @@ Proyecto de Tesis - Experimento Electoral Argentina 2023
 ################################################################################
 
 ================================================================================
-SECCIÓN 1: TOP 50 CORRELACIONES MÁS FUERTES
+SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE
+(Ordenadas temáticamente: Índices → Autopercepciones → Cercanías → CO)
 ================================================================================
 
 Total de pares: 171
 Pares significativos (p < 0.05): 111
 
-Variable 1                          Variable 2                                 ρ            p   Sig
-----------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8692     0.00E+00   ***
-CO_Pro                              CO_Pro_Der                            0.8647     0.00E+00   ***
-CO_Pro                              CO_Pro_Izq                            0.7710     0.00E+00   ***
-CO_Pro_Der                          CO_Incongruente                       0.7643     0.00E+00   ***
-CO_Con                              CO_Con_Izq                            0.7393     0.00E+00   ***
-CO_Pro_Izq                          CO_Congruente                         0.6649     0.00E+00   ***
-CO_Pro                              CO_Incongruente                       0.6587     0.00E+00   ***
-CO_Con_Der                          CO_Congruente                         0.6579     0.00E+00   ***
-Indice_Progresismo                  Indice_Conservadurismo               -0.6291    6.69E-307   ***
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.6277    3.33E-305   ***
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.6243    7.04E-301   ***
-CO_Con                              CO_Congruente                         0.5649    4.14E-234   ***
-Autopercepcion_Izq_Der              Cercania_Bregman                     -0.5548    1.12E-224   ***
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5547    1.35E-224   ***
-Cercania_Bullrich                   Indice_Progresismo                   -0.5377    1.48E-208   ***
-Cercania_Bregman                    Indice_Progresismo                    0.5276    1.66E-199   ***
-Cercania_Milei                      Indice_Conservadurismo                0.5199    8.40E-193   ***
-Cercania_Milei                      Indice_Progresismo                   -0.5059    5.94E-181   ***
-Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.5046    6.40E-180   ***
-Cercania_Bullrich                   Indice_Conservadurismo                0.5022    6.52E-178   ***
-CO_Con_Izq                          CO_Incongruente                       0.4894    2.11E-167   ***
-Autopercepcion_Per_Antiper          Cercania_Bullrich                     0.4887    3.05E-167   ***
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4864    2.13E-165   ***
-Cercania_Massa                      Indice_Conservadurismo               -0.4819    5.39E-162   ***
-Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4796    3.25E-160   ***
-Autopercepcion_Izq_Der              Cercania_Bullrich                     0.4779    6.18E-159   ***
-Cercania_Bullrich                   Cercania_Milei                        0.4760    1.41E-157   ***
-Autopercepcion_Izq_Der              Cercania_Milei                        0.4757    2.70E-157   ***
-Cercania_Bregman                    Indice_Conservadurismo               -0.4744    2.34E-156   ***
-Cercania_Massa                      Indice_Progresismo                    0.4555    8.43E-143   ***
-CO_Pro_Izq                          CO_Pro_Der                            0.4549    3.51E-142   ***
-Autopercepcion_Per_Antiper          Cercania_Milei                        0.4496    1.09E-138   ***
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4453    8.82E-136   ***
-Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.4440    6.17E-135   ***
-CO_Con_Izq                          CO_Con_Der                            0.4402    3.84E-132   ***
-CO_Pro                              CO_Congruente                         0.4185    1.79E-118   ***
-Autopercepcion_Con_Pro              Indice_Progresismo                    0.4169    1.32E-117   ***
-Cercania_Massa                      Cercania_Milei                       -0.4156    7.96E-117   ***
-Cercania_Massa                      Indice_Positividad                    0.4059    5.39E-111   ***
-Cercania_Bregman                    Cercania_Milei                       -0.4017    1.64E-108   ***
-Cercania_Bullrich                   Cercania_Schiaretti                   0.3928    1.86E-103   ***
-Autopercepcion_Con_Pro              Cercania_Bregman                      0.3796     3.42E-96   ***
-Cercania_Massa                      Cercania_Bullrich                    -0.3678     5.44E-90   ***
-Autopercepcion_Izq_Der              Cercania_Massa                       -0.3503     3.12E-81   ***
-Cercania_Bullrich                   Cercania_Bregman                     -0.3463     2.65E-79   ***
-Cercania_Massa                      Cercania_Bregman                      0.3339     1.53E-73   ***
-CO_Pro_Izq                          CO_Incongruente                       0.3267     3.23E-70   ***
-Autopercepcion_Per_Antiper          Indice_Positividad                   -0.3242     3.47E-69   ***
-Cercania_Schiaretti                 Indice_Conservadurismo                0.3113     1.16E-63   ***
-Cercania_Schiaretti                 Indice_Progresismo                   -0.3042     9.50E-61   ***
+► Indice_Progresismo
+----------------------------------------------------------------------
+  Indice_Conservadurismo                   ρ=-0.6291  p=   6.69E-307  ***
+  Indice_Positividad                       ρ= 0.2277  p=    4.36E-34  ***
+  Autopercepcion_Izq_Der                   ρ=-0.6243  p=   7.04E-301  ***
+  Autopercepcion_Con_Pro                   ρ= 0.4169  p=   1.32E-117  ***
+  Autopercepcion_Per_Antiper               ρ=-0.4796  p=   3.25E-160  ***
+  Cercania_Massa                           ρ= 0.4555  p=   8.43E-143  ***
+  Cercania_Bullrich                        ρ=-0.5377  p=   1.48E-208  ***
+  Cercania_Bregman                         ρ= 0.5276  p=   1.66E-199  ***
+  Cercania_Milei                           ρ=-0.5059  p=   5.94E-181  ***
+  Cercania_Schiaretti                      ρ=-0.3042  p=    9.50E-61  ***
+  CO_Pro                                   ρ=-0.1537  p=    3.57E-16  ***
+  CO_Pro_Izq                               ρ=-0.1057  p=    2.29E-08  ***
+  CO_Pro_Der                               ρ=-0.1120  p=    3.11E-09  ***
+  CO_Con                                   ρ= 0.0501  p=      0.0083  **
+  CO_Con_Izq                               ρ= 0.0566  p=      0.0028  **
+  CO_Congruente                            ρ=-0.0533  p=      0.0049  **
+  CO_Incongruente                          ρ=-0.0770  p=    4.78E-05  ***
+
+► Indice_Conservadurismo
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.6291  p=   6.69E-307  ***
+  Indice_Positividad                       ρ=-0.2576  p=    1.87E-43  ***
+  Autopercepcion_Izq_Der                   ρ= 0.5547  p=   1.35E-224  ***
+  Autopercepcion_Con_Pro                   ρ=-0.4440  p=   6.17E-135  ***
+  Autopercepcion_Per_Antiper               ρ= 0.5046  p=   6.40E-180  ***
+  Cercania_Massa                           ρ=-0.4819  p=   5.39E-162  ***
+  Cercania_Bullrich                        ρ= 0.5022  p=   6.52E-178  ***
+  Cercania_Bregman                         ρ=-0.4744  p=   2.34E-156  ***
+  Cercania_Milei                           ρ= 0.5199  p=   8.40E-193  ***
+  Cercania_Schiaretti                      ρ= 0.3113  p=    1.16E-63  ***
+  CO_Con                                   ρ=-0.1770  p=    5.36E-21  ***
+  CO_Con_Izq                               ρ=-0.1634  p=    4.31E-18  ***
+  CO_Con_Der                               ρ=-0.1239  p=    5.47E-11  ***
+  CO_Congruente                            ρ=-0.1237  p=    5.71E-11  ***
+  CO_Incongruente                          ρ=-0.0759  p=    6.03E-05  ***
+
+► Indice_Positividad
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.2277  p=    4.36E-34  ***
+  Indice_Conservadurismo                   ρ=-0.2576  p=    1.87E-43  ***
+  Autopercepcion_Izq_Der                   ρ=-0.1694  p=    2.25E-19  ***
+  Autopercepcion_Con_Pro                   ρ= 0.1354  p=    7.09E-13  ***
+  Autopercepcion_Per_Antiper               ρ=-0.3242  p=    3.47E-69  ***
+  Cercania_Massa                           ρ= 0.4059  p=   5.39E-111  ***
+  Cercania_Bullrich                        ρ=-0.1726  p=    4.47E-20  ***
+  Cercania_Bregman                         ρ= 0.1247  p=    4.01E-11  ***
+  Cercania_Milei                           ρ=-0.1677  p=    5.06E-19  ***
+  Cercania_Schiaretti                      ρ=-0.0555  p=      0.0034  **
+
+► Autopercepcion_Izq_Der
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.6243  p=   7.04E-301  ***
+  Indice_Conservadurismo                   ρ= 0.5547  p=   1.35E-224  ***
+  Indice_Positividad                       ρ=-0.1694  p=    2.25E-19  ***
+  Autopercepcion_Con_Pro                   ρ=-0.4864  p=   2.13E-165  ***
+  Autopercepcion_Per_Antiper               ρ= 0.4453  p=   8.82E-136  ***
+  Cercania_Massa                           ρ=-0.3503  p=    3.12E-81  ***
+  Cercania_Bullrich                        ρ= 0.4779  p=   6.18E-159  ***
+  Cercania_Bregman                         ρ=-0.5548  p=   1.12E-224  ***
+  Cercania_Milei                           ρ= 0.4757  p=   2.70E-157  ***
+  Cercania_Schiaretti                      ρ= 0.2827  p=    2.45E-52  ***
+  CO_Pro                                   ρ= 0.0484  p=      0.0107  *
+  CO_Pro_Der                               ρ= 0.0381  p=      0.0446  *
+  CO_Con                                   ρ=-0.0414  p=      0.0290  *
+  CO_Con_Izq                               ρ=-0.0504  p=      0.0079  **
+
+► Autopercepcion_Con_Pro
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.4169  p=   1.32E-117  ***
+  Indice_Conservadurismo                   ρ=-0.4440  p=   6.17E-135  ***
+  Indice_Positividad                       ρ= 0.1354  p=    7.09E-13  ***
+  Autopercepcion_Izq_Der                   ρ=-0.4864  p=   2.13E-165  ***
+  Autopercepcion_Per_Antiper               ρ=-0.2643  p=    9.71E-46  ***
+  Cercania_Massa                           ρ= 0.2580  p=    1.34E-43  ***
+  Cercania_Bullrich                        ρ=-0.2592  p=    5.13E-44  ***
+  Cercania_Bregman                         ρ= 0.3796  p=    3.42E-96  ***
+  Cercania_Milei                           ρ=-0.2579  p=    1.43E-43  ***
+  Cercania_Schiaretti                      ρ=-0.1497  p=    1.98E-15  ***
+
+► Autopercepcion_Per_Antiper
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.4796  p=   3.25E-160  ***
+  Indice_Conservadurismo                   ρ= 0.5046  p=   6.40E-180  ***
+  Indice_Positividad                       ρ=-0.3242  p=    3.47E-69  ***
+  Autopercepcion_Izq_Der                   ρ= 0.4453  p=   8.82E-136  ***
+  Autopercepcion_Con_Pro                   ρ=-0.2643  p=    9.71E-46  ***
+  Cercania_Massa                           ρ=-0.6277  p=   3.33E-305  ***
+  Cercania_Bullrich                        ρ= 0.4887  p=   3.05E-167  ***
+  Cercania_Bregman                         ρ=-0.2250  p=    2.54E-33  ***
+  Cercania_Milei                           ρ= 0.4496  p=   1.09E-138  ***
+  Cercania_Schiaretti                      ρ= 0.2231  p=    9.33E-33  ***
+  CO_Con                                   ρ=-0.0388  p=      0.0409  *
+  CO_Con_Izq                               ρ=-0.0511  p=      0.0070  **
+
+► Cercania_Massa
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.4555  p=   8.43E-143  ***
+  Indice_Conservadurismo                   ρ=-0.4819  p=   5.39E-162  ***
+  Indice_Positividad                       ρ= 0.4059  p=   5.39E-111  ***
+  Autopercepcion_Izq_Der                   ρ=-0.3503  p=    3.12E-81  ***
+  Autopercepcion_Con_Pro                   ρ= 0.2580  p=    1.34E-43  ***
+  Autopercepcion_Per_Antiper               ρ=-0.6277  p=   3.33E-305  ***
+  Cercania_Bullrich                        ρ=-0.3678  p=    5.44E-90  ***
+  Cercania_Bregman                         ρ= 0.3339  p=    1.53E-73  ***
+  Cercania_Milei                           ρ=-0.4156  p=   7.96E-117  ***
+  Cercania_Schiaretti                      ρ=-0.0990  p=    1.66E-07  ***
+  CO_Pro_Izq                               ρ= 0.0470  p=      0.0132  *
+  CO_Con                                   ρ= 0.0603  p=      0.0015  **
+  CO_Con_Izq                               ρ= 0.0622  p=      0.0010  **
+  CO_Congruente                            ρ= 0.0605  p=      0.0014  **
+
+► Cercania_Bullrich
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.5377  p=   1.48E-208  ***
+  Indice_Conservadurismo                   ρ= 0.5022  p=   6.52E-178  ***
+  Indice_Positividad                       ρ=-0.1726  p=    4.47E-20  ***
+  Autopercepcion_Izq_Der                   ρ= 0.4779  p=   6.18E-159  ***
+  Autopercepcion_Con_Pro                   ρ=-0.2592  p=    5.13E-44  ***
+  Autopercepcion_Per_Antiper               ρ= 0.4887  p=   3.05E-167  ***
+  Cercania_Massa                           ρ=-0.3678  p=    5.44E-90  ***
+  Cercania_Bregman                         ρ=-0.3463  p=    2.65E-79  ***
+  Cercania_Milei                           ρ= 0.4760  p=   1.41E-157  ***
+  Cercania_Schiaretti                      ρ= 0.3928  p=   1.86E-103  ***
+
+► Cercania_Bregman
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.5276  p=   1.66E-199  ***
+  Indice_Conservadurismo                   ρ=-0.4744  p=   2.34E-156  ***
+  Indice_Positividad                       ρ= 0.1247  p=    4.01E-11  ***
+  Autopercepcion_Izq_Der                   ρ=-0.5548  p=   1.12E-224  ***
+  Autopercepcion_Con_Pro                   ρ= 0.3796  p=    3.42E-96  ***
+  Autopercepcion_Per_Antiper               ρ=-0.2250  p=    2.54E-33  ***
+  Cercania_Massa                           ρ= 0.3339  p=    1.53E-73  ***
+  Cercania_Bullrich                        ρ=-0.3463  p=    2.65E-79  ***
+  Cercania_Milei                           ρ=-0.4017  p=   1.64E-108  ***
+  Cercania_Schiaretti                      ρ=-0.0898  p=    2.06E-06  ***
+  CO_Pro_Izq                               ρ= 0.0604  p=      0.0014  **
+  CO_Con                                   ρ= 0.0588  p=      0.0019  **
+  CO_Con_Izq                               ρ= 0.0535  p=      0.0048  **
+  CO_Congruente                            ρ= 0.0801  p=    2.29E-05  ***
+
+► Cercania_Milei
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.5059  p=   5.94E-181  ***
+  Indice_Conservadurismo                   ρ= 0.5199  p=   8.40E-193  ***
+  Indice_Positividad                       ρ=-0.1677  p=    5.06E-19  ***
+  Autopercepcion_Izq_Der                   ρ= 0.4757  p=   2.70E-157  ***
+  Autopercepcion_Con_Pro                   ρ=-0.2579  p=    1.43E-43  ***
+  Autopercepcion_Per_Antiper               ρ= 0.4496  p=   1.09E-138  ***
+  Cercania_Massa                           ρ=-0.4156  p=   7.96E-117  ***
+  Cercania_Bullrich                        ρ= 0.4760  p=   1.41E-157  ***
+  Cercania_Bregman                         ρ=-0.4017  p=   1.64E-108  ***
+  Cercania_Schiaretti                      ρ= 0.2742  p=    2.96E-49  ***
+  CO_Con                                   ρ=-0.0414  p=      0.0291  *
+  CO_Con_Izq                               ρ=-0.0571  p=      0.0026  **
+  CO_Congruente                            ρ=-0.0375  p=      0.0479  *
+
+► Cercania_Schiaretti
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.3042  p=    9.50E-61  ***
+  Indice_Conservadurismo                   ρ= 0.3113  p=    1.16E-63  ***
+  Indice_Positividad                       ρ=-0.0555  p=      0.0034  **
+  Autopercepcion_Izq_Der                   ρ= 0.2827  p=    2.45E-52  ***
+  Autopercepcion_Con_Pro                   ρ=-0.1497  p=    1.98E-15  ***
+  Autopercepcion_Per_Antiper               ρ= 0.2231  p=    9.33E-33  ***
+  Cercania_Massa                           ρ=-0.0990  p=    1.66E-07  ***
+  Cercania_Bullrich                        ρ= 0.3928  p=   1.86E-103  ***
+  Cercania_Bregman                         ρ=-0.0898  p=    2.06E-06  ***
+  Cercania_Milei                           ρ= 0.2742  p=    2.96E-49  ***
+  CO_Con_Der                               ρ= 0.0429  p=      0.0238  *
+  CO_Congruente                            ρ= 0.0404  p=      0.0331  *
+
+► CO_Pro
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1537  p=    3.57E-16  ***
+  Autopercepcion_Izq_Der                   ρ= 0.0484  p=      0.0107  *
+  CO_Pro_Izq                               ρ= 0.7710  p=    0.00E+00  ***
+  CO_Pro_Der                               ρ= 0.8647  p=    0.00E+00  ***
+  CO_Con                                   ρ=-0.1473  p=    6.04E-15  ***
+  CO_Con_Izq                               ρ=-0.0569  p=      0.0027  **
+  CO_Con_Der                               ρ=-0.1338  p=    1.45E-12  ***
+  CO_Congruente                            ρ= 0.4185  p=   1.79E-118  ***
+  CO_Incongruente                          ρ= 0.6587  p=    0.00E+00  ***
+
+► CO_Pro_Izq
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1057  p=    2.29E-08  ***
+  Cercania_Massa                           ρ= 0.0470  p=      0.0132  *
+  Cercania_Bregman                         ρ= 0.0604  p=      0.0014  **
+  CO_Pro                                   ρ= 0.7710  p=    0.00E+00  ***
+  CO_Pro_Der                               ρ= 0.4549  p=   3.51E-142  ***
+  CO_Con_Izq                               ρ=-0.0520  p=      0.0062  **
+  CO_Congruente                            ρ= 0.6649  p=    0.00E+00  ***
+  CO_Incongruente                          ρ= 0.3267  p=    3.23E-70  ***
+
+► CO_Pro_Der
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1120  p=    3.11E-09  ***
+  Autopercepcion_Izq_Der                   ρ= 0.0381  p=      0.0446  *
+  CO_Pro                                   ρ= 0.8647  p=    0.00E+00  ***
+  CO_Pro_Izq                               ρ= 0.4549  p=   3.51E-142  ***
+  CO_Con                                   ρ=-0.1742  p=    2.35E-20  ***
+  CO_Con_Der                               ρ=-0.1802  p=    1.05E-21  ***
+  CO_Congruente                            ρ= 0.1778  p=    3.39E-21  ***
+  CO_Incongruente                          ρ= 0.7643  p=    0.00E+00  ***
+
+► CO_Con
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.0501  p=      0.0083  **
+  Indice_Conservadurismo                   ρ=-0.1770  p=    5.36E-21  ***
+  Autopercepcion_Izq_Der                   ρ=-0.0414  p=      0.0290  *
+  Autopercepcion_Per_Antiper               ρ=-0.0388  p=      0.0409  *
+  Cercania_Massa                           ρ= 0.0603  p=      0.0015  **
+  Cercania_Bregman                         ρ= 0.0588  p=      0.0019  **
+  Cercania_Milei                           ρ=-0.0414  p=      0.0291  *
+  CO_Pro                                   ρ=-0.1473  p=    6.04E-15  ***
+  CO_Pro_Der                               ρ=-0.1742  p=    2.35E-20  ***
+  CO_Con_Izq                               ρ= 0.7393  p=    0.00E+00  ***
+  CO_Con_Der                               ρ= 0.8692  p=    0.00E+00  ***
+  CO_Congruente                            ρ= 0.5649  p=   4.14E-234  ***
+  CO_Incongruente                          ρ= 0.2476  p=    4.08E-40  ***
+
+► CO_Con_Izq
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.0566  p=      0.0028  **
+  Indice_Conservadurismo                   ρ=-0.1634  p=    4.31E-18  ***
+  Autopercepcion_Izq_Der                   ρ=-0.0504  p=      0.0079  **
+  Autopercepcion_Per_Antiper               ρ=-0.0511  p=      0.0070  **
+  Cercania_Massa                           ρ= 0.0622  p=      0.0010  **
+  Cercania_Bregman                         ρ= 0.0535  p=      0.0048  **
+  Cercania_Milei                           ρ=-0.0571  p=      0.0026  **
+  CO_Pro                                   ρ=-0.0569  p=      0.0027  **
+  CO_Pro_Izq                               ρ=-0.0520  p=      0.0062  **
+  CO_Con                                   ρ= 0.7393  p=    0.00E+00  ***
+  CO_Con_Der                               ρ= 0.4402  p=   3.84E-132  ***
+  CO_Congruente                            ρ= 0.2399  p=    1.09E-37  ***
+  CO_Incongruente                          ρ= 0.4894  p=   2.11E-167  ***
+
+► CO_Con_Der
+----------------------------------------------------------------------
+  Indice_Conservadurismo                   ρ=-0.1239  p=    5.47E-11  ***
+  Cercania_Schiaretti                      ρ= 0.0429  p=      0.0238  *
+  CO_Pro                                   ρ=-0.1338  p=    1.45E-12  ***
+  CO_Pro_Der                               ρ=-0.1802  p=    1.05E-21  ***
+  CO_Con                                   ρ= 0.8692  p=    0.00E+00  ***
+  CO_Con_Izq                               ρ= 0.4402  p=   3.84E-132  ***
+  CO_Congruente                            ρ= 0.6579  p=    0.00E+00  ***
+  CO_Incongruente                          ρ= 0.0801  p=    2.35E-05  ***
+
+► CO_Congruente
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.0533  p=      0.0049  **
+  Indice_Conservadurismo                   ρ=-0.1237  p=    5.71E-11  ***
+  Cercania_Massa                           ρ= 0.0605  p=      0.0014  **
+  Cercania_Bregman                         ρ= 0.0801  p=    2.29E-05  ***
+  Cercania_Milei                           ρ=-0.0375  p=      0.0479  *
+  Cercania_Schiaretti                      ρ= 0.0404  p=      0.0331  *
+  CO_Pro                                   ρ= 0.4185  p=   1.79E-118  ***
+  CO_Pro_Izq                               ρ= 0.6649  p=    0.00E+00  ***
+  CO_Pro_Der                               ρ= 0.1778  p=    3.39E-21  ***
+  CO_Con                                   ρ= 0.5649  p=   4.14E-234  ***
+  CO_Con_Izq                               ρ= 0.2399  p=    1.09E-37  ***
+  CO_Con_Der                               ρ= 0.6579  p=    0.00E+00  ***
+  CO_Incongruente                          ρ= 0.2937  p=    1.55E-56  ***
+
+► CO_Incongruente
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.0770  p=    4.78E-05  ***
+  Indice_Conservadurismo                   ρ=-0.0759  p=    6.03E-05  ***
+  CO_Pro                                   ρ= 0.6587  p=    0.00E+00  ***
+  CO_Pro_Izq                               ρ= 0.3267  p=    3.23E-70  ***
+  CO_Pro_Der                               ρ= 0.7643  p=    0.00E+00  ***
+  CO_Con                                   ρ= 0.2476  p=    4.08E-40  ***
+  CO_Con_Izq                               ρ= 0.4894  p=   2.11E-167  ***
+  CO_Con_Der                               ρ= 0.0801  p=    2.35E-05  ***
+  CO_Congruente                            ρ= 0.2937  p=    1.55E-56  ***
 
 Significancia: *** p < 0.001, ** p < 0.01, * p < 0.05
 
@@ -80,28 +307,173 @@ SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL
 Total de pares: 171
 Pares significativos (p < 0.05): 65
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Der                            0.8834    4.96E-141
-CO_Con                              CO_Con_Der                            0.8663    2.63E-129
-CO_Pro_Der                          CO_Incongruente                       0.7984     5.09E-95
-CO_Pro                              CO_Pro_Izq                            0.7329     1.37E-72
-CO_Pro                              CO_Incongruente                       0.7231     8.14E-70
-CO_Pro_Izq                          CO_Congruente                         0.7118     9.74E-67
-CO_Con                              CO_Con_Izq                            0.7025     2.55E-64
-CO_Con_Der                          CO_Congruente                         0.5807     1.37E-39
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5754     7.81E-39
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.5529     2.15E-35
-Autopercepcion_Izq_Der              Cercania_Bregman                     -0.5364     4.86E-33
-CO_Con                              CO_Congruente                         0.5331     1.67E-32
-Indice_Progresismo                  Indice_Conservadurismo               -0.4648     3.64E-24
-CO_Pro_Izq                          CO_Pro_Der                            0.4395     1.89E-21
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4366     3.30E-21
-CO_Con_Izq                          CO_Incongruente                       0.4313     1.23E-20
-Autopercepcion_Con_Pro              Indice_Progresismo                    0.4196     1.49E-19
-CO_Con_Izq                          CO_Con_Der                            0.4092     1.50E-18
-CO_Pro                              CO_Congruente                         0.3898     7.81E-17
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3878     1.05E-16
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.4648  p=    3.64E-24  ***
+      Autopercepcion_Izq_Der               ρ=-0.5754  p=    7.81E-39  ***
+      Autopercepcion_Con_Pro               ρ= 0.4196  p=    1.49E-19  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1551  p=      0.0013  **
+      Cercania_Bullrich                    ρ=-0.2975  p=    3.93E-10  ***
+      Cercania_Bregman                     ρ= 0.3732  p=    1.72E-15  ***
+      Cercania_Milei                       ρ=-0.1260  p=      0.0093  **
+      Cercania_Schiaretti                  ρ=-0.2180  p=    5.73E-06  ***
+      CO_Pro                               ρ=-0.1651  p=    6.43E-04  ***
+      CO_Pro_Izq                           ρ=-0.1860  p=    1.17E-04  ***
+      CO_Pro_Der                           ρ=-0.0986  p=      0.0424  *
+      CO_Congruente                        ρ=-0.1348  p=      0.0054  **
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.4648  p=    3.64E-24  ***
+      Autopercepcion_Izq_Der               ρ= 0.4366  p=    3.30E-21  ***
+      Autopercepcion_Con_Pro               ρ=-0.3654  p=    7.22E-15  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2163  p=    6.79E-06  ***
+      Cercania_Massa                       ρ=-0.1203  p=      0.0130  *
+      Cercania_Bullrich                    ρ= 0.3191  p=    1.63E-11  ***
+      Cercania_Bregman                     ρ=-0.3146  p=    3.23E-11  ***
+      Cercania_Milei                       ρ= 0.1933  p=    6.02E-05  ***
+      Cercania_Schiaretti                  ρ= 0.2300  p=    1.65E-06  ***
+      CO_Con                               ρ=-0.1313  p=      0.0068  **
+      CO_Con_Izq                           ρ=-0.1543  p=      0.0014  **
+      CO_Incongruente                      ρ=-0.1186  p=      0.0145  *
+
+  ▸ Indice_Positividad
+      Autopercepcion_Con_Pro               ρ= 0.1048  p=      0.0307  *
+      Autopercepcion_Per_Antiper           ρ=-0.1190  p=      0.0141  *
+      Cercania_Massa                       ρ= 0.2413  p=    4.81E-07  ***
+      CO_Pro_Izq                           ρ= 0.1063  p=      0.0286  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.5754  p=    7.81E-39  ***
+      Indice_Conservadurismo               ρ= 0.4366  p=    3.30E-21  ***
+      Autopercepcion_Con_Pro               ρ=-0.5529  p=    2.15E-35  ***
+      Cercania_Bullrich                    ρ= 0.2683  p=    1.93E-08  ***
+      Cercania_Bregman                     ρ=-0.5364  p=    4.86E-33  ***
+      Cercania_Milei                       ρ= 0.1816  p=    1.67E-04  ***
+      Cercania_Schiaretti                  ρ= 0.2507  p=    1.64E-07  ***
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.4196  p=    1.49E-19  ***
+      Indice_Conservadurismo               ρ=-0.3654  p=    7.22E-15  ***
+      Indice_Positividad                   ρ= 0.1048  p=      0.0307  *
+      Autopercepcion_Izq_Der               ρ=-0.5529  p=    2.15E-35  ***
+      Cercania_Massa                       ρ= 0.1240  p=      0.0105  *
+      Cercania_Bullrich                    ρ=-0.1135  p=      0.0193  *
+      Cercania_Bregman                     ρ= 0.3369  p=    9.66E-13  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.1551  p=      0.0013  **
+      Indice_Conservadurismo               ρ= 0.2163  p=    6.79E-06  ***
+      Indice_Positividad                   ρ=-0.1190  p=      0.0141  *
+      Cercania_Massa                       ρ=-0.3878  p=    1.05E-16  ***
+      Cercania_Bullrich                    ρ= 0.1974  p=    4.16E-05  ***
+      Cercania_Bregman                     ρ=-0.1653  p=    6.22E-04  ***
+      Cercania_Milei                       ρ= 0.1476  p=      0.0023  **
+
+  ▸ Cercania_Massa
+      Indice_Conservadurismo               ρ=-0.1203  p=      0.0130  *
+      Indice_Positividad                   ρ= 0.2413  p=    4.81E-07  ***
+      Autopercepcion_Con_Pro               ρ= 0.1240  p=      0.0105  *
+      Autopercepcion_Per_Antiper           ρ=-0.3878  p=    1.05E-16  ***
+      Cercania_Bregman                     ρ= 0.2902  p=    1.09E-09  ***
+      Cercania_Schiaretti                  ρ= 0.1981  p=    3.92E-05  ***
+
+  ▸ Cercania_Bullrich
+      Indice_Progresismo                   ρ=-0.2975  p=    3.93E-10  ***
+      Indice_Conservadurismo               ρ= 0.3191  p=    1.63E-11  ***
+      Autopercepcion_Izq_Der               ρ= 0.2683  p=    1.93E-08  ***
+      Autopercepcion_Con_Pro               ρ=-0.1135  p=      0.0193  *
+      Autopercepcion_Per_Antiper           ρ= 0.1974  p=    4.16E-05  ***
+      Cercania_Bregman                     ρ=-0.1531  p=      0.0015  **
+      Cercania_Schiaretti                  ρ= 0.3390  p=    6.83E-13  ***
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.3732  p=    1.72E-15  ***
+      Indice_Conservadurismo               ρ=-0.3146  p=    3.23E-11  ***
+      Autopercepcion_Izq_Der               ρ=-0.5364  p=    4.86E-33  ***
+      Autopercepcion_Con_Pro               ρ= 0.3369  p=    9.66E-13  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1653  p=    6.22E-04  ***
+      Cercania_Massa                       ρ= 0.2902  p=    1.09E-09  ***
+      Cercania_Bullrich                    ρ=-0.1531  p=      0.0015  **
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.1260  p=      0.0093  **
+      Indice_Conservadurismo               ρ= 0.1933  p=    6.02E-05  ***
+      Autopercepcion_Izq_Der               ρ= 0.1816  p=    1.67E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1476  p=      0.0023  **
+
+  ▸ Cercania_Schiaretti
+      Indice_Progresismo                   ρ=-0.2180  p=    5.73E-06  ***
+      Indice_Conservadurismo               ρ= 0.2300  p=    1.65E-06  ***
+      Autopercepcion_Izq_Der               ρ= 0.2507  p=    1.64E-07  ***
+      Cercania_Massa                       ρ= 0.1981  p=    3.92E-05  ***
+      Cercania_Bullrich                    ρ= 0.3390  p=    6.83E-13  ***
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.1651  p=    6.43E-04  ***
+      CO_Pro_Izq                           ρ= 0.7329  p=    1.37E-72  ***
+      CO_Pro_Der                           ρ= 0.8834  p=   4.96E-141  ***
+      CO_Con                               ρ=-0.2000  p=    3.44E-05  ***
+      CO_Con_Der                           ρ=-0.2282  p=    2.12E-06  ***
+      CO_Congruente                        ρ= 0.3898  p=    7.81E-17  ***
+      CO_Incongruente                      ρ= 0.7231  p=    8.14E-70  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Progresismo                   ρ=-0.1860  p=    1.17E-04  ***
+      Indice_Positividad                   ρ= 0.1063  p=      0.0286  *
+      CO_Pro                               ρ= 0.7329  p=    1.37E-72  ***
+      CO_Pro_Der                           ρ= 0.4395  p=    1.89E-21  ***
+      CO_Congruente                        ρ= 0.7118  p=    9.74E-67  ***
+      CO_Incongruente                      ρ= 0.3680  p=    4.78E-15  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.0986  p=      0.0424  *
+      CO_Pro                               ρ= 0.8834  p=   4.96E-141  ***
+      CO_Pro_Izq                           ρ= 0.4395  p=    1.89E-21  ***
+      CO_Con                               ρ=-0.2648  p=    3.22E-08  ***
+      CO_Con_Der                           ρ=-0.2795  p=    4.95E-09  ***
+      CO_Congruente                        ρ= 0.1407  p=      0.0037  **
+      CO_Incongruente                      ρ= 0.7984  p=    5.09E-95  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.1313  p=      0.0068  **
+      CO_Pro                               ρ=-0.2000  p=    3.44E-05  ***
+      CO_Pro_Der                           ρ=-0.2648  p=    3.22E-08  ***
+      CO_Con_Izq                           ρ= 0.7025  p=    2.55E-64  ***
+      CO_Con_Der                           ρ= 0.8663  p=   2.63E-129  ***
+      CO_Congruente                        ρ= 0.5331  p=    1.67E-32  ***
+      CO_Incongruente                      ρ= 0.1297  p=      0.0075  **
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.1543  p=      0.0014  **
+      CO_Con                               ρ= 0.7025  p=    2.55E-64  ***
+      CO_Con_Der                           ρ= 0.4092  p=    1.50E-18  ***
+      CO_Congruente                        ρ= 0.2162  p=    7.05E-06  ***
+      CO_Incongruente                      ρ= 0.4313  p=    1.23E-20  ***
+
+  ▸ CO_Con_Der
+      CO_Pro                               ρ=-0.2282  p=    2.12E-06  ***
+      CO_Pro_Der                           ρ=-0.2795  p=    4.95E-09  ***
+      CO_Con                               ρ= 0.8663  p=   2.63E-129  ***
+      CO_Con_Izq                           ρ= 0.4092  p=    1.50E-18  ***
+      CO_Congruente                        ρ= 0.5807  p=    1.37E-39  ***
+
+  ▸ CO_Congruente
+      Indice_Progresismo                   ρ=-0.1348  p=      0.0054  **
+      CO_Pro                               ρ= 0.3898  p=    7.81E-17  ***
+      CO_Pro_Izq                           ρ= 0.7118  p=    9.74E-67  ***
+      CO_Pro_Der                           ρ= 0.1407  p=      0.0037  **
+      CO_Con                               ρ= 0.5331  p=    1.67E-32  ***
+      CO_Con_Izq                           ρ= 0.2162  p=    7.05E-06  ***
+      CO_Con_Der                           ρ= 0.5807  p=    1.37E-39  ***
+      CO_Incongruente                      ρ= 0.2802  p=    4.15E-09  ***
+
+  ▸ CO_Incongruente
+      Indice_Conservadurismo               ρ=-0.1186  p=      0.0145  *
+      CO_Pro                               ρ= 0.7231  p=    8.14E-70  ***
+      CO_Pro_Izq                           ρ= 0.3680  p=    4.78E-15  ***
+      CO_Pro_Der                           ρ= 0.7984  p=    5.09E-95  ***
+      CO_Con                               ρ= 0.1297  p=      0.0075  **
+      CO_Con_Izq                           ρ= 0.4313  p=    1.23E-20  ***
+      CO_Congruente                        ρ= 0.2802  p=    4.15E-09  ***
 
 --------------------------------------------------------------------------------
 ► Progressivism
@@ -110,28 +482,207 @@ Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3878
 Total de pares: 171
 Pares significativos (p < 0.05): 82
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Der                            0.8960     0.00E+00
-CO_Con                              CO_Con_Der                            0.8820     0.00E+00
-CO_Pro_Der                          CO_Incongruente                       0.7651    8.97E-242
-CO_Pro                              CO_Pro_Izq                            0.7410    5.57E-219
-CO_Con                              CO_Con_Izq                            0.7325    2.34E-211
-CO_Con_Der                          CO_Congruente                         0.6951    1.15E-181
-CO_Pro                              CO_Incongruente                       0.6760    2.31E-168
-CO_Con                              CO_Congruente                         0.6131    2.64E-130
-CO_Pro_Izq                          CO_Congruente                         0.5896    2.25E-118
-CO_Pro_Izq                          CO_Pro_Der                            0.4700     5.93E-70
-CO_Con_Izq                          CO_Con_Der                            0.4585     3.41E-66
-CO_Con_Izq                          CO_Incongruente                       0.4402     1.39E-60
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4124     8.52E-53
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3439     3.18E-36
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3358     1.65E-34
-CO_Pro_Izq                          CO_Incongruente                       0.3263     1.57E-32
-Cercania_Massa                      Indice_Positividad                    0.2875     2.39E-25
-Indice_Progresismo                  Indice_Conservadurismo               -0.2864     3.75E-25
-Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.2862     3.93E-25
-CO_Pro                              CO_Congruente                         0.2852     6.53E-25
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.2864  p=    3.75E-25  ***
+      Autopercepcion_Izq_Der               ρ=-0.3358  p=    1.65E-34  ***
+      Autopercepcion_Con_Pro               ρ= 0.2820  p=    2.05E-24  ***
+      Autopercepcion_Per_Antiper           ρ=-0.0986  p=    4.63E-04  ***
+      Cercania_Bullrich                    ρ=-0.2150  p=    1.29E-14  ***
+      Cercania_Bregman                     ρ= 0.2130  p=    2.29E-14  ***
+      Cercania_Milei                       ρ=-0.0651  p=      0.0210  *
+      Cercania_Schiaretti                  ρ=-0.1390  p=    7.55E-07  ***
+      CO_Pro                               ρ=-0.1940  p=    4.17E-12  ***
+      CO_Pro_Izq                           ρ=-0.2124  p=    2.85E-14  ***
+      CO_Pro_Der                           ρ=-0.1320  p=    2.69E-06  ***
+      CO_Congruente                        ρ=-0.1195  p=    2.16E-05  ***
+      CO_Incongruente                      ρ=-0.1080  p=    1.25E-04  ***
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.2864  p=    3.75E-25  ***
+      Indice_Positividad                   ρ=-0.0671  p=      0.0173  *
+      Autopercepcion_Izq_Der               ρ= 0.2331  p=    5.72E-17  ***
+      Autopercepcion_Con_Pro               ρ=-0.2862  p=    3.93E-25  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1647  p=    4.27E-09  ***
+      Cercania_Bullrich                    ρ= 0.1758  p=    3.47E-10  ***
+      Cercania_Bregman                     ρ=-0.0743  p=      0.0084  **
+      Cercania_Milei                       ρ= 0.0992  p=    4.27E-04  ***
+      Cercania_Schiaretti                  ρ= 0.2029  p=    3.82E-13  ***
+      CO_Con                               ρ=-0.1591  p=    1.49E-08  ***
+      CO_Con_Izq                           ρ=-0.1414  p=    4.94E-07  ***
+      CO_Con_Der                           ρ=-0.1438  p=    3.15E-07  ***
+      CO_Congruente                        ρ=-0.1020  p=    2.93E-04  ***
+      CO_Incongruente                      ρ=-0.0616  p=      0.0290  *
+
+  ▸ Indice_Positividad
+      Indice_Conservadurismo               ρ=-0.0671  p=      0.0173  *
+      Autopercepcion_Per_Antiper           ρ=-0.1747  p=    4.48E-10  ***
+      Cercania_Massa                       ρ= 0.2875  p=    2.39E-25  ***
+      Cercania_Bregman                     ρ=-0.0558  p=      0.0481  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.3358  p=    1.65E-34  ***
+      Indice_Conservadurismo               ρ= 0.2331  p=    5.72E-17  ***
+      Autopercepcion_Con_Pro               ρ=-0.4124  p=    8.52E-53  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1143  p=    4.90E-05  ***
+      Cercania_Bullrich                    ρ= 0.1142  p=    4.94E-05  ***
+      Cercania_Bregman                     ρ=-0.2621  p=    3.38E-21  ***
+      Cercania_Milei                       ρ= 0.1066  p=    1.52E-04  ***
+      Cercania_Schiaretti                  ρ= 0.1317  p=    2.79E-06  ***
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.2820  p=    2.05E-24  ***
+      Indice_Conservadurismo               ρ=-0.2862  p=    3.93E-25  ***
+      Autopercepcion_Izq_Der               ρ=-0.4124  p=    8.52E-53  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1370  p=    1.08E-06  ***
+      Cercania_Bullrich                    ρ=-0.0868  p=      0.0021  **
+      Cercania_Bregman                     ρ= 0.2098  p=    5.76E-14  ***
+      Cercania_Milei                       ρ=-0.0632  p=      0.0251  *
+      Cercania_Schiaretti                  ρ=-0.0991  p=    4.36E-04  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.0986  p=    4.63E-04  ***
+      Indice_Conservadurismo               ρ= 0.1647  p=    4.27E-09  ***
+      Indice_Positividad                   ρ=-0.1747  p=    4.48E-10  ***
+      Autopercepcion_Izq_Der               ρ= 0.1143  p=    4.90E-05  ***
+      Autopercepcion_Con_Pro               ρ=-0.1370  p=    1.08E-06  ***
+      Cercania_Massa                       ρ=-0.3439  p=    3.18E-36  ***
+      Cercania_Bullrich                    ρ= 0.1488  p=    1.17E-07  ***
+      Cercania_Bregman                     ρ= 0.1951  p=    2.97E-12  ***
+      Cercania_Schiaretti                  ρ= 0.0733  p=      0.0094  **
+
+  ▸ Cercania_Massa
+      Indice_Positividad                   ρ= 0.2875  p=    2.39E-25  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3439  p=    3.18E-36  ***
+      Cercania_Bullrich                    ρ= 0.0615  p=      0.0293  *
+      Cercania_Schiaretti                  ρ= 0.1082  p=    1.22E-04  ***
+      CO_Con_Izq                           ρ= 0.0714  p=      0.0115  *
+
+  ▸ Cercania_Bullrich
+      Indice_Progresismo                   ρ=-0.2150  p=    1.29E-14  ***
+      Indice_Conservadurismo               ρ= 0.1758  p=    3.47E-10  ***
+      Autopercepcion_Izq_Der               ρ= 0.1142  p=    4.94E-05  ***
+      Autopercepcion_Con_Pro               ρ=-0.0868  p=      0.0021  **
+      Autopercepcion_Per_Antiper           ρ= 0.1488  p=    1.17E-07  ***
+      Cercania_Massa                       ρ= 0.0615  p=      0.0293  *
+      Cercania_Milei                       ρ= 0.1217  p=    1.52E-05  ***
+      Cercania_Schiaretti                  ρ= 0.2659  p=    8.67E-22  ***
+      CO_Pro_Izq                           ρ= 0.0886  p=      0.0017  **
+      CO_Congruente                        ρ= 0.0564  p=      0.0457  *
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.2130  p=    2.29E-14  ***
+      Indice_Conservadurismo               ρ=-0.0743  p=      0.0084  **
+      Indice_Positividad                   ρ=-0.0558  p=      0.0481  *
+      Autopercepcion_Izq_Der               ρ=-0.2621  p=    3.38E-21  ***
+      Autopercepcion_Con_Pro               ρ= 0.2098  p=    5.76E-14  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1951  p=    2.97E-12  ***
+      Cercania_Milei                       ρ=-0.0767  p=      0.0065  **
+      Cercania_Schiaretti                  ρ= 0.0940  p=    8.52E-04  ***
+      CO_Pro_Izq                           ρ= 0.0661  p=      0.0191  *
+      CO_Congruente                        ρ= 0.0721  p=      0.0105  *
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.0651  p=      0.0210  *
+      Indice_Conservadurismo               ρ= 0.0992  p=    4.27E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.1066  p=    1.52E-04  ***
+      Autopercepcion_Con_Pro               ρ=-0.0632  p=      0.0251  *
+      Cercania_Bullrich                    ρ= 0.1217  p=    1.52E-05  ***
+      Cercania_Bregman                     ρ=-0.0767  p=      0.0065  **
+      Cercania_Schiaretti                  ρ= 0.1002  p=    3.75E-04  ***
+
+  ▸ Cercania_Schiaretti
+      Indice_Progresismo                   ρ=-0.1390  p=    7.55E-07  ***
+      Indice_Conservadurismo               ρ= 0.2029  p=    3.82E-13  ***
+      Autopercepcion_Izq_Der               ρ= 0.1317  p=    2.79E-06  ***
+      Autopercepcion_Con_Pro               ρ=-0.0991  p=    4.36E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.0733  p=      0.0094  **
+      Cercania_Massa                       ρ= 0.1082  p=    1.22E-04  ***
+      Cercania_Bullrich                    ρ= 0.2659  p=    8.67E-22  ***
+      Cercania_Bregman                     ρ= 0.0940  p=    8.52E-04  ***
+      Cercania_Milei                       ρ= 0.1002  p=    3.75E-04  ***
+      CO_Pro_Izq                           ρ= 0.0638  p=      0.0238  *
+      CO_Congruente                        ρ= 0.0706  p=      0.0122  *
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.1940  p=    4.17E-12  ***
+      CO_Pro_Izq                           ρ= 0.7410  p=   5.57E-219  ***
+      CO_Pro_Der                           ρ= 0.8960  p=    0.00E+00  ***
+      CO_Con                               ρ=-0.2442  p=    1.86E-18  ***
+      CO_Con_Izq                           ρ=-0.1061  p=    1.70E-04  ***
+      CO_Con_Der                           ρ=-0.2304  p=    1.51E-16  ***
+      CO_Congruente                        ρ= 0.2852  p=    6.53E-25  ***
+      CO_Incongruente                      ρ= 0.6760  p=   2.31E-168  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Progresismo                   ρ=-0.2124  p=    2.85E-14  ***
+      Cercania_Bullrich                    ρ= 0.0886  p=      0.0017  **
+      Cercania_Bregman                     ρ= 0.0661  p=      0.0191  *
+      Cercania_Schiaretti                  ρ= 0.0638  p=      0.0238  *
+      CO_Pro                               ρ= 0.7410  p=   5.57E-219  ***
+      CO_Pro_Der                           ρ= 0.4700  p=    5.93E-70  ***
+      CO_Congruente                        ρ= 0.5896  p=   2.25E-118  ***
+      CO_Incongruente                      ρ= 0.3263  p=    1.57E-32  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.1320  p=    2.69E-06  ***
+      CO_Pro                               ρ= 0.8960  p=    0.00E+00  ***
+      CO_Pro_Izq                           ρ= 0.4700  p=    5.93E-70  ***
+      CO_Con                               ρ=-0.2663  p=    9.05E-22  ***
+      CO_Con_Izq                           ρ=-0.0916  p=      0.0012  **
+      CO_Con_Der                           ρ=-0.2689  p=    3.49E-22  ***
+      CO_Congruente                        ρ= 0.0812  p=      0.0040  **
+      CO_Incongruente                      ρ= 0.7651  p=   8.97E-242  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.1591  p=    1.49E-08  ***
+      CO_Pro                               ρ=-0.2442  p=    1.86E-18  ***
+      CO_Pro_Der                           ρ=-0.2663  p=    9.05E-22  ***
+      CO_Con_Izq                           ρ= 0.7325  p=   2.34E-211  ***
+      CO_Con_Der                           ρ= 0.8820  p=    0.00E+00  ***
+      CO_Congruente                        ρ= 0.6131  p=   2.64E-130  ***
+      CO_Incongruente                      ρ= 0.1620  p=    7.93E-09  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.1414  p=    4.94E-07  ***
+      Cercania_Massa                       ρ= 0.0714  p=      0.0115  *
+      CO_Pro                               ρ=-0.1061  p=    1.70E-04  ***
+      CO_Pro_Der                           ρ=-0.0916  p=      0.0012  **
+      CO_Con                               ρ= 0.7325  p=   2.34E-211  ***
+      CO_Con_Der                           ρ= 0.4585  p=    3.41E-66  ***
+      CO_Congruente                        ρ= 0.2718  p=    1.14E-22  ***
+      CO_Incongruente                      ρ= 0.4402  p=    1.39E-60  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.1438  p=    3.15E-07  ***
+      CO_Pro                               ρ=-0.2304  p=    1.51E-16  ***
+      CO_Pro_Der                           ρ=-0.2689  p=    3.49E-22  ***
+      CO_Con                               ρ= 0.8820  p=    0.00E+00  ***
+      CO_Con_Izq                           ρ= 0.4585  p=    3.41E-66  ***
+      CO_Congruente                        ρ= 0.6951  p=   1.15E-181  ***
+
+  ▸ CO_Congruente
+      Indice_Progresismo                   ρ=-0.1195  p=    2.16E-05  ***
+      Indice_Conservadurismo               ρ=-0.1020  p=    2.93E-04  ***
+      Cercania_Bullrich                    ρ= 0.0564  p=      0.0457  *
+      Cercania_Bregman                     ρ= 0.0721  p=      0.0105  *
+      Cercania_Schiaretti                  ρ= 0.0706  p=      0.0122  *
+      CO_Pro                               ρ= 0.2852  p=    6.53E-25  ***
+      CO_Pro_Izq                           ρ= 0.5896  p=   2.25E-118  ***
+      CO_Pro_Der                           ρ= 0.0812  p=      0.0040  **
+      CO_Con                               ρ= 0.6131  p=   2.64E-130  ***
+      CO_Con_Izq                           ρ= 0.2718  p=    1.14E-22  ***
+      CO_Con_Der                           ρ= 0.6951  p=   1.15E-181  ***
+      CO_Incongruente                      ρ= 0.2136  p=    1.97E-14  ***
+
+  ▸ CO_Incongruente
+      Indice_Progresismo                   ρ=-0.1080  p=    1.25E-04  ***
+      Indice_Conservadurismo               ρ=-0.0616  p=      0.0290  *
+      CO_Pro                               ρ= 0.6760  p=   2.31E-168  ***
+      CO_Pro_Izq                           ρ= 0.3263  p=    1.57E-32  ***
+      CO_Pro_Der                           ρ= 0.7651  p=   8.97E-242  ***
+      CO_Con                               ρ= 0.1620  p=    7.93E-09  ***
+      CO_Con_Izq                           ρ= 0.4402  p=    1.39E-60  ***
+      CO_Congruente                        ρ= 0.2136  p=    1.97E-14  ***
 
 --------------------------------------------------------------------------------
 ► Centre
@@ -140,28 +691,169 @@ CO_Pro                              CO_Congruente                         0.2852
 Total de pares: 171
 Pares significativos (p < 0.05): 63
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.9343     1.79E-38
-CO_Pro                              CO_Pro_Izq                            0.8678     1.24E-26
-CO_Pro                              CO_Pro_Der                            0.8047     2.93E-20
-CO_Pro_Izq                          CO_Congruente                         0.7726     7.47E-18
-CO_Con                              CO_Con_Izq                            0.7717     8.66E-18
-CO_Pro_Der                          CO_Incongruente                       0.6887     4.46E-13
-CO_Pro                              CO_Congruente                         0.6511     2.01E-11
-CO_Con_Der                          CO_Congruente                         0.6195     3.34E-10
-CO_Con_Izq                          CO_Con_Der                            0.5685     1.69E-08
-CO_Con_Izq                          CO_Incongruente                       0.5519     5.28E-08
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5497     6.10E-08
-CO_Pro                              CO_Incongruente                       0.5445     8.59E-08
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.5222     3.50E-07
-CO_Con                              CO_Congruente                         0.5191     4.21E-07
-Cercania_Bregman                    Indice_Conservadurismo               -0.4980     1.44E-06
-Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.4854     2.86E-06
-CO_Congruente                       CO_Incongruente                       0.4853     2.89E-06
-Cercania_Massa                      Indice_Conservadurismo               -0.4832     3.24E-06
-Cercania_Bullrich                   Cercania_Milei                        0.4815     3.54E-06
-CO_Pro_Izq                          CO_Pro_Der                            0.4775     4.37E-06
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.3193  p=      0.0031  **
+      Autopercepcion_Izq_Der               ρ=-0.4050  p=    1.33E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.2899  p=      0.0075  **
+      Cercania_Massa                       ρ= 0.2783  p=      0.0104  *
+      Cercania_Bregman                     ρ= 0.3963  p=    1.90E-04  ***
+      Cercania_Milei                       ρ=-0.3494  p=      0.0011  **
+      CO_Pro                               ρ=-0.3226  p=      0.0028  **
+      CO_Pro_Izq                           ρ=-0.3447  p=      0.0013  **
+      CO_Congruente                        ρ=-0.3445  p=      0.0013  **
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.3193  p=      0.0031  **
+      Indice_Positividad                   ρ=-0.2593  p=      0.0172  *
+      Autopercepcion_Izq_Der               ρ= 0.4328  p=    3.93E-05  ***
+      Autopercepcion_Con_Pro               ρ=-0.2517  p=      0.0209  *
+      Autopercepcion_Per_Antiper           ρ= 0.4854  p=    2.86E-06  ***
+      Cercania_Massa                       ρ=-0.4832  p=    3.24E-06  ***
+      Cercania_Bullrich                    ρ= 0.3543  p=    9.44E-04  ***
+      Cercania_Bregman                     ρ=-0.4980  p=    1.44E-06  ***
+      Cercania_Milei                       ρ= 0.2892  p=      0.0076  **
+      CO_Con                               ρ=-0.2166  p=      0.0479  *
+      CO_Con_Izq                           ρ=-0.2889  p=      0.0077  **
+      CO_Incongruente                      ρ=-0.2322  p=      0.0336  *
+
+  ▸ Indice_Positividad
+      Indice_Conservadurismo               ρ=-0.2593  p=      0.0172  *
+      Autopercepcion_Per_Antiper           ρ=-0.2521  p=      0.0207  *
+      Cercania_Massa                       ρ= 0.4291  p=    4.66E-05  ***
+      Cercania_Bregman                     ρ= 0.2155  p=      0.0489  *
+      Cercania_Schiaretti                  ρ= 0.2247  p=      0.0399  *
+      CO_Pro_Der                           ρ=-0.2545  p=      0.0195  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.4050  p=    1.33E-04  ***
+      Indice_Conservadurismo               ρ= 0.4328  p=    3.93E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.5497  p=    6.10E-08  ***
+      Cercania_Massa                       ρ=-0.3059  p=      0.0047  **
+      Cercania_Bullrich                    ρ= 0.3202  p=      0.0030  **
+      Cercania_Bregman                     ρ=-0.3017  p=      0.0053  **
+      Cercania_Milei                       ρ= 0.2939  p=      0.0067  **
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Conservadurismo               ρ=-0.2517  p=      0.0209  *
+      Cercania_Massa                       ρ= 0.3109  p=      0.0040  **
+      Cercania_Bregman                     ρ= 0.2571  p=      0.0182  *
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.2899  p=      0.0075  **
+      Indice_Conservadurismo               ρ= 0.4854  p=    2.86E-06  ***
+      Indice_Positividad                   ρ=-0.2521  p=      0.0207  *
+      Autopercepcion_Izq_Der               ρ= 0.5497  p=    6.10E-08  ***
+      Cercania_Massa                       ρ=-0.5222  p=    3.50E-07  ***
+      Cercania_Bullrich                    ρ= 0.4093  p=    1.11E-04  ***
+      Cercania_Bregman                     ρ=-0.2454  p=      0.0245  *
+      Cercania_Milei                       ρ= 0.3722  p=    4.89E-04  ***
+      CO_Con_Izq                           ρ=-0.2287  p=      0.0364  *
+
+  ▸ Cercania_Massa
+      Indice_Progresismo                   ρ= 0.2783  p=      0.0104  *
+      Indice_Conservadurismo               ρ=-0.4832  p=    3.24E-06  ***
+      Indice_Positividad                   ρ= 0.4291  p=    4.66E-05  ***
+      Autopercepcion_Izq_Der               ρ=-0.3059  p=      0.0047  **
+      Autopercepcion_Con_Pro               ρ= 0.3109  p=      0.0040  **
+      Autopercepcion_Per_Antiper           ρ=-0.5222  p=    3.50E-07  ***
+      Cercania_Bregman                     ρ= 0.4032  p=    1.43E-04  ***
+
+  ▸ Cercania_Bullrich
+      Indice_Conservadurismo               ρ= 0.3543  p=    9.44E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.3202  p=      0.0030  **
+      Autopercepcion_Per_Antiper           ρ= 0.4093  p=    1.11E-04  ***
+      Cercania_Milei                       ρ= 0.4815  p=    3.54E-06  ***
+      CO_Incongruente                      ρ=-0.2394  p=      0.0283  *
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.3963  p=    1.90E-04  ***
+      Indice_Conservadurismo               ρ=-0.4980  p=    1.44E-06  ***
+      Indice_Positividad                   ρ= 0.2155  p=      0.0489  *
+      Autopercepcion_Izq_Der               ρ=-0.3017  p=      0.0053  **
+      Autopercepcion_Con_Pro               ρ= 0.2571  p=      0.0182  *
+      Autopercepcion_Per_Antiper           ρ=-0.2454  p=      0.0245  *
+      Cercania_Massa                       ρ= 0.4032  p=    1.43E-04  ***
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.3494  p=      0.0011  **
+      Indice_Conservadurismo               ρ= 0.2892  p=      0.0076  **
+      Autopercepcion_Izq_Der               ρ= 0.2939  p=      0.0067  **
+      Autopercepcion_Per_Antiper           ρ= 0.3722  p=    4.89E-04  ***
+      Cercania_Bullrich                    ρ= 0.4815  p=    3.54E-06  ***
+      CO_Pro                               ρ= 0.2151  p=      0.0494  *
+      CO_Pro_Izq                           ρ= 0.2550  p=      0.0192  *
+      CO_Con_Der                           ρ= 0.2224  p=      0.0420  *
+      CO_Congruente                        ρ= 0.2698  p=      0.0131  *
+
+  ▸ Cercania_Schiaretti
+      Indice_Positividad                   ρ= 0.2247  p=      0.0399  *
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.3226  p=      0.0028  **
+      Cercania_Milei                       ρ= 0.2151  p=      0.0494  *
+      CO_Pro_Izq                           ρ= 0.8678  p=    1.24E-26  ***
+      CO_Pro_Der                           ρ= 0.8047  p=    2.93E-20  ***
+      CO_Congruente                        ρ= 0.6511  p=    2.01E-11  ***
+      CO_Incongruente                      ρ= 0.5445  p=    8.59E-08  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Progresismo                   ρ=-0.3447  p=      0.0013  **
+      Cercania_Milei                       ρ= 0.2550  p=      0.0192  *
+      CO_Pro                               ρ= 0.8678  p=    1.24E-26  ***
+      CO_Pro_Der                           ρ= 0.4775  p=    4.37E-06  ***
+      CO_Congruente                        ρ= 0.7726  p=    7.47E-18  ***
+      CO_Incongruente                      ρ= 0.3242  p=      0.0026  **
+
+  ▸ CO_Pro_Der
+      Indice_Positividad                   ρ=-0.2545  p=      0.0195  *
+      CO_Pro                               ρ= 0.8047  p=    2.93E-20  ***
+      CO_Pro_Izq                           ρ= 0.4775  p=    4.37E-06  ***
+      CO_Congruente                        ρ= 0.3493  p=      0.0011  **
+      CO_Incongruente                      ρ= 0.6887  p=    4.46E-13  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.2166  p=      0.0479  *
+      CO_Con_Izq                           ρ= 0.7717  p=    8.66E-18  ***
+      CO_Con_Der                           ρ= 0.9343  p=    1.79E-38  ***
+      CO_Congruente                        ρ= 0.5191  p=    4.21E-07  ***
+      CO_Incongruente                      ρ= 0.3732  p=    4.71E-04  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.2889  p=      0.0077  **
+      Autopercepcion_Per_Antiper           ρ=-0.2287  p=      0.0364  *
+      CO_Con                               ρ= 0.7717  p=    8.66E-18  ***
+      CO_Con_Der                           ρ= 0.5685  p=    1.69E-08  ***
+      CO_Congruente                        ρ= 0.2662  p=      0.0144  *
+      CO_Incongruente                      ρ= 0.5519  p=    5.28E-08  ***
+
+  ▸ CO_Con_Der
+      Cercania_Milei                       ρ= 0.2224  p=      0.0420  *
+      CO_Con                               ρ= 0.9343  p=    1.79E-38  ***
+      CO_Con_Izq                           ρ= 0.5685  p=    1.69E-08  ***
+      CO_Congruente                        ρ= 0.6195  p=    3.34E-10  ***
+      CO_Incongruente                      ρ= 0.2626  p=      0.0158  *
+
+  ▸ CO_Congruente
+      Indice_Progresismo                   ρ=-0.3445  p=      0.0013  **
+      Cercania_Milei                       ρ= 0.2698  p=      0.0131  *
+      CO_Pro                               ρ= 0.6511  p=    2.01E-11  ***
+      CO_Pro_Izq                           ρ= 0.7726  p=    7.47E-18  ***
+      CO_Pro_Der                           ρ= 0.3493  p=      0.0011  **
+      CO_Con                               ρ= 0.5191  p=    4.21E-07  ***
+      CO_Con_Izq                           ρ= 0.2662  p=      0.0144  *
+      CO_Con_Der                           ρ= 0.6195  p=    3.34E-10  ***
+      CO_Incongruente                      ρ= 0.4853  p=    2.89E-06  ***
+
+  ▸ CO_Incongruente
+      Indice_Conservadurismo               ρ=-0.2322  p=      0.0336  *
+      Cercania_Bullrich                    ρ=-0.2394  p=      0.0283  *
+      CO_Pro                               ρ= 0.5445  p=    8.59E-08  ***
+      CO_Pro_Izq                           ρ= 0.3242  p=      0.0026  **
+      CO_Pro_Der                           ρ= 0.6887  p=    4.46E-13  ***
+      CO_Con                               ρ= 0.3732  p=    4.71E-04  ***
+      CO_Con_Izq                           ρ= 0.5519  p=    5.28E-08  ***
+      CO_Con_Der                           ρ= 0.2626  p=      0.0158  *
+      CO_Congruente                        ρ= 0.4853  p=    2.89E-06  ***
 
 --------------------------------------------------------------------------------
 ► Moderate_Right_A
@@ -170,28 +862,181 @@ CO_Pro_Izq                          CO_Pro_Der                            0.4775
 Total de pares: 171
 Pares significativos (p < 0.05): 69
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8533     7.07E-60
-CO_Pro                              CO_Pro_Der                            0.8208     5.34E-52
-CO_Pro_Der                          CO_Incongruente                       0.8109     7.90E-50
-CO_Pro                              CO_Pro_Izq                            0.7985     2.70E-47
-CO_Pro_Izq                          CO_Congruente                         0.7500     7.87E-39
-CO_Con                              CO_Con_Izq                            0.7402     3.42E-37
-CO_Pro                              CO_Incongruente                       0.6483     3.49E-26
-CO_Con_Der                          CO_Congruente                         0.6469     6.33E-26
-CO_Pro                              CO_Congruente                         0.5888     8.55E-21
-CO_Con                              CO_Congruente                         0.5590     2.08E-18
-CO_Con_Izq                          CO_Incongruente                       0.5523     6.29E-18
-Cercania_Bregman                    Indice_Conservadurismo               -0.5504     7.20E-18
-Cercania_Bregman                    Indice_Progresismo                    0.4981     1.93E-14
-Cercania_Bullrich                   Indice_Progresismo                   -0.4943     3.25E-14
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4759     3.75E-13
-Autopercepcion_Izq_Der              Cercania_Bregman                     -0.4663     1.26E-12
-Cercania_Milei                      Indice_Conservadurismo                0.4590     3.11E-12
-Autopercepcion_Izq_Der              Cercania_Bullrich                     0.4466     1.36E-11
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4348     5.29E-11
-CO_Pro_Izq                          CO_Pro_Der                            0.4293     9.74E-11
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.4056  p=    1.22E-09  ***
+      Indice_Positividad                   ρ= 0.1949  p=      0.0048  **
+      Autopercepcion_Izq_Der               ρ=-0.4348  p=    5.29E-11  ***
+      Autopercepcion_Con_Pro               ρ= 0.1400  p=      0.0437  *
+      Autopercepcion_Per_Antiper           ρ=-0.3936  p=    4.06E-09  ***
+      Cercania_Massa                       ρ= 0.3419  p=    4.32E-07  ***
+      Cercania_Bullrich                    ρ=-0.4943  p=    3.25E-14  ***
+      Cercania_Bregman                     ρ= 0.4981  p=    1.93E-14  ***
+      Cercania_Milei                       ρ=-0.3230  p=    1.96E-06  ***
+      CO_Pro                               ρ=-0.2116  p=      0.0022  **
+      CO_Pro_Der                           ρ=-0.2084  p=      0.0025  **
+      CO_Incongruente                      ρ=-0.1630  p=      0.0186  *
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.4056  p=    1.22E-09  ***
+      Indice_Positividad                   ρ=-0.1865  p=      0.0070  **
+      Autopercepcion_Izq_Der               ρ= 0.3952  p=    3.47E-09  ***
+      Autopercepcion_Con_Pro               ρ=-0.2401  p=    4.77E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3394  p=    5.29E-07  ***
+      Cercania_Massa                       ρ=-0.4065  p=    1.11E-09  ***
+      Cercania_Bullrich                    ρ= 0.3714  p=    3.33E-08  ***
+      Cercania_Bregman                     ρ=-0.5504  p=    7.20E-18  ***
+      Cercania_Milei                       ρ= 0.4590  p=    3.11E-12  ***
+      CO_Pro_Izq                           ρ=-0.1650  p=      0.0172  *
+      CO_Con                               ρ=-0.2533  p=    2.31E-04  ***
+      CO_Con_Izq                           ρ=-0.2368  p=    5.92E-04  ***
+      CO_Con_Der                           ρ=-0.1758  p=      0.0113  *
+      CO_Congruente                        ρ=-0.2033  p=      0.0032  **
+      CO_Incongruente                      ρ=-0.1493  p=      0.0314  *
+
+  ▸ Indice_Positividad
+      Indice_Progresismo                   ρ= 0.1949  p=      0.0048  **
+      Indice_Conservadurismo               ρ=-0.1865  p=      0.0070  **
+      Autopercepcion_Izq_Der               ρ=-0.1544  p=      0.0260  *
+      Cercania_Massa                       ρ= 0.2585  p=    1.63E-04  ***
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.4348  p=    5.29E-11  ***
+      Indice_Conservadurismo               ρ= 0.3952  p=    3.47E-09  ***
+      Indice_Positividad                   ρ=-0.1544  p=      0.0260  *
+      Autopercepcion_Con_Pro               ρ=-0.2556  p=    1.94E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.4759  p=    3.75E-13  ***
+      Cercania_Massa                       ρ=-0.3314  p=    1.01E-06  ***
+      Cercania_Bullrich                    ρ= 0.4466  p=    1.36E-11  ***
+      Cercania_Bregman                     ρ=-0.4663  p=    1.26E-12  ***
+      Cercania_Milei                       ρ= 0.3017  p=    9.48E-06  ***
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.1400  p=      0.0437  *
+      Indice_Conservadurismo               ρ=-0.2401  p=    4.77E-04  ***
+      Autopercepcion_Izq_Der               ρ=-0.2556  p=    1.94E-04  ***
+      Cercania_Massa                       ρ= 0.1761  p=      0.0110  *
+      Cercania_Bregman                     ρ= 0.2376  p=    5.49E-04  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.3936  p=    4.06E-09  ***
+      Indice_Conservadurismo               ρ= 0.3394  p=    5.29E-07  ***
+      Autopercepcion_Izq_Der               ρ= 0.4759  p=    3.75E-13  ***
+      Cercania_Massa                       ρ=-0.3890  p=    6.37E-09  ***
+      Cercania_Bullrich                    ρ= 0.3624  p=    7.51E-08  ***
+      Cercania_Bregman                     ρ=-0.3337  p=    8.39E-07  ***
+      Cercania_Milei                       ρ= 0.2618  p=    1.33E-04  ***
+
+  ▸ Cercania_Massa
+      Indice_Progresismo                   ρ= 0.3419  p=    4.32E-07  ***
+      Indice_Conservadurismo               ρ=-0.4065  p=    1.11E-09  ***
+      Indice_Positividad                   ρ= 0.2585  p=    1.63E-04  ***
+      Autopercepcion_Izq_Der               ρ=-0.3314  p=    1.01E-06  ***
+      Autopercepcion_Con_Pro               ρ= 0.1761  p=      0.0110  *
+      Autopercepcion_Per_Antiper           ρ=-0.3890  p=    6.37E-09  ***
+      Cercania_Bullrich                    ρ=-0.2526  p=    2.33E-04  ***
+      Cercania_Bregman                     ρ= 0.4167  p=    3.82E-10  ***
+      Cercania_Milei                       ρ=-0.2158  p=      0.0017  **
+
+  ▸ Cercania_Bullrich
+      Indice_Progresismo                   ρ=-0.4943  p=    3.25E-14  ***
+      Indice_Conservadurismo               ρ= 0.3714  p=    3.33E-08  ***
+      Autopercepcion_Izq_Der               ρ= 0.4466  p=    1.36E-11  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3624  p=    7.51E-08  ***
+      Cercania_Massa                       ρ=-0.2526  p=    2.33E-04  ***
+      Cercania_Bregman                     ρ=-0.3231  p=    1.94E-06  ***
+      Cercania_Milei                       ρ= 0.2972  p=    1.31E-05  ***
+      Cercania_Schiaretti                  ρ= 0.2367  p=    5.76E-04  ***
+      CO_Pro                               ρ= 0.1462  p=      0.0351  *
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.4981  p=    1.93E-14  ***
+      Indice_Conservadurismo               ρ=-0.5504  p=    7.20E-18  ***
+      Autopercepcion_Izq_Der               ρ=-0.4663  p=    1.26E-12  ***
+      Autopercepcion_Con_Pro               ρ= 0.2376  p=    5.49E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3337  p=    8.39E-07  ***
+      Cercania_Massa                       ρ= 0.4167  p=    3.82E-10  ***
+      Cercania_Bullrich                    ρ=-0.3231  p=    1.94E-06  ***
+      Cercania_Milei                       ρ=-0.3690  p=    4.15E-08  ***
+      CO_Con                               ρ= 0.1419  p=      0.0414  *
+      CO_Congruente                        ρ= 0.1750  p=      0.0115  *
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.3230  p=    1.96E-06  ***
+      Indice_Conservadurismo               ρ= 0.4590  p=    3.11E-12  ***
+      Autopercepcion_Izq_Der               ρ= 0.3017  p=    9.48E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2618  p=    1.33E-04  ***
+      Cercania_Massa                       ρ=-0.2158  p=      0.0017  **
+      Cercania_Bullrich                    ρ= 0.2972  p=    1.31E-05  ***
+      Cercania_Bregman                     ρ=-0.3690  p=    4.15E-08  ***
+
+  ▸ Cercania_Schiaretti
+      Cercania_Bullrich                    ρ= 0.2367  p=    5.76E-04  ***
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.2116  p=      0.0022  **
+      Cercania_Bullrich                    ρ= 0.1462  p=      0.0351  *
+      CO_Pro_Izq                           ρ= 0.7985  p=    2.70E-47  ***
+      CO_Pro_Der                           ρ= 0.8208  p=    5.34E-52  ***
+      CO_Congruente                        ρ= 0.5888  p=    8.55E-21  ***
+      CO_Incongruente                      ρ= 0.6483  p=    3.49E-26  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Conservadurismo               ρ=-0.1650  p=      0.0172  *
+      CO_Pro                               ρ= 0.7985  p=    2.70E-47  ***
+      CO_Pro_Der                           ρ= 0.4293  p=    9.74E-11  ***
+      CO_Congruente                        ρ= 0.7500  p=    7.87E-39  ***
+      CO_Incongruente                      ρ= 0.3132  p=    4.11E-06  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.2084  p=      0.0025  **
+      CO_Pro                               ρ= 0.8208  p=    5.34E-52  ***
+      CO_Pro_Izq                           ρ= 0.4293  p=    9.74E-11  ***
+      CO_Congruente                        ρ= 0.2966  p=    1.36E-05  ***
+      CO_Incongruente                      ρ= 0.8109  p=    7.90E-50  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.2533  p=    2.31E-04  ***
+      Cercania_Bregman                     ρ= 0.1419  p=      0.0414  *
+      CO_Con_Izq                           ρ= 0.7402  p=    3.42E-37  ***
+      CO_Con_Der                           ρ= 0.8533  p=    7.07E-60  ***
+      CO_Congruente                        ρ= 0.5590  p=    2.08E-18  ***
+      CO_Incongruente                      ρ= 0.3980  p=    2.87E-09  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.2368  p=    5.92E-04  ***
+      CO_Con                               ρ= 0.7402  p=    3.42E-37  ***
+      CO_Con_Der                           ρ= 0.4054  p=    1.37E-09  ***
+      CO_Congruente                        ρ= 0.2571  p=    1.84E-04  ***
+      CO_Incongruente                      ρ= 0.5523  p=    6.29E-18  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.1758  p=      0.0113  *
+      CO_Con                               ρ= 0.8533  p=    7.07E-60  ***
+      CO_Con_Izq                           ρ= 0.4054  p=    1.37E-09  ***
+      CO_Congruente                        ρ= 0.6469  p=    6.33E-26  ***
+      CO_Incongruente                      ρ= 0.1956  p=      0.0047  **
+
+  ▸ CO_Congruente
+      Indice_Conservadurismo               ρ=-0.2033  p=      0.0032  **
+      Cercania_Bregman                     ρ= 0.1750  p=      0.0115  *
+      CO_Pro                               ρ= 0.5888  p=    8.55E-21  ***
+      CO_Pro_Izq                           ρ= 0.7500  p=    7.87E-39  ***
+      CO_Pro_Der                           ρ= 0.2966  p=    1.36E-05  ***
+      CO_Con                               ρ= 0.5590  p=    2.08E-18  ***
+      CO_Con_Izq                           ρ= 0.2571  p=    1.84E-04  ***
+      CO_Con_Der                           ρ= 0.6469  p=    6.33E-26  ***
+      CO_Incongruente                      ρ= 0.3787  p=    1.69E-08  ***
+
+  ▸ CO_Incongruente
+      Indice_Progresismo                   ρ=-0.1630  p=      0.0186  *
+      Indice_Conservadurismo               ρ=-0.1493  p=      0.0314  *
+      CO_Pro                               ρ= 0.6483  p=    3.49E-26  ***
+      CO_Pro_Izq                           ρ= 0.3132  p=    4.11E-06  ***
+      CO_Pro_Der                           ρ= 0.8109  p=    7.90E-50  ***
+      CO_Con                               ρ= 0.3980  p=    2.87E-09  ***
+      CO_Con_Izq                           ρ= 0.5523  p=    6.29E-18  ***
+      CO_Con_Der                           ρ= 0.1956  p=      0.0047  **
+      CO_Congruente                        ρ= 0.3787  p=    1.69E-08  ***
 
 --------------------------------------------------------------------------------
 ► Moderate_Right_B
@@ -200,28 +1045,155 @@ CO_Pro_Izq                          CO_Pro_Der                            0.4293
 Total de pares: 171
 Pares significativos (p < 0.05): 57
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8550     8.72E-62
-CO_Pro                              CO_Pro_Izq                            0.8483     6.69E-60
-CO_Pro                              CO_Pro_Der                            0.7592     4.93E-41
-CO_Con                              CO_Con_Izq                            0.7580     7.80E-41
-CO_Pro_Izq                          CO_Congruente                         0.6948     6.78E-32
-CO_Pro_Der                          CO_Incongruente                       0.6819     2.43E-30
-CO_Con_Izq                          CO_Incongruente                       0.6698     5.81E-29
-CO_Con_Der                          CO_Congruente                         0.6651     1.92E-28
-CO_Pro                              CO_Congruente                         0.6062     1.16E-22
-CO_Con                              CO_Congruente                         0.5731     6.60E-20
-CO_Pro                              CO_Incongruente                       0.5359     3.73E-17
-CO_Con                              CO_Incongruente                       0.4967     1.31E-14
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4585     2.04E-12
-CO_Con_Izq                          CO_Con_Der                            0.4254     1.00E-10
-Cercania_Bregman                    Indice_Progresismo                    0.4245     1.11E-10
-CO_Congruente                       CO_Incongruente                       0.4225     1.38E-10
-Autopercepcion_Izq_Der              Cercania_Bregman                     -0.4031     1.09E-09
-CO_Pro_Izq                          CO_Pro_Der                            0.3876     5.23E-09
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3797     1.12E-08
-Cercania_Milei                      Indice_Conservadurismo                0.3773     1.41E-08
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.3740  p=    1.92E-08  ***
+      Autopercepcion_Izq_Der               ρ=-0.3797  p=    1.12E-08  ***
+      Autopercepcion_Per_Antiper           ρ=-0.2873  p=    2.15E-05  ***
+      Cercania_Massa                       ρ= 0.2243  p=      0.0010  **
+      Cercania_Bullrich                    ρ=-0.2738  p=    5.32E-05  ***
+      Cercania_Bregman                     ρ= 0.4245  p=    1.11E-10  ***
+      Cercania_Milei                       ρ=-0.2360  p=    5.30E-04  ***
+      CO_Pro                               ρ=-0.1948  p=      0.0044  **
+      CO_Pro_Der                           ρ=-0.1732  p=      0.0115  *
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.3740  p=    1.92E-08  ***
+      Indice_Positividad                   ρ=-0.1442  p=      0.0359  *
+      Autopercepcion_Izq_Der               ρ= 0.3171  p=    2.45E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2483  p=    2.62E-04  ***
+      Cercania_Massa                       ρ=-0.2530  p=    1.97E-04  ***
+      Cercania_Bullrich                    ρ= 0.3382  p=    4.54E-07  ***
+      Cercania_Bregman                     ρ=-0.3736  p=    2.00E-08  ***
+      Cercania_Milei                       ρ= 0.3773  p=    1.41E-08  ***
+      CO_Con                               ρ=-0.2310  p=    7.01E-04  ***
+      CO_Con_Der                           ρ=-0.2274  p=    8.52E-04  ***
+      CO_Congruente                        ρ=-0.1650  p=      0.0162  *
+
+  ▸ Indice_Positividad
+      Indice_Conservadurismo               ρ=-0.1442  p=      0.0359  *
+      Cercania_Bregman                     ρ= 0.1892  p=      0.0057  **
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.3797  p=    1.12E-08  ***
+      Indice_Conservadurismo               ρ= 0.3171  p=    2.45E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.4585  p=    2.04E-12  ***
+      Cercania_Massa                       ρ=-0.2774  p=    4.22E-05  ***
+      Cercania_Bullrich                    ρ= 0.2892  p=    1.89E-05  ***
+      Cercania_Bregman                     ρ=-0.4031  p=    1.09E-09  ***
+      Cercania_Milei                       ρ= 0.2746  p=    5.06E-05  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.2873  p=    2.15E-05  ***
+      Indice_Conservadurismo               ρ= 0.2483  p=    2.62E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.4585  p=    2.04E-12  ***
+      Cercania_Massa                       ρ=-0.3357  p=    5.61E-07  ***
+      Cercania_Bullrich                    ρ= 0.3330  p=    6.98E-07  ***
+      Cercania_Bregman                     ρ=-0.1813  p=      0.0081  **
+      Cercania_Milei                       ρ= 0.2330  p=    6.27E-04  ***
+
+  ▸ Cercania_Massa
+      Indice_Progresismo                   ρ= 0.2243  p=      0.0010  **
+      Indice_Conservadurismo               ρ=-0.2530  p=    1.97E-04  ***
+      Autopercepcion_Izq_Der               ρ=-0.2774  p=    4.22E-05  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3357  p=    5.61E-07  ***
+      Cercania_Bullrich                    ρ=-0.1992  p=      0.0036  **
+      Cercania_Bregman                     ρ= 0.3174  p=    2.40E-06  ***
+      Cercania_Milei                       ρ=-0.2079  p=      0.0023  **
+      Cercania_Schiaretti                  ρ= 0.1484  p=      0.0308  *
+
+  ▸ Cercania_Bullrich
+      Indice_Progresismo                   ρ=-0.2738  p=    5.32E-05  ***
+      Indice_Conservadurismo               ρ= 0.3382  p=    4.54E-07  ***
+      Autopercepcion_Izq_Der               ρ= 0.2892  p=    1.89E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3330  p=    6.98E-07  ***
+      Cercania_Massa                       ρ=-0.1992  p=      0.0036  **
+      Cercania_Milei                       ρ= 0.1444  p=      0.0356  *
+      Cercania_Schiaretti                  ρ= 0.1402  p=      0.0414  *
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.4245  p=    1.11E-10  ***
+      Indice_Conservadurismo               ρ=-0.3736  p=    2.00E-08  ***
+      Indice_Positividad                   ρ= 0.1892  p=      0.0057  **
+      Autopercepcion_Izq_Der               ρ=-0.4031  p=    1.09E-09  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1813  p=      0.0081  **
+      Cercania_Massa                       ρ= 0.3174  p=    2.40E-06  ***
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.2360  p=    5.30E-04  ***
+      Indice_Conservadurismo               ρ= 0.3773  p=    1.41E-08  ***
+      Autopercepcion_Izq_Der               ρ= 0.2746  p=    5.06E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2330  p=    6.27E-04  ***
+      Cercania_Massa                       ρ=-0.2079  p=      0.0023  **
+      Cercania_Bullrich                    ρ= 0.1444  p=      0.0356  *
+      Cercania_Schiaretti                  ρ= 0.1762  p=      0.0101  *
+
+  ▸ Cercania_Schiaretti
+      Cercania_Massa                       ρ= 0.1484  p=      0.0308  *
+      Cercania_Bullrich                    ρ= 0.1402  p=      0.0414  *
+      Cercania_Milei                       ρ= 0.1762  p=      0.0101  *
+      CO_Con                               ρ= 0.1376  p=      0.0454  *
+      CO_Con_Der                           ρ= 0.1663  p=      0.0154  *
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.1948  p=      0.0044  **
+      CO_Pro_Izq                           ρ= 0.8483  p=    6.69E-60  ***
+      CO_Pro_Der                           ρ= 0.7592  p=    4.93E-41  ***
+      CO_Congruente                        ρ= 0.6062  p=    1.16E-22  ***
+      CO_Incongruente                      ρ= 0.5359  p=    3.73E-17  ***
+
+  ▸ CO_Pro_Izq
+      CO_Pro                               ρ= 0.8483  p=    6.69E-60  ***
+      CO_Pro_Der                           ρ= 0.3876  p=    5.23E-09  ***
+      CO_Congruente                        ρ= 0.6948  p=    6.78E-32  ***
+      CO_Incongruente                      ρ= 0.2919  p=    1.57E-05  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.1732  p=      0.0115  *
+      CO_Pro                               ρ= 0.7592  p=    4.93E-41  ***
+      CO_Pro_Izq                           ρ= 0.3876  p=    5.23E-09  ***
+      CO_Congruente                        ρ= 0.2760  p=    4.61E-05  ***
+      CO_Incongruente                      ρ= 0.6819  p=    2.43E-30  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.2310  p=    7.01E-04  ***
+      Cercania_Schiaretti                  ρ= 0.1376  p=      0.0454  *
+      CO_Con_Izq                           ρ= 0.7580  p=    7.80E-41  ***
+      CO_Con_Der                           ρ= 0.8550  p=    8.72E-62  ***
+      CO_Congruente                        ρ= 0.5731  p=    6.60E-20  ***
+      CO_Incongruente                      ρ= 0.4967  p=    1.31E-14  ***
+
+  ▸ CO_Con_Izq
+      CO_Con                               ρ= 0.7580  p=    7.80E-41  ***
+      CO_Con_Der                           ρ= 0.4254  p=    1.00E-10  ***
+      CO_Congruente                        ρ= 0.2487  p=    2.56E-04  ***
+      CO_Incongruente                      ρ= 0.6698  p=    5.81E-29  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.2274  p=    8.52E-04  ***
+      Cercania_Schiaretti                  ρ= 0.1663  p=      0.0154  *
+      CO_Con                               ρ= 0.8550  p=    8.72E-62  ***
+      CO_Con_Izq                           ρ= 0.4254  p=    1.00E-10  ***
+      CO_Congruente                        ρ= 0.6651  p=    1.92E-28  ***
+      CO_Incongruente                      ρ= 0.2768  p=    4.36E-05  ***
+
+  ▸ CO_Congruente
+      Indice_Conservadurismo               ρ=-0.1650  p=      0.0162  *
+      CO_Pro                               ρ= 0.6062  p=    1.16E-22  ***
+      CO_Pro_Izq                           ρ= 0.6948  p=    6.78E-32  ***
+      CO_Pro_Der                           ρ= 0.2760  p=    4.61E-05  ***
+      CO_Con                               ρ= 0.5731  p=    6.60E-20  ***
+      CO_Con_Izq                           ρ= 0.2487  p=    2.56E-04  ***
+      CO_Con_Der                           ρ= 0.6651  p=    1.92E-28  ***
+      CO_Incongruente                      ρ= 0.4225  p=    1.38E-10  ***
+
+  ▸ CO_Incongruente
+      CO_Pro                               ρ= 0.5359  p=    3.73E-17  ***
+      CO_Pro_Izq                           ρ= 0.2919  p=    1.57E-05  ***
+      CO_Pro_Der                           ρ= 0.6819  p=    2.43E-30  ***
+      CO_Con                               ρ= 0.4967  p=    1.31E-14  ***
+      CO_Con_Izq                           ρ= 0.6698  p=    5.81E-29  ***
+      CO_Con_Der                           ρ= 0.2768  p=    4.36E-05  ***
+      CO_Congruente                        ρ= 0.4225  p=    1.38E-10  ***
 
 --------------------------------------------------------------------------------
 ► Right_Wing_Libertarian
@@ -230,28 +1202,161 @@ Cercania_Milei                      Indice_Conservadurismo                0.3773
 Total de pares: 171
 Pares significativos (p < 0.05): 60
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Izq                            0.8748     1.75E-59
-CO_Con                              CO_Con_Izq                            0.7964     7.94E-42
-CO_Con                              CO_Con_Der                            0.7838     1.03E-39
-CO_Pro_Izq                          CO_Congruente                         0.7831     1.32E-39
-CO_Pro                              CO_Pro_Der                            0.7750     2.55E-38
-CO_Pro                              CO_Congruente                         0.7509     8.30E-35
-CO_Pro_Der                          CO_Incongruente                       0.7436     8.03E-34
-CO_Con_Izq                          CO_Incongruente                       0.6168     8.90E-21
-CO_Con_Der                          CO_Congruente                         0.6092     3.52E-20
-CO_Pro                              CO_Incongruente                       0.5280     1.14E-14
-CO_Con                              CO_Incongruente                       0.5239     1.98E-14
-CO_Pro_Izq                          CO_Pro_Der                            0.4634     3.08E-11
-Autopercepcion_Izq_Der              Cercania_Milei                        0.4608     4.10E-11
-CO_Pro_Der                          CO_Congruente                         0.4569     6.25E-11
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4439     2.47E-10
-Cercania_Milei                      Indice_Conservadurismo                0.4286     1.16E-09
-CO_Congruente                       CO_Incongruente                       0.3824     7.78E-08
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.3627     3.92E-07
-CO_Con                              CO_Congruente                         0.3619     4.14E-07
-CO_Con_Izq                          CO_Con_Der                            0.3483     1.19E-06
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.1870  p=      0.0108  *
+      Autopercepcion_Izq_Der               ρ=-0.4439  p=    2.47E-10  ***
+      Autopercepcion_Con_Pro               ρ= 0.1598  p=      0.0297  *
+      Autopercepcion_Per_Antiper           ρ=-0.2390  p=      0.0011  **
+      Cercania_Bullrich                    ρ=-0.2179  p=      0.0029  **
+      Cercania_Bregman                     ρ= 0.2218  p=      0.0024  **
+      Cercania_Milei                       ρ=-0.2703  p=    1.98E-04  ***
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.1870  p=      0.0108  *
+      Autopercepcion_Izq_Der               ρ= 0.2830  p=    9.49E-05  ***
+      Autopercepcion_Con_Pro               ρ=-0.3356  p=    3.01E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1976  p=      0.0070  **
+      Cercania_Massa                       ρ=-0.2159  p=      0.0032  **
+      Cercania_Bullrich                    ρ= 0.1537  p=      0.0367  *
+      Cercania_Bregman                     ρ=-0.3033  p=    2.71E-05  ***
+      Cercania_Milei                       ρ= 0.4286  p=    1.16E-09  ***
+      CO_Con                               ρ=-0.1854  p=      0.0115  *
+      CO_Con_Izq                           ρ=-0.1584  p=      0.0313  *
+      CO_Con_Der                           ρ=-0.1569  p=      0.0330  *
+      CO_Congruente                        ρ=-0.1652  p=      0.0246  *
+      CO_Incongruente                      ρ=-0.1640  p=      0.0257  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.4439  p=    2.47E-10  ***
+      Indice_Conservadurismo               ρ= 0.2830  p=    9.49E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3627  p=    3.92E-07  ***
+      Cercania_Bregman                     ρ=-0.3059  p=    2.29E-05  ***
+      Cercania_Milei                       ρ= 0.4608  p=    4.10E-11  ***
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.1598  p=      0.0297  *
+      Indice_Conservadurismo               ρ=-0.3356  p=    3.01E-06  ***
+      Cercania_Massa                       ρ= 0.1623  p=      0.0273  *
+      Cercania_Bregman                     ρ= 0.2200  p=      0.0026  **
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.2390  p=      0.0011  **
+      Indice_Conservadurismo               ρ= 0.1976  p=      0.0070  **
+      Autopercepcion_Izq_Der               ρ= 0.3627  p=    3.92E-07  ***
+      Cercania_Massa                       ρ=-0.2210  p=      0.0025  **
+      Cercania_Bullrich                    ρ= 0.2592  p=    3.66E-04  ***
+      Cercania_Milei                       ρ= 0.2377  p=      0.0011  **
+
+  ▸ Cercania_Massa
+      Indice_Conservadurismo               ρ=-0.2159  p=      0.0032  **
+      Autopercepcion_Con_Pro               ρ= 0.1623  p=      0.0273  *
+      Autopercepcion_Per_Antiper           ρ=-0.2210  p=      0.0025  **
+      Cercania_Bregman                     ρ= 0.2332  p=      0.0014  **
+      Cercania_Schiaretti                  ρ= 0.1529  p=      0.0377  *
+      CO_Pro                               ρ= 0.1776  p=      0.0156  *
+      CO_Pro_Izq                           ρ= 0.1897  p=      0.0097  **
+      CO_Congruente                        ρ= 0.1639  p=      0.0258  *
+
+  ▸ Cercania_Bullrich
+      Indice_Progresismo                   ρ=-0.2179  p=      0.0029  **
+      Indice_Conservadurismo               ρ= 0.1537  p=      0.0367  *
+      Autopercepcion_Per_Antiper           ρ= 0.2592  p=    3.66E-04  ***
+      Cercania_Schiaretti                  ρ= 0.2813  p=    1.05E-04  ***
+
+  ▸ Cercania_Bregman
+      Indice_Progresismo                   ρ= 0.2218  p=      0.0024  **
+      Indice_Conservadurismo               ρ=-0.3033  p=    2.71E-05  ***
+      Autopercepcion_Izq_Der               ρ=-0.3059  p=    2.29E-05  ***
+      Autopercepcion_Con_Pro               ρ= 0.2200  p=      0.0026  **
+      Cercania_Massa                       ρ= 0.2332  p=      0.0014  **
+      Cercania_Milei                       ρ=-0.1903  p=      0.0095  **
+      Cercania_Schiaretti                  ρ= 0.1699  p=      0.0207  *
+      CO_Congruente                        ρ= 0.1634  p=      0.0262  *
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.2703  p=    1.98E-04  ***
+      Indice_Conservadurismo               ρ= 0.4286  p=    1.16E-09  ***
+      Autopercepcion_Izq_Der               ρ= 0.4608  p=    4.10E-11  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2377  p=      0.0011  **
+      Cercania_Bregman                     ρ=-0.1903  p=      0.0095  **
+      Cercania_Schiaretti                  ρ= 0.1561  p=      0.0339  *
+      CO_Con_Izq                           ρ=-0.1794  p=      0.0146  *
+
+  ▸ Cercania_Schiaretti
+      Cercania_Massa                       ρ= 0.1529  p=      0.0377  *
+      Cercania_Bullrich                    ρ= 0.2813  p=    1.05E-04  ***
+      Cercania_Bregman                     ρ= 0.1699  p=      0.0207  *
+      Cercania_Milei                       ρ= 0.1561  p=      0.0339  *
+
+  ▸ CO_Pro
+      Cercania_Massa                       ρ= 0.1776  p=      0.0156  *
+      CO_Pro_Izq                           ρ= 0.8748  p=    1.75E-59  ***
+      CO_Pro_Der                           ρ= 0.7750  p=    2.55E-38  ***
+      CO_Con_Der                           ρ= 0.1752  p=      0.0170  *
+      CO_Congruente                        ρ= 0.7509  p=    8.30E-35  ***
+      CO_Incongruente                      ρ= 0.5280  p=    1.14E-14  ***
+
+  ▸ CO_Pro_Izq
+      Cercania_Massa                       ρ= 0.1897  p=      0.0097  **
+      CO_Pro                               ρ= 0.8748  p=    1.75E-59  ***
+      CO_Pro_Der                           ρ= 0.4634  p=    3.08E-11  ***
+      CO_Con_Izq                           ρ=-0.1949  p=      0.0078  **
+      CO_Congruente                        ρ= 0.7831  p=    1.32E-39  ***
+      CO_Incongruente                      ρ= 0.2564  p=    4.26E-04  ***
+
+  ▸ CO_Pro_Der
+      CO_Pro                               ρ= 0.7750  p=    2.55E-38  ***
+      CO_Pro_Izq                           ρ= 0.4634  p=    3.08E-11  ***
+      CO_Con                               ρ= 0.1444  p=      0.0499  *
+      CO_Con_Der                           ρ= 0.1628  p=      0.0268  *
+      CO_Congruente                        ρ= 0.4569  p=    6.25E-11  ***
+      CO_Incongruente                      ρ= 0.7436  p=    8.03E-34  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.1854  p=      0.0115  *
+      CO_Pro_Der                           ρ= 0.1444  p=      0.0499  *
+      CO_Con_Izq                           ρ= 0.7964  p=    7.94E-42  ***
+      CO_Con_Der                           ρ= 0.7838  p=    1.03E-39  ***
+      CO_Congruente                        ρ= 0.3619  p=    4.14E-07  ***
+      CO_Incongruente                      ρ= 0.5239  p=    1.98E-14  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.1584  p=      0.0313  *
+      Cercania_Milei                       ρ=-0.1794  p=      0.0146  *
+      CO_Pro_Izq                           ρ=-0.1949  p=      0.0078  **
+      CO_Con                               ρ= 0.7964  p=    7.94E-42  ***
+      CO_Con_Der                           ρ= 0.3483  p=    1.19E-06  ***
+      CO_Incongruente                      ρ= 0.6168  p=    8.90E-21  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.1569  p=      0.0330  *
+      CO_Pro                               ρ= 0.1752  p=      0.0170  *
+      CO_Pro_Der                           ρ= 0.1628  p=      0.0268  *
+      CO_Con                               ρ= 0.7838  p=    1.03E-39  ***
+      CO_Con_Izq                           ρ= 0.3483  p=    1.19E-06  ***
+      CO_Congruente                        ρ= 0.6092  p=    3.52E-20  ***
+      CO_Incongruente                      ρ= 0.2497  p=    6.10E-04  ***
+
+  ▸ CO_Congruente
+      Indice_Conservadurismo               ρ=-0.1652  p=      0.0246  *
+      Cercania_Massa                       ρ= 0.1639  p=      0.0258  *
+      Cercania_Bregman                     ρ= 0.1634  p=      0.0262  *
+      CO_Pro                               ρ= 0.7509  p=    8.30E-35  ***
+      CO_Pro_Izq                           ρ= 0.7831  p=    1.32E-39  ***
+      CO_Pro_Der                           ρ= 0.4569  p=    6.25E-11  ***
+      CO_Con                               ρ= 0.3619  p=    4.14E-07  ***
+      CO_Con_Der                           ρ= 0.6092  p=    3.52E-20  ***
+      CO_Incongruente                      ρ= 0.3824  p=    7.78E-08  ***
+
+  ▸ CO_Incongruente
+      Indice_Conservadurismo               ρ=-0.1640  p=      0.0257  *
+      CO_Pro                               ρ= 0.5280  p=    1.14E-14  ***
+      CO_Pro_Izq                           ρ= 0.2564  p=    4.26E-04  ***
+      CO_Pro_Der                           ρ= 0.7436  p=    8.03E-34  ***
+      CO_Con                               ρ= 0.5239  p=    1.98E-14  ***
+      CO_Con_Izq                           ρ= 0.6168  p=    8.90E-21  ***
+      CO_Con_Der                           ρ= 0.2497  p=    6.10E-04  ***
+      CO_Congruente                        ρ= 0.3824  p=    7.78E-08  ***
 
 
 ################################################################################
@@ -259,64 +1364,224 @@ CO_Con_Izq                          CO_Con_Der                            0.3483
 ################################################################################
 
 ================================================================================
-SECCIÓN 1: TOP 50 CORRELACIONES MÁS FUERTES
+SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE
+(Ordenadas temáticamente: Índices → Autopercepciones → Cercanías → CO)
 ================================================================================
 
 Total de pares: 120
 Pares significativos (p < 0.05): 82
 
-Variable 1                          Variable 2                                 ρ            p   Sig
-----------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8854     0.00E+00   ***
-CO_Pro                              CO_Pro_Der                            0.8729     0.00E+00   ***
-CO_Con                              CO_Con_Izq                            0.8346     0.00E+00   ***
-CO_Pro                              CO_Pro_Izq                            0.8303    1.18E-319   ***
-CO_Pro_Der                          CO_Incongruente                       0.6728    9.02E-166   ***
-Indice_Progresismo                  Indice_Conservadurismo               -0.6704    1.94E-164   ***
-CO_Pro_Izq                          CO_Congruente                         0.6264    2.11E-137   ***
-CO_Con_Der                          CO_Congruente                         0.6074    5.28E-127   ***
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.6012    4.49E-124   ***
-CO_Con_Izq                          CO_Con_Der                            0.5868    1.31E-116   ***
-CO_Pro                              CO_Incongruente                       0.5817    2.81E-114   ***
-CO_Con_Izq                          CO_Incongruente                       0.5763    1.36E-111   ***
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5736    1.26E-110   ***
-Cercania_Milei                      Indice_Conservadurismo                0.5735    1.38E-110   ***
-Cercania_Milei                      Indice_Progresismo                   -0.5703    4.25E-109   ***
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5479     3.55E-99   ***
-CO_Pro_Izq                          CO_Pro_Der                            0.5405     7.18E-96   ***
-CO_Con                              CO_Congruente                         0.5322     2.06E-92   ***
-Cercania_Massa                      Indice_Positividad                    0.5204     5.97E-88   ***
-CO_Pro                              CO_Congruente                         0.4849     8.16E-75   ***
-Autopercepcion_Per_Antiper          Cercania_Milei                        0.4777     1.74E-72   ***
-Autopercepcion_Izq_Der              Cercania_Milei                        0.4723     1.10E-70   ***
-Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4669     6.83E-69   ***
-Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.4571     9.27E-66   ***
-Cercania_Massa                      Cercania_Milei                       -0.4520     3.58E-64   ***
-Cercania_Massa                      Indice_Conservadurismo               -0.4464     1.95E-62   ***
-Autopercepcion_Per_Antiper          Indice_Positividad                   -0.4447     6.31E-62   ***
-Cercania_Massa                      Indice_Progresismo                    0.4384     4.73E-60   ***
-Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.4348     5.64E-59   ***
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4191     1.61E-54   ***
-CO_Con                              CO_Incongruente                       0.4187     2.93E-54   ***
-CO_Congruente                       CO_Incongruente                       0.4186     2.32E-54   ***
-Autopercepcion_Con_Pro              Indice_Progresismo                    0.4124     1.11E-52   ***
-Indice_Conservadurismo              Indice_Positividad                   -0.4116     1.89E-52   ***
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.3962     2.17E-48   ***
-Indice_Progresismo                  Indice_Positividad                    0.3826     5.51E-45   ***
-Cercania_Milei                      Indice_Positividad                   -0.3490     3.13E-37   ***
-CO_Pro_Izq                          CO_Incongruente                       0.3373     1.10E-34   ***
-CO_Con_Izq                          CO_Congruente                         0.3288     6.23E-33   ***
-Autopercepcion_Izq_Der              Cercania_Massa                       -0.2973     5.29E-27   ***
-CO_Pro_Der                          CO_Congruente                         0.2798     5.91E-24   ***
-CO_Con_Der                          CO_Incongruente                       0.2439     2.14E-18   ***
-Autopercepcion_Izq_Der              Indice_Positividad                   -0.2370     1.78E-17   ***
-Autopercepcion_Con_Pro              Cercania_Milei                       -0.2162     1.01E-14   ***
-Autopercepcion_Con_Pro              Cercania_Massa                        0.1994     1.04E-12   ***
-Autopercepcion_Con_Pro              Indice_Positividad                    0.1814     9.73E-11   ***
-Autopercepcion_Con_Pro              Autopercepcion_Per_Antiper           -0.1785     1.96E-10   ***
-CO_Con_Izq                          Indice_Conservadurismo               -0.1748     4.85E-10   ***
-CO_Con                              Indice_Conservadurismo               -0.1727     7.83E-10   ***
-CO_Pro                              Indice_Progresismo                   -0.1706     1.25E-09   ***
+► Indice_Progresismo
+----------------------------------------------------------------------
+  Indice_Conservadurismo                   ρ=-0.6704  p=   1.94E-164  ***
+  Indice_Positividad                       ρ= 0.3826  p=    5.51E-45  ***
+  Autopercepcion_Izq_Der                   ρ=-0.5736  p=   1.26E-110  ***
+  Autopercepcion_Con_Pro                   ρ= 0.4124  p=    1.11E-52  ***
+  Autopercepcion_Per_Antiper               ρ=-0.4669  p=    6.83E-69  ***
+  Cercania_Massa                           ρ= 0.4384  p=    4.73E-60  ***
+  Cercania_Milei                           ρ=-0.5703  p=   4.25E-109  ***
+  CO_Pro                                   ρ=-0.1706  p=    1.25E-09  ***
+  CO_Pro_Izq                               ρ=-0.1253  p=    8.70E-06  ***
+  CO_Pro_Der                               ρ=-0.1563  p=    2.70E-08  ***
+  CO_Con                                   ρ= 0.0676  p=      0.0167  *
+  CO_Con_Izq                               ρ= 0.0636  p=      0.0244  *
+  CO_Congruente                            ρ=-0.0727  p=      0.0100  **
+  CO_Incongruente                          ρ=-0.0812  p=      0.0040  **
+
+► Indice_Conservadurismo
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.6704  p=   1.94E-164  ***
+  Indice_Positividad                       ρ=-0.4116  p=    1.89E-52  ***
+  Autopercepcion_Izq_Der                   ρ= 0.5479  p=    3.55E-99  ***
+  Autopercepcion_Con_Pro                   ρ=-0.4348  p=    5.64E-59  ***
+  Autopercepcion_Per_Antiper               ρ= 0.4571  p=    9.27E-66  ***
+  Cercania_Massa                           ρ=-0.4464  p=    1.95E-62  ***
+  Cercania_Milei                           ρ= 0.5735  p=   1.38E-110  ***
+  CO_Con                                   ρ=-0.1727  p=    7.83E-10  ***
+  CO_Con_Izq                               ρ=-0.1748  p=    4.85E-10  ***
+  CO_Con_Der                               ρ=-0.1429  p=    3.85E-07  ***
+  CO_Congruente                            ρ=-0.0743  p=      0.0085  **
+  CO_Incongruente                          ρ=-0.0879  p=      0.0018  **
+
+► Indice_Positividad
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.3826  p=    5.51E-45  ***
+  Indice_Conservadurismo                   ρ=-0.4116  p=    1.89E-52  ***
+  Autopercepcion_Izq_Der                   ρ=-0.2370  p=    1.78E-17  ***
+  Autopercepcion_Con_Pro                   ρ= 0.1814  p=    9.73E-11  ***
+  Autopercepcion_Per_Antiper               ρ=-0.4447  p=    6.31E-62  ***
+  Cercania_Massa                           ρ= 0.5204  p=    5.97E-88  ***
+  Cercania_Milei                           ρ=-0.3490  p=    3.13E-37  ***
+  CO_Con                                   ρ= 0.0789  p=      0.0052  **
+  CO_Con_Izq                               ρ= 0.0780  p=      0.0058  **
+  CO_Con_Der                               ρ= 0.0685  p=      0.0154  *
+
+► Autopercepcion_Izq_Der
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.5736  p=   1.26E-110  ***
+  Indice_Conservadurismo                   ρ= 0.5479  p=    3.55E-99  ***
+  Indice_Positividad                       ρ=-0.2370  p=    1.78E-17  ***
+  Autopercepcion_Con_Pro                   ρ=-0.4191  p=    1.61E-54  ***
+  Autopercepcion_Per_Antiper               ρ= 0.3962  p=    2.17E-48  ***
+  Cercania_Massa                           ρ=-0.2973  p=    5.29E-27  ***
+  Cercania_Milei                           ρ= 0.4723  p=    1.10E-70  ***
+  CO_Pro                                   ρ= 0.0634  p=      0.0250  *
+  CO_Pro_Der                               ρ= 0.0728  p=      0.0100  **
+  CO_Con_Izq                               ρ=-0.0596  p=      0.0352  *
+
+► Autopercepcion_Con_Pro
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.4124  p=    1.11E-52  ***
+  Indice_Conservadurismo                   ρ=-0.4348  p=    5.64E-59  ***
+  Indice_Positividad                       ρ= 0.1814  p=    9.73E-11  ***
+  Autopercepcion_Izq_Der                   ρ=-0.4191  p=    1.61E-54  ***
+  Autopercepcion_Per_Antiper               ρ=-0.1785  p=    1.96E-10  ***
+  Cercania_Massa                           ρ= 0.1994  p=    1.04E-12  ***
+  Cercania_Milei                           ρ=-0.2162  p=    1.01E-14  ***
+
+► Autopercepcion_Per_Antiper
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.4669  p=    6.83E-69  ***
+  Indice_Conservadurismo                   ρ= 0.4571  p=    9.27E-66  ***
+  Indice_Positividad                       ρ=-0.4447  p=    6.31E-62  ***
+  Autopercepcion_Izq_Der                   ρ= 0.3962  p=    2.17E-48  ***
+  Autopercepcion_Con_Pro                   ρ=-0.1785  p=    1.96E-10  ***
+  Cercania_Massa                           ρ=-0.6012  p=   4.49E-124  ***
+  Cercania_Milei                           ρ= 0.4777  p=    1.74E-72  ***
+  CO_Con                                   ρ=-0.0724  p=      0.0105  *
+  CO_Con_Izq                               ρ=-0.1085  p=    1.20E-04  ***
+
+► Cercania_Massa
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.4384  p=    4.73E-60  ***
+  Indice_Conservadurismo                   ρ=-0.4464  p=    1.95E-62  ***
+  Indice_Positividad                       ρ= 0.5204  p=    5.97E-88  ***
+  Autopercepcion_Izq_Der                   ρ=-0.2973  p=    5.29E-27  ***
+  Autopercepcion_Con_Pro                   ρ= 0.1994  p=    1.04E-12  ***
+  Autopercepcion_Per_Antiper               ρ=-0.6012  p=   4.49E-124  ***
+  Cercania_Milei                           ρ=-0.4520  p=    3.58E-64  ***
+  CO_Con                                   ρ= 0.0864  p=      0.0022  **
+  CO_Con_Izq                               ρ= 0.0879  p=      0.0019  **
+  CO_Con_Der                               ρ= 0.0623  p=      0.0274  *
+
+► Cercania_Milei
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.5703  p=   4.25E-109  ***
+  Indice_Conservadurismo                   ρ= 0.5735  p=   1.38E-110  ***
+  Indice_Positividad                       ρ=-0.3490  p=    3.13E-37  ***
+  Autopercepcion_Izq_Der                   ρ= 0.4723  p=    1.10E-70  ***
+  Autopercepcion_Con_Pro                   ρ=-0.2162  p=    1.01E-14  ***
+  Autopercepcion_Per_Antiper               ρ= 0.4777  p=    1.74E-72  ***
+  Cercania_Massa                           ρ=-0.4520  p=    3.58E-64  ***
+  CO_Con                                   ρ=-0.1131  p=    6.06E-05  ***
+  CO_Con_Izq                               ρ=-0.1066  p=    1.60E-04  ***
+  CO_Con_Der                               ρ=-0.0949  p=    7.82E-04  ***
+  CO_Congruente                            ρ=-0.0720  p=      0.0107  *
+
+► CO_Pro
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1706  p=    1.25E-09  ***
+  Autopercepcion_Izq_Der                   ρ= 0.0634  p=      0.0250  *
+  CO_Pro_Izq                               ρ= 0.8303  p=   1.18E-319  ***
+  CO_Pro_Der                               ρ= 0.8729  p=    0.00E+00  ***
+  CO_Con                                   ρ=-0.1276  p=    6.10E-06  ***
+  CO_Con_Izq                               ρ=-0.0661  p=      0.0194  *
+  CO_Con_Der                               ρ=-0.1280  p=    5.67E-06  ***
+  CO_Congruente                            ρ= 0.4849  p=    8.16E-75  ***
+  CO_Incongruente                          ρ= 0.5817  p=   2.81E-114  ***
+
+► CO_Pro_Izq
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1253  p=    8.70E-06  ***
+  CO_Pro                                   ρ= 0.8303  p=   1.18E-319  ***
+  CO_Pro_Der                               ρ= 0.5405  p=    7.18E-96  ***
+  CO_Con                                   ρ=-0.0764  p=      0.0069  **
+  CO_Con_Izq                               ρ=-0.0697  p=      0.0138  *
+  CO_Con_Der                               ρ=-0.0648  p=      0.0221  *
+  CO_Congruente                            ρ= 0.6264  p=   2.11E-137  ***
+  CO_Incongruente                          ρ= 0.3373  p=    1.10E-34  ***
+
+► CO_Pro_Der
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.1563  p=    2.70E-08  ***
+  Autopercepcion_Izq_Der                   ρ= 0.0728  p=      0.0100  **
+  CO_Pro                                   ρ= 0.8729  p=    0.00E+00  ***
+  CO_Pro_Izq                               ρ= 0.5405  p=    7.18E-96  ***
+  CO_Con                                   ρ=-0.1385  p=    8.99E-07  ***
+  CO_Con_Der                               ρ=-0.1431  p=    3.83E-07  ***
+  CO_Congruente                            ρ= 0.2798  p=    5.91E-24  ***
+  CO_Incongruente                          ρ= 0.6728  p=   9.02E-166  ***
+
+► CO_Con
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.0676  p=      0.0167  *
+  Indice_Conservadurismo                   ρ=-0.1727  p=    7.83E-10  ***
+  Indice_Positividad                       ρ= 0.0789  p=      0.0052  **
+  Autopercepcion_Per_Antiper               ρ=-0.0724  p=      0.0105  *
+  Cercania_Massa                           ρ= 0.0864  p=      0.0022  **
+  Cercania_Milei                           ρ=-0.1131  p=    6.06E-05  ***
+  CO_Pro                                   ρ=-0.1276  p=    6.10E-06  ***
+  CO_Pro_Izq                               ρ=-0.0764  p=      0.0069  **
+  CO_Pro_Der                               ρ=-0.1385  p=    8.99E-07  ***
+  CO_Con_Izq                               ρ= 0.8346  p=    0.00E+00  ***
+  CO_Con_Der                               ρ= 0.8854  p=    0.00E+00  ***
+  CO_Congruente                            ρ= 0.5322  p=    2.06E-92  ***
+  CO_Incongruente                          ρ= 0.4187  p=    2.93E-54  ***
+
+► CO_Con_Izq
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ= 0.0636  p=      0.0244  *
+  Indice_Conservadurismo                   ρ=-0.1748  p=    4.85E-10  ***
+  Indice_Positividad                       ρ= 0.0780  p=      0.0058  **
+  Autopercepcion_Izq_Der                   ρ=-0.0596  p=      0.0352  *
+  Autopercepcion_Per_Antiper               ρ=-0.1085  p=    1.20E-04  ***
+  Cercania_Massa                           ρ= 0.0879  p=      0.0019  **
+  Cercania_Milei                           ρ=-0.1066  p=    1.60E-04  ***
+  CO_Pro                                   ρ=-0.0661  p=      0.0194  *
+  CO_Pro_Izq                               ρ=-0.0697  p=      0.0138  *
+  CO_Con                                   ρ= 0.8346  p=    0.00E+00  ***
+  CO_Con_Der                               ρ= 0.5868  p=   1.31E-116  ***
+  CO_Congruente                            ρ= 0.3288  p=    6.23E-33  ***
+  CO_Incongruente                          ρ= 0.5763  p=   1.36E-111  ***
+
+► CO_Con_Der
+----------------------------------------------------------------------
+  Indice_Conservadurismo                   ρ=-0.1429  p=    3.85E-07  ***
+  Indice_Positividad                       ρ= 0.0685  p=      0.0154  *
+  Cercania_Massa                           ρ= 0.0623  p=      0.0274  *
+  Cercania_Milei                           ρ=-0.0949  p=    7.82E-04  ***
+  CO_Pro                                   ρ=-0.1280  p=    5.67E-06  ***
+  CO_Pro_Izq                               ρ=-0.0648  p=      0.0221  *
+  CO_Pro_Der                               ρ=-0.1431  p=    3.83E-07  ***
+  CO_Con                                   ρ= 0.8854  p=    0.00E+00  ***
+  CO_Con_Izq                               ρ= 0.5868  p=   1.31E-116  ***
+  CO_Congruente                            ρ= 0.6074  p=   5.28E-127  ***
+  CO_Incongruente                          ρ= 0.2439  p=    2.14E-18  ***
+
+► CO_Congruente
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.0727  p=      0.0100  **
+  Indice_Conservadurismo                   ρ=-0.0743  p=      0.0085  **
+  Cercania_Milei                           ρ=-0.0720  p=      0.0107  *
+  CO_Pro                                   ρ= 0.4849  p=    8.16E-75  ***
+  CO_Pro_Izq                               ρ= 0.6264  p=   2.11E-137  ***
+  CO_Pro_Der                               ρ= 0.2798  p=    5.91E-24  ***
+  CO_Con                                   ρ= 0.5322  p=    2.06E-92  ***
+  CO_Con_Izq                               ρ= 0.3288  p=    6.23E-33  ***
+  CO_Con_Der                               ρ= 0.6074  p=   5.28E-127  ***
+  CO_Incongruente                          ρ= 0.4186  p=    2.32E-54  ***
+
+► CO_Incongruente
+----------------------------------------------------------------------
+  Indice_Progresismo                       ρ=-0.0812  p=      0.0040  **
+  Indice_Conservadurismo                   ρ=-0.0879  p=      0.0018  **
+  CO_Pro                                   ρ= 0.5817  p=   2.81E-114  ***
+  CO_Pro_Izq                               ρ= 0.3373  p=    1.10E-34  ***
+  CO_Pro_Der                               ρ= 0.6728  p=   9.02E-166  ***
+  CO_Con                                   ρ= 0.4187  p=    2.93E-54  ***
+  CO_Con_Izq                               ρ= 0.5763  p=   1.36E-111  ***
+  CO_Con_Der                               ρ= 0.2439  p=    2.14E-18  ***
+  CO_Congruente                            ρ= 0.4186  p=    2.32E-54  ***
 
 Significancia: *** p < 0.001, ** p < 0.01, * p < 0.05
 
@@ -331,28 +1596,123 @@ SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL
 Total de pares: 120
 Pares significativos (p < 0.05): 43
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Der                            0.9122     1.33E-52
-CO_Con                              CO_Con_Der                            0.9099     6.44E-52
-CO_Pro                              CO_Pro_Izq                            0.8119     2.04E-32
-CO_Con                              CO_Con_Izq                            0.7894     1.54E-29
-CO_Pro_Izq                          CO_Congruente                         0.6845     1.06E-19
-CO_Pro_Der                          CO_Incongruente                       0.6534     1.54E-17
-Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.6031     1.56E-14
-CO_Con_Izq                          CO_Con_Der                            0.5970     3.35E-14
-CO_Pro                              CO_Incongruente                       0.5941     4.76E-14
-CO_Pro_Izq                          CO_Pro_Der                            0.5763     3.91E-13
-Indice_Progresismo                  Indice_Conservadurismo               -0.5508     6.44E-12
-CO_Con_Izq                          CO_Incongruente                       0.5501     6.94E-12
-CO_Con_Der                          CO_Congruente                         0.5480     8.68E-12
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5043     6.08E-10
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4971     1.15E-09
-Autopercepcion_Con_Pro              Indice_Progresismo                    0.4947     1.43E-09
-CO_Pro                              CO_Congruente                         0.4661     1.57E-08
-CO_Con                              CO_Congruente                         0.4635     1.93E-08
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4126     8.02E-07
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3975     2.17E-06
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.5508  p=    6.44E-12  ***
+      Autopercepcion_Izq_Der               ρ=-0.5043  p=    6.08E-10  ***
+      Autopercepcion_Con_Pro               ρ= 0.4947  p=    1.43E-09  ***
+      CO_Pro                               ρ=-0.2213  p=      0.0105  *
+      CO_Pro_Izq                           ρ=-0.2335  p=      0.0068  **
+      CO_Pro_Der                           ρ=-0.1801  p=      0.0381  *
+      CO_Congruente                        ρ=-0.2317  p=      0.0073  **
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.5508  p=    6.44E-12  ***
+      Autopercepcion_Izq_Der               ρ= 0.4126  p=    8.02E-07  ***
+      Autopercepcion_Con_Pro               ρ=-0.6031  p=    1.56E-14  ***
+      Cercania_Milei                       ρ= 0.1802  p=      0.0379  *
+      CO_Con                               ρ=-0.2368  p=      0.0061  **
+      CO_Con_Izq                           ρ=-0.2790  p=      0.0011  **
+      CO_Con_Der                           ρ=-0.1894  p=      0.0290  *
+
+  ▸ Indice_Positividad
+      Autopercepcion_Per_Antiper           ρ=-0.2694  p=      0.0017  **
+      Cercania_Massa                       ρ= 0.2853  p=    8.71E-04  ***
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.5043  p=    6.08E-10  ***
+      Indice_Conservadurismo               ρ= 0.4126  p=    8.02E-07  ***
+      Autopercepcion_Con_Pro               ρ=-0.4971  p=    1.15E-09  ***
+      CO_Con                               ρ=-0.2451  p=      0.0045  **
+      CO_Con_Izq                           ρ=-0.2270  p=      0.0086  **
+      CO_Con_Der                           ρ=-0.2583  p=      0.0027  **
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.4947  p=    1.43E-09  ***
+      Indice_Conservadurismo               ρ=-0.6031  p=    1.56E-14  ***
+      Autopercepcion_Izq_Der               ρ=-0.4971  p=    1.15E-09  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Positividad                   ρ=-0.2694  p=      0.0017  **
+      Cercania_Massa                       ρ=-0.3975  p=    2.17E-06  ***
+
+  ▸ Cercania_Massa
+      Indice_Positividad                   ρ= 0.2853  p=    8.71E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3975  p=    2.17E-06  ***
+
+  ▸ Cercania_Milei
+      Indice_Conservadurismo               ρ= 0.1802  p=      0.0379  *
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.2213  p=      0.0105  *
+      CO_Pro_Izq                           ρ= 0.8119  p=    2.04E-32  ***
+      CO_Pro_Der                           ρ= 0.9122  p=    1.33E-52  ***
+      CO_Con                               ρ=-0.2329  p=      0.0070  **
+      CO_Con_Der                           ρ=-0.2105  p=      0.0150  *
+      CO_Congruente                        ρ= 0.4661  p=    1.57E-08  ***
+      CO_Incongruente                      ρ= 0.5941  p=    4.76E-14  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Progresismo                   ρ=-0.2335  p=      0.0068  **
+      CO_Pro                               ρ= 0.8119  p=    2.04E-32  ***
+      CO_Pro_Der                           ρ= 0.5763  p=    3.91E-13  ***
+      CO_Congruente                        ρ= 0.6845  p=    1.06E-19  ***
+      CO_Incongruente                      ρ= 0.3712  p=    1.09E-05  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.1801  p=      0.0381  *
+      CO_Pro                               ρ= 0.9122  p=    1.33E-52  ***
+      CO_Pro_Izq                           ρ= 0.5763  p=    3.91E-13  ***
+      CO_Con                               ρ=-0.2602  p=      0.0025  **
+      CO_Con_Der                           ρ=-0.2520  p=      0.0034  **
+      CO_Congruente                        ρ= 0.2747  p=      0.0014  **
+      CO_Incongruente                      ρ= 0.6534  p=    1.54E-17  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.2368  p=      0.0061  **
+      Autopercepcion_Izq_Der               ρ=-0.2451  p=      0.0045  **
+      CO_Pro                               ρ=-0.2329  p=      0.0070  **
+      CO_Pro_Der                           ρ=-0.2602  p=      0.0025  **
+      CO_Con_Izq                           ρ= 0.7894  p=    1.54E-29  ***
+      CO_Con_Der                           ρ= 0.9099  p=    6.44E-52  ***
+      CO_Congruente                        ρ= 0.4635  p=    1.93E-08  ***
+      CO_Incongruente                      ρ= 0.3294  p=    1.08E-04  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.2790  p=      0.0011  **
+      Autopercepcion_Izq_Der               ρ=-0.2270  p=      0.0086  **
+      CO_Con                               ρ= 0.7894  p=    1.54E-29  ***
+      CO_Con_Der                           ρ= 0.5970  p=    3.35E-14  ***
+      CO_Congruente                        ρ= 0.2393  p=      0.0055  **
+      CO_Incongruente                      ρ= 0.5501  p=    6.94E-12  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.1894  p=      0.0290  *
+      Autopercepcion_Izq_Der               ρ=-0.2583  p=      0.0027  **
+      CO_Pro                               ρ=-0.2105  p=      0.0150  *
+      CO_Pro_Der                           ρ=-0.2520  p=      0.0034  **
+      CO_Con                               ρ= 0.9099  p=    6.44E-52  ***
+      CO_Con_Izq                           ρ= 0.5970  p=    3.35E-14  ***
+      CO_Congruente                        ρ= 0.5480  p=    8.68E-12  ***
+      CO_Incongruente                      ρ= 0.2034  p=      0.0189  *
+
+  ▸ CO_Congruente
+      Indice_Progresismo                   ρ=-0.2317  p=      0.0073  **
+      CO_Pro                               ρ= 0.4661  p=    1.57E-08  ***
+      CO_Pro_Izq                           ρ= 0.6845  p=    1.06E-19  ***
+      CO_Pro_Der                           ρ= 0.2747  p=      0.0014  **
+      CO_Con                               ρ= 0.4635  p=    1.93E-08  ***
+      CO_Con_Izq                           ρ= 0.2393  p=      0.0055  **
+      CO_Con_Der                           ρ= 0.5480  p=    8.68E-12  ***
+      CO_Incongruente                      ρ= 0.3759  p=    8.22E-06  ***
+
+  ▸ CO_Incongruente
+      CO_Pro                               ρ= 0.5941  p=    4.76E-14  ***
+      CO_Pro_Izq                           ρ= 0.3712  p=    1.09E-05  ***
+      CO_Pro_Der                           ρ= 0.6534  p=    1.54E-17  ***
+      CO_Con                               ρ= 0.3294  p=    1.08E-04  ***
+      CO_Con_Izq                           ρ= 0.5501  p=    6.94E-12  ***
+      CO_Con_Der                           ρ= 0.2034  p=      0.0189  *
+      CO_Congruente                        ρ= 0.3759  p=    8.22E-06  ***
 
 --------------------------------------------------------------------------------
 ► Progressivism
@@ -361,28 +1721,155 @@ Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3975
 Total de pares: 120
 Pares significativos (p < 0.05): 59
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8875    5.61E-202
-CO_Pro                              CO_Pro_Der                            0.8749    1.63E-189
-CO_Con                              CO_Con_Izq                            0.8400    7.80E-160
-CO_Pro                              CO_Pro_Izq                            0.7977    8.67E-133
-CO_Pro_Der                          CO_Incongruente                       0.6890     3.03E-85
-CO_Con_Der                          CO_Congruente                         0.6054     7.08E-61
-CO_Con_Izq                          CO_Con_Der                            0.6028     3.03E-60
-CO_Pro                              CO_Incongruente                       0.5831     1.12E-55
-CO_Pro_Izq                          CO_Congruente                         0.5791     9.11E-55
-CO_Con                              CO_Congruente                         0.5295     2.23E-44
-CO_Pro_Izq                          CO_Pro_Der                            0.5069     2.75E-40
-CO_Con_Izq                          CO_Incongruente                       0.4807     8.68E-36
-Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4314     1.84E-28
-CO_Pro                              CO_Congruente                         0.3978     4.47E-24
-Indice_Progresismo                  Indice_Conservadurismo               -0.3938     1.38E-23
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3597     1.13E-19
-CO_Con_Izq                          CO_Congruente                         0.3550     3.85E-19
-Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.3496     1.32E-18
-CO_Congruente                       CO_Incongruente                       0.3253     3.47E-16
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.3224     6.61E-16
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.3938  p=    1.38E-23  ***
+      Indice_Positividad                   ρ= 0.1072  p=      0.0088  **
+      Autopercepcion_Izq_Der               ρ=-0.3597  p=    1.13E-19  ***
+      Autopercepcion_Con_Pro               ρ= 0.3111  p=    7.35E-15  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1783  p=    1.17E-05  ***
+      Cercania_Milei                       ρ=-0.1861  p=    4.68E-06  ***
+      CO_Pro                               ρ=-0.1303  p=      0.0014  **
+      CO_Pro_Izq                           ρ=-0.1193  p=      0.0035  **
+      CO_Pro_Der                           ρ=-0.1162  p=      0.0045  **
+      CO_Congruente                        ρ=-0.1065  p=      0.0092  **
+      CO_Incongruente                      ρ=-0.1355  p=    9.03E-04  ***
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.3938  p=    1.38E-23  ***
+      Indice_Positividad                   ρ=-0.1339  p=      0.0010  **
+      Autopercepcion_Izq_Der               ρ= 0.3224  p=    6.61E-16  ***
+      Autopercepcion_Con_Pro               ρ=-0.3496  p=    1.32E-18  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1452  p=    3.72E-04  ***
+      Cercania_Milei                       ρ= 0.1975  p=    1.15E-06  ***
+      CO_Con                               ρ=-0.1270  p=      0.0019  **
+      CO_Con_Izq                           ρ=-0.1198  p=      0.0034  **
+      CO_Con_Der                           ρ=-0.1079  p=      0.0084  **
+
+  ▸ Indice_Positividad
+      Indice_Progresismo                   ρ= 0.1072  p=      0.0088  **
+      Indice_Conservadurismo               ρ=-0.1339  p=      0.0010  **
+      Autopercepcion_Per_Antiper           ρ=-0.2100  p=    2.25E-07  ***
+      Cercania_Massa                       ρ= 0.2623  p=    7.50E-11  ***
+      Cercania_Milei                       ρ=-0.1058  p=      0.0097  **
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.3597  p=    1.13E-19  ***
+      Indice_Conservadurismo               ρ= 0.3224  p=    6.61E-16  ***
+      Autopercepcion_Con_Pro               ρ=-0.4314  p=    1.84E-28  ***
+      Autopercepcion_Per_Antiper           ρ= 0.1087  p=      0.0079  **
+      Cercania_Milei                       ρ= 0.1221  p=      0.0028  **
+      CO_Incongruente                      ρ= 0.1127  p=      0.0058  **
+
+  ▸ Autopercepcion_Con_Pro
+      Indice_Progresismo                   ρ= 0.3111  p=    7.35E-15  ***
+      Indice_Conservadurismo               ρ=-0.3496  p=    1.32E-18  ***
+      Autopercepcion_Izq_Der               ρ=-0.4314  p=    1.84E-28  ***
+      Autopercepcion_Per_Antiper           ρ=-0.1503  p=    2.27E-04  ***
+      Cercania_Milei                       ρ=-0.1242  p=      0.0024  **
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.1783  p=    1.17E-05  ***
+      Indice_Conservadurismo               ρ= 0.1452  p=    3.72E-04  ***
+      Indice_Positividad                   ρ=-0.2100  p=    2.25E-07  ***
+      Autopercepcion_Izq_Der               ρ= 0.1087  p=      0.0079  **
+      Autopercepcion_Con_Pro               ρ=-0.1503  p=    2.27E-04  ***
+      Cercania_Massa                       ρ=-0.3115  p=    6.76E-15  ***
+      Cercania_Milei                       ρ= 0.1251  p=      0.0022  **
+
+  ▸ Cercania_Massa
+      Indice_Positividad                   ρ= 0.2623  p=    7.50E-11  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3115  p=    6.76E-15  ***
+      Cercania_Milei                       ρ=-0.1079  p=      0.0084  **
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.1861  p=    4.68E-06  ***
+      Indice_Conservadurismo               ρ= 0.1975  p=    1.15E-06  ***
+      Indice_Positividad                   ρ=-0.1058  p=      0.0097  **
+      Autopercepcion_Izq_Der               ρ= 0.1221  p=      0.0028  **
+      Autopercepcion_Con_Pro               ρ=-0.1242  p=      0.0024  **
+      Autopercepcion_Per_Antiper           ρ= 0.1251  p=      0.0022  **
+      Cercania_Massa                       ρ=-0.1079  p=      0.0084  **
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.1303  p=      0.0014  **
+      CO_Pro_Izq                           ρ= 0.7977  p=   8.67E-133  ***
+      CO_Pro_Der                           ρ= 0.8749  p=   1.63E-189  ***
+      CO_Con                               ρ=-0.2294  p=    1.48E-08  ***
+      CO_Con_Izq                           ρ=-0.1577  p=    1.10E-04  ***
+      CO_Con_Der                           ρ=-0.2217  p=    4.55E-08  ***
+      CO_Congruente                        ρ= 0.3978  p=    4.47E-24  ***
+      CO_Incongruente                      ρ= 0.5831  p=    1.12E-55  ***
+
+  ▸ CO_Pro_Izq
+      Indice_Progresismo                   ρ=-0.1193  p=      0.0035  **
+      CO_Pro                               ρ= 0.7977  p=   8.67E-133  ***
+      CO_Pro_Der                           ρ= 0.5069  p=    2.75E-40  ***
+      CO_Con                               ρ=-0.1454  p=    3.71E-04  ***
+      CO_Con_Izq                           ρ=-0.1206  p=      0.0032  **
+      CO_Con_Der                           ρ=-0.1331  p=      0.0011  **
+      CO_Congruente                        ρ= 0.5791  p=    9.11E-55  ***
+      CO_Incongruente                      ρ= 0.3001  p=    6.87E-14  ***
+
+  ▸ CO_Pro_Der
+      Indice_Progresismo                   ρ=-0.1162  p=      0.0045  **
+      CO_Pro                               ρ= 0.8749  p=   1.63E-189  ***
+      CO_Pro_Izq                           ρ= 0.5069  p=    2.75E-40  ***
+      CO_Con                               ρ=-0.2384  p=    3.81E-09  ***
+      CO_Con_Izq                           ρ=-0.1421  p=    5.00E-04  ***
+      CO_Con_Der                           ρ=-0.2370  p=    4.68E-09  ***
+      CO_Congruente                        ρ= 0.1822  p=    7.46E-06  ***
+      CO_Incongruente                      ρ= 0.6890  p=    3.03E-85  ***
+
+  ▸ CO_Con
+      Indice_Conservadurismo               ρ=-0.1270  p=      0.0019  **
+      CO_Pro                               ρ=-0.2294  p=    1.48E-08  ***
+      CO_Pro_Izq                           ρ=-0.1454  p=    3.71E-04  ***
+      CO_Pro_Der                           ρ=-0.2384  p=    3.81E-09  ***
+      CO_Con_Izq                           ρ= 0.8400  p=   7.80E-160  ***
+      CO_Con_Der                           ρ= 0.8875  p=   5.61E-202  ***
+      CO_Congruente                        ρ= 0.5295  p=    2.23E-44  ***
+      CO_Incongruente                      ρ= 0.2954  p=    1.82E-13  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.1198  p=      0.0034  **
+      CO_Pro                               ρ=-0.1577  p=    1.10E-04  ***
+      CO_Pro_Izq                           ρ=-0.1206  p=      0.0032  **
+      CO_Pro_Der                           ρ=-0.1421  p=    5.00E-04  ***
+      CO_Con                               ρ= 0.8400  p=   7.80E-160  ***
+      CO_Con_Der                           ρ= 0.6028  p=    3.03E-60  ***
+      CO_Congruente                        ρ= 0.3550  p=    3.85E-19  ***
+      CO_Incongruente                      ρ= 0.4807  p=    8.68E-36  ***
+
+  ▸ CO_Con_Der
+      Indice_Conservadurismo               ρ=-0.1079  p=      0.0084  **
+      CO_Pro                               ρ=-0.2217  p=    4.55E-08  ***
+      CO_Pro_Izq                           ρ=-0.1331  p=      0.0011  **
+      CO_Pro_Der                           ρ=-0.2370  p=    4.68E-09  ***
+      CO_Con                               ρ= 0.8875  p=   5.61E-202  ***
+      CO_Con_Izq                           ρ= 0.6028  p=    3.03E-60  ***
+      CO_Congruente                        ρ= 0.6054  p=    7.08E-61  ***
+      CO_Incongruente                      ρ= 0.1252  p=      0.0022  **
+
+  ▸ CO_Congruente
+      Indice_Progresismo                   ρ=-0.1065  p=      0.0092  **
+      CO_Pro                               ρ= 0.3978  p=    4.47E-24  ***
+      CO_Pro_Izq                           ρ= 0.5791  p=    9.11E-55  ***
+      CO_Pro_Der                           ρ= 0.1822  p=    7.46E-06  ***
+      CO_Con                               ρ= 0.5295  p=    2.23E-44  ***
+      CO_Con_Izq                           ρ= 0.3550  p=    3.85E-19  ***
+      CO_Con_Der                           ρ= 0.6054  p=    7.08E-61  ***
+      CO_Incongruente                      ρ= 0.3253  p=    3.47E-16  ***
+
+  ▸ CO_Incongruente
+      Indice_Progresismo                   ρ=-0.1355  p=    9.03E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.1127  p=      0.0058  **
+      CO_Pro                               ρ= 0.5831  p=    1.12E-55  ***
+      CO_Pro_Izq                           ρ= 0.3001  p=    6.87E-14  ***
+      CO_Pro_Der                           ρ= 0.6890  p=    3.03E-85  ***
+      CO_Con                               ρ= 0.2954  p=    1.82E-13  ***
+      CO_Con_Izq                           ρ= 0.4807  p=    8.68E-36  ***
+      CO_Con_Der                           ρ= 0.1252  p=      0.0022  **
+      CO_Congruente                        ρ= 0.3253  p=    3.47E-16  ***
 
 --------------------------------------------------------------------------------
 ► Centre
@@ -391,28 +1878,87 @@ Autopercepcion_Izq_Der              Indice_Conservadurismo                0.3224
 Total de pares: 120
 Pares significativos (p < 0.05): 26
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.8941     6.86E-16
-CO_Pro                              CO_Pro_Der                            0.8786     9.72E-15
-CO_Con                              CO_Con_Izq                            0.8475     7.63E-13
-CO_Pro                              CO_Pro_Izq                            0.8295     6.25E-12
-CO_Con_Der                          CO_Congruente                         0.7273     3.30E-08
-CO_Pro_Der                          CO_Incongruente                       0.6679     9.95E-07
-CO_Con_Izq                          CO_Incongruente                       0.6632     1.26E-06
-CO_Con                              CO_Congruente                         0.6296     6.10E-06
-CO_Pro                              CO_Incongruente                       0.5945     2.62E-05
-CO_Con_Izq                          CO_Con_Der                            0.5935     2.74E-05
-CO_Pro_Izq                          CO_Congruente                         0.5903     3.09E-05
-Cercania_Milei                      Indice_Conservadurismo                0.5159     3.99E-04
-Cercania_Massa                      Indice_Positividad                    0.5109     4.64E-04
-CO_Pro_Izq                          CO_Pro_Der                            0.4915     8.16E-04
-Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4780       0.0012
-Autopercepcion_Per_Antiper          Indice_Positividad                   -0.4464       0.0027
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.4378       0.0033
-CO_Con                              CO_Incongruente                       0.4197       0.0051
-CO_Con_Izq                          CO_Congruente                         0.4001       0.0078
-CO_Congruente                       CO_Incongruente                       0.3788       0.0122
+  ▸ Indice_Progresismo
+      Autopercepcion_Per_Antiper           ρ=-0.4780  p=      0.0012  **
+
+  ▸ Indice_Conservadurismo
+      Cercania_Milei                       ρ= 0.5159  p=    3.99E-04  ***
+
+  ▸ Indice_Positividad
+      Autopercepcion_Per_Antiper           ρ=-0.4464  p=      0.0027  **
+      Cercania_Massa                       ρ= 0.5109  p=    4.64E-04  ***
+
+  ▸ Autopercepcion_Izq_Der
+      Cercania_Milei                       ρ= 0.3639  p=      0.0165  *
+      CO_Pro_Izq                           ρ= 0.3146  p=      0.0399  *
+      CO_Congruente                        ρ= 0.3223  p=      0.0350  *
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.4780  p=      0.0012  **
+      Indice_Positividad                   ρ=-0.4464  p=      0.0027  **
+      Cercania_Massa                       ρ=-0.4378  p=      0.0033  **
+      CO_Pro_Izq                           ρ= 0.3370  p=      0.0271  *
+
+  ▸ Cercania_Massa
+      Indice_Positividad                   ρ= 0.5109  p=    4.64E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.4378  p=      0.0033  **
+
+  ▸ Cercania_Milei
+      Indice_Conservadurismo               ρ= 0.5159  p=    3.99E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.3639  p=      0.0165  *
+
+  ▸ CO_Pro
+      CO_Pro_Izq                           ρ= 0.8295  p=    6.25E-12  ***
+      CO_Pro_Der                           ρ= 0.8786  p=    9.72E-15  ***
+      CO_Congruente                        ρ= 0.3353  p=      0.0280  *
+      CO_Incongruente                      ρ= 0.5945  p=    2.62E-05  ***
+
+  ▸ CO_Pro_Izq
+      Autopercepcion_Izq_Der               ρ= 0.3146  p=      0.0399  *
+      Autopercepcion_Per_Antiper           ρ= 0.3370  p=      0.0271  *
+      CO_Pro                               ρ= 0.8295  p=    6.25E-12  ***
+      CO_Pro_Der                           ρ= 0.4915  p=    8.16E-04  ***
+      CO_Congruente                        ρ= 0.5903  p=    3.09E-05  ***
+      CO_Incongruente                      ρ= 0.3315  p=      0.0299  *
+
+  ▸ CO_Pro_Der
+      CO_Pro                               ρ= 0.8786  p=    9.72E-15  ***
+      CO_Pro_Izq                           ρ= 0.4915  p=    8.16E-04  ***
+      CO_Incongruente                      ρ= 0.6679  p=    9.95E-07  ***
+
+  ▸ CO_Con
+      CO_Con_Izq                           ρ= 0.8475  p=    7.63E-13  ***
+      CO_Con_Der                           ρ= 0.8941  p=    6.86E-16  ***
+      CO_Congruente                        ρ= 0.6296  p=    6.10E-06  ***
+      CO_Incongruente                      ρ= 0.4197  p=      0.0051  **
+
+  ▸ CO_Con_Izq
+      CO_Con                               ρ= 0.8475  p=    7.63E-13  ***
+      CO_Con_Der                           ρ= 0.5935  p=    2.74E-05  ***
+      CO_Congruente                        ρ= 0.4001  p=      0.0078  **
+      CO_Incongruente                      ρ= 0.6632  p=    1.26E-06  ***
+
+  ▸ CO_Con_Der
+      CO_Con                               ρ= 0.8941  p=    6.86E-16  ***
+      CO_Con_Izq                           ρ= 0.5935  p=    2.74E-05  ***
+      CO_Congruente                        ρ= 0.7273  p=    3.30E-08  ***
+
+  ▸ CO_Congruente
+      Autopercepcion_Izq_Der               ρ= 0.3223  p=      0.0350  *
+      CO_Pro                               ρ= 0.3353  p=      0.0280  *
+      CO_Pro_Izq                           ρ= 0.5903  p=    3.09E-05  ***
+      CO_Con                               ρ= 0.6296  p=    6.10E-06  ***
+      CO_Con_Izq                           ρ= 0.4001  p=      0.0078  **
+      CO_Con_Der                           ρ= 0.7273  p=    3.30E-08  ***
+      CO_Incongruente                      ρ= 0.3788  p=      0.0122  *
+
+  ▸ CO_Incongruente
+      CO_Pro                               ρ= 0.5945  p=    2.62E-05  ***
+      CO_Pro_Izq                           ρ= 0.3315  p=      0.0299  *
+      CO_Pro_Der                           ρ= 0.6679  p=    9.95E-07  ***
+      CO_Con                               ρ= 0.4197  p=      0.0051  **
+      CO_Con_Izq                           ρ= 0.6632  p=    1.26E-06  ***
+      CO_Congruente                        ρ= 0.3788  p=      0.0122  *
 
 --------------------------------------------------------------------------------
 ► Moderate_Right_A
@@ -421,28 +1967,109 @@ CO_Congruente                       CO_Incongruente                       0.3788
 Total de pares: 120
 Pares significativos (p < 0.05): 37
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Con                              CO_Con_Der                            0.9201     1.07E-18
-CO_Pro                              CO_Pro_Der                            0.9147     1.59E-18
-CO_Pro                              CO_Pro_Izq                            0.8045     2.78E-11
-CO_Con                              CO_Con_Izq                            0.8027     5.64E-11
-CO_Con_Izq                          CO_Incongruente                       0.6710     6.22E-07
-Cercania_Milei                      Indice_Conservadurismo                0.6465     1.61E-06
-CO_Pro_Izq                          CO_Congruente                         0.6019     1.22E-05
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5875     2.21E-05
-CO_Con_Izq                          CO_Con_Der                            0.5713     5.12E-05
-CO_Pro_Izq                          CO_Pro_Der                            0.5620     5.89E-05
-Cercania_Massa                      Indice_Positividad                    0.5526     8.27E-05
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5438     1.13E-04
-Autopercepcion_Per_Antiper          Cercania_Massa                       -0.5332     1.62E-04
-CO_Pro_Der                          CO_Incongruente                       0.5295     1.84E-04
-CO_Con_Der                          CO_Congruente                         0.5197     3.00E-04
-Autopercepcion_Izq_Der              Cercania_Milei                        0.5027     4.33E-04
-Cercania_Massa                      Indice_Conservadurismo               -0.4954     5.41E-04
-Indice_Conservadurismo              Indice_Positividad                   -0.4898     6.38E-04
-Autopercepcion_Izq_Der              Cercania_Massa                       -0.4771     9.21E-04
-Cercania_Milei                      Indice_Progresismo                   -0.4530       0.0018
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.3900  p=      0.0081  **
+      Autopercepcion_Izq_Der               ρ=-0.3419  p=      0.0215  *
+      Cercania_Milei                       ρ=-0.4530  p=      0.0018  **
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.3900  p=      0.0081  **
+      Indice_Positividad                   ρ=-0.4898  p=    6.38E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.5438  p=    1.13E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3617  p=      0.0146  *
+      Cercania_Massa                       ρ=-0.4954  p=    5.41E-04  ***
+      Cercania_Milei                       ρ= 0.6465  p=    1.61E-06  ***
+      CO_Con_Izq                           ρ=-0.2996  p=      0.0482  *
+      CO_Congruente                        ρ=-0.3608  p=      0.0149  *
+      CO_Incongruente                      ρ=-0.3214  p=      0.0313  *
+
+  ▸ Indice_Positividad
+      Indice_Conservadurismo               ρ=-0.4898  p=    6.38E-04  ***
+      Autopercepcion_Izq_Der               ρ=-0.3466  p=      0.0197  *
+      Cercania_Massa                       ρ= 0.5526  p=    8.27E-05  ***
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.3419  p=      0.0215  *
+      Indice_Conservadurismo               ρ= 0.5438  p=    1.13E-04  ***
+      Indice_Positividad                   ρ=-0.3466  p=      0.0197  *
+      Autopercepcion_Per_Antiper           ρ= 0.5875  p=    2.21E-05  ***
+      Cercania_Massa                       ρ=-0.4771  p=    9.21E-04  ***
+      Cercania_Milei                       ρ= 0.5027  p=    4.33E-04  ***
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Conservadurismo               ρ= 0.3617  p=      0.0146  *
+      Autopercepcion_Izq_Der               ρ= 0.5875  p=    2.21E-05  ***
+      Cercania_Massa                       ρ=-0.5332  p=    1.62E-04  ***
+      Cercania_Milei                       ρ= 0.4413  p=      0.0024  **
+
+  ▸ Cercania_Massa
+      Indice_Conservadurismo               ρ=-0.4954  p=    5.41E-04  ***
+      Indice_Positividad                   ρ= 0.5526  p=    8.27E-05  ***
+      Autopercepcion_Izq_Der               ρ=-0.4771  p=    9.21E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.5332  p=    1.62E-04  ***
+      Cercania_Milei                       ρ=-0.4296  p=      0.0032  **
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.4530  p=      0.0018  **
+      Indice_Conservadurismo               ρ= 0.6465  p=    1.61E-06  ***
+      Autopercepcion_Izq_Der               ρ= 0.5027  p=    4.33E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.4413  p=      0.0024  **
+      Cercania_Massa                       ρ=-0.4296  p=      0.0032  **
+
+  ▸ CO_Pro
+      CO_Pro_Izq                           ρ= 0.8045  p=    2.78E-11  ***
+      CO_Pro_Der                           ρ= 0.9147  p=    1.59E-18  ***
+      CO_Con                               ρ=-0.3465  p=      0.0212  *
+      CO_Con_Der                           ρ=-0.3900  p=      0.0089  **
+      CO_Congruente                        ρ= 0.3263  p=      0.0287  *
+      CO_Incongruente                      ρ= 0.4031  p=      0.0060  **
+
+  ▸ CO_Pro_Izq
+      CO_Pro                               ρ= 0.8045  p=    2.78E-11  ***
+      CO_Pro_Der                           ρ= 0.5620  p=    5.89E-05  ***
+      CO_Congruente                        ρ= 0.6019  p=    1.22E-05  ***
+
+  ▸ CO_Pro_Der
+      CO_Pro                               ρ= 0.9147  p=    1.59E-18  ***
+      CO_Pro_Izq                           ρ= 0.5620  p=    5.89E-05  ***
+      CO_Con                               ρ=-0.3182  p=      0.0353  *
+      CO_Con_Der                           ρ=-0.4199  p=      0.0045  **
+      CO_Incongruente                      ρ= 0.5295  p=    1.84E-04  ***
+
+  ▸ CO_Con
+      CO_Pro                               ρ=-0.3465  p=      0.0212  *
+      CO_Pro_Der                           ρ=-0.3182  p=      0.0353  *
+      CO_Con_Izq                           ρ= 0.8027  p=    5.64E-11  ***
+      CO_Con_Der                           ρ= 0.9201  p=    1.07E-18  ***
+      CO_Congruente                        ρ= 0.4440  p=      0.0025  **
+      CO_Incongruente                      ρ= 0.3999  p=      0.0072  **
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.2996  p=      0.0482  *
+      CO_Con                               ρ= 0.8027  p=    5.64E-11  ***
+      CO_Con_Der                           ρ= 0.5713  p=    5.12E-05  ***
+      CO_Incongruente                      ρ= 0.6710  p=    6.22E-07  ***
+
+  ▸ CO_Con_Der
+      CO_Pro                               ρ=-0.3900  p=      0.0089  **
+      CO_Pro_Der                           ρ=-0.4199  p=      0.0045  **
+      CO_Con                               ρ= 0.9201  p=    1.07E-18  ***
+      CO_Con_Izq                           ρ= 0.5713  p=    5.12E-05  ***
+      CO_Congruente                        ρ= 0.5197  p=    3.00E-04  ***
+
+  ▸ CO_Congruente
+      Indice_Conservadurismo               ρ=-0.3608  p=      0.0149  *
+      CO_Pro                               ρ= 0.3263  p=      0.0287  *
+      CO_Pro_Izq                           ρ= 0.6019  p=    1.22E-05  ***
+      CO_Con                               ρ= 0.4440  p=      0.0025  **
+      CO_Con_Der                           ρ= 0.5197  p=    3.00E-04  ***
+
+  ▸ CO_Incongruente
+      Indice_Conservadurismo               ρ=-0.3214  p=      0.0313  *
+      CO_Pro                               ρ= 0.4031  p=      0.0060  **
+      CO_Pro_Der                           ρ= 0.5295  p=    1.84E-04  ***
+      CO_Con                               ρ= 0.3999  p=      0.0072  **
+      CO_Con_Izq                           ρ= 0.6710  p=    6.22E-07  ***
 
 --------------------------------------------------------------------------------
 ► Moderate_Right_B
@@ -451,28 +2078,131 @@ Cercania_Milei                      Indice_Progresismo                   -0.4530
 Total de pares: 120
 Pares significativos (p < 0.05): 47
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Der                            0.8599     4.38E-35
-CO_Pro                              CO_Pro_Izq                            0.8432     1.64E-32
-CO_Con                              CO_Con_Der                            0.8167     5.42E-29
-CO_Con                              CO_Con_Izq                            0.8157     7.19E-29
-CO_Pro_Der                          CO_Incongruente                       0.7192     9.72E-20
-CO_Pro                              CO_Congruente                         0.6660     3.39E-16
-CO_Pro_Izq                          CO_Congruente                         0.6649     3.96E-16
-CO_Con_Izq                          CO_Incongruente                       0.6194     1.25E-13
-CO_Pro                              CO_Incongruente                       0.6167     1.69E-13
-CO_Con_Der                          CO_Congruente                         0.5966     1.58E-12
-CO_Congruente                       CO_Incongruente                       0.5615     5.50E-11
-CO_Con                              CO_Incongruente                       0.5442     2.73E-10
-CO_Pro_Izq                          CO_Pro_Der                            0.5256     1.38E-09
-Cercania_Milei                      Indice_Progresismo                   -0.5133     3.83E-09
-CO_Pro_Der                          CO_Congruente                         0.5014     9.84E-09
-CO_Con                              CO_Congruente                         0.4985     1.24E-08
-Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4767     6.33E-08
-CO_Con_Izq                          CO_Con_Der                            0.4448     5.65E-07
-Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4130     4.09E-06
-Cercania_Milei                      Indice_Conservadurismo                0.3797     2.62E-05
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.2203  p=      0.0175  *
+      Autopercepcion_Izq_Der               ρ=-0.4767  p=    6.33E-08  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3296  p=    3.03E-04  ***
+      Cercania_Massa                       ρ= 0.3577  p=    8.09E-05  ***
+      Cercania_Milei                       ρ=-0.5133  p=    3.83E-09  ***
+      CO_Pro                               ρ=-0.2055  p=      0.0269  *
+      CO_Con                               ρ= 0.1825  p=      0.0499  *
+      CO_Con_Izq                           ρ= 0.2677  p=      0.0037  **
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.2203  p=      0.0175  *
+      Autopercepcion_Izq_Der               ρ= 0.4130  p=    4.09E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.2528  p=      0.0062  **
+      Cercania_Massa                       ρ=-0.2425  p=      0.0087  **
+      Cercania_Milei                       ρ= 0.3797  p=    2.62E-05  ***
+      CO_Con                               ρ=-0.2106  p=      0.0233  *
+
+  ▸ Indice_Positividad
+      Autopercepcion_Per_Antiper           ρ=-0.3306  p=    2.89E-04  ***
+      Cercania_Massa                       ρ= 0.2778  p=      0.0025  **
+      Cercania_Milei                       ρ=-0.2286  p=      0.0136  *
+      CO_Con_Der                           ρ= 0.2138  p=      0.0212  *
+      CO_Congruente                        ρ= 0.1978  p=      0.0333  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.4767  p=    6.33E-08  ***
+      Indice_Conservadurismo               ρ= 0.4130  p=    4.09E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3271  p=    3.39E-04  ***
+      Cercania_Massa                       ρ=-0.2204  p=      0.0174  *
+      Cercania_Milei                       ρ= 0.3221  p=    4.22E-04  ***
+
+  ▸ Autopercepcion_Con_Pro
+      CO_Con_Der                           ρ=-0.1928  p=      0.0381  *
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Progresismo                   ρ=-0.3296  p=    3.03E-04  ***
+      Indice_Conservadurismo               ρ= 0.2528  p=      0.0062  **
+      Indice_Positividad                   ρ=-0.3306  p=    2.89E-04  ***
+      Autopercepcion_Izq_Der               ρ= 0.3271  p=    3.39E-04  ***
+      Cercania_Massa                       ρ=-0.2466  p=      0.0076  **
+      Cercania_Milei                       ρ= 0.3101  p=    7.06E-04  ***
+
+  ▸ Cercania_Massa
+      Indice_Progresismo                   ρ= 0.3577  p=    8.09E-05  ***
+      Indice_Conservadurismo               ρ=-0.2425  p=      0.0087  **
+      Indice_Positividad                   ρ= 0.2778  p=      0.0025  **
+      Autopercepcion_Izq_Der               ρ=-0.2204  p=      0.0174  *
+      Autopercepcion_Per_Antiper           ρ=-0.2466  p=      0.0076  **
+      Cercania_Milei                       ρ=-0.2497  p=      0.0069  **
+      CO_Pro                               ρ=-0.2239  p=      0.0157  *
+      CO_Pro_Izq                           ρ=-0.1978  p=      0.0333  *
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.5133  p=    3.83E-09  ***
+      Indice_Conservadurismo               ρ= 0.3797  p=    2.62E-05  ***
+      Indice_Positividad                   ρ=-0.2286  p=      0.0136  *
+      Autopercepcion_Izq_Der               ρ= 0.3221  p=    4.22E-04  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3101  p=    7.06E-04  ***
+      Cercania_Massa                       ρ=-0.2497  p=      0.0069  **
+      CO_Con                               ρ=-0.1875  p=      0.0439  *
+
+  ▸ CO_Pro
+      Indice_Progresismo                   ρ=-0.2055  p=      0.0269  *
+      Cercania_Massa                       ρ=-0.2239  p=      0.0157  *
+      CO_Pro_Izq                           ρ= 0.8432  p=    1.64E-32  ***
+      CO_Pro_Der                           ρ= 0.8599  p=    4.38E-35  ***
+      CO_Congruente                        ρ= 0.6660  p=    3.39E-16  ***
+      CO_Incongruente                      ρ= 0.6167  p=    1.69E-13  ***
+
+  ▸ CO_Pro_Izq
+      Cercania_Massa                       ρ=-0.1978  p=      0.0333  *
+      CO_Pro                               ρ= 0.8432  p=    1.64E-32  ***
+      CO_Pro_Der                           ρ= 0.5256  p=    1.38E-09  ***
+      CO_Congruente                        ρ= 0.6649  p=    3.96E-16  ***
+      CO_Incongruente                      ρ= 0.3639  p=    5.92E-05  ***
+
+  ▸ CO_Pro_Der
+      CO_Pro                               ρ= 0.8599  p=    4.38E-35  ***
+      CO_Pro_Izq                           ρ= 0.5256  p=    1.38E-09  ***
+      CO_Congruente                        ρ= 0.5014  p=    9.84E-09  ***
+      CO_Incongruente                      ρ= 0.7192  p=    9.72E-20  ***
+
+  ▸ CO_Con
+      Indice_Progresismo                   ρ= 0.1825  p=      0.0499  *
+      Indice_Conservadurismo               ρ=-0.2106  p=      0.0233  *
+      Cercania_Milei                       ρ=-0.1875  p=      0.0439  *
+      CO_Con_Izq                           ρ= 0.8157  p=    7.19E-29  ***
+      CO_Con_Der                           ρ= 0.8167  p=    5.42E-29  ***
+      CO_Congruente                        ρ= 0.4985  p=    1.24E-08  ***
+      CO_Incongruente                      ρ= 0.5442  p=    2.73E-10  ***
+
+  ▸ CO_Con_Izq
+      Indice_Progresismo                   ρ= 0.2677  p=      0.0037  **
+      CO_Con                               ρ= 0.8157  p=    7.19E-29  ***
+      CO_Con_Der                           ρ= 0.4448  p=    5.65E-07  ***
+      CO_Congruente                        ρ= 0.2379  p=      0.0101  *
+      CO_Incongruente                      ρ= 0.6194  p=    1.25E-13  ***
+
+  ▸ CO_Con_Der
+      Indice_Positividad                   ρ= 0.2138  p=      0.0212  *
+      Autopercepcion_Con_Pro               ρ=-0.1928  p=      0.0381  *
+      CO_Con                               ρ= 0.8167  p=    5.42E-29  ***
+      CO_Con_Izq                           ρ= 0.4448  p=    5.65E-07  ***
+      CO_Congruente                        ρ= 0.5966  p=    1.58E-12  ***
+      CO_Incongruente                      ρ= 0.3023  p=    9.72E-04  ***
+
+  ▸ CO_Congruente
+      Indice_Positividad                   ρ= 0.1978  p=      0.0333  *
+      CO_Pro                               ρ= 0.6660  p=    3.39E-16  ***
+      CO_Pro_Izq                           ρ= 0.6649  p=    3.96E-16  ***
+      CO_Pro_Der                           ρ= 0.5014  p=    9.84E-09  ***
+      CO_Con                               ρ= 0.4985  p=    1.24E-08  ***
+      CO_Con_Izq                           ρ= 0.2379  p=      0.0101  *
+      CO_Con_Der                           ρ= 0.5966  p=    1.58E-12  ***
+      CO_Incongruente                      ρ= 0.5615  p=    5.50E-11  ***
+
+  ▸ CO_Incongruente
+      CO_Pro                               ρ= 0.6167  p=    1.69E-13  ***
+      CO_Pro_Izq                           ρ= 0.3639  p=    5.92E-05  ***
+      CO_Pro_Der                           ρ= 0.7192  p=    9.72E-20  ***
+      CO_Con                               ρ= 0.5442  p=    2.73E-10  ***
+      CO_Con_Izq                           ρ= 0.6194  p=    1.25E-13  ***
+      CO_Con_Der                           ρ= 0.3023  p=    9.72E-04  ***
+      CO_Congruente                        ρ= 0.5615  p=    5.50E-11  ***
 
 --------------------------------------------------------------------------------
 ► Right_Wing_Libertarian
@@ -481,28 +2211,115 @@ Cercania_Milei                      Indice_Conservadurismo                0.3797
 Total de pares: 120
 Pares significativos (p < 0.05): 39
 
-Variable 1                          Variable 2                                 ρ            p
------------------------------------------------------------------------------------------------
-CO_Pro                              CO_Pro_Izq                            0.8912     1.19E-32
-CO_Con                              CO_Con_Der                            0.8892     1.16E-32
-CO_Con                              CO_Con_Izq                            0.8586     3.74E-28
-CO_Pro                              CO_Pro_Der                            0.8428     6.13E-26
-CO_Pro_Izq                          CO_Congruente                         0.8084     2.00E-22
-CO_Con_Izq                          CO_Incongruente                       0.7217     3.31E-16
-CO_Pro                              CO_Congruente                         0.6794     9.70E-14
-CO_Con_Der                          CO_Congruente                         0.6764     9.98E-14
-CO_Con                              CO_Incongruente                       0.6433     3.56E-12
-CO_Con_Izq                          CO_Con_Der                            0.6224     2.73E-11
-CO_Con                              CO_Congruente                         0.6035     1.53E-10
-CO_Pro_Izq                          CO_Pro_Der                            0.5844     9.60E-10
-CO_Congruente                       CO_Incongruente                       0.5827     8.95E-10
-CO_Pro_Der                          CO_Incongruente                       0.5812     1.24E-09
-CO_Pro                              CO_Incongruente                       0.5770     1.75E-09
-Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5021     2.94E-07
-CO_Con_Der                          CO_Incongruente                       0.5012     3.11E-07
-Autopercepcion_Izq_Der              Cercania_Milei                        0.4740     1.59E-06
-CO_Pro_Izq                          CO_Incongruente                       0.4735     1.87E-06
-Cercania_Milei                      Indice_Conservadurismo                0.4258     2.09E-05
+  ▸ Indice_Progresismo
+      Indice_Conservadurismo               ρ=-0.2606  p=      0.0116  *
+      Autopercepcion_Izq_Der               ρ=-0.2673  p=      0.0096  **
+      Cercania_Massa                       ρ= 0.3125  p=      0.0023  **
+      Cercania_Milei                       ρ=-0.3926  p=    9.91E-05  ***
+
+  ▸ Indice_Conservadurismo
+      Indice_Progresismo                   ρ=-0.2606  p=      0.0116  *
+      Indice_Positividad                   ρ=-0.2693  p=      0.0091  **
+      Autopercepcion_Izq_Der               ρ= 0.4174  p=    3.15E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3009  p=      0.0034  **
+      Cercania_Massa                       ρ=-0.2821  p=      0.0061  **
+      Cercania_Milei                       ρ= 0.4258  p=    2.09E-05  ***
+      CO_Con_Izq                           ρ=-0.2251  p=      0.0301  *
+
+  ▸ Indice_Positividad
+      Indice_Conservadurismo               ρ=-0.2693  p=      0.0091  **
+      Autopercepcion_Per_Antiper           ρ=-0.2439  p=      0.0185  *
+
+  ▸ Autopercepcion_Izq_Der
+      Indice_Progresismo                   ρ=-0.2673  p=      0.0096  **
+      Indice_Conservadurismo               ρ= 0.4174  p=    3.15E-05  ***
+      Autopercepcion_Per_Antiper           ρ= 0.5021  p=    2.94E-07  ***
+      Cercania_Massa                       ρ=-0.3418  p=    7.99E-04  ***
+      Cercania_Milei                       ρ= 0.4740  p=    1.59E-06  ***
+
+  ▸ Autopercepcion_Con_Pro
+      Autopercepcion_Per_Antiper           ρ= 0.2942  p=      0.0042  **
+
+  ▸ Autopercepcion_Per_Antiper
+      Indice_Conservadurismo               ρ= 0.3009  p=      0.0034  **
+      Indice_Positividad                   ρ=-0.2439  p=      0.0185  *
+      Autopercepcion_Izq_Der               ρ= 0.5021  p=    2.94E-07  ***
+      Autopercepcion_Con_Pro               ρ= 0.2942  p=      0.0042  **
+      Cercania_Massa                       ρ=-0.3593  p=    4.05E-04  ***
+      Cercania_Milei                       ρ= 0.3762  p=    2.02E-04  ***
+
+  ▸ Cercania_Massa
+      Indice_Progresismo                   ρ= 0.3125  p=      0.0023  **
+      Indice_Conservadurismo               ρ=-0.2821  p=      0.0061  **
+      Autopercepcion_Izq_Der               ρ=-0.3418  p=    7.99E-04  ***
+      Autopercepcion_Per_Antiper           ρ=-0.3593  p=    4.05E-04  ***
+      Cercania_Milei                       ρ=-0.3216  p=      0.0017  **
+      CO_Pro_Der                           ρ=-0.2252  p=      0.0309  *
+
+  ▸ Cercania_Milei
+      Indice_Progresismo                   ρ=-0.3926  p=    9.91E-05  ***
+      Indice_Conservadurismo               ρ= 0.4258  p=    2.09E-05  ***
+      Autopercepcion_Izq_Der               ρ= 0.4740  p=    1.59E-06  ***
+      Autopercepcion_Per_Antiper           ρ= 0.3762  p=    2.02E-04  ***
+      Cercania_Massa                       ρ=-0.3216  p=      0.0017  **
+
+  ▸ CO_Pro
+      CO_Pro_Izq                           ρ= 0.8912  p=    1.19E-32  ***
+      CO_Pro_Der                           ρ= 0.8428  p=    6.13E-26  ***
+      CO_Congruente                        ρ= 0.6794  p=    9.70E-14  ***
+      CO_Incongruente                      ρ= 0.5770  p=    1.75E-09  ***
+
+  ▸ CO_Pro_Izq
+      CO_Pro                               ρ= 0.8912  p=    1.19E-32  ***
+      CO_Pro_Der                           ρ= 0.5844  p=    9.60E-10  ***
+      CO_Con_Der                           ρ= 0.2286  p=      0.0284  *
+      CO_Congruente                        ρ= 0.8084  p=    2.00E-22  ***
+      CO_Incongruente                      ρ= 0.4735  p=    1.87E-06  ***
+
+  ▸ CO_Pro_Der
+      Cercania_Massa                       ρ=-0.2252  p=      0.0309  *
+      CO_Pro                               ρ= 0.8428  p=    6.13E-26  ***
+      CO_Pro_Izq                           ρ= 0.5844  p=    9.60E-10  ***
+      CO_Congruente                        ρ= 0.4007  p=    7.55E-05  ***
+      CO_Incongruente                      ρ= 0.5812  p=    1.24E-09  ***
+
+  ▸ CO_Con
+      CO_Con_Izq                           ρ= 0.8586  p=    3.74E-28  ***
+      CO_Con_Der                           ρ= 0.8892  p=    1.16E-32  ***
+      CO_Congruente                        ρ= 0.6035  p=    1.53E-10  ***
+      CO_Incongruente                      ρ= 0.6433  p=    3.56E-12  ***
+
+  ▸ CO_Con_Izq
+      Indice_Conservadurismo               ρ=-0.2251  p=      0.0301  *
+      CO_Con                               ρ= 0.8586  p=    3.74E-28  ***
+      CO_Con_Der                           ρ= 0.6224  p=    2.73E-11  ***
+      CO_Congruente                        ρ= 0.3993  p=    7.34E-05  ***
+      CO_Incongruente                      ρ= 0.7217  p=    3.31E-16  ***
+
+  ▸ CO_Con_Der
+      CO_Pro_Izq                           ρ= 0.2286  p=      0.0284  *
+      CO_Con                               ρ= 0.8892  p=    1.16E-32  ***
+      CO_Con_Izq                           ρ= 0.6224  p=    2.73E-11  ***
+      CO_Congruente                        ρ= 0.6764  p=    9.98E-14  ***
+      CO_Incongruente                      ρ= 0.5012  p=    3.11E-07  ***
+
+  ▸ CO_Congruente
+      CO_Pro                               ρ= 0.6794  p=    9.70E-14  ***
+      CO_Pro_Izq                           ρ= 0.8084  p=    2.00E-22  ***
+      CO_Pro_Der                           ρ= 0.4007  p=    7.55E-05  ***
+      CO_Con                               ρ= 0.6035  p=    1.53E-10  ***
+      CO_Con_Izq                           ρ= 0.3993  p=    7.34E-05  ***
+      CO_Con_Der                           ρ= 0.6764  p=    9.98E-14  ***
+      CO_Incongruente                      ρ= 0.5827  p=    8.95E-10  ***
+
+  ▸ CO_Incongruente
+      CO_Pro                               ρ= 0.5770  p=    1.75E-09  ***
+      CO_Pro_Izq                           ρ= 0.4735  p=    1.87E-06  ***
+      CO_Pro_Der                           ρ= 0.5812  p=    1.24E-09  ***
+      CO_Con                               ρ= 0.6433  p=    3.56E-12  ***
+      CO_Con_Izq                           ρ= 0.7217  p=    3.31E-16  ***
+      CO_Con_Der                           ρ= 0.5012  p=    3.11E-07  ***
+      CO_Congruente                        ρ= 0.5827  p=    8.95E-10  ***
 
 
 ================================================================================
