@@ -47,7 +47,9 @@ Paper/
 ├── Resultados/
 │   ├── Reportes/           # Reportes de analisis (Reportes_*.txt).
 │   ├── Graficos/           # Visualizaciones y scripts.
-│   │   └── Notebooks/      # Notebooks de Jupyter.
+│   │   ├── Graficos.py     # Configuraciones y funciones generales.
+│   │   ├── Notebooks/      # Notebooks de Jupyter.
+│   │   └── Imagenes/       # Imagenes exportadas (svg, png).
 │   └── Tablas/             # Tablas exportadas (xlsx).
 ├── Controles/              # Comparacion con resultados del paper.
 ├── Paper.md                # Documento principal del paper.
