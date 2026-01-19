@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nReorganizar estructura: eliminar Verificaciones y mover tablas a Resultados/Tablas.\n\n- Mover archivos de Verificaciones a Controles.\n- Mover tablas de Controles a Resultados/Tablas sin numeros en el nombre.\n- Eliminar carpeta Verificaciones.\n- Actualizar rutas en Ejecutar_Todo.py, Comparar_Bases.py y Procesamiento_Bases.py.\n- Actualizar estructura en Claude.md.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nReorganizar estructura: eliminar Verificaciones y mover tablas a Resultados/Tablas.\n\n- Mover archivos de Verificaciones a Controles.\n- Mover tablas de Controles a Resultados/Tablas sin numeros en el nombre.\n- Eliminar carpeta Verificaciones.\n- Actualizar rutas en Ejecutar_Todo.py, Comparar_Bases.py y Procesamiento_Bases.py.\n- Actualizar estructura en Claude.md.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nConsolidar tablas de warm-up y Moderate Right A vs B en archivos unicos.\n\n- Exportar Analisis_Warm_Up.xlsx con hojas Generales y Ballotage.\n- Exportar Comparacion_Moderate_Right_A_vs_B.xlsx con hojas por eleccion.\n- Eliminar archivos individuales por eleccion.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }

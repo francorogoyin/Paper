@@ -2283,12 +2283,13 @@ def Procesar_Datos_Completo(
     )
     os.makedirs(Ruta_Tablas, exist_ok=True)
 
-    for Nombre_df, df in dfs_Finales.items():
-        Ruta_Archivo = os.path.join(
-            Ruta_Tablas,
-            f'Analisis_Warm_Up_{Nombre_df}.xlsx'
-        )
-        df.head(50).to_excel(Ruta_Archivo, index=False)
+    # Exportar analisis de warm-up en un solo archivo con dos hojas.
+    Ruta_Archivo_Warmup = os.path.join(
+        Ruta_Tablas, 'Analisis_Warm_Up.xlsx'
+    )
+    with pd.ExcelWriter(Ruta_Archivo_Warmup, engine='openpyxl') as Escritor:
+        for Nombre_df, df in dfs_Finales.items():
+            df.head(50).to_excel(Escritor, sheet_name=Nombre_df, index=False)
 
     Dfs_Finales[0] = dfs_Finales['Generales']
     Dfs_Finales[1] = dfs_Finales['Ballotage']
@@ -2537,15 +2538,20 @@ def Procesar_Datos_Completo(
     )
     os.makedirs(Ruta_Tablas, exist_ok=True)
 
-    for Nombre_df, Resultados in Resultados_Comparacion.items():
-        if len(Resultados) > 0:
-            df_Resultados = pd.DataFrame(Resultados)
-            Ruta_Archivo = os.path.join(
-                Ruta_Tablas,
-                f'Comparacion_Moderate_Right_A_vs_B_{Nombre_df}.xlsx'
-            )
-            df_Resultados.to_excel(Ruta_Archivo, index=False)
-            print(f"\n{Nombre_df}: Exportado exitosamente.")
+    # Exportar comparacion en un solo archivo con dos hojas.
+    Ruta_Archivo_Comparacion = os.path.join(
+        Ruta_Tablas, 'Comparacion_Moderate_Right_A_vs_B.xlsx'
+    )
+    with pd.ExcelWriter(
+        Ruta_Archivo_Comparacion, engine='openpyxl'
+    ) as Escritor:
+        for Nombre_df, Resultados in Resultados_Comparacion.items():
+            if len(Resultados) > 0:
+                df_Resultados = pd.DataFrame(Resultados)
+                df_Resultados.to_excel(
+                    Escritor, sheet_name=Nombre_df, index=False
+                )
+                print(f"\n{Nombre_df}: Exportado exitosamente.")
 
     print('\n' + '='*80)
 
