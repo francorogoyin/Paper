@@ -1009,9 +1009,8 @@ def Procesar_Datos_Completo(
         )
 
         print(
-            f"  OK {Nombre}: Valores faltantes antes={
-                Total_Faltantes_Inicial
-            }, después={Total_Faltantes_Final}"
+            f"  OK {Nombre}: Valores faltantes antes="
+            f"{Total_Faltantes_Inicial}, después={Total_Faltantes_Final}"
         )
 
     print()
