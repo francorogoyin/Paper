@@ -2996,14 +2996,14 @@ if __name__ == '__main__':
     # Ejecutar todos los análisis.
     Resultados, dfs = Ejecutar_Todos_Los_Analisis(Ruta_Datos)
 
-    # Crear carpeta Resultados si no existe.
-    Ruta_Resultados = os.path.join(Ruta_Base, 'Resultados')
-    if not os.path.exists(Ruta_Resultados):
-        os.makedirs(Ruta_Resultados)
+    # Crear carpeta Resultados/Reportes si no existe.
+    Ruta_Reportes = os.path.join(Ruta_Base, 'Resultados', 'Reportes')
+    if not os.path.exists(Ruta_Reportes):
+        os.makedirs(Ruta_Reportes)
 
     # Generar reporte TXT.
     Ruta_Reporte = os.path.join(
-        Ruta_Resultados,
+        Ruta_Reportes,
         'Resultados_Analisis_Estadisticos.txt'
     )
     Generar_Reporte_TXT(Resultados, dfs, Ruta_Reporte)

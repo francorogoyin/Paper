@@ -2302,21 +2302,21 @@ if __name__ == '__main__':
     # Ejecutar todos los modelos.
     Resultados, dfs = Ejecutar_Todos_Los_Modelos(Ruta_Datos)
 
-    # Crear carpeta Resultados si no existe.
-    Ruta_Resultados_Carpeta = os.path.join(Ruta_Base, 'Resultados')
-    if not os.path.exists(Ruta_Resultados_Carpeta):
-        os.makedirs(Ruta_Resultados_Carpeta)
+    # Crear carpeta Resultados/Reportes si no existe.
+    Ruta_Reportes = os.path.join(Ruta_Base, 'Resultados', 'Reportes')
+    if not os.path.exists(Ruta_Reportes):
+        os.makedirs(Ruta_Reportes)
 
     # Generar reporte de PROCESO (recursiones, iteraciones).
     Ruta_Proceso = os.path.join(
-        Ruta_Resultados_Carpeta,
+        Ruta_Reportes,
         'Proceso_Modelos.txt'
     )
     Generar_Reporte_Proceso_TXT(Resultados, Ruta_Proceso)
 
     # Generar reporte de RESULTADOS (coeficientes, estadísticos).
     Ruta_Resultados_Archivo = os.path.join(
-        Ruta_Resultados_Carpeta,
+        Ruta_Reportes,
         'Resultados_Modelos.txt'
     )
     Generar_Reporte_Resultados_TXT(Resultados, Ruta_Resultados_Archivo)

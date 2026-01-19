@@ -6,7 +6,9 @@ from matplotlib import transforms as Transformaciones
 import pandas as Pandas
 
 Ruta_Archivo = Path(__file__).resolve()
-Ruta_Codigo = Ruta_Archivo.parents[1]
+# Subir tres niveles (Codigo -> Graficos -> Resultados -> Paper) y a Codigo.
+Ruta_Proyecto = Ruta_Archivo.parents[3]
+Ruta_Codigo = Ruta_Proyecto / "Codigo"
 Sistema.path.append(str(Ruta_Codigo))
 
 from Graficos import (

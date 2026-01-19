@@ -837,14 +837,14 @@ if __name__ == '__main__':
     # Ejecutar análisis descriptivo.
     Resultados, dfs = Ejecutar_Analisis_Descriptivo(Ruta_Datos)
 
-    # Crear carpeta Resultados si no existe.
-    Ruta_Resultados = os.path.join(Ruta_Base, 'Resultados')
-    if not os.path.exists(Ruta_Resultados):
-        os.makedirs(Ruta_Resultados)
+    # Crear carpeta Resultados/Reportes si no existe.
+    Ruta_Reportes = os.path.join(Ruta_Base, 'Resultados', 'Reportes')
+    if not os.path.exists(Ruta_Reportes):
+        os.makedirs(Ruta_Reportes)
 
     # Generar reporte TXT.
     Ruta_Reporte = os.path.join(
-        Ruta_Resultados,
+        Ruta_Reportes,
         'Analisis_Descriptivo.txt'
     )
     Generar_Reporte_Descriptivo_TXT(Resultados, Ruta_Reporte)

@@ -746,14 +746,14 @@ if __name__ == '__main__':
         Metodo='spearman'
     )
 
-    # Crear carpeta Resultados si no existe.
-    Ruta_Resultados = os.path.join(Ruta_Base, 'Resultados')
-    if not os.path.exists(Ruta_Resultados):
-        os.makedirs(Ruta_Resultados)
+    # Crear carpeta Resultados/Reportes si no existe.
+    Ruta_Reportes = os.path.join(Ruta_Base, 'Resultados', 'Reportes')
+    if not os.path.exists(Ruta_Reportes):
+        os.makedirs(Ruta_Reportes)
 
     # Generar reporte TXT.
     Ruta_Reporte = os.path.join(
-        Ruta_Resultados,
+        Ruta_Reportes,
         'Analisis_Correlaciones.txt'
     )
     Generar_Reporte_Correlaciones_TXT(
