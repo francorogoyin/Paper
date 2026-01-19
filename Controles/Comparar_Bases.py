@@ -486,7 +486,7 @@ def Main():
 
     Ruta_Base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     Ruta_Salida = os.path.join(
-        Ruta_Base, "Verificaciones", "Comparacion_Bases.txt"
+        Ruta_Base, "Controles", "Comparacion_Bases.txt"
     )
     sys.stdout = open(Ruta_Salida, "w", encoding="utf-8")
 

@@ -46,9 +46,9 @@ Paper/
 │   └── Ballotage.xlsx
 ├── Resultados/
 │   ├── Reportes/           # Reportes de analisis (txt).
-│   └── Graficos/           # Visualizaciones generadas.
-├── Verificaciones/         # Validacion de datos y resultados.
-├── Controles/              # Analisis adicionales de control.
+│   ├── Graficos/           # Visualizaciones generadas.
+│   └── Tablas/             # Tablas exportadas (xlsx).
+├── Controles/              # Validacion y comparacion de datos.
 ├── Paper.md                # Documento principal del paper.
 ├── Ejecutar_Todo.py        # Script maestro del pipeline.
 └── Requirements.txt        # Dependencias del proyecto.

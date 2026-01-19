@@ -2278,15 +2278,15 @@ def Procesar_Datos_Completo(
 
     print('\n' + '='*70)
 
-    Ruta_Controles = os.path.join(
-        os.path.dirname(Ruta_Datos_Crudos), 'Controles'
+    Ruta_Tablas = os.path.join(
+        os.path.dirname(Ruta_Datos_Crudos), 'Resultados', 'Tablas'
     )
-    os.makedirs(Ruta_Controles, exist_ok=True)
+    os.makedirs(Ruta_Tablas, exist_ok=True)
 
     for Nombre_df, df in dfs_Finales.items():
         Ruta_Archivo = os.path.join(
-            Ruta_Controles,
-            f'14.5. Analisis de warm-up ({Nombre_df}).xlsx'
+            Ruta_Tablas,
+            f'Analisis_Warm_Up_{Nombre_df}.xlsx'
         )
         df.head(50).to_excel(Ruta_Archivo, index=False)
 
@@ -2532,17 +2532,17 @@ def Procesar_Datos_Completo(
     print('EXPORTANDO RESULTADOS')
     print('='*80)
 
-    Ruta_Controles = os.path.join(
-        os.path.dirname(Ruta_Datos_Crudos), 'Controles'
+    Ruta_Tablas = os.path.join(
+        os.path.dirname(Ruta_Datos_Crudos), 'Resultados', 'Tablas'
     )
-    os.makedirs(Ruta_Controles, exist_ok=True)
+    os.makedirs(Ruta_Tablas, exist_ok=True)
 
     for Nombre_df, Resultados in Resultados_Comparacion.items():
         if len(Resultados) > 0:
             df_Resultados = pd.DataFrame(Resultados)
             Ruta_Archivo = os.path.join(
-                Ruta_Controles,
-                f'16.5. Comparacion Moderate Right A vs B ({Nombre_df}).xlsx'
+                Ruta_Tablas,
+                f'Comparacion_Moderate_Right_A_vs_B_{Nombre_df}.xlsx'
             )
             df_Resultados.to_excel(Ruta_Archivo, index=False)
             print(f"\n{Nombre_df}: Exportado exitosamente.")
