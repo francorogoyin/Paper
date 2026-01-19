@@ -46,7 +46,8 @@ Paper/
 │   └── Ballotage.xlsx
 ├── Resultados/
 │   ├── Reportes/           # Reportes de analisis (Reportes_*.txt).
-│   ├── Graficos/           # Visualizaciones y script Graficos.py.
+│   ├── Graficos/           # Visualizaciones y scripts.
+│   │   └── Notebooks/      # Notebooks de Jupyter.
 │   └── Tablas/             # Tablas exportadas (xlsx).
 ├── Controles/              # Comparacion con resultados del paper.
 ├── Paper.md                # Documento principal del paper.
