@@ -2310,14 +2310,14 @@ if __name__ == '__main__':
     # Generar reporte de PROCESO (recursiones, iteraciones).
     Ruta_Proceso = os.path.join(
         Ruta_Reportes,
-        'Proceso_Modelos.txt'
+        'Reportes_Proceso_Modelos.txt'
     )
     Generar_Reporte_Proceso_TXT(Resultados, Ruta_Proceso)
 
     # Generar reporte de RESULTADOS (coeficientes, estadísticos).
     Ruta_Resultados_Archivo = os.path.join(
         Ruta_Reportes,
-        'Resultados_Modelos.txt'
+        'Reportes_Resultados_Modelos.txt'
     )
     Generar_Reporte_Resultados_TXT(Resultados, Ruta_Resultados_Archivo)
 

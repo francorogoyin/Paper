@@ -79,7 +79,8 @@ def Obtener_Ruta_Proyecto():
     - Ruta_Proyecto = Obtener_Ruta_Proyecto()
     """
 
-    return Path(__file__).resolve().parents[1]
+    # El archivo esta en Resultados/Graficos, subir 2 niveles para Paper.
+    return Path(__file__).resolve().parents[2]
 
 
 def Obtener_Ruta_Base_Datos(Nombre_Base):

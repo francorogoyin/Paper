@@ -845,7 +845,7 @@ if __name__ == '__main__':
     # Generar reporte TXT.
     Ruta_Reporte = os.path.join(
         Ruta_Reportes,
-        'Analisis_Descriptivo.txt'
+        'Reportes_Analisis_Descriptivo.txt'
     )
     Generar_Reporte_Descriptivo_TXT(Resultados, Ruta_Reporte)
 

@@ -66,7 +66,7 @@ def Main() -> None:
         os.path.join(Ruta_Base, "Codigo", "Analisis_Estadisticos.py"),
         os.path.join(Ruta_Base, "Codigo", "Analisis_Correlaciones.py"),
         #os.path.join(Ruta_Base, "Codigo", "Modelos.py"),
-        os.path.join(Ruta_Base, "Controles", "Comparar_Bases.py")
+        os.path.join(Ruta_Base, "Codigo", "Comparar_Bases.py")
     ]
 
     for Ruta_Script in Scripts:

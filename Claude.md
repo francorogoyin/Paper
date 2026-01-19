@@ -36,7 +36,7 @@ Paper/
 │   ├── Analisis_Estadisticos.py
 │   ├── Analisis_Correlaciones.py
 │   ├── Modelos.py
-│   └── Graficos.py
+│   └── Comparar_Bases.py
 ├── Datos crudos/           # Datos originales sin procesar.
 │   ├── Generales 1-5.csv
 │   ├── Ballotage 1-2.csv
@@ -45,10 +45,10 @@ Paper/
 │   ├── Generales.xlsx
 │   └── Ballotage.xlsx
 ├── Resultados/
-│   ├── Reportes/           # Reportes de analisis (txt).
-│   ├── Graficos/           # Visualizaciones generadas.
+│   ├── Reportes/           # Reportes de analisis (Reportes_*.txt).
+│   ├── Graficos/           # Visualizaciones y script Graficos.py.
 │   └── Tablas/             # Tablas exportadas (xlsx).
-├── Controles/              # Validacion y comparacion de datos.
+├── Controles/              # Comparacion con resultados del paper.
 ├── Paper.md                # Documento principal del paper.
 ├── Ejecutar_Todo.py        # Script maestro del pipeline.
 └── Requirements.txt        # Dependencias del proyecto.
@@ -79,7 +79,6 @@ El archivo `Ejecutar_Todo.py` define el orden de ejecucion:
 
 - `ID`: Identificador unico del participante.
 - `Fecha`: Fecha de participacion.
-- `Timestamp`: Marca temporal de cada respuesta.
 - `Categoria_PASO_2023`: Categoria electoral segun voto en PASO.
 
 ### Categorias electorales (segun voto en PASO 2023).
@@ -185,8 +184,7 @@ def Nombre_Funcion(Parametro: tipo) -> tipo:
 
 - Los reportes se guardan en `Resultados/Reportes/`.
 - Los graficos se guardan en `Resultados/Graficos/`.
-- Siempre verificar resultados contra `Paper.md` despues
-  de modificar scripts de analisis.
 - El archivo `Agents.md` contiene contexto detallado
   adicional sobre variables y verificaciones.
+- Al final de cambios importantes, commitear y pushear.
 
