@@ -1,0 +1,1015 @@
+================================================================================
+RESULTADOS DE ANÁLISIS ESTADÍSTICOS
+Proyecto de Tesis - Experimento Electoral Argentina 2023
+================================================================================
+
+################################################################################
+# SECCIÓN A: TESTS KRUSKAL-WALLIS
+################################################################################
+
+================================================================================
+1. KRUSKAL-WALLIS: ÍTEMS CO INDIVIDUALES POR CATEGORÍA
+================================================================================
+
+Compara cambios de opinión entre las 6 categorías electorales.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 11/40
+
+Resultados:
+  CO_Item_8_Izq                  H =  30.3971  p = 1.23E-05 ***
+  CO_Item_30_Der                 H =  24.1571  p = 2.03E-04 ***
+  CO_Item_30_Izq                 H =  21.6789  p = 6.03E-04 ***
+  CO_Item_7_Izq                  H =  21.3377  p = 6.99E-04 ***
+  CO_Item_5_Izq                  H =  17.5723  p = 3.53E-03 **
+  CO_Item_25_Izq                 H =  15.3805  p = 8.85E-03 **
+  CO_Item_9_Izq                  H =  15.3391  p = 9.01E-03 **
+  CO_Item_10_Der                 H =  13.1064  p = 2.24E-02 *
+  CO_Item_3_Izq                  H =  12.7183  p = 2.62E-02 *
+  CO_Item_10_Izq                 H =  12.1343  p = 3.30E-02 *
+  CO_Item_24_Izq                 H =  12.0221  p = 3.45E-02 *
+  CO_Item_27_Der                 H =   8.5213  p = 1.30E-01 
+  CO_Item_16_Izq                 H =   8.3750  p = 1.37E-01 
+  CO_Item_24_Der                 H =   8.2537  p = 1.43E-01 
+  CO_Item_8_Der                  H =   7.0038  p = 2.20E-01 
+  CO_Item_22_Der                 H =   6.8061  p = 2.35E-01 
+  CO_Item_7_Der                  H =   6.6690  p = 2.46E-01 
+  CO_Item_19_Izq                 H =   6.4811  p = 2.62E-01 
+  CO_Item_16_Der                 H =   6.3209  p = 2.76E-01 
+  CO_Item_3_Der                  H =   5.4938  p = 3.59E-01 
+  CO_Item_23_Der                 H =   5.4790  p = 3.60E-01 
+  CO_Item_22_Izq                 H =   5.4336  p = 3.65E-01 
+  CO_Item_28_Izq                 H =   5.3493  p = 3.75E-01 
+  CO_Item_6_Der                  H =   5.1942  p = 3.93E-01 
+  CO_Item_9_Der                  H =   5.1065  p = 4.03E-01 
+  CO_Item_5_Der                  H =   4.9550  p = 4.21E-01 
+  CO_Item_11_Der                 H =   4.5349  p = 4.75E-01 
+  CO_Item_29_Der                 H =   4.5212  p = 4.77E-01 
+  CO_Item_25_Der                 H =   4.1209  p = 5.32E-01 
+  CO_Item_20_Izq                 H =   3.4893  p = 6.25E-01 
+  CO_Item_4_Der                  H =   3.3453  p = 6.47E-01 
+  CO_Item_27_Izq                 H =   2.9940  p = 7.01E-01 
+  CO_Item_6_Izq                  H =   2.9652  p = 7.05E-01 
+  CO_Item_4_Izq                  H =   2.6388  p = 7.55E-01 
+  CO_Item_28_Der                 H =   1.4711  p = 9.16E-01 
+  CO_Item_11_Izq                 H =   1.3785  p = 9.27E-01 
+  CO_Item_23_Izq                 H =   1.3690  p = 9.28E-01 
+  CO_Item_20_Der                 H =   1.0833  p = 9.56E-01 
+  CO_Item_19_Der                 H =   0.8091  p = 9.76E-01 
+  CO_Item_29_Izq                 H =   0.5782  p = 9.89E-01 
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 9/40
+
+Resultados:
+  CO_Item_7_Der                  H =  23.8348  p = 2.34E-04 ***
+  CO_Item_25_Der                 H =  18.6932  p = 2.19E-03 **
+  CO_Item_29_Izq                 H =  18.2023  p = 2.70E-03 **
+  CO_Item_30_Izq                 H =  16.7238  p = 5.05E-03 **
+  CO_Item_22_Der                 H =  13.7607  p = 1.72E-02 *
+  CO_Item_22_Izq                 H =  13.3223  p = 2.05E-02 *
+  CO_Item_11_Der                 H =  13.2358  p = 2.13E-02 *
+  CO_Item_6_Izq                  H =  11.7273  p = 3.87E-02 *
+  CO_Item_25_Izq                 H =  11.2807  p = 4.61E-02 *
+  CO_Item_29_Der                 H =  10.9703  p = 5.20E-02 
+  CO_Item_19_Izq                 H =  10.1122  p = 7.21E-02 
+  CO_Item_10_Izq                 H =   9.8348  p = 8.01E-02 
+  CO_Item_28_Der                 H =   8.5405  p = 1.29E-01 
+  CO_Item_11_Izq                 H =   8.0878  p = 1.51E-01 
+  CO_Item_28_Izq                 H =   8.0800  p = 1.52E-01 
+  CO_Item_30_Der                 H =   7.8662  p = 1.64E-01 
+  CO_Item_10_Der                 H =   7.1667  p = 2.09E-01 
+  CO_Item_7_Izq                  H =   6.5055  p = 2.60E-01 
+  CO_Item_24_Der                 H =   6.2009  p = 2.87E-01 
+  CO_Item_9_Izq                  H =   6.0127  p = 3.05E-01 
+  CO_Item_16_Der                 H =   5.9910  p = 3.07E-01 
+  CO_Item_23_Izq                 H =   5.8544  p = 3.21E-01 
+  CO_Item_6_Der                  H =   5.1225  p = 4.01E-01 
+  CO_Item_9_Der                  H =   4.4885  p = 4.81E-01 
+  CO_Item_5_Der                  H =   4.4101  p = 4.92E-01 
+  CO_Item_4_Izq                  H =   3.6062  p = 6.07E-01 
+  CO_Item_3_Der                  H =   3.4961  p = 6.24E-01 
+  CO_Item_27_Izq                 H =   3.4934  p = 6.24E-01 
+  CO_Item_20_Der                 H =   3.0815  p = 6.87E-01 
+  CO_Item_23_Der                 H =   3.0393  p = 6.94E-01 
+  CO_Item_8_Der                  H =   2.4191  p = 7.89E-01 
+  CO_Item_20_Izq                 H =   2.3132  p = 8.04E-01 
+  CO_Item_16_Izq                 H =   2.2999  p = 8.06E-01 
+  CO_Item_24_Izq                 H =   1.8846  p = 8.65E-01 
+  CO_Item_19_Der                 H =   1.8655  p = 8.67E-01 
+  CO_Item_8_Izq                  H =   1.7202  p = 8.86E-01 
+  CO_Item_5_Izq                  H =   1.4014  p = 9.24E-01 
+  CO_Item_27_Der                 H =   1.1384  p = 9.51E-01 
+  CO_Item_3_Izq                  H =   0.8136  p = 9.76E-01 
+  CO_Item_4_Der                  H =   0.5868  p = 9.89E-01 
+
+================================================================================
+2. KRUSKAL-WALLIS: ÍTEMS CT INDIVIDUALES POR CATEGORÍA
+================================================================================
+
+Compara cambios de tiempo entre las 6 categorías electorales.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 14/40
+
+Resultados:
+  CT_Item_7_Der                  H =  30.8459  p = 1.00E-05 ***
+  CT_Item_4_Der                  H =  23.5913  p = 2.60E-04 ***
+  CT_Item_30_Izq                 H =  22.1931  p = 4.81E-04 ***
+  CT_Item_16_Der                 H =  19.8857  p = 1.31E-03 **
+  CT_Item_16_Izq                 H =  17.6704  p = 3.39E-03 **
+  CT_Item_25_Der                 H =  17.0839  p = 4.34E-03 **
+  CT_Item_10_Der                 H =  16.3441  p = 5.93E-03 **
+  CT_Item_7_Izq                  H =  15.4358  p = 8.65E-03 **
+  CT_Item_3_Der                  H =  15.3791  p = 8.86E-03 **
+  CT_Item_22_Izq                 H =  14.0642  p = 1.52E-02 *
+  CT_Item_23_Der                 H =  13.6440  p = 1.80E-02 *
+  CT_Item_3_Izq                  H =  13.5012  p = 1.91E-02 *
+  CT_Item_9_Der                  H =  12.2982  p = 3.09E-02 *
+  CT_Item_4_Izq                  H =  11.9636  p = 3.53E-02 *
+  CT_Item_22_Der                 H =  11.0038  p = 5.13E-02 
+  CT_Item_25_Izq                 H =  11.0026  p = 5.13E-02 
+  CT_Item_19_Izq                 H =   9.9522  p = 7.66E-02 
+  CT_Item_24_Der                 H =   9.7614  p = 8.23E-02 
+  CT_Item_30_Der                 H =   8.9873  p = 1.10E-01 
+  CT_Item_11_Der                 H =   8.2394  p = 1.44E-01 
+  CT_Item_11_Izq                 H =   7.6441  p = 1.77E-01 
+  CT_Item_6_Der                  H =   7.4726  p = 1.88E-01 
+  CT_Item_20_Izq                 H =   7.4673  p = 1.88E-01 
+  CT_Item_27_Izq                 H =   7.4511  p = 1.89E-01 
+  CT_Item_23_Izq                 H =   6.9016  p = 2.28E-01 
+  CT_Item_19_Der                 H =   6.8544  p = 2.32E-01 
+  CT_Item_10_Izq                 H =   6.8207  p = 2.34E-01 
+  CT_Item_20_Der                 H =   6.5685  p = 2.55E-01 
+  CT_Item_6_Izq                  H =   5.4910  p = 3.59E-01 
+  CT_Item_8_Der                  H =   4.9471  p = 4.22E-01 
+  CT_Item_8_Izq                  H =   4.5902  p = 4.68E-01 
+  CT_Item_28_Der                 H =   4.5701  p = 4.71E-01 
+  CT_Item_28_Izq                 H =   4.1554  p = 5.27E-01 
+  CT_Item_27_Der                 H =   4.1315  p = 5.31E-01 
+  CT_Item_5_Der                  H =   3.7679  p = 5.83E-01 
+  CT_Item_24_Izq                 H =   3.7224  p = 5.90E-01 
+  CT_Item_29_Izq                 H =   3.5999  p = 6.08E-01 
+  CT_Item_9_Izq                  H =   3.4677  p = 6.28E-01 
+  CT_Item_5_Izq                  H =   3.2784  p = 6.57E-01 
+  CT_Item_29_Der                 H =   2.7503  p = 7.38E-01 
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 5/40
+
+Resultados:
+  CT_Item_30_Izq                 H =  12.5891  p = 2.75E-02 *
+  CT_Item_7_Der                  H =  12.0163  p = 3.46E-02 *
+  CT_Item_8_Der                  H =  11.9378  p = 3.57E-02 *
+  CT_Item_10_Der                 H =  11.4250  p = 4.36E-02 *
+  CT_Item_29_Izq                 H =  11.0776  p = 4.99E-02 *
+  CT_Item_27_Der                 H =  10.6295  p = 5.92E-02 
+  CT_Item_6_Izq                  H =  10.0326  p = 7.43E-02 
+  CT_Item_29_Der                 H =   9.1964  p = 1.01E-01 
+  CT_Item_25_Der                 H =   9.0939  p = 1.05E-01 
+  CT_Item_3_Izq                  H =   8.7733  p = 1.18E-01 
+  CT_Item_3_Der                  H =   8.6987  p = 1.22E-01 
+  CT_Item_30_Der                 H =   8.6248  p = 1.25E-01 
+  CT_Item_8_Izq                  H =   8.6104  p = 1.26E-01 
+  CT_Item_25_Izq                 H =   8.5046  p = 1.31E-01 
+  CT_Item_6_Der                  H =   8.3798  p = 1.37E-01 
+  CT_Item_27_Izq                 H =   7.6405  p = 1.77E-01 
+  CT_Item_10_Izq                 H =   7.1124  p = 2.12E-01 
+  CT_Item_22_Der                 H =   6.7101  p = 2.43E-01 
+  CT_Item_24_Izq                 H =   6.3194  p = 2.76E-01 
+  CT_Item_23_Izq                 H =   5.6393  p = 3.43E-01 
+  CT_Item_16_Izq                 H =   5.6011  p = 3.47E-01 
+  CT_Item_22_Izq                 H =   5.5475  p = 3.53E-01 
+  CT_Item_19_Der                 H =   5.3013  p = 3.80E-01 
+  CT_Item_24_Der                 H =   4.9824  p = 4.18E-01 
+  CT_Item_4_Der                  H =   4.7611  p = 4.46E-01 
+  CT_Item_11_Izq                 H =   4.6256  p = 4.63E-01 
+  CT_Item_20_Izq                 H =   4.5490  p = 4.73E-01 
+  CT_Item_28_Izq                 H =   4.3429  p = 5.01E-01 
+  CT_Item_5_Izq                  H =   4.2136  p = 5.19E-01 
+  CT_Item_11_Der                 H =   3.9860  p = 5.51E-01 
+  CT_Item_9_Izq                  H =   2.7087  p = 7.45E-01 
+  CT_Item_20_Der                 H =   2.5098  p = 7.75E-01 
+  CT_Item_5_Der                  H =   2.5018  p = 7.76E-01 
+  CT_Item_7_Izq                  H =   2.3273  p = 8.02E-01 
+  CT_Item_19_Izq                 H =   2.2479  p = 8.14E-01 
+  CT_Item_23_Der                 H =   2.1345  p = 8.30E-01 
+  CT_Item_9_Der                  H =   1.8485  p = 8.70E-01 
+  CT_Item_16_Der                 H =   1.6986  p = 8.89E-01 
+  CT_Item_4_Izq                  H =   1.3740  p = 9.27E-01 
+  CT_Item_28_Der                 H =   0.5000  p = 9.92E-01 
+
+================================================================================
+3. KRUSKAL-WALLIS: VARIABLES AGREGADAS POR CATEGORÍA
+================================================================================
+
+Variables agregadas de CO y CT (promedios por tipo y dirección).
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 4/12
+
+Resultados:
+  CT_Pro_Der                     H =  21.3672  p = 6.90E-04 ***
+  CT_Incongruente                H =  15.4631  p = 8.56E-03 **
+  CT_Con_Der                     H =  15.3670  p = 8.90E-03 **
+  CT_Congruente                  H =  13.6173  p = 1.82E-02 *
+  CO_Con_Izq                     H =  10.7228  p = 5.72E-02 
+  CO_Congruente                  H =  10.0527  p = 7.38E-02 
+  CO_Con_Der                     H =   7.7472  p = 1.71E-01 
+  CO_Pro_Izq                     H =   7.0129  p = 2.20E-01 
+  CT_Pro_Izq                     H =   6.7264  p = 2.42E-01 
+  CT_Con_Izq                     H =   4.8961  p = 4.29E-01 
+  CO_Pro_Der                     H =   4.4558  p = 4.86E-01 
+  CO_Incongruente                H =   1.8973  p = 8.63E-01 
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 2/12
+
+Resultados:
+  CO_Congruente                  H =  16.4292  p = 5.72E-03 **
+  CO_Con_Izq                     H =  14.0921  p = 1.50E-02 *
+  CO_Con_Der                     H =  10.2533  p = 6.84E-02 
+  CO_Pro_Izq                     H =   9.9995  p = 7.52E-02 
+  CT_Incongruente                H =   9.3322  p = 9.65E-02 
+  CO_Pro_Der                     H =   6.7135  p = 2.43E-01 
+  CT_Pro_Der                     H =   6.6904  p = 2.45E-01 
+  CO_Incongruente                H =   5.5024  p = 3.58E-01 
+  CT_Pro_Izq                     H =   5.2111  p = 3.91E-01 
+  CT_Congruente                  H =   2.8988  p = 7.16E-01 
+  CT_Con_Der                     H =   2.6582  p = 7.53E-01 
+  CT_Con_Izq                     H =   2.3228  p = 8.03E-01 
+
+================================================================================
+4. KRUSKAL-WALLIS: DIFERENCIAS (IZQ-DER) ENTRE POBLACIONES
+================================================================================
+
+Compara la diferencia (CO_Izq - CO_Der) entre categorías.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Ítems con diferencias significativas: 5/20
+
+Ítems significativos:
+  Item 27 (Progresista ): H =  16.9893, p = 4.52E-03 (**)
+  Item  8 (Conservador ): H =  16.3011, p = 6.03E-03 (**)
+  Item  9 (Progresista ): H =  15.7657, p = 7.55E-03 (**)
+  Item  5 (Progresista ): H =  13.7914, p = 1.70E-02 (*)
+  Item 11 (Progresista ): H =  13.2574, p = 2.11E-02 (*)
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Ítems con diferencias significativas: 2/20
+
+Ítems significativos:
+  Item  7 (Conservador ): H =  14.6604, p = 1.19E-02 (*)
+  Item 19 (Conservador ): H =  12.0938, p = 3.35E-02 (*)
+
+================================================================================
+5. KRUSKAL-WALLIS: AUTOPERCEPCIONES POR CATEGORÍA
+================================================================================
+
+Escalas: Izq-Der, Con-Pro, Per-Antiper.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 3/3
+
+Resultados:
+  Autopercepcion_Per_Antiper     H = 1040.0555  p = 1.28E-222 ***
+  Autopercepcion_Izq_Der         H = 890.9599  p = 2.41E-190 ***
+  Autopercepcion_Con_Pro         H = 314.9046  p = 6.25E-66 ***
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 3/3
+
+Resultados:
+  Autopercepcion_Per_Antiper     H = 418.9930  p = 2.39E-88 ***
+  Autopercepcion_Izq_Der         H = 326.5680  p = 1.93E-68 ***
+  Autopercepcion_Con_Pro         H = 113.3871  p = 7.88E-23 ***
+
+================================================================================
+6. KRUSKAL-WALLIS: ÍNDICES POR CATEGORÍA
+================================================================================
+
+Índices de Progresismo, Conservadurismo y Positividad.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 3/3
+
+Resultados:
+  Indice_Progresismo             H = 1037.1986  p = 5.31E-222 ***
+  Indice_Conservadurismo         H = 974.5541  p = 1.94E-208 ***
+  Indice_Positividad             H = 282.2980  p = 6.39E-59 ***
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 3/3
+
+Resultados:
+  Indice_Progresismo             H = 472.3831  p = 7.28E-100 ***
+  Indice_Conservadurismo         H = 427.6144  p = 3.30E-90 ***
+  Indice_Positividad             H = 259.6077  p = 4.77E-54 ***
+
+================================================================================
+7. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA
+================================================================================
+
+Cercanía a Massa, Bullrich, Bregman, Milei, Schiaretti.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 5/5
+
+Resultados:
+  Cercania_Milei                 H = 1273.7829  p = 3.06E-273 ***
+  Cercania_Bullrich              H = 1086.9065  p = 9.15E-233 ***
+  Cercania_Massa                 H = 1073.5237  p = 7.24E-230 ***
+  Cercania_Bregman               H = 891.7685  p = 1.61E-190 ***
+  Cercania_Schiaretti            H = 384.3905  p = 6.86E-81 ***
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 2/2
+
+Resultados:
+  Cercania_Milei                 H = 609.0801  p = 2.21E-129 ***
+  Cercania_Massa                 H = 457.5716  p = 1.14E-96 ***
+
+################################################################################
+# SECCIÓN B: TESTS DUNN POST-HOC (Corrección Bonferroni)
+################################################################################
+
+================================================================================
+8. DUNN POST-HOC: ÍTEMS CO
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  CO_Item_8_Izq:
+    - Centre                    vs Right_Wing_Libertarian    p = 4.18E-02
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.61E-05
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 4.16E-04
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.16E-05
+
+  CO_Item_30_Der:
+    - Moderate_Right_B          vs Progressivism             p = 7.08E-03
+
+  CO_Item_30_Izq:
+    - Moderate_Right_B          vs Progressivism             p = 5.86E-03
+
+  CO_Item_7_Izq:
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 7.84E-04
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 1.72E-03
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 2.22E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 5.14E-03
+
+  CO_Item_5_Izq: Sin comparaciones significativas
+
+  CO_Item_25_Izq:
+    - Centre                    vs Left_Wing                 p = 1.38E-02
+    - Centre                    vs Moderate_Right_B          p = 5.86E-03
+    - Centre                    vs Progressivism             p = 5.50E-03
+
+  CO_Item_9_Izq:
+    - Centre                    vs Left_Wing                 p = 5.27E-03
+    - Centre                    vs Progressivism             p = 1.71E-02
+
+  CO_Item_10_Der:
+    - Left_Wing                 vs Moderate_Right_A          p = 1.33E-02
+    - Moderate_Right_A          vs Progressivism             p = 3.57E-02
+
+  CO_Item_3_Izq: Sin comparaciones significativas
+
+  CO_Item_10_Izq: Sin comparaciones significativas
+
+  CO_Item_24_Izq:
+    - Moderate_Right_A          vs Progressivism             p = 3.72E-02
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  CO_Item_7_Der:
+    - Left_Wing                 vs Moderate_Right_A          p = 2.32E-02
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 1.53E-02
+
+  CO_Item_25_Der:
+    - Left_Wing                 vs Moderate_Right_B          p = 1.47E-03
+
+  CO_Item_29_Izq:
+    - Centre                    vs Moderate_Right_B          p = 8.66E-03
+    - Moderate_Right_B          vs Progressivism             p = 4.32E-02
+
+  CO_Item_30_Izq: Sin comparaciones significativas
+
+  CO_Item_22_Der: Sin comparaciones significativas
+
+  CO_Item_22_Izq: Sin comparaciones significativas
+
+  CO_Item_11_Der: Sin comparaciones significativas
+
+  CO_Item_6_Izq: Sin comparaciones significativas
+
+  CO_Item_25_Izq: Sin comparaciones significativas
+
+================================================================================
+9. DUNN POST-HOC: ÍTEMS CT
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  CT_Item_7_Der:
+    - Moderate_Right_B          vs Progressivism             p = 2.22E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 6.27E-04
+
+  CT_Item_4_Der:
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.15E-03
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.02E-02
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.52E-04
+
+  CT_Item_30_Izq:
+    - Centre                    vs Left_Wing                 p = 3.78E-02
+    - Left_Wing                 vs Moderate_Right_B          p = 4.33E-03
+
+  CT_Item_16_Der:
+    - Left_Wing                 vs Moderate_Right_A          p = 2.79E-03
+
+  CT_Item_16_Izq:
+    - Left_Wing                 vs Moderate_Right_A          p = 6.47E-03
+    - Moderate_Right_A          vs Progressivism             p = 2.08E-03
+
+  CT_Item_25_Der:
+    - Left_Wing                 vs Moderate_Right_B          p = 4.65E-02
+
+  CT_Item_10_Der:
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.37E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 3.21E-02
+
+  CT_Item_7_Izq: Sin comparaciones significativas
+
+  CT_Item_3_Der:
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.75E-02
+    - Progressivism             vs Right_Wing_Libertarian    p = 3.08E-02
+
+  CT_Item_22_Izq: Sin comparaciones significativas
+
+  CT_Item_23_Der:
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.81E-02
+
+  CT_Item_3_Izq:
+    - Left_Wing                 vs Moderate_Right_B          p = 2.73E-02
+
+  CT_Item_9_Der: Sin comparaciones significativas
+
+  CT_Item_4_Izq:
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.64E-02
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  CT_Item_30_Izq: Sin comparaciones significativas
+
+  CT_Item_7_Der: Sin comparaciones significativas
+
+  CT_Item_8_Der: Sin comparaciones significativas
+
+  CT_Item_10_Der: Sin comparaciones significativas
+
+  CT_Item_29_Izq:
+    - Centre                    vs Right_Wing_Libertarian    p = 3.94E-02
+
+================================================================================
+10. DUNN POST-HOC: VARIABLES AGREGADAS
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  CT_Pro_Der:
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 7.90E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.47E-03
+
+  CT_Incongruente:
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.30E-02
+
+  CT_Con_Der:
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.55E-03
+
+  CT_Congruente:
+    - Progressivism             vs Right_Wing_Libertarian    p = 7.28E-03
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  CO_Congruente:
+    - Centre                    vs Left_Wing                 p = 3.20E-02
+    - Centre                    vs Right_Wing_Libertarian    p = 2.24E-02
+
+  CO_Con_Izq:
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.34E-02
+
+================================================================================
+11. DUNN POST-HOC: AUTOPERCEPCIONES
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  Autopercepcion_Per_Antiper:
+    - Centre                    vs Moderate_Right_A          p = 1.11E-02
+    - Centre                    vs Moderate_Right_B          p = 8.02E-10
+    - Centre                    vs Progressivism             p = 5.09E-13
+    - Centre                    vs Right_Wing_Libertarian    p = 9.01E-08
+    - Left_Wing                 vs Moderate_Right_A          p = 2.53E-05
+    - Left_Wing                 vs Moderate_Right_B          p = 4.99E-21
+    - Left_Wing                 vs Progressivism             p = 6.13E-55
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.16E-15
+    - Moderate_Right_A          vs Moderate_Right_B          p = 4.05E-04
+    - Moderate_Right_A          vs Progressivism             p = 1.89E-65
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 1.70E-02
+    - Moderate_Right_B          vs Progressivism             p = 6.71E-115
+    - Progressivism             vs Right_Wing_Libertarian    p = 7.71E-93
+
+  Autopercepcion_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 9.84E-17
+    - Centre                    vs Moderate_Right_B          p = 5.18E-07
+    - Centre                    vs Progressivism             p = 2.07E-08
+    - Centre                    vs Right_Wing_Libertarian    p = 1.28E-07
+    - Left_Wing                 vs Moderate_Right_A          p = 1.27E-53
+    - Left_Wing                 vs Moderate_Right_B          p = 4.82E-94
+    - Left_Wing                 vs Progressivism             p = 9.50E-09
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.40E-90
+    - Moderate_Right_A          vs Moderate_Right_B          p = 2.35E-04
+    - Moderate_Right_A          vs Progressivism             p = 2.08E-37
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 5.51E-05
+    - Moderate_Right_B          vs Progressivism             p = 1.83E-77
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.50E-73
+
+  Autopercepcion_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 1.82E-09
+    - Centre                    vs Progressivism             p = 3.14E-08
+    - Left_Wing                 vs Moderate_Right_A          p = 4.70E-13
+    - Left_Wing                 vs Moderate_Right_B          p = 2.18E-24
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.07E-32
+    - Moderate_Right_A          vs Progressivism             p = 3.38E-12
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.71E-04
+    - Moderate_Right_B          vs Progressivism             p = 5.86E-25
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.89E-34
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  Autopercepcion_Per_Antiper:
+    - Centre                    vs Moderate_Right_B          p = 9.55E-03
+    - Centre                    vs Progressivism             p = 3.96E-07
+    - Centre                    vs Right_Wing_Libertarian    p = 1.44E-03
+    - Left_Wing                 vs Moderate_Right_B          p = 4.06E-06
+    - Left_Wing                 vs Progressivism             p = 4.67E-17
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.50E-07
+    - Moderate_Right_A          vs Progressivism             p = 4.08E-14
+    - Moderate_Right_B          vs Progressivism             p = 1.56E-47
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.08E-45
+
+  Autopercepcion_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 3.97E-09
+    - Centre                    vs Progressivism             p = 5.62E-05
+    - Centre                    vs Right_Wing_Libertarian    p = 4.94E-02
+    - Left_Wing                 vs Moderate_Right_A          p = 4.00E-11
+    - Left_Wing                 vs Moderate_Right_B          p = 2.83E-36
+    - Left_Wing                 vs Progressivism             p = 1.21E-03
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.15E-33
+    - Moderate_Right_A          vs Progressivism             p = 1.27E-06
+    - Moderate_Right_B          vs Progressivism             p = 1.61E-33
+    - Progressivism             vs Right_Wing_Libertarian    p = 5.42E-29
+
+  Autopercepcion_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 8.00E-08
+    - Centre                    vs Progressivism             p = 2.87E-06
+    - Left_Wing                 vs Moderate_Right_A          p = 1.89E-06
+    - Left_Wing                 vs Moderate_Right_B          p = 4.02E-10
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 8.57E-09
+    - Moderate_Right_A          vs Progressivism             p = 6.63E-05
+    - Moderate_Right_B          vs Progressivism             p = 3.12E-09
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.73E-07
+
+================================================================================
+12. DUNN POST-HOC: ÍNDICES
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  Indice_Progresismo:
+    - Centre                    vs Left_Wing                 p = 2.20E-17
+    - Centre                    vs Moderate_Right_B          p = 1.54E-03
+    - Centre                    vs Progressivism             p = 4.47E-20
+    - Centre                    vs Right_Wing_Libertarian    p = 6.17E-05
+    - Left_Wing                 vs Moderate_Right_A          p = 1.14E-46
+    - Left_Wing                 vs Moderate_Right_B          p = 9.35E-75
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.17E-77
+    - Moderate_Right_A          vs Moderate_Right_B          p = 1.52E-02
+    - Moderate_Right_A          vs Progressivism             p = 4.49E-61
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.74E-04
+    - Moderate_Right_B          vs Progressivism             p = 1.01E-97
+    - Progressivism             vs Right_Wing_Libertarian    p = 6.38E-99
+
+  Indice_Conservadurismo:
+    - Centre                    vs Left_Wing                 p = 1.42E-12
+    - Centre                    vs Moderate_Right_B          p = 8.27E-04
+    - Centre                    vs Progressivism             p = 1.55E-18
+    - Centre                    vs Right_Wing_Libertarian    p = 1.21E-06
+    - Left_Wing                 vs Moderate_Right_A          p = 2.37E-30
+    - Left_Wing                 vs Moderate_Right_B          p = 7.18E-62
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.94E-72
+    - Moderate_Right_A          vs Moderate_Right_B          p = 2.44E-04
+    - Moderate_Right_A          vs Progressivism             p = 1.05E-49
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 2.90E-08
+    - Moderate_Right_B          vs Progressivism             p = 7.60E-95
+    - Progressivism             vs Right_Wing_Libertarian    p = 9.11E-106
+
+  Indice_Positividad:
+    - Centre                    vs Progressivism             p = 7.62E-10
+    - Left_Wing                 vs Moderate_Right_B          p = 9.09E-06
+    - Left_Wing                 vs Progressivism             p = 3.72E-16
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.29E-02
+    - Moderate_Right_A          vs Progressivism             p = 1.96E-17
+    - Moderate_Right_B          vs Progressivism             p = 2.90E-32
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.46E-20
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  Indice_Progresismo:
+    - Centre                    vs Left_Wing                 p = 4.37E-07
+    - Centre                    vs Moderate_Right_B          p = 2.04E-02
+    - Centre                    vs Progressivism             p = 6.58E-09
+    - Centre                    vs Right_Wing_Libertarian    p = 5.76E-03
+    - Left_Wing                 vs Moderate_Right_A          p = 1.49E-14
+    - Left_Wing                 vs Moderate_Right_B          p = 7.65E-33
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.18E-32
+    - Moderate_Right_A          vs Progressivism             p = 2.47E-18
+    - Moderate_Right_B          vs Progressivism             p = 5.82E-52
+    - Progressivism             vs Right_Wing_Libertarian    p = 8.19E-48
+
+  Indice_Conservadurismo:
+    - Centre                    vs Left_Wing                 p = 3.85E-08
+    - Centre                    vs Progressivism             p = 3.66E-10
+    - Centre                    vs Right_Wing_Libertarian    p = 1.49E-02
+    - Left_Wing                 vs Moderate_Right_A          p = 1.58E-06
+    - Left_Wing                 vs Moderate_Right_B          p = 1.92E-29
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.49E-33
+    - Moderate_Right_A          vs Moderate_Right_B          p = 2.91E-02
+    - Moderate_Right_A          vs Progressivism             p = 3.12E-08
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 7.72E-04
+    - Moderate_Right_B          vs Progressivism             p = 2.04E-46
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.68E-49
+
+  Indice_Positividad:
+    - Centre                    vs Progressivism             p = 7.13E-10
+    - Left_Wing                 vs Moderate_Right_B          p = 8.22E-04
+    - Left_Wing                 vs Progressivism             p = 7.29E-10
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.15E-04
+    - Moderate_Right_A          vs Progressivism             p = 1.56E-07
+    - Moderate_Right_B          vs Progressivism             p = 2.95E-28
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.32E-27
+
+================================================================================
+13. DUNN POST-HOC: CERCANÍAS A CANDIDATOS
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  Cercania_Milei:
+    - Centre                    vs Moderate_Right_B          p = 6.75E-13
+    - Centre                    vs Right_Wing_Libertarian    p = 1.91E-61
+    - Left_Wing                 vs Moderate_Right_A          p = 1.00E-12
+    - Left_Wing                 vs Moderate_Right_B          p = 9.07E-49
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.08E-172
+    - Moderate_Right_A          vs Moderate_Right_B          p = 4.33E-09
+    - Moderate_Right_A          vs Progressivism             p = 1.31E-18
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 6.96E-73
+    - Moderate_Right_B          vs Progressivism             p = 3.95E-67
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 6.61E-33
+    - Progressivism             vs Right_Wing_Libertarian    p = 9.10E-224
+
+  Cercania_Bullrich:
+    - Centre                    vs Left_Wing                 p = 8.71E-04
+    - Centre                    vs Moderate_Right_A          p = 7.06E-07
+    - Centre                    vs Moderate_Right_B          p = 1.70E-25
+    - Centre                    vs Progressivism             p = 2.85E-08
+    - Centre                    vs Right_Wing_Libertarian    p = 3.21E-02
+    - Left_Wing                 vs Moderate_Right_A          p = 1.82E-43
+    - Left_Wing                 vs Moderate_Right_B          p = 4.68E-107
+    - Left_Wing                 vs Progressivism             p = 6.81E-03
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.59E-22
+    - Moderate_Right_A          vs Moderate_Right_B          p = 8.58E-11
+    - Moderate_Right_A          vs Progressivism             p = 4.89E-75
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 4.17E-02
+    - Moderate_Right_B          vs Progressivism             p = 1.89E-167
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 5.28E-21
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.09E-41
+
+  Cercania_Massa:
+    - Centre                    vs Moderate_Right_B          p = 6.28E-05
+    - Centre                    vs Progressivism             p = 1.21E-19
+    - Centre                    vs Right_Wing_Libertarian    p = 3.36E-06
+    - Left_Wing                 vs Moderate_Right_A          p = 8.14E-04
+    - Left_Wing                 vs Moderate_Right_B          p = 4.60E-17
+    - Left_Wing                 vs Progressivism             p = 1.09E-58
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.87E-19
+    - Moderate_Right_A          vs Moderate_Right_B          p = 9.37E-04
+    - Moderate_Right_A          vs Progressivism             p = 3.94E-62
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.26E-05
+    - Moderate_Right_B          vs Progressivism             p = 5.71E-108
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.62E-106
+
+  Cercania_Bregman:
+    - Centre                    vs Left_Wing                 p = 4.24E-30
+    - Centre                    vs Moderate_Right_B          p = 2.81E-03
+    - Centre                    vs Progressivism             p = 3.82E-07
+    - Centre                    vs Right_Wing_Libertarian    p = 4.58E-05
+    - Left_Wing                 vs Moderate_Right_A          p = 1.74E-70
+    - Left_Wing                 vs Moderate_Right_B          p = 1.80E-108
+    - Left_Wing                 vs Progressivism             p = 9.54E-41
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.66E-113
+    - Moderate_Right_A          vs Moderate_Right_B          p = 4.00E-03
+    - Moderate_Right_A          vs Progressivism             p = 1.16E-22
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 2.04E-05
+    - Moderate_Right_B          vs Progressivism             p = 2.63E-49
+    - Progressivism             vs Right_Wing_Libertarian    p = 7.52E-55
+
+  Cercania_Schiaretti:
+    - Centre                    vs Left_Wing                 p = 9.43E-33
+    - Centre                    vs Moderate_Right_A          p = 3.98E-09
+    - Centre                    vs Moderate_Right_B          p = 5.99E-09
+    - Centre                    vs Progressivism             p = 2.43E-42
+    - Centre                    vs Right_Wing_Libertarian    p = 3.21E-08
+    - Left_Wing                 vs Moderate_Right_A          p = 1.09E-12
+    - Left_Wing                 vs Moderate_Right_B          p = 2.93E-13
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 8.34E-13
+    - Moderate_Right_A          vs Progressivism             p = 5.38E-22
+    - Moderate_Right_B          vs Progressivism             p = 5.75E-23
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.80E-21
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+
+  Cercania_Milei:
+    - Centre                    vs Left_Wing                 p = 6.83E-04
+    - Centre                    vs Moderate_Right_B          p = 8.51E-04
+    - Centre                    vs Progressivism             p = 5.70E-05
+    - Centre                    vs Right_Wing_Libertarian    p = 1.09E-17
+    - Left_Wing                 vs Moderate_Right_A          p = 1.21E-03
+    - Left_Wing                 vs Moderate_Right_B          p = 2.24E-28
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.36E-66
+    - Moderate_Right_A          vs Moderate_Right_B          p = 2.63E-04
+    - Moderate_Right_A          vs Progressivism             p = 1.06E-04
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 5.20E-19
+    - Moderate_Right_B          vs Progressivism             p = 4.60E-45
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 6.63E-10
+    - Progressivism             vs Right_Wing_Libertarian    p = 9.11E-99
+
+  Cercania_Massa:
+    - Centre                    vs Moderate_Right_B          p = 2.74E-03
+    - Centre                    vs Progressivism             p = 5.20E-08
+    - Centre                    vs Right_Wing_Libertarian    p = 1.63E-03
+    - Left_Wing                 vs Moderate_Right_B          p = 1.89E-08
+    - Left_Wing                 vs Progressivism             p = 7.74E-17
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.24E-08
+    - Moderate_Right_A          vs Progressivism             p = 2.71E-14
+    - Moderate_Right_B          vs Progressivism             p = 6.78E-55
+    - Progressivism             vs Right_Wing_Libertarian    p = 3.43E-48
+
+################################################################################
+# SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY)
+################################################################################
+
+================================================================================
+14. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA
+================================================================================
+
+Comparación Congruente vs Incongruente (mismo participante)
+
+Definiciones:
+  CONGRUENTE: Ítems Progresistas→Izq + Conservadores→Der
+  INCONGRUENTE: Ítems Progresistas→Der + Conservadores→Izq
+
+14.1 ANÁLISIS GENERAL (Todas las poblaciones)
+--------------------------------------------------
+
+  Generales - CO Congruente vs Incongruente:
+    n pareados         = 2786
+    Media Congruente   = 0.1138
+    Media Incongruente = -0.1025
+    Estadístico W      = 647010.0000
+    p-valor            = 1.08E-41 (***)
+    --> DIFERENCIA SIGNIFICATIVA
+
+  Generales - CT Congruente vs Incongruente:
+    n pareados         = 2786
+    Media Congruente   = -2.8835
+    Media Incongruente = -2.6800
+    Estadístico W      = 1568322.5000
+    p-valor            = 2.09E-18 (***)
+    --> DIFERENCIA SIGNIFICATIVA
+
+  Ballotage - CO Congruente vs Incongruente:
+    n pareados         = 1254
+    Media Congruente   = 0.0482
+    Media Incongruente = -0.0320
+    Estadístico W      = 169215.5000
+    p-valor            = 1.18E-02 (*)
+    --> DIFERENCIA SIGNIFICATIVA
+
+  Ballotage - CT Congruente vs Incongruente:
+    n pareados         = 1254
+    Media Congruente   = -2.6245
+    Media Incongruente = -2.4041
+    Estadístico W      = 335302.0000
+    p-valor            = 5.82E-06 (***)
+    --> DIFERENCIA SIGNIFICATIVA
+
+14.2 ANÁLISIS POR CATEGORÍA
+--------------------------------------------------
+
+  Generales:
+
+    CO - Comparaciones significativas:
+      - Left Wing                 p = 3.51E-08 (***)
+      - Progressivism             p = 7.85E-24 (***)
+      - Moderate Right A          p = 1.19E-02 (*)
+      - Moderate Right B          p = 1.50E-02 (*)
+      - Right Wing Libertarian    p = 1.86E-03 (**)
+
+    CT - Comparaciones significativas:
+      - Left Wing                 p = 4.98E-07 (***)
+      - Progressivism             p = 2.25E-10 (***)
+      - Right Wing Libertarian    p = 4.16E-03 (**)
+
+  Ballotage:
+
+    CO - Comparaciones significativas:
+      - Progressivism             p = 8.37E-03 (**)
+
+    CT - Comparaciones significativas:
+      - Progressivism             p = 8.30E-04 (***)
+      - Moderate Right B          p = 3.39E-02 (*)
+
+================================================================================
+15. WILCOXON PAREADO: IZQ VS DER POR ÍTEM
+================================================================================
+
+Compara CO_Item_X_Izq vs CO_Item_X_Der (mismo participante)
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Ítems con diferencia significativa: 18/20
+
+Ítems significativos (Izq ≠ Der):
+  Item 24 (Progresista ): Δ = +0.3511, p = 6.29E-17 (***)
+  Item 27 (Progresista ): Δ = +0.3124, p = 4.39E-15 (***)
+  Item 16 (Progresista ): Δ = +0.2844, p = 2.12E-12 (***)
+  Item  6 (Progresista ): Δ = +0.2557, p = 8.62E-12 (***)
+  Item 28 (Progresista ): Δ = +0.2544, p = 2.13E-11 (***)
+  Item  9 (Progresista ): Δ = +0.2856, p = 5.52E-11 (***)
+  Item 23 (Conservador ): Δ = -0.2697, p = 6.71E-11 (***)
+  Item 10 (Conservador ): Δ = -0.2525, p = 9.90E-11 (***)
+  Item 11 (Progresista ): Δ = +0.2340, p = 8.08E-10 (***)
+  Item  3 (Conservador ): Δ = -0.2140, p = 7.91E-09 (***)
+  Item  8 (Conservador ): Δ = -0.2145, p = 1.45E-08 (***)
+  Item 20 (Progresista ): Δ = +0.2312, p = 1.86E-08 (***)
+  Item  5 (Progresista ): Δ = +0.1760, p = 2.18E-07 (***)
+  Item 19 (Conservador ): Δ = -0.1807, p = 2.55E-07 (***)
+  Item  4 (Conservador ): Δ = -0.1896, p = 3.41E-07 (***)
+  Item 25 (Progresista ): Δ = +0.1857, p = 8.38E-07 (***)
+  Item  7 (Conservador ): Δ = -0.1617, p = 1.21E-06 (***)
+  Item 29 (Conservador ): Δ = -0.2004, p = 1.52E-06 (***)
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Ítems con diferencia significativa: 8/20
+
+Ítems significativos (Izq ≠ Der):
+  Item 27 (Progresista ): Δ = +0.2009, p = 1.21E-03 (**)
+  Item 20 (Progresista ): Δ = +0.1934, p = 1.30E-03 (**)
+  Item 28 (Progresista ): Δ = +0.1554, p = 1.70E-03 (**)
+  Item 29 (Conservador ): Δ = -0.1698, p = 2.54E-03 (**)
+  Item 24 (Progresista ): Δ = +0.1369, p = 9.15E-03 (**)
+  Item  6 (Progresista ): Δ = +0.1631, p = 1.16E-02 (*)
+  Item  7 (Conservador ): Δ = -0.1440, p = 1.48E-02 (*)
+  Item 23 (Conservador ): Δ = -0.1465, p = 1.50E-02 (*)
+
+================================================================================
+16. MANN-WHITNEY U: GENERALES VS BALLOTAGE
+================================================================================
+
+Comparación de variables entre ambas elecciones (no pareado)
+
+Variables con diferencias significativas:
+
+  CO_Congruente:
+    n Generales  = 2786, Media = 0.1138
+    n Ballotage  = 1254, Media = 0.0482
+    U = 1836922.5000, p = 7.92E-03 (**)
+
+  CO_Incongruente:
+    n Generales  = 2786, Media = -0.1025
+    n Ballotage  = 1254, Media = -0.0320
+    U = 1621727.0000, p = 2.28E-04 (***)
+
+  CO_Pro_Izq:
+    n Generales  = 2783, Media = 0.0124
+    n Ballotage  = 1252, Media = -0.0675
+    U = 1846618.0000, p = 1.78E-03 (**)
+
+  CO_Con_Izq:
+    n Generales  = 2780, Media = 0.0374
+    n Ballotage  = 1251, Media = 0.1108
+    U = 1652419.0000, p = 6.23E-03 (**)
+
+  CT_Pro_Izq:
+    n Generales  = 2783, Media = -3.6771
+    n Ballotage  = 1252, Media = -3.1621
+    U = 1651924.0000, p = 8.39E-03 (**)
+
+Variables sin diferencias significativas:
+  CT_Congruente        U = 1695846.0000, p = 1.37E-01
+  CT_Incongruente      U = 1745176.5000, p = 9.62E-01
+  CO_Pro_Der           U = 1678270.5000, p = 5.67E-02
+  CO_Con_Der           U = 1780083.0000, p = 1.99E-01
+  CT_Con_Izq           U = 1700307.5000, p = 2.59E-01
+  CT_Pro_Der           U = 1770391.0000, p = 4.10E-01
+  CT_Con_Der           U = 1717493.0000, p = 5.31E-01
+
+================================================================================
+RESUMEN DE RESULTADOS
+================================================================================
+
+Generales:
+----------------------------------------
+  KW CO Items            : 11/40 sig.
+  KW CT Items            : 14/40 sig.
+  KW Agregadas           : 4/12 sig.
+  KW Autopercepciones    : 3/3 sig.
+  KW Índices             : 3/3 sig.
+  KW Cercanías           : 5/5 sig.
+
+Ballotage:
+----------------------------------------
+  KW CO Items            : 9/40 sig.
+  KW CT Items            : 5/40 sig.
+  KW Agregadas           : 2/12 sig.
+  KW Autopercepciones    : 3/3 sig.
+  KW Índices             : 3/3 sig.
+  KW Cercanías           : 2/2 sig.
+
+Wilcoxon Congruencia (General):
+----------------------------------------
+  Generales CO: p = 1.08E-41 (***)
+  Generales CT: p = 2.09E-18 (***)
+  Ballotage CO: p = 1.18E-02 (*)
+  Ballotage CT: p = 5.82E-06 (***)
+
+Mann-Whitney Generales vs Ballotage: 5/12 significativas
+
+================================================================================
+FIN DEL REPORTE
+================================================================================

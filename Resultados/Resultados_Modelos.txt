@@ -1,0 +1,1662 @@
+================================================================================
+RESULTADOS DE MODELOS ESTADÍSTICOS
+Proyecto de Tesis - Experimento Electoral Argentina 2023
+================================================================================
+
+################################################################################
+# SECCIÓN 1: MODELOS ROBUSTOS (OLS CON ERRORES HC3)
+################################################################################
+
+Regresión lineal con errores estándar robustos (HC3)
+Eliminación secuencial basada en AIC y VIF
+
+================================================================================
+MODELOS ROBUSTOS - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Congruente
+--------------------------------------------------------------------------------
+N observaciones: 2786
+R² ajustado: 0.0532
+AIC: 4136.70
+BIC: 4243.49
+F-estadístico: 8.0725
+p-valor modelo: 2.77E-20
+Parámetro escala robusto: 0.256789
+Iteraciones: 34
+
+Variables significativas: 6
+
+  Edad                                     β =   0.0029  p = 0.0068
+  Red_Social_Facebook                      β =  -0.0418  p = 0.0386
+  Influencia_Prensa                        β =  -0.0191  p = 0.0463
+  Indice_Progresismo                       β =  -0.1745  p = 1.02E-18
+  Indice_Conservadurismo                   β =  -0.2359  p = 2.17E-16
+  Indice_Conservadurismo_Tiempo            β =  -0.0029  p = 0.0293
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 8.73E-05
+  Durbin-Watson: 1.956
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Incongruente
+--------------------------------------------------------------------------------
+N observaciones: 2786
+R² ajustado: 0.0419
+AIC: 3924.06
+BIC: 3989.31
+F-estadístico: 10.6121
+p-valor modelo: 7.52E-18
+Parámetro escala robusto: 0.238514
+Iteraciones: 41
+
+Variables significativas: 6
+
+  Conservative_Cluster                     β =  -0.0841  p = 0.0152
+  Autopercepcion_Per_Antiper               β =  -0.0088  p = 0.0433
+  Red_Social_Facebook                      β =   0.0456  p = 0.0155
+  Indice_Positividad                       β =  -0.0064  p = 0.0417
+  Indice_Progresismo                       β =  -0.1732  p = 1.72E-21
+  Indice_Conservadurismo                   β =  -0.1962  p = 1.21E-12
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.4006
+  Durbin-Watson: 1.992
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Congruente
+--------------------------------------------------------------------------------
+N observaciones: 2786
+R² ajustado: 0.3119
+AIC: 18226.33
+BIC: 18261.93
+F-estadístico: 12.4369
+p-valor modelo: 5.86E-12
+Parámetro escala robusto: 40.531790
+Iteraciones: 46
+
+Variables significativas: 4
+
+  Edad                                     β =   0.0391  p = 5.31E-04
+  Red_Social_Tiktok                        β =   0.7539  p = 0.0213
+  Indice_Progresismo_Tiempo                β =  -0.3177  p = 0.0010
+  Indice_Conservadurismo_Tiempo            β =  -0.4118  p = 9.83E-05
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 2.61E-56
+  Durbin-Watson: 2.023
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Incongruente
+--------------------------------------------------------------------------------
+N observaciones: 2786
+R² ajustado: 0.3694
+AIC: 17726.82
+BIC: 17792.08
+F-estadístico: 11.3208
+p-valor modelo: 3.17E-19
+Parámetro escala robusto: 33.818406
+Iteraciones: 41
+
+Variables significativas: 6
+
+  Edad                                     β =   0.0298  p = 0.0018
+  Red_Social_Threads                       β =  -1.4833  p = 4.76E-05
+  Medios_Prensa_Prensa_Obrera              β =   0.7904  p = 0.0433
+  Medios_Prensa_Popular                    β =   0.9495  p = 0.0067
+  Indice_Progresismo_Tiempo                β =  -0.4107  p = 1.49E-08
+  Indice_Conservadurismo_Tiempo            β =  -0.3280  p = 6.84E-04
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 1.36E-55
+  Durbin-Watson: 1.986
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro
+--------------------------------------------------------------------------------
+N observaciones: 2783
+R² ajustado: 0.0642
+AIC: 5268.98
+BIC: 5363.88
+F-estadístico: 11.5506
+p-valor modelo: 5.02E-28
+Parámetro escala robusto: 0.386611
+Iteraciones: 36
+
+Variables significativas: 6
+
+  Conservative_Cluster                     β =  -0.1316  p = 0.0018
+  Edad                                     β =   0.0026  p = 0.0392
+  Autopercepcion_Con_Pro                   β =   0.0156  p = 0.0127
+  Autopercepcion_Per_Antiper               β =  -0.0134  p = 0.0203
+  Indice_Progresismo                       β =  -0.3094  p = 1.07E-33
+  Indice_Conservadurismo                   β =  -0.1310  p = 3.82E-04
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 5.09E-189
+  Breusch-Pagan (heterocedasticidad): p = 0.1137
+  Durbin-Watson: 1.960
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con
+--------------------------------------------------------------------------------
+N observaciones: 2780
+R² ajustado: 0.0537
+AIC: 4738.61
+BIC: 4821.64
+F-estadístico: 9.7620
+p-valor modelo: 2.80E-20
+Parámetro escala robusto: 0.320343
+Iteraciones: 38
+
+Variables significativas: 4
+
+  Red_Social_Tiktok                        β =   0.0589  p = 0.0297
+  Medios_Prensa_Clarin                     β =   0.0611  p = 0.0288
+  Medios_Prensa_Pagina_12                  β =  -0.0560  p = 0.0233
+  Indice_Conservadurismo                   β =  -0.3166  p = 1.66E-21
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.0216
+  Durbin-Watson: 2.003
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Der
+--------------------------------------------------------------------------------
+N observaciones: 2783
+R² ajustado: 0.0457
+AIC: 6989.82
+BIC: 7061.00
+F-estadístico: 12.8588
+p-valor modelo: 3.82E-24
+Parámetro escala robusto: 0.718518
+Iteraciones: 40
+
+Variables significativas: 6
+
+  Conservative_Cluster                     β =  -0.1447  p = 0.0018
+  Autopercepcion_Per_Antiper               β =  -0.0179  p = 0.0136
+  Red_Social_Facebook                      β =   0.1082  p = 9.16E-04
+  Indice_Positividad                       β =  -0.0120  p = 0.0304
+  Indice_Progresismo                       β =  -0.3152  p = 1.22E-24
+  Indice_Conservadurismo                   β =  -0.1275  p = 0.0051
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 1.24E-08
+  Durbin-Watson: 1.935
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Der
+--------------------------------------------------------------------------------
+N observaciones: 2780
+R² ajustado: 0.0390
+AIC: 6636.00
+BIC: 6724.95
+F-estadístico: 8.4911
+p-valor modelo: 2.85E-18
+Parámetro escala robusto: 0.633682
+Iteraciones: 37
+
+Variables significativas: 7
+
+  Edad                                     β =   0.0036  p = 0.0355
+  Autopercepcion_Izq_Der                   β =   0.0306  p = 0.0018
+  Cercania_Milei                           β =   0.0551  p = 0.0041
+  Red_Social_Facebook                      β =  -0.0628  p = 0.0473
+  Medios_Prensa_Clarin                     β =   0.0976  p = 0.0124
+  Indice_Conservadurismo                   β =  -0.3597  p = 7.57E-20
+  Indice_Conservadurismo_Tiempo            β =  -0.0046  p = 0.0334
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 1.46E-05
+  Durbin-Watson: 1.968
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Izq
+--------------------------------------------------------------------------------
+N observaciones: 2783
+R² ajustado: 0.0564
+AIC: 5645.62
+BIC: 5764.24
+F-estadístico: 7.1972
+p-valor modelo: 2.68E-19
+Parámetro escala robusto: 0.442007
+Iteraciones: 32
+
+Variables significativas: 11
+
+  Conservative_Cluster                     β =  -0.1059  p = 0.0494
+  Voto_2019_J_Gomez_Centurion              β =  -0.5722  p = 0.0147
+  Categoria_PASO_2023_Left_Wing            β =   0.0830  p = 0.0164
+  Autopercepcion_Con_Pro                   β =   0.0182  p = 0.0067
+  Cercania_Massa                           β =   0.0280  p = 0.0154
+  Red_Social_Tiktok                        β =  -0.0714  p = 0.0368
+  Influencia_Prensa                        β =  -0.0276  p = 0.0180
+  Medios_Prensa_Pagina_12                  β =   0.0576  p = 0.0480
+  Medios_Prensa_El_Cronista                β =  -0.0947  p = 0.0463
+  Indice_Progresismo                       β =  -0.3084  p = 1.76E-25
+  Indice_Conservadurismo                   β =  -0.1373  p = 0.0012
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 6.98E-08
+  Durbin-Watson: 1.968
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Izq
+--------------------------------------------------------------------------------
+N observaciones: 2780
+R² ajustado: 0.0439
+AIC: 4740.35
+BIC: 4817.45
+F-estadístico: 7.2710
+p-valor modelo: 2.85E-13
+Parámetro escala robusto: 0.320658
+Iteraciones: 39
+
+Variables significativas: 4
+
+  Autopercepcion_Con_Pro                   β =  -0.0122  p = 0.0233
+  Red_Social_Tiktok                        β =   0.0605  p = 0.0294
+  Medios_Prensa_Prensa_Obrera              β =  -0.0860  p = 0.0035
+  Indice_Conservadurismo                   β =  -0.2642  p = 2.91E-14
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 2.97E-04
+  Durbin-Watson: 1.990
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_5_Izq
+--------------------------------------------------------------------------------
+N observaciones: 943
+R² ajustado: 0.0744
+AIC: 2708.59
+BIC: 2810.42
+F-estadístico: 3.8633
+p-valor modelo: 2.81E-08
+Parámetro escala robusto: 1.012496
+Iteraciones: 31
+
+Variables significativas: 8
+
+  Edad                                     β =   0.0078  p = 0.0265
+  Genero_Masculino                         β =  -0.3058  p = 6.52E-04
+  Region_CABA                              β =   0.1657  p = 0.0320
+  Voto_2019_Mauricio_Macri                 β =   0.2469  p = 0.0485
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.3952  p = 0.0182
+  Categoria_PASO_2023_Moderate_Right_B     β =  -0.3844  p = 0.0206
+  Indice_Progresismo                       β =  -0.3269  p = 1.73E-04
+  Indice_Conservadurismo                   β =  -0.2948  p = 0.0060
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 8.49E-114
+  Breusch-Pagan (heterocedasticidad): p = 0.0052
+  Durbin-Watson: 2.060
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1034
+R² ajustado: 0.0430
+AIC: 3011.78
+BIC: 3071.07
+F-estadístico: 3.7244
+p-valor modelo: 3.12E-05
+Parámetro escala robusto: 1.065381
+Iteraciones: 40
+
+Variables significativas: 5
+
+  Progressive_Cluster                      β =   0.1885  p = 0.0304
+  Categoria_PASO_2023_Centre               β =  -0.5453  p = 9.97E-04
+  Autopercepcion_Con_Pro                   β =   0.0441  p = 0.0079
+  Influencia_Prensa                        β =  -0.0735  p = 0.0074
+  Indice_Progresismo                       β =  -0.3657  p = 5.28E-06
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 8.29E-225
+  Breusch-Pagan (heterocedasticidad): p = 2.49E-07
+  Durbin-Watson: 1.939
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_9_Izq
+--------------------------------------------------------------------------------
+N observaciones: 984
+R² ajustado: 0.0363
+AIC: 2964.85
+BIC: 3038.23
+F-estadístico: 3.1208
+p-valor modelo: 8.57E-05
+Parámetro escala robusto: 1.173577
+Iteraciones: 37
+
+Variables significativas: 8
+
+  Categoria_PASO_2023_Left_Wing            β =   0.2168  p = 0.0175
+  Categoria_PASO_2023_Centre               β =  -0.5178  p = 0.0255
+  Cercania_Massa                           β =   0.0699  p = 0.0429
+  Medios_Prensa_Diario_Universal           β =   0.7868  p = 0.0217
+  Medios_Prensa_Popular                    β =  -0.2952  p = 0.0323
+  Medios_Prensa_Clarin                     β =  -0.2067  p = 0.0310
+  Medios_Prensa_Pagina_12                  β =   0.1603  p = 0.0494
+  Indice_Progresismo                       β =  -0.1953  p = 0.0177
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 9.62E-207
+  Breusch-Pagan (heterocedasticidad): p = 5.71E-05
+  Durbin-Watson: 2.093
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_24_Izq
+--------------------------------------------------------------------------------
+N observaciones: 917
+R² ajustado: 0.0509
+AIC: 2712.63
+BIC: 2760.85
+F-estadístico: 4.8124
+p-valor modelo: 2.69E-06
+Parámetro escala robusto: 1.115653
+Iteraciones: 42
+
+Variables significativas: 5
+
+  Edad                                     β =   0.0089  p = 0.0270
+  Categoria_PASO_2023_Moderate_Right_A     β =   0.3478  p = 0.0166
+  Autopercepcion_Izq_Der                   β =   0.0434  p = 0.0490
+  Medios_Prensa_El_Cronista                β =  -0.2841  p = 0.0129
+  Indice_Progresismo                       β =  -0.1252  p = 0.0390
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 4.52E-78
+  Breusch-Pagan (heterocedasticidad): p = 0.1423
+  Durbin-Watson: 1.939
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_8_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1007
+R² ajustado: 0.0562
+AIC: 2419.02
+BIC: 2478.00
+F-estadístico: 3.0624
+p-valor modelo: 4.74E-04
+Parámetro escala robusto: 0.639214
+Iteraciones: 40
+
+Variables significativas: 5
+
+  Region_Cuyo                              β =  -0.1910  p = 0.0296
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.2446  p = 0.0471
+  Autopercepcion_Per_Antiper               β =   0.0378  p = 0.0185
+  Red_Social_Telegram                      β =  -0.1160  p = 0.0490
+  Indice_Conservadurismo                   β =  -0.2665  p = 0.0019
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.0023
+  Durbin-Watson: 1.998
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1005
+R² ajustado: 0.0613
+AIC: 3098.52
+BIC: 3152.56
+F-estadístico: 5.7890
+p-valor modelo: 1.66E-08
+Parámetro escala robusto: 1.264075
+Iteraciones: 41
+
+Variables significativas: 3
+
+  Categoria_PASO_2023_Right_Wing_Libertarian β =   0.5367  p = 0.0041
+  Medios_Prensa_Clarin                     β =   0.1946  p = 0.0236
+  Indice_Conservadurismo                   β =  -0.6285  p = 6.24E-09
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 6.65E-51
+  Breusch-Pagan (heterocedasticidad): p = 0.7161
+  Durbin-Watson: 2.006
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_7_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1002
+R² ajustado: 0.0835
+AIC: 1981.43
+BIC: 2050.17
+F-estadístico: 2.9997
+p-valor modelo: 2.44E-04
+Parámetro escala robusto: 0.417164
+Iteraciones: 38
+
+Variables significativas: 6
+
+  Conservative_Cluster                     β =   0.2616  p = 0.0074
+  Voto_2019_Mauricio_Macri                 β =   0.2242  p = 0.0136
+  Categoria_PASO_2023_Left_Wing            β =   0.1633  p = 0.0116
+  Cercania_Massa                           β =   0.0402  p = 0.0411
+  Cercania_Milei                           β =  -0.1732  p = 3.90E-05
+  Indice_Conservadurismo                   β =   0.2191  p = 0.0111
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 1.10E-04
+  Durbin-Watson: 1.947
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_3_Izq
+--------------------------------------------------------------------------------
+N observaciones: 986
+R² ajustado: 0.0527
+AIC: 2411.63
+BIC: 2480.14
+F-estadístico: 2.6302
+p-valor modelo: 0.0013
+Parámetro escala robusto: 0.666244
+Iteraciones: 38
+
+Variables significativas: 3
+
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.2673  p = 0.0056
+  Medios_Prensa_Prensa_Obrera              β =  -0.2853  p = 0.0054
+  Medios_Prensa_Popular                    β =  -0.2254  p = 0.0410
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 7.18E-04
+  Durbin-Watson: 2.042
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_10_Izq
+--------------------------------------------------------------------------------
+N observaciones: 990
+R² ajustado: 0.0613
+AIC: 2946.41
+BIC: 3014.98
+F-estadístico: 5.1205
+p-valor modelo: 7.30E-09
+Parámetro escala robusto: 1.132302
+Iteraciones: 38
+
+Variables significativas: 8
+
+  Conservative_Cluster                     β =  -0.4459  p = 1.12E-04
+  Progressive_Cluster                      β =  -0.1596  p = 0.0179
+  Voto_2019_Mauricio_Macri                 β =   0.3117  p = 0.0124
+  Red_Social_Instagram                     β =  -0.2930  p = 0.0350
+  Medios_Prensa_Diario_Universal           β =  -0.8375  p = 0.0309
+  Medios_Prensa_Izquierda_Diario           β =  -0.2307  p = 0.0119
+  Medios_Prensa_Infobae                    β =   0.1503  p = 0.0305
+  Indice_Conservadurismo                   β =  -0.5352  p = 1.49E-07
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 1.59E-103
+  Breusch-Pagan (heterocedasticidad): p = 0.2862
+  Durbin-Watson: 2.038
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Der
+--------------------------------------------------------------------------------
+N observaciones: 1005
+R² ajustado: 0.0748
+AIC: 3059.10
+BIC: 3127.87
+F-estadístico: 5.3673
+p-valor modelo: 2.04E-09
+Parámetro escala robusto: 1.211873
+Iteraciones: 38
+
+Variables significativas: 7
+
+  Conservative_Cluster                     β =  -0.2753  p = 0.0121
+  Autopercepcion_Con_Pro                   β =  -0.0460  p = 0.0145
+  Cercania_Milei                           β =   0.1297  p = 0.0174
+  Medios_Prensa_Perfil                     β =   0.3425  p = 0.0079
+  Medios_Prensa_Infobae                    β =  -0.1691  p = 0.0366
+  Medios_Prensa_El_Cronista                β =  -0.3081  p = 0.0259
+  Indice_Conservadurismo                   β =  -0.6650  p = 1.76E-09
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 9.47E-45
+  Breusch-Pagan (heterocedasticidad): p = 0.4633
+  Durbin-Watson: 2.052
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_10_Der
+--------------------------------------------------------------------------------
+N observaciones: 990
+R² ajustado: 0.0524
+AIC: 3167.40
+BIC: 3231.07
+F-estadístico: 4.8683
+p-valor modelo: 7.81E-08
+Parámetro escala robusto: 1.416902
+Iteraciones: 39
+
+Variables significativas: 8
+
+  Conservative_Cluster                     β =  -0.2420  p = 0.0228
+  Region_Norte                             β =  -0.4480  p = 0.0074
+  Categoria_PASO_2023_Moderate_Right_A     β =   0.4788  p = 0.0021
+  Cercania_Milei                           β =   0.1361  p = 0.0146
+  Red_Social_Telegram                      β =   0.2052  p = 0.0453
+  Medios_Prensa_Tiempo_Argentino           β =  -0.2195  p = 0.0397
+  Indice_Progresismo                       β =  -0.2738  p = 0.0030
+  Indice_Conservadurismo                   β =  -0.6667  p = 3.90E-08
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 1.89E-93
+  Breusch-Pagan (heterocedasticidad): p = 0.3292
+  Durbin-Watson: 2.026
+
+================================================================================
+MODELOS ROBUSTOS - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Congruente
+--------------------------------------------------------------------------------
+N observaciones: 1254
+R² ajustado: 0.0525
+AIC: 1663.43
+BIC: 1714.77
+F-estadístico: 8.0634
+p-valor modelo: 1.09E-11
+Parámetro escala robusto: 0.218861
+Iteraciones: 42
+
+Variables significativas: 5
+
+  Categoria_PASO_2023_Centre               β =   0.1606  p = 0.0157
+  Cercania_Milei                           β =  -0.0445  p = 0.0208
+  Medios_Prensa_Prensa_Obrera              β =   0.0989  p = 0.0467
+  Indice_Progresismo                       β =  -0.1667  p = 8.41E-11
+  Indice_Conservadurismo                   β =  -0.1882  p = 2.14E-06
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 3.11E-304
+  Breusch-Pagan (heterocedasticidad): p = 0.1139
+  Durbin-Watson: 1.930
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Incongruente
+--------------------------------------------------------------------------------
+N observaciones: 1254
+R² ajustado: 0.0717
+AIC: 1701.30
+BIC: 1788.58
+F-estadístico: 5.8068
+p-valor modelo: 2.41E-12
+Parámetro escala robusto: 0.224330
+Iteraciones: 35
+
+Variables significativas: 5
+
+  Voto_2019_Roberto_Lavagna                β =  -0.2792  p = 0.0025
+  Autopercepcion_Izq_Der                   β =   0.0178  p = 0.0292
+  Autopercepcion_Per_Antiper               β =  -0.0142  p = 0.0264
+  Indice_Progresismo                       β =  -0.1603  p = 1.46E-09
+  Indice_Conservadurismo                   β =  -0.2426  p = 2.18E-10
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 1.84E-202
+  Breusch-Pagan (heterocedasticidad): p = 0.6783
+  Durbin-Watson: 1.942
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Congruente
+--------------------------------------------------------------------------------
+N observaciones: 1254
+R² ajustado: 0.2988
+AIC: 6906.99
+BIC: 6989.13
+F-estadístico: 14.8167
+p-valor modelo: 1.64E-35
+Parámetro escala robusto: 14.259331
+Iteraciones: 36
+
+Variables significativas: 7
+
+  Edad                                     β =   0.0406  p = 0.0017
+  Categoria_PASO_2023_Left_Wing            β =   0.9334  p = 0.0482
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.7253  p = 0.0392
+  Categoria_PASO_2023_Right_Wing_Libertarian β =   1.1428  p = 0.0146
+  Autopercepcion_Per_Antiper               β =  -0.0934  p = 0.0420
+  Indice_Progresismo_Tiempo                β =  -0.3558  p = 1.34E-04
+  Indice_Conservadurismo_Tiempo            β =  -0.1836  p = 0.0267
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 2.40E-16
+  Durbin-Watson: 1.993
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Incongruente
+--------------------------------------------------------------------------------
+N observaciones: 1254
+R² ajustado: 0.2990
+AIC: 6894.82
+BIC: 6987.23
+F-estadístico: 13.4044
+p-valor modelo: 2.31E-35
+Parámetro escala robusto: 14.099416
+Iteraciones: 34
+
+Variables significativas: 8
+
+  Edad                                     β =   0.0527  p = 3.93E-04
+  Region_Patagonia                         β =  -1.3377  p = 0.0128
+  Categoria_PASO_2023_Right_Wing_Libertarian β =   1.0480  p = 0.0384
+  Autopercepcion_Per_Antiper               β =  -0.0983  p = 0.0444
+  Influencia_Prensa                        β =  -0.1956  p = 0.0334
+  Indice_Positividad                       β =   0.0623  p = 0.0403
+  Indice_Progresismo_Tiempo                β =  -0.3584  p = 1.33E-05
+  Indice_Conservadurismo_Tiempo            β =  -0.1639  p = 0.0354
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 1.77E-17
+  Durbin-Watson: 2.028
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro
+--------------------------------------------------------------------------------
+N observaciones: 1252
+R² ajustado: 0.0966
+AIC: 2412.14
+BIC: 2509.66
+F-estadístico: 6.2465
+p-valor modelo: 6.53E-15
+Parámetro escala robusto: 0.396013
+Iteraciones: 33
+
+Variables significativas: 10
+
+  Region_CABA                              β =   0.0946  p = 0.0496
+  Voto_2019_J_Gomez_Centurion              β =  -0.5036  p = 0.0258
+  Voto_2019_Roberto_Lavagna                β =  -0.3373  p = 6.43E-04
+  Autopercepcion_Per_Antiper               β =  -0.0231  p = 0.0079
+  Cercania_Milei                           β =  -0.0599  p = 0.0078
+  Influencia_Redes                         β =  -0.0317  p = 0.0259
+  Medios_Prensa_Clarin                     β =   0.1391  p = 0.0061
+  Medios_Prensa_La_Nacion                  β =  -0.1325  p = 0.0043
+  Indice_Progresismo                       β =  -0.3156  p = 7.92E-17
+  Indice_Conservadurismo                   β =  -0.0853  p = 0.0437
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 7.37E-136
+  Breusch-Pagan (heterocedasticidad): p = 0.8029
+  Durbin-Watson: 1.997
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con
+--------------------------------------------------------------------------------
+N observaciones: 1251
+R² ajustado: 0.0498
+AIC: 2224.54
+BIC: 2270.73
+F-estadístico: 8.7456
+p-valor modelo: 1.11E-11
+Parámetro escala robusto: 0.344096
+Iteraciones: 43
+
+Variables significativas: 2
+
+  Autopercepcion_Izq_Der                   β =   0.0241  p = 0.0221
+  Indice_Conservadurismo                   β =  -0.2278  p = 5.94E-10
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 8.97E-244
+  Breusch-Pagan (heterocedasticidad): p = 0.1192
+  Durbin-Watson: 1.941
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Der
+--------------------------------------------------------------------------------
+N observaciones: 1252
+R² ajustado: 0.0809
+AIC: 2876.47
+BIC: 2979.12
+F-estadístico: 5.3381
+p-valor modelo: 1.17E-12
+Parámetro escala robusto: 0.573372
+Iteraciones: 32
+
+Variables significativas: 9
+
+  Region_CABA                              β =   0.1168  p = 0.0399
+  Voto_2019_J_Gomez_Centurion              β =  -0.5078  p = 0.0091
+  Voto_2019_Roberto_Lavagna                β =  -0.5303  p = 5.16E-04
+  Autopercepcion_Per_Antiper               β =  -0.0261  p = 0.0152
+  Cercania_Massa                           β =  -0.0450  p = 0.0385
+  Medios_Prensa_Clarin                     β =   0.1258  p = 0.0368
+  Medios_Prensa_La_Nacion                  β =  -0.1759  p = 0.0019
+  Indice_Progresismo                       β =  -0.3123  p = 1.03E-12
+  Indice_Conservadurismo                   β =  -0.1338  p = 0.0222
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.4145
+  Durbin-Watson: 1.977
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Der
+--------------------------------------------------------------------------------
+N observaciones: 1251
+R² ajustado: 0.0315
+AIC: 2777.88
+BIC: 2808.67
+F-estadístico: 9.3569
+p-valor modelo: 9.16E-09
+Parámetro escala robusto: 0.536797
+Iteraciones: 46
+
+Variables significativas: 2
+
+  Autopercepcion_Izq_Der                   β =   0.0262  p = 0.0460
+  Indice_Conservadurismo                   β =  -0.2243  p = 5.55E-08
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.1166
+  Durbin-Watson: 1.965
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1252
+R² ajustado: 0.0727
+AIC: 2708.18
+BIC: 2780.04
+F-estadístico: 5.6119
+p-valor modelo: 4.82E-10
+Parámetro escala robusto: 0.503632
+Iteraciones: 38
+
+Variables significativas: 7
+
+  Voto_2019_Roberto_Lavagna                β =  -0.2144  p = 0.0431
+  Categoria_PASO_2023_Centre               β =   0.1815  p = 0.0482
+  Autopercepcion_Per_Antiper               β =  -0.0236  p = 0.0050
+  Cercania_Milei                           β =  -0.0818  p = 0.0017
+  Influencia_Redes                         β =  -0.0424  p = 0.0078
+  Medios_Prensa_Clarin                     β =   0.1465  p = 0.0099
+  Indice_Progresismo                       β =  -0.3041  p = 9.03E-13
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 8.07E-278
+  Breusch-Pagan (heterocedasticidad): p = 0.1207
+  Durbin-Watson: 2.001
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Izq
+--------------------------------------------------------------------------------
+N observaciones: 1251
+R² ajustado: 0.0553
+AIC: 2458.95
+BIC: 2535.93
+F-estadístico: 4.9126
+p-valor modelo: 6.04E-09
+Parámetro escala robusto: 0.413042
+Iteraciones: 37
+
+Variables significativas: 8
+
+  Genero_Masculino                         β =  -0.1068  p = 0.0196
+  Voto_2019_J_Gomez_Centurion              β =   0.4260  p = 0.0079
+  Autopercepcion_Izq_Der                   β =   0.0224  p = 0.0476
+  Influencia_Redes                         β =   0.0382  p = 0.0190
+  Red_Social_Threads                       β =   0.1874  p = 0.0119
+  Medios_Prensa_Pagina_12                  β =  -0.1009  p = 0.0248
+  Indice_Conservadurismo                   β =  -0.2622  p = 1.89E-10
+  Indice_Conservadurismo_Tiempo            β =   0.0085  p = 0.0485
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.8538
+  Durbin-Watson: 2.049
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_6_Izq
+--------------------------------------------------------------------------------
+N observaciones: 469
+R² ajustado: 0.0650
+AIC: 1438.83
+BIC: 1484.49
+F-estadístico: 3.1657
+p-valor modelo: 6.15E-04
+Parámetro escala robusto: 1.229754
+Iteraciones: 41
+
+Variables significativas: 4
+
+  Conservative_Cluster                     β =  -0.3254  p = 0.0167
+  Genero_Masculino                         β =   0.2116  p = 0.0448
+  Medios_Prensa_Perfil                     β =  -0.3136  p = 0.0416
+  Indice_Progresismo                       β =  -0.2446  p = 0.0045
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 1.79E-90
+  Breusch-Pagan (heterocedasticidad): p = 0.0462
+  Durbin-Watson: 1.938
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Izq
+--------------------------------------------------------------------------------
+N observaciones: 429
+R² ajustado: 0.0912
+AIC: 1266.77
+BIC: 1319.56
+F-estadístico: 2.6263
+p-valor modelo: 0.0022
+Parámetro escala robusto: 1.088851
+Iteraciones: 39
+
+Variables significativas: 7
+
+  Region_Patagonia                         β =  -0.5978  p = 0.0153
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.5134  p = 0.0353
+  Autopercepcion_Per_Antiper               β =  -0.0514  p = 0.0497
+  Medios_Prensa_Prensa_Obrera              β =   0.4112  p = 0.0132
+  Medios_Prensa_Perfil                     β =   0.3363  p = 0.0325
+  Medios_Prensa_El_Cronista                β =  -0.4353  p = 0.0109
+  Indice_Progresismo                       β =  -0.3329  p = 0.0093
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 2.67E-97
+  Breusch-Pagan (heterocedasticidad): p = 0.0076
+  Durbin-Watson: 1.791
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Der
+--------------------------------------------------------------------------------
+N observaciones: 429
+R² ajustado: 0.0851
+AIC: 1340.47
+BIC: 1381.09
+F-estadístico: 3.4168
+p-valor modelo: 4.52E-04
+Parámetro escala robusto: 1.301783
+Iteraciones: 42
+
+Variables significativas: 3
+
+  Genero_Masculino                         β =  -0.2878  p = 0.0402
+  Autopercepcion_Per_Antiper               β =  -0.0784  p = 0.0068
+  Indice_Progresismo                       β =  -0.4120  p = 1.87E-04
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 8.39E-56
+  Breusch-Pagan (heterocedasticidad): p = 0.0996
+  Durbin-Watson: 2.048
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_11_Der
+--------------------------------------------------------------------------------
+N observaciones: 429
+R² ajustado: 0.1162
+AIC: 1351.96
+BIC: 1433.19
+F-estadístico: 2.8143
+p-valor modelo: 8.47E-05
+Parámetro escala robusto: 1.307422
+Iteraciones: 32
+
+Variables significativas: 9
+
+  Conservative_Cluster                     β =  -0.4603  p = 0.0192
+  Edad                                     β =   0.0220  p = 0.0026
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.6921  p = 0.0491
+  Categoria_PASO_2023_Centre               β =   0.6787  p = 0.0140
+  Cercania_Massa                           β =  -0.1582  p = 0.0088
+  Medios_Prensa_Popular                    β =   0.4926  p = 0.0113
+  Medios_Prensa_Pagina_12                  β =  -0.3252  p = 0.0113
+  Indice_Progresismo                       β =  -0.5960  p = 1.27E-04
+  Indice_Conservadurismo                   β =  -0.4374  p = 0.0143
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 4.49E-43
+  Breusch-Pagan (heterocedasticidad): p = 0.2315
+  Durbin-Watson: 2.085
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_29_Izq
+--------------------------------------------------------------------------------
+N observaciones: 421
+R² ajustado: 0.0888
+AIC: 1207.27
+BIC: 1235.57
+F-estadístico: 5.8518
+p-valor modelo: 7.15E-06
+Parámetro escala robusto: 1.013354
+Iteraciones: 45
+
+Variables significativas: 4
+
+  Voto_2019_Mauricio_Macri                 β =  -0.4485  p = 0.0212
+  Medios_Prensa_Infobae                    β =  -0.2657  p = 0.0078
+  Indice_Progresismo                       β =  -0.2422  p = 0.0157
+  Indice_Conservadurismo                   β =  -0.4746  p = 0.0066
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 1.11E-115
+  Breusch-Pagan (heterocedasticidad): p = 1.03E-04
+  Durbin-Watson: 2.051
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Izq
+--------------------------------------------------------------------------------
+N observaciones: 442
+R² ajustado: 0.0968
+AIC: 1431.78
+BIC: 1480.88
+F-estadístico: 5.3667
+p-valor modelo: 5.33E-08
+Parámetro escala robusto: 1.454518
+Iteraciones: 40
+
+Variables significativas: 7
+
+  Conservative_Cluster                     β =  -0.4970  p = 4.44E-04
+  Region_Norte                             β =  -0.6655  p = 0.0182
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.5843  p = 0.0264
+  Autopercepcion_Per_Antiper               β =  -0.0526  p = 0.0323
+  Influencia_Prensa                        β =   0.1053  p = 0.0392
+  Indice_Progresismo                       β =  -0.2896  p = 0.0323
+  Indice_Conservadurismo                   β =  -0.4945  p = 2.18E-04
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 4.60E-19
+  Breusch-Pagan (heterocedasticidad): p = 0.3729
+  Durbin-Watson: 1.826
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_22_Izq
+--------------------------------------------------------------------------------
+N observaciones: 410
+R² ajustado: 0.1227
+AIC: 1163.54
+BIC: 1223.78
+F-estadístico: 3.2578
+p-valor modelo: 6.35E-05
+Parámetro escala robusto: 0.964763
+Iteraciones: 37
+
+Variables significativas: 8
+
+  Progressive_Cluster                      β =  -0.2940  p = 0.0130
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.5577  p = 0.0234
+  Categoria_PASO_2023_Centre               β =  -0.4408  p = 0.0154
+  Autopercepcion_Con_Pro                   β =  -0.0544  p = 0.0253
+  Influencia_Redes                         β =  -0.0968  p = 0.0247
+  Influencia_Prensa                        β =   0.0905  p = 0.0434
+  Indice_Conservadurismo                   β =  -0.3851  p = 0.0013
+  Indice_Conservadurismo_Tiempo            β =   0.0263  p = 0.0051
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 9.25E-142
+  Breusch-Pagan (heterocedasticidad): p = 0.4396
+  Durbin-Watson: 2.051
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_7_Der
+--------------------------------------------------------------------------------
+N observaciones: 389
+R² ajustado: 0.0904
+AIC: 1086.62
+BIC: 1134.18
+F-estadístico: 2.3043
+p-valor modelo: 0.0097
+Parámetro escala robusto: 0.927857
+Iteraciones: 40
+
+Variables significativas: 4
+
+  Categoria_PASO_2023_Left_Wing            β =  -0.2279  p = 0.0274
+  Categoria_PASO_2023_Right_Wing_Libertarian β =  -0.4654  p = 0.0070
+  Red_Social_Tiktok                        β =  -0.3007  p = 0.0127
+  Medios_Prensa_Prensa_Obrera              β =   0.5486  p = 0.0476
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 4.13E-239
+  Breusch-Pagan (heterocedasticidad): p = 4.24E-06
+  Durbin-Watson: 1.928
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_22_Der
+--------------------------------------------------------------------------------
+N observaciones: 410
+R² ajustado: 0.0539
+AIC: 1021.95
+BIC: 1042.03
+F-estadístico: 5.8819
+p-valor modelo: 1.31E-04
+Parámetro escala robusto: 0.699463
+Iteraciones: 47
+
+Variables significativas: 2
+
+  Indice_Conservadurismo                   β =  -0.2679  p = 5.28E-05
+  Indice_Conservadurismo_Tiempo            β =   0.0193  p = 0.0303
+
+Diagnósticos:
+  Jarque-Bera (normalidad): p = 0.00E+00
+  Breusch-Pagan (heterocedasticidad): p = 0.3695
+  Durbin-Watson: 2.027
+
+################################################################################
+# SECCIÓN 2: MODELOS GLM (ÍNDICES Y AUTOPERCEPCIONES)
+################################################################################
+
+GLM con eliminación recursiva hasta convergencia (p < 0.05)
+- Indice_Conservadurismo: Familia Gamma con link Log
+- Resto: Familia Gaussiana con link Identity
+
+================================================================================
+MODELOS GLM - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Progresismo
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 17
+Deviance explicada (R²): 0.7017 (70.17%)
+AIC: 2906.61
+BIC: -21499.70
+F-estadístico: 383.0595
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Progressive_Cluster                      β =   0.4395  p = 4.94E-206  IC 95% = [  0.411,   0.468]
+  Autopercepcion_Izq_Der                   β =  -0.0701  p = 6.66E-40  IC 95% = [ -0.080,  -0.060]
+  Indice_Conservadurismo                   β =  -0.1632  p = 7.14E-15  IC 95% = [ -0.204,  -0.122]
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.1900  p = 4.33E-09  IC 95% = [ -0.253,  -0.127]
+  Categoria_PASO_2023_Moderate_Right_B     β =  -0.2001  p = 2.36E-08  IC 95% = [ -0.270,  -0.130]
+  Categoria_PASO_2023_Centre               β =  -0.2163  p = 2.98E-06  IC 95% = [ -0.307,  -0.126]
+  Edad                                     β =   0.0036  p = 4.82E-06  IC 95% = [  0.002,   0.005]
+  Medios_Prensa_Infobae                    β =  -0.0724  p = 2.90E-05  IC 95% = [ -0.106,  -0.038]
+  Medios_Prensa_Pagina_12                  β =   0.0796  p = 3.03E-05  IC 95% = [  0.042,   0.117]
+  Medios_Prensa_Izquierda_Diario           β =   0.0943  p = 4.94E-05  IC 95% = [  0.049,   0.140]
+  Cercania_Massa                           β =   0.0277  p = 6.50E-05  IC 95% = [  0.014,   0.041]
+  Influencia_Redes                         β =  -0.0240  p = 6.50E-05  IC 95% = [ -0.036,  -0.012]
+  Medios_Prensa_Tiempo_Argentino           β =   0.1008  p = 7.02E-05  IC 95% = [  0.051,   0.150]
+  Categoria_PASO_2023_Right_Wing_Libertarian β =  -0.1497  p = 7.24E-04  IC 95% = [ -0.236,  -0.063]
+  Cercania_Milei                           β =  -0.0393  p = 0.0026  IC 95% = [ -0.065,  -0.014]
+  Indice_Progresismo_Tiempo                β =  -0.0030  p = 0.0053  IC 95% = [ -0.005,  -0.001]
+  Autopercepcion_Con_Pro                   β =   0.0092  p = 0.0175  IC 95% = [  0.002,   0.017]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Conservadurismo
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 22
+Deviance explicada (R²): 0.6365 (63.65%)
+AIC: 1212.22
+BIC: -21823.78
+F-estadístico: 219.9594
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Conservative_Cluster                     β =  -0.1856  p = 1.44E-55  IC 95% = [ -0.209,  -0.162]
+  Cercania_Milei                           β =   0.0557  p = 3.96E-28  IC 95% = [  0.046,   0.066]
+  Autopercepcion_Con_Pro                   β =  -0.0164  p = 1.40E-20  IC 95% = [ -0.020,  -0.013]
+  Indice_Progresismo                       β =  -0.0743  p = 6.03E-18  IC 95% = [ -0.091,  -0.057]
+  Cercania_Massa                           β =  -0.0227  p = 3.85E-10  IC 95% = [ -0.030,  -0.016]
+  Medios_Prensa_Clarin                     β =   0.0564  p = 6.82E-10  IC 95% = [  0.039,   0.074]
+  Autopercepcion_Per_Antiper               β =   0.0088  p = 1.58E-06  IC 95% = [  0.005,   0.012]
+  Genero_Masculino                         β =   0.0372  p = 7.85E-05  IC 95% = [  0.019,   0.056]
+  Autopercepcion_Izq_Der                   β =   0.0100  p = 1.06E-04  IC 95% = [  0.005,   0.015]
+  Medios_Prensa_Pagina_12                  β =  -0.0318  p = 1.75E-04  IC 95% = [ -0.048,  -0.015]
+  Indice_Conservadurismo_Tiempo            β =   0.0027  p = 3.69E-04  IC 95% = [  0.001,   0.004]
+  Medios_Prensa_Tiempo_Argentino           β =  -0.0400  p = 6.06E-04  IC 95% = [ -0.063,  -0.017]
+  Medios_Prensa_Izquierda_Diario           β =  -0.0367  p = 7.93E-04  IC 95% = [ -0.058,  -0.015]
+  Categoria_PASO_2023_Left_Wing            β =  -0.0365  p = 9.42E-04  IC 95% = [ -0.058,  -0.015]
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.0486  p = 0.0014  IC 95% = [  0.019,   0.078]
+  Red_Social_Youtube                       β =  -0.0234  p = 0.0024  IC 95% = [ -0.038,  -0.008]
+  Region_Norte                             β =   0.0502  p = 0.0031  IC 95% = [  0.017,   0.083]
+  Categoria_PASO_2023_Centre               β =   0.0610  p = 0.0045  IC 95% = [  0.019,   0.103]
+  Indice_Progresismo_Tiempo                β =  -0.0018  p = 0.0047  IC 95% = [ -0.003,  -0.001]
+  Progressive_Cluster                      β =  -0.0213  p = 0.0054  IC 95% = [ -0.036,  -0.006]
+  Indice_Positividad                       β =  -0.0034  p = 0.0054  IC 95% = [ -0.006,  -0.001]
+  Voto_2019_Roberto_Lavagna                β =   0.0493  p = 0.0255  IC 95% = [  0.006,   0.093]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Izq_Der
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 16
+Deviance explicada (R²): 0.5623 (56.23%)
+AIC: 9656.32
+BIC: -16806.75
+F-estadístico: 222.3597
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Indice_Progresismo                       β =  -0.7115  p = 3.03E-42  IC 95% = [ -0.814,  -0.609]
+  Autopercepcion_Con_Pro                   β =  -0.1461  p = 1.22E-30  IC 95% = [ -0.171,  -0.121]
+  Cercania_Milei                           β =   0.3342  p = 3.98E-19  IC 95% = [  0.261,   0.408]
+  Autopercepcion_Per_Antiper               β =   0.1175  p = 1.23E-18  IC 95% = [  0.091,   0.144]
+  Voto_2019_Mauricio_Macri                 β =   0.5394  p = 1.31E-08  IC 95% = [  0.353,   0.725]
+  Medios_Prensa_Izquierda_Diario           β =  -0.4686  p = 1.61E-08  IC 95% = [ -0.631,  -0.306]
+  Categoria_PASO_2023_Left_Wing            β =  -0.4817  p = 1.86E-08  IC 95% = [ -0.650,  -0.314]
+  Voto_2019_Nicolas_Del_Caño               β =  -0.4451  p = 1.21E-05  IC 95% = [ -0.645,  -0.246]
+  Medios_Prensa_La_Nacion                  β =   0.2300  p = 7.93E-05  IC 95% = [  0.116,   0.344]
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.4322  p = 1.36E-04  IC 95% = [  0.210,   0.654]
+  Indice_Conservadurismo                   β =   0.2522  p = 3.52E-04  IC 95% = [  0.114,   0.391]
+  Cercania_Massa                           β =   0.0671  p = 0.0093  IC 95% = [  0.016,   0.118]
+  Voto_2019_JL_Espert                      β =   0.5158  p = 0.0141  IC 95% = [  0.104,   0.928]
+  Medios_Prensa_Prensa_Obrera              β =  -0.3097  p = 0.0145  IC 95% = [ -0.558,  -0.061]
+  Medios_Prensa_Diario_Universal           β =  -0.6092  p = 0.0377  IC 95% = [ -1.184,  -0.035]
+  Region_Patagonia                         β =   0.2235  p = 0.0428  IC 95% = [  0.007,   0.440]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Con_Pro
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 15
+Deviance explicada (R²): 0.2575 (25.75%)
+AIC: 11700.04
+BIC: -11223.47
+F-estadístico: 64.0332
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Autopercepcion_Izq_Der                   β =  -0.3036  p = 1.49E-31  IC 95% = [ -0.354,  -0.253]
+  Indice_Conservadurismo                   β =  -0.9179  p = 1.06E-19  IC 95% = [ -1.116,  -0.720]
+  Medios_Prensa_Izquierda_Diario           β =   0.4763  p = 9.66E-06  IC 95% = [  0.265,   0.687]
+  Region_Centro                            β =   0.4761  p = 1.10E-05  IC 95% = [  0.264,   0.688]
+  Red_Social_Facebook                      β =  -0.2976  p = 1.09E-04  IC 95% = [ -0.448,  -0.147]
+  Edad                                     β =  -0.0139  p = 2.46E-04  IC 95% = [ -0.021,  -0.006]
+  Cercania_Milei                           β =   0.1826  p = 7.74E-04  IC 95% = [  0.076,   0.289]
+  Region_CABA                              β =   0.2882  p = 0.0015  IC 95% = [  0.110,   0.466]
+  Region_Patagonia                         β =   0.5114  p = 0.0017  IC 95% = [  0.192,   0.831]
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.5073  p = 0.0019  IC 95% = [  0.187,   0.827]
+  Indice_Progresismo                       β =   0.2386  p = 0.0021  IC 95% = [  0.087,   0.391]
+  Genero_Otro                              β =   0.8440  p = 0.0027  IC 95% = [  0.294,   1.394]
+  Cercania_Massa                           β =   0.0944  p = 0.0044  IC 95% = [  0.029,   0.159]
+  Voto_2019_J_Gomez_Centurion              β =  -1.5152  p = 0.0132  IC 95% = [ -2.714,  -0.316]
+  Voto_2019_Mauricio_Macri                 β =   0.3273  p = 0.0140  IC 95% = [  0.066,   0.588]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Per_Antiper
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 18
+Deviance explicada (R²): 0.5636 (56.36%)
+AIC: 11475.17
+BIC: -12054.54
+F-estadístico: 198.5489
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Cercania_Massa                           β =  -0.5948  p = 8.16E-64  IC 95% = [ -0.664,  -0.526]
+  Autopercepcion_Izq_Der                   β =   0.2312  p = 5.28E-21  IC 95% = [  0.183,   0.279]
+  Voto_2019_Mauricio_Macri                 β =   1.1477  p = 2.36E-16  IC 95% = [  0.873,   1.422]
+  Cercania_Milei                           β =   0.3567  p = 2.22E-11  IC 95% = [  0.252,   0.461]
+  Categoria_PASO_2023_Left_Wing            β =   0.7555  p = 2.97E-10  IC 95% = [  0.520,   0.991]
+  Voto_2019_Nicolas_Del_Caño               β =   0.8089  p = 1.01E-08  IC 95% = [  0.532,   1.086]
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.8339  p = 4.28E-07  IC 95% = [  0.511,   1.157]
+  Voto_2019_JL_Espert                      β =   1.2230  p = 2.75E-05  IC 95% = [  0.651,   1.795]
+  Indice_Positividad                       β =  -0.0490  p = 6.10E-05  IC 95% = [ -0.073,  -0.025]
+  Indice_Conservadurismo                   β =   0.3767  p = 8.18E-05  IC 95% = [  0.189,   0.564]
+  Progressive_Cluster                      β =  -0.2636  p = 8.53E-05  IC 95% = [ -0.395,  -0.132]
+  Voto_2019_Roberto_Lavagna                β =   0.8446  p = 1.76E-04  IC 95% = [  0.403,   1.286]
+  Medios_Prensa_La_Nacion                  β =   0.2777  p = 0.0012  IC 95% = [  0.110,   0.445]
+  Red_Social_Telegram                      β =  -0.2841  p = 0.0020  IC 95% = [ -0.464,  -0.104]
+  Medios_Prensa_Popular                    β =  -0.5159  p = 0.0021  IC 95% = [ -0.844,  -0.188]
+  Medios_Prensa_Pagina_12                  β =  -0.2547  p = 0.0026  IC 95% = [ -0.420,  -0.089]
+  Categoria_PASO_2023_Moderate_Right_A     β =   0.4464  p = 0.0039  IC 95% = [  0.143,   0.750]
+  Medios_Prensa_Izquierda_Diario           β =   0.2976  p = 0.0071  IC 95% = [  0.081,   0.514]
+
+================================================================================
+MODELOS GLM - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Progresismo
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 15
+Deviance explicada (R²): 0.7206 (72.06%)
+AIC: 1407.69
+BIC: -8612.09
+F-estadístico: 212.8410
+p-valor (F): 1.11E-16
+Iteraciones: 4
+
+Variables significativas:
+
+  Progressive_Cluster                      β =   0.4431  p = 6.10E-97  IC 95% = [  0.402,   0.485]
+  Indice_Conservadurismo                   β =  -0.2094  p = 4.12E-11  IC 95% = [ -0.272,  -0.147]
+  Categoria_PASO_2023_Moderate_Right_A     β =  -0.3869  p = 3.43E-09  IC 95% = [ -0.515,  -0.259]
+  Cercania_Milei                           β =  -0.0894  p = 1.08E-08  IC 95% = [ -0.120,  -0.059]
+  Medios_Prensa_Infobae                    β =  -0.1237  p = 3.89E-06  IC 95% = [ -0.176,  -0.071]
+  Autopercepcion_Con_Pro                   β =   0.0250  p = 4.09E-06  IC 95% = [  0.014,   0.036]
+  Autopercepcion_Izq_Der                   β =  -0.0326  p = 5.30E-06  IC 95% = [ -0.047,  -0.019]
+  Medios_Prensa_Izquierda_Diario           β =   0.1550  p = 1.24E-05  IC 95% = [  0.085,   0.225]
+  Medios_Prensa_Pagina_12                  β =   0.1203  p = 2.85E-05  IC 95% = [  0.064,   0.177]
+  Indice_Positividad                       β =   0.0118  p = 6.36E-04  IC 95% = [  0.005,   0.019]
+  Indice_Progresismo_Tiempo                β =  -0.0078  p = 9.76E-04  IC 95% = [ -0.012,  -0.003]
+  Categoria_PASO_2023_Moderate_Right_B     β =  -0.1319  p = 0.0042  IC 95% = [ -0.222,  -0.042]
+  Genero_Masculino                         β =  -0.0808  p = 0.0061  IC 95% = [ -0.138,  -0.023]
+  Conservative_Cluster                     β =  -0.0751  p = 0.0282  IC 95% = [ -0.142,  -0.008]
+  Medios_Prensa_Prensa_Obrera              β =   0.0991  p = 0.0401  IC 95% = [  0.004,   0.194]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Conservadurismo
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 15
+Deviance explicada (R²): 0.6508 (65.08%)
+AIC: 874.91
+BIC: -8781.73
+F-estadístico: 153.8288
+p-valor (F): 1.11E-16
+Iteraciones: 4
+
+Variables significativas:
+
+  Conservative_Cluster                     β =  -0.1781  p = 1.17E-32  IC 95% = [ -0.207,  -0.149]
+  Indice_Progresismo                       β =  -0.1121  p = 2.91E-23  IC 95% = [ -0.134,  -0.090]
+  Autopercepcion_Con_Pro                   β =  -0.0178  p = 2.18E-11  IC 95% = [ -0.023,  -0.013]
+  Cercania_Milei                           β =   0.0446  p = 3.17E-09  IC 95% = [  0.030,   0.059]
+  Indice_Positividad                       β =  -0.0078  p = 8.10E-06  IC 95% = [ -0.011,  -0.004]
+  Autopercepcion_Per_Antiper               β =   0.0114  p = 8.54E-06  IC 95% = [  0.006,   0.016]
+  Medios_Prensa_Izquierda_Diario           β =  -0.0711  p = 2.65E-05  IC 95% = [ -0.104,  -0.038]
+  Autopercepcion_Izq_Der                   β =   0.0148  p = 3.05E-05  IC 95% = [  0.008,   0.022]
+  Indice_Conservadurismo_Tiempo            β =   0.0072  p = 7.83E-05  IC 95% = [  0.004,   0.011]
+  Medios_Prensa_La_Nacion                  β =   0.0536  p = 1.13E-04  IC 95% = [  0.026,   0.081]
+  Medios_Prensa_Pagina_12                  β =  -0.0506  p = 3.38E-04  IC 95% = [ -0.078,  -0.023]
+  Voto_2019_J_Gomez_Centurion              β =   0.2380  p = 0.0056  IC 95% = [  0.070,   0.406]
+  Indice_Progresismo_Tiempo                β =  -0.0039  p = 0.0110  IC 95% = [ -0.007,  -0.001]
+  Categoria_PASO_2023_Centre               β =   0.0825  p = 0.0116  IC 95% = [  0.018,   0.146]
+  Medios_Prensa_El_Cronista                β =   0.0447  p = 0.0172  IC 95% = [  0.008,   0.082]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Izq_Der
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 11
+Deviance explicada (R²): 0.4702 (47.02%)
+AIC: 4785.85
+BIC: -5587.27
+F-estadístico: 100.2016
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Autopercepcion_Per_Antiper               β =   0.1493  p = 2.72E-12  IC 95% = [  0.107,   0.191]
+  Cercania_Milei                           β =   0.4147  p = 3.74E-12  IC 95% = [  0.298,   0.532]
+  Indice_Progresismo                       β =  -0.5328  p = 2.50E-09  IC 95% = [ -0.708,  -0.358]
+  Autopercepcion_Con_Pro                   β =  -0.1065  p = 3.18E-07  IC 95% = [ -0.147,  -0.066]
+  Voto_2019_Nicolas_Del_Caño               β =  -0.7473  p = 9.38E-06  IC 95% = [ -1.078,  -0.417]
+  Indice_Conservadurismo                   β =   0.4514  p = 3.12E-05  IC 95% = [  0.239,   0.664]
+  Medios_Prensa_Izquierda_Diario           β =  -0.4410  p = 0.0014  IC 95% = [ -0.712,  -0.171]
+  Medios_Prensa_Clarin                     β =   0.3179  p = 0.0029  IC 95% = [  0.109,   0.527]
+  Medios_Prensa_Prensa_Obrera              β =  -0.5426  p = 0.0037  IC 95% = [ -0.909,  -0.176]
+  Genero_Otro                              β =  -0.8535  p = 0.0115  IC 95% = [ -1.516,  -0.191]
+  Cercania_Massa                           β =   0.0991  p = 0.0195  IC 95% = [  0.016,   0.182]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Con_Pro
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 11
+Deviance explicada (R²): 0.2347 (23.47%)
+AIC: 5502.91
+BIC: -3062.00
+F-estadístico: 34.6252
+p-valor (F): 1.11E-16
+Iteraciones: 4
+
+Variables significativas:
+
+  Indice_Conservadurismo                   β =  -1.0091  p = 1.14E-12  IC 95% = [ -1.287,  -0.731]
+  Indice_Progresismo                       β =   0.6690  p = 1.79E-08  IC 95% = [  0.436,   0.902]
+  Cercania_Milei                           β =   0.4460  p = 2.32E-08  IC 95% = [  0.289,   0.602]
+  Autopercepcion_Izq_Der                   β =  -0.1902  p = 1.82E-07  IC 95% = [ -0.262,  -0.119]
+  Voto_2019_Mauricio_Macri                 β =   0.7258  p = 5.58E-04  IC 95% = [  0.314,   1.138]
+  Voto_2019_Nicolas_Del_Caño               β =   0.6900  p = 0.0012  IC 95% = [  0.273,   1.107]
+  Edad                                     β =  -0.0231  p = 0.0019  IC 95% = [ -0.038,  -0.009]
+  Genero_Otro                              β =   1.1534  p = 0.0108  IC 95% = [  0.266,   2.041]
+  Genero_Masculino                         β =   0.3597  p = 0.0172  IC 95% = [  0.064,   0.656]
+  Medios_Prensa_Pagina_12                  β =   0.3274  p = 0.0174  IC 95% = [  0.058,   0.597]
+  Medios_Prensa_Tiempo_Argentino           β =   0.4330  p = 0.0191  IC 95% = [  0.071,   0.795]
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Per_Antiper
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 13
+Deviance explicada (R²): 0.5377 (53.77%)
+AIC: 5404.68
+BIC: -3501.70
+F-estadístico: 110.9369
+p-valor (F): 1.11E-16
+Iteraciones: 3
+
+Variables significativas:
+
+  Cercania_Massa                           β =  -0.6278  p = 1.80E-30  IC 95% = [ -0.735,  -0.521]
+  Autopercepcion_Izq_Der                   β =   0.2362  p = 7.95E-12  IC 95% = [  0.169,   0.304]
+  Voto_2019_Nicolas_Del_Caño               β =   1.3911  p = 1.33E-10  IC 95% = [  0.967,   1.816]
+  Cercania_Milei                           β =   0.4412  p = 7.38E-09  IC 95% = [  0.292,   0.591]
+  Voto_2019_Mauricio_Macri                 β =   0.9058  p = 4.12E-05  IC 95% = [  0.473,   1.339]
+  Indice_Conservadurismo                   β =   0.5838  p = 9.28E-05  IC 95% = [  0.291,   0.877]
+  Medios_Prensa_Izquierda_Diario           β =   0.6357  p = 1.36E-04  IC 95% = [  0.309,   0.962]
+  Indice_Positividad                       β =  -0.0687  p = 1.45E-04  IC 95% = [ -0.104,  -0.033]
+  Medios_Prensa_Tiempo_Argentino           β =  -0.5551  p = 0.0012  IC 95% = [ -0.892,  -0.218]
+  Conservative_Cluster                     β =   0.3908  p = 0.0200  IC 95% = [  0.061,   0.720]
+  Categoria_PASO_2023_Moderate_Right_B     β =   0.5486  p = 0.0220  IC 95% = [  0.079,   1.018]
+  Categoria_PASO_2023_Moderate_Right_A     β =   0.7308  p = 0.0272  IC 95% = [  0.082,   1.380]
+  Region_Norte                             β =   0.5282  p = 0.0349  IC 95% = [  0.038,   1.019]
+
+################################################################################
+# SECCIÓN 3: MODELOS LOGÍSTICOS (CERCANÍA A CANDIDATOS)
+################################################################################
+
+Regresión Logística Binaria
+Variable binarizada: Cercano (1) si >= 4, No cercano (0) si <= 3
+Eliminación recursiva hasta convergencia (p < 0.05)
+
+================================================================================
+MODELOS LOGÍSTICOS - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Cercanía a: Massa
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 14
+Pseudo R² (McFadden): 0.3087
+AIC: 2372.47
+BIC: -19638.11
+Deviance nulo: 3388.69
+Deviance residual: 2342.47
+χ² estadístico: 1046.2209
+p-valor (χ²): 0.00E+00
+Iteraciones: 4
+
+Variables significativas (con Odds Ratios):
+
+  Autopercepcion_Per_Antiper               OR =   0.716  p = 9.93E-32  IC 95% = [ 0.677,  0.757]
+  Indice_Positividad                       OR =   1.164  p = 2.28E-18  IC 95% = [ 1.125,  1.204]
+  Categoria_PASO_2023_Left_Wing            OR =   0.458  p = 1.46E-05  IC 95% = [ 0.321,  0.652]
+  Indice_Conservadurismo                   OR =   0.530  p = 2.24E-05  IC 95% = [ 0.395,  0.711]
+  Medios_Prensa_Izquierda_Diario           OR =   0.567  p = 6.85E-05  IC 95% = [ 0.429,  0.750]
+  Voto_2019_Mauricio_Macri                 OR =   0.254  p = 9.95E-05  IC 95% = [ 0.128,  0.507]
+  Voto_2019_Nicolas_Del_Caño               OR =   0.418  p = 3.50E-04  IC 95% = [ 0.259,  0.674]
+  Progressive_Cluster                      OR =   1.507  p = 6.04E-04  IC 95% = [ 1.192,  1.904]
+  Medios_Prensa_Tiempo_Argentino           OR =   1.622  p = 7.36E-04  IC 95% = [ 1.225,  2.149]
+  Edad                                     OR =   0.982  p = 8.15E-04  IC 95% = [ 0.972,  0.993]
+  Influencia_Prensa                        OR =   0.876  p = 0.0018  IC 95% = [ 0.806,  0.952]
+  Categoria_PASO_2023_Right_Wing_Libertarian OR =   0.040  p = 0.0031  IC 95% = [ 0.005,  0.337]
+  Region_Norte                             OR =   1.876  p = 0.0104  IC 95% = [ 1.159,  3.035]
+  Red_Social_Tiktok                        OR =   1.368  p = 0.0128  IC 95% = [ 1.069,  1.750]
+
+--------------------------------------------------------------------------------
+Cercanía a: Milei
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 7
+Pseudo R² (McFadden): 0.5651
+AIC: 575.09
+BIC: -21477.01
+Deviance nulo: 1285.70
+Deviance residual: 559.09
+χ² estadístico: 726.6106
+p-valor (χ²): 0.00E+00
+Iteraciones: 3
+
+Variables significativas (con Odds Ratios):
+
+  Categoria_PASO_2023_Right_Wing_Libertarian OR =   9.290  p = 1.24E-21  IC 95% = [ 5.881, 14.674]
+  Indice_Conservadurismo                   OR =   4.588  p = 1.06E-12  IC 95% = [ 3.017,  6.978]
+  Edad                                     OR =   0.951  p = 4.30E-06  IC 95% = [ 0.931,  0.972]
+  Autopercepcion_Izq_Der                   OR =   1.317  p = 6.65E-05  IC 95% = [ 1.150,  1.508]
+  Indice_Progresismo                       OR =   0.499  p = 5.36E-04  IC 95% = [ 0.337,  0.740]
+  Red_Social_Tiktok                        OR =   2.029  p = 0.0046  IC 95% = [ 1.243,  3.312]
+  Autopercepcion_Per_Antiper               OR =   1.132  p = 0.0115  IC 95% = [ 1.028,  1.247]
+
+--------------------------------------------------------------------------------
+Cercanía a: Schiaretti
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 15
+Pseudo R² (McFadden): 0.2353
+AIC: 1431.92
+BIC: -20572.72
+Deviance nulo: 1830.62
+Deviance residual: 1399.92
+χ² estadístico: 430.6969
+p-valor (χ²): 0.00E+00
+Iteraciones: 4
+
+Variables significativas (con Odds Ratios):
+
+  Categoria_PASO_2023_Centre               OR =  19.985  p = 2.94E-28  IC 95% = [11.734, 34.038]
+  Categoria_PASO_2023_Moderate_Right_A     OR =   2.973  p = 5.37E-06  IC 95% = [ 1.859,  4.753]
+  Categoria_PASO_2023_Right_Wing_Libertarian OR =   2.636  p = 1.78E-04  IC 95% = [ 1.588,  4.376]
+  Region_Centro                            OR =   1.914  p = 2.15E-04  IC 95% = [ 1.357,  2.700]
+  Autopercepcion_Izq_Der                   OR =   1.158  p = 6.20E-04  IC 95% = [ 1.065,  1.259]
+  Voto_2019_Roberto_Lavagna                OR =   2.824  p = 6.60E-04  IC 95% = [ 1.554,  5.133]
+  Categoria_PASO_2023_Moderate_Right_B     OR =   2.404  p = 7.42E-04  IC 95% = [ 1.444,  4.001]
+  Influencia_Prensa                        OR =   0.828  p = 7.92E-04  IC 95% = [ 0.742,  0.925]
+  Indice_Conservadurismo                   OR =   1.560  p = 0.0019  IC 95% = [ 1.178,  2.067]
+  Edad                                     OR =   0.980  p = 0.0046  IC 95% = [ 0.966,  0.994]
+  Medios_Prensa_Tiempo_Argentino           OR =   0.312  p = 0.0061  IC 95% = [ 0.135,  0.718]
+  Red_Social_Facebook                      OR =   1.478  p = 0.0075  IC 95% = [ 1.110,  1.967]
+  Voto_2019_Mauricio_Macri                 OR =   1.600  p = 0.0156  IC 95% = [ 1.093,  2.342]
+  Indice_Positividad                       OR =   1.055  p = 0.0185  IC 95% = [ 1.009,  1.103]
+  Region_Cuyo                              OR =   1.771  p = 0.0313  IC 95% = [ 1.053,  2.979]
+
+--------------------------------------------------------------------------------
+Cercanía a: Bullrich
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 10
+Pseudo R² (McFadden): 0.4709
+AIC: 791.39
+BIC: -21242.92
+Deviance nulo: 1454.21
+Deviance residual: 769.39
+χ² estadístico: 684.8249
+p-valor (χ²): 0.00E+00
+Iteraciones: 4
+
+Variables significativas (con Odds Ratios):
+
+  Categoria_PASO_2023_Moderate_Right_B     OR =   4.380  p = 1.53E-12  IC 95% = [ 2.909,  6.597]
+  Voto_2019_Mauricio_Macri                 OR =   5.164  p = 2.32E-12  IC 95% = [ 3.264,  8.169]
+  Autopercepcion_Per_Antiper               OR =   1.212  p = 6.06E-06  IC 95% = [ 1.115,  1.318]
+  Indice_Progresismo                       OR =   0.530  p = 1.75E-04  IC 95% = [ 0.380,  0.738]
+  Medios_Prensa_La_Nacion                  OR =   1.972  p = 5.32E-04  IC 95% = [ 1.343,  2.895]
+  Edad                                     OR =   1.030  p = 7.24E-04  IC 95% = [ 1.012,  1.048]
+  Genero_Masculino                         OR =   0.437  p = 0.0019  IC 95% = [ 0.259,  0.737]
+  Influencia_Prensa                        OR =   0.785  p = 0.0024  IC 95% = [ 0.672,  0.918]
+  Indice_Conservadurismo                   OR =   1.663  p = 0.0054  IC 95% = [ 1.162,  2.380]
+  Voto_2019_J_Gomez_Centurion              OR =   4.407  p = 0.0419  IC 95% = [ 1.056, 18.397]
+
+--------------------------------------------------------------------------------
+Cercanía a: Bregman
+--------------------------------------------------------------------------------
+N observaciones: 2786
+Variables en modelo final: 17
+Pseudo R² (McFadden): 0.3009
+AIC: 2666.13
+BIC: -19326.65
+Deviance nulo: 3762.31
+Deviance residual: 2630.13
+χ² estadístico: 1132.1760
+p-valor (χ²): 0.00E+00
+Iteraciones: 3
+
+Variables significativas (con Odds Ratios):
+
+  Categoria_PASO_2023_Left_Wing            OR =   4.136  p = 1.22E-18  IC 95% = [ 3.016,  5.672]
+  Indice_Progresismo                       OR =   2.049  p = 1.78E-11  IC 95% = [ 1.662,  2.526]
+  Autopercepcion_Izq_Der                   OR =   0.783  p = 6.26E-11  IC 95% = [ 0.728,  0.843]
+  Medios_Prensa_Izquierda_Diario           OR =   2.374  p = 2.29E-08  IC 95% = [ 1.753,  3.216]
+  Autopercepcion_Per_Antiper               OR =   1.124  p = 2.38E-06  IC 95% = [ 1.071,  1.179]
+  Indice_Conservadurismo                   OR =   0.547  p = 6.87E-05  IC 95% = [ 0.407,  0.736]
+  Influencia_Prensa                        OR =   0.854  p = 7.78E-05  IC 95% = [ 0.789,  0.923]
+  Voto_2019_Nicolas_Del_Caño               OR =   2.126  p = 1.67E-04  IC 95% = [ 1.436,  3.150]
+  Voto_2019_Mauricio_Macri                 OR =   0.448  p = 2.44E-04  IC 95% = [ 0.291,  0.688]
+  Medios_Prensa_Prensa_Obrera              OR =   2.558  p = 4.59E-04  IC 95% = [ 1.513,  4.326]
+  Edad                                     OR =   0.985  p = 0.0020  IC 95% = [ 0.975,  0.994]
+  Autopercepcion_Con_Pro                   OR =   1.078  p = 0.0024  IC 95% = [ 1.027,  1.131]
+  Medios_Prensa_Tiempo_Argentino           OR =   0.666  p = 0.0051  IC 95% = [ 0.501,  0.885]
+  Categoria_PASO_2023_Right_Wing_Libertarian OR =   0.302  p = 0.0053  IC 95% = [ 0.130,  0.701]
+  Medios_Prensa_El_Cronista                OR =   0.596  p = 0.0066  IC 95% = [ 0.410,  0.866]
+  Red_Social_Facebook                      OR =   1.250  p = 0.0237  IC 95% = [ 1.030,  1.518]
+  Medios_Prensa_La_Nacion                  OR =   0.778  p = 0.0320  IC 95% = [ 0.618,  0.979]
+
+================================================================================
+MODELOS LOGÍSTICOS - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Cercanía a: Massa
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 7
+Pseudo R² (McFadden): 0.2671
+AIC: 1149.52
+BIC: -7755.56
+Deviance nulo: 1546.67
+Deviance residual: 1133.52
+χ² estadístico: 413.1452
+p-valor (χ²): 0.00E+00
+Iteraciones: 3
+
+Variables significativas (con Odds Ratios):
+
+  Autopercepcion_Per_Antiper               OR =   0.703  p = 1.13E-22  IC 95% = [ 0.655,  0.754]
+  Indice_Positividad                       OR =   1.194  p = 5.43E-16  IC 95% = [ 1.144,  1.246]
+  Region_Patagonia                         OR =   0.336  p = 0.0012  IC 95% = [ 0.174,  0.652]
+  Voto_2019_Mauricio_Macri                 OR =   0.253  p = 0.0060  IC 95% = [ 0.095,  0.675]
+  Medios_Prensa_El_Cronista                OR =   1.654  p = 0.0194  IC 95% = [ 1.085,  2.521]
+  Categoria_PASO_2023_Moderate_Right_B     OR =   0.246  p = 0.0332  IC 95% = [ 0.067,  0.894]
+  Autopercepcion_Izq_Der                   OR =   1.089  p = 0.0432  IC 95% = [ 1.003,  1.184]
+
+--------------------------------------------------------------------------------
+Cercanía a: Milei
+--------------------------------------------------------------------------------
+N observaciones: 1254
+Variables en modelo final: 5
+Pseudo R² (McFadden): 0.5545
+AIC: 327.09
+BIC: -8588.26
+Deviance nulo: 707.33
+Deviance residual: 315.09
+χ² estadístico: 392.2402
+p-valor (χ²): 0.00E+00
+Iteraciones: 3
+
+Variables significativas (con Odds Ratios):
+
+  Categoria_PASO_2023_Right_Wing_Libertarian OR =   8.836  p = 5.60E-12  IC 95% = [ 4.754, 16.423]
+  Indice_Progresismo                       OR =   0.274  p = 3.76E-07  IC 95% = [ 0.166,  0.452]
+  Indice_Conservadurismo                   OR =   3.552  p = 9.35E-07  IC 95% = [ 2.140,  5.895]
+  Autopercepcion_Izq_Der                   OR =   1.350  p = 1.30E-05  IC 95% = [ 1.180,  1.545]
+  Influencia_Redes                         OR =   0.787  p = 0.0313  IC 95% = [ 0.633,  0.979]
+
+================================================================================
+RESUMEN DE MODELOS
+================================================================================
+
+Generales:
+----------------------------------------
+  Modelos Robustos: 21 ajustados
+    CO_Congruente: R²=0.0532, Vars=6
+    CO_Incongruente: R²=0.0419, Vars=6
+    CT_Congruente: R²=0.3119, Vars=4
+    CT_Incongruente: R²=0.3694, Vars=6
+    CO_Pro: R²=0.0642, Vars=6
+    CO_Con: R²=0.0537, Vars=4
+    CO_Pro_Der: R²=0.0457, Vars=6
+    CO_Con_Der: R²=0.0390, Vars=7
+    CO_Pro_Izq: R²=0.0564, Vars=11
+    CO_Con_Izq: R²=0.0439, Vars=4
+    CO_Item_5_Izq: R²=0.0744, Vars=8
+    CO_Item_25_Izq: R²=0.0430, Vars=5
+    CO_Item_9_Izq: R²=0.0363, Vars=8
+    CO_Item_24_Izq: R²=0.0509, Vars=5
+    CO_Item_8_Izq: R²=0.0562, Vars=5
+    CO_Item_30_Izq: R²=0.0613, Vars=3
+    CO_Item_7_Izq: R²=0.0835, Vars=6
+    CO_Item_3_Izq: R²=0.0527, Vars=3
+    CO_Item_10_Izq: R²=0.0613, Vars=8
+    CO_Item_30_Der: R²=0.0748, Vars=7
+    CO_Item_10_Der: R²=0.0524, Vars=8
+  Modelos GLM: 5 ajustados
+    Indice_Progresismo: R²=0.7017, Vars=17
+    Indice_Conservadurismo: R²=0.6365, Vars=22
+    Autopercepcion_Izq_Der: R²=0.5623, Vars=16
+    Autopercepcion_Con_Pro: R²=0.2575, Vars=15
+    Autopercepcion_Per_Antiper: R²=0.5636, Vars=18
+  Modelos Logísticos: 5 ajustados
+    Massa: Pseudo R²=0.3087, Vars=14
+    Milei: Pseudo R²=0.5651, Vars=7
+    Schiaretti: Pseudo R²=0.2353, Vars=15
+    Bullrich: Pseudo R²=0.4709, Vars=10
+    Bregman: Pseudo R²=0.3009, Vars=17
+
+Ballotage:
+----------------------------------------
+  Modelos Robustos: 19 ajustados
+    CO_Congruente: R²=0.0525, Vars=5
+    CO_Incongruente: R²=0.0717, Vars=5
+    CT_Congruente: R²=0.2988, Vars=7
+    CT_Incongruente: R²=0.2990, Vars=8
+    CO_Pro: R²=0.0966, Vars=10
+    CO_Con: R²=0.0498, Vars=2
+    CO_Pro_Der: R²=0.0809, Vars=9
+    CO_Con_Der: R²=0.0315, Vars=2
+    CO_Pro_Izq: R²=0.0727, Vars=7
+    CO_Con_Izq: R²=0.0553, Vars=8
+    CO_Item_6_Izq: R²=0.0650, Vars=4
+    CO_Item_25_Izq: R²=0.0912, Vars=7
+    CO_Item_25_Der: R²=0.0851, Vars=3
+    CO_Item_11_Der: R²=0.1162, Vars=9
+    CO_Item_29_Izq: R²=0.0888, Vars=4
+    CO_Item_30_Izq: R²=0.0968, Vars=7
+    CO_Item_22_Izq: R²=0.1227, Vars=8
+    CO_Item_7_Der: R²=0.0904, Vars=4
+    CO_Item_22_Der: R²=0.0539, Vars=2
+  Modelos GLM: 5 ajustados
+    Indice_Progresismo: R²=0.7206, Vars=15
+    Indice_Conservadurismo: R²=0.6508, Vars=15
+    Autopercepcion_Izq_Der: R²=0.4702, Vars=11
+    Autopercepcion_Con_Pro: R²=0.2347, Vars=11
+    Autopercepcion_Per_Antiper: R²=0.5377, Vars=13
+  Modelos Logísticos: 2 ajustados
+    Massa: Pseudo R²=0.2671, Vars=7
+    Milei: Pseudo R²=0.5545, Vars=5
+
+================================================================================
+FIN DEL REPORTE
+================================================================================

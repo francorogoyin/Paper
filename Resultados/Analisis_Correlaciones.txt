@@ -1,0 +1,510 @@
+================================================================================
+ANÁLISIS DE CORRELACIONES (SPEARMAN) - RESULTADOS
+Proyecto de Tesis - Experimento Electoral Argentina 2023
+================================================================================
+
+################################################################################
+# DATASET: GENERALES
+################################################################################
+
+================================================================================
+SECCIÓN 1: TOP 50 CORRELACIONES MÁS FUERTES
+================================================================================
+
+Total de pares: 171
+Pares significativos (p < 0.05): 111
+
+Variable 1                          Variable 2                                 ρ            p   Sig
+----------------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8692     0.00E+00   ***
+CO_Pro                              CO_Pro_Der                            0.8647     0.00E+00   ***
+CO_Pro                              CO_Pro_Izq                            0.7710     0.00E+00   ***
+CO_Pro_Der                          CO_Incongruente                       0.7643     0.00E+00   ***
+CO_Con                              CO_Con_Izq                            0.7393     0.00E+00   ***
+CO_Pro_Izq                          CO_Congruente                         0.6649     0.00E+00   ***
+CO_Pro                              CO_Incongruente                       0.6587     0.00E+00   ***
+CO_Con_Der                          CO_Congruente                         0.6579     0.00E+00   ***
+Indice_Progresismo                  Indice_Conservadurismo               -0.6291    6.69E-307   ***
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.6277    3.33E-305   ***
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.6243    7.04E-301   ***
+CO_Con                              CO_Congruente                         0.5649    4.14E-234   ***
+Autopercepcion_Izq_Der              Cercania_Bregman                     -0.5548    1.12E-224   ***
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5547    1.35E-224   ***
+Cercania_Bullrich                   Indice_Progresismo                   -0.5377    1.48E-208   ***
+Cercania_Bregman                    Indice_Progresismo                    0.5276    1.66E-199   ***
+Cercania_Milei                      Indice_Conservadurismo                0.5199    8.40E-193   ***
+Cercania_Milei                      Indice_Progresismo                   -0.5059    5.94E-181   ***
+Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.5046    6.40E-180   ***
+Cercania_Bullrich                   Indice_Conservadurismo                0.5022    6.52E-178   ***
+CO_Con_Izq                          CO_Incongruente                       0.4894    2.11E-167   ***
+Autopercepcion_Per_Antiper          Cercania_Bullrich                     0.4887    3.05E-167   ***
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4864    2.13E-165   ***
+Cercania_Massa                      Indice_Conservadurismo               -0.4819    5.39E-162   ***
+Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4796    3.25E-160   ***
+Autopercepcion_Izq_Der              Cercania_Bullrich                     0.4779    6.18E-159   ***
+Cercania_Bullrich                   Cercania_Milei                        0.4760    1.41E-157   ***
+Autopercepcion_Izq_Der              Cercania_Milei                        0.4757    2.70E-157   ***
+Cercania_Bregman                    Indice_Conservadurismo               -0.4744    2.34E-156   ***
+Cercania_Massa                      Indice_Progresismo                    0.4555    8.43E-143   ***
+CO_Pro_Izq                          CO_Pro_Der                            0.4549    3.51E-142   ***
+Autopercepcion_Per_Antiper          Cercania_Milei                        0.4496    1.09E-138   ***
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4453    8.82E-136   ***
+Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.4440    6.17E-135   ***
+CO_Con_Izq                          CO_Con_Der                            0.4402    3.84E-132   ***
+CO_Pro                              CO_Congruente                         0.4185    1.79E-118   ***
+Autopercepcion_Con_Pro              Indice_Progresismo                    0.4169    1.32E-117   ***
+Cercania_Massa                      Cercania_Milei                       -0.4156    7.96E-117   ***
+Cercania_Massa                      Indice_Positividad                    0.4059    5.39E-111   ***
+Cercania_Bregman                    Cercania_Milei                       -0.4017    1.64E-108   ***
+Cercania_Bullrich                   Cercania_Schiaretti                   0.3928    1.86E-103   ***
+Autopercepcion_Con_Pro              Cercania_Bregman                      0.3796     3.42E-96   ***
+Cercania_Massa                      Cercania_Bullrich                    -0.3678     5.44E-90   ***
+Autopercepcion_Izq_Der              Cercania_Massa                       -0.3503     3.12E-81   ***
+Cercania_Bullrich                   Cercania_Bregman                     -0.3463     2.65E-79   ***
+Cercania_Massa                      Cercania_Bregman                      0.3339     1.53E-73   ***
+CO_Pro_Izq                          CO_Incongruente                       0.3267     3.23E-70   ***
+Autopercepcion_Per_Antiper          Indice_Positividad                   -0.3242     3.47E-69   ***
+Cercania_Schiaretti                 Indice_Conservadurismo                0.3113     1.16E-63   ***
+Cercania_Schiaretti                 Indice_Progresismo                   -0.3042     9.50E-61   ***
+
+Significancia: *** p < 0.001, ** p < 0.01, * p < 0.05
+
+================================================================================
+SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL
+================================================================================
+
+--------------------------------------------------------------------------------
+► Left_Wing
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 65
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Der                            0.8834    4.96E-141
+CO_Con                              CO_Con_Der                            0.8663    2.63E-129
+CO_Pro_Der                          CO_Incongruente                       0.7984     5.09E-95
+CO_Pro                              CO_Pro_Izq                            0.7329     1.37E-72
+CO_Pro                              CO_Incongruente                       0.7231     8.14E-70
+CO_Pro_Izq                          CO_Congruente                         0.7118     9.74E-67
+CO_Con                              CO_Con_Izq                            0.7025     2.55E-64
+CO_Con_Der                          CO_Congruente                         0.5807     1.37E-39
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5754     7.81E-39
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.5529     2.15E-35
+Autopercepcion_Izq_Der              Cercania_Bregman                     -0.5364     4.86E-33
+CO_Con                              CO_Congruente                         0.5331     1.67E-32
+Indice_Progresismo                  Indice_Conservadurismo               -0.4648     3.64E-24
+CO_Pro_Izq                          CO_Pro_Der                            0.4395     1.89E-21
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4366     3.30E-21
+CO_Con_Izq                          CO_Incongruente                       0.4313     1.23E-20
+Autopercepcion_Con_Pro              Indice_Progresismo                    0.4196     1.49E-19
+CO_Con_Izq                          CO_Con_Der                            0.4092     1.50E-18
+CO_Pro                              CO_Congruente                         0.3898     7.81E-17
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3878     1.05E-16
+
+--------------------------------------------------------------------------------
+► Progressivism
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 82
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Der                            0.8960     0.00E+00
+CO_Con                              CO_Con_Der                            0.8820     0.00E+00
+CO_Pro_Der                          CO_Incongruente                       0.7651    8.97E-242
+CO_Pro                              CO_Pro_Izq                            0.7410    5.57E-219
+CO_Con                              CO_Con_Izq                            0.7325    2.34E-211
+CO_Con_Der                          CO_Congruente                         0.6951    1.15E-181
+CO_Pro                              CO_Incongruente                       0.6760    2.31E-168
+CO_Con                              CO_Congruente                         0.6131    2.64E-130
+CO_Pro_Izq                          CO_Congruente                         0.5896    2.25E-118
+CO_Pro_Izq                          CO_Pro_Der                            0.4700     5.93E-70
+CO_Con_Izq                          CO_Con_Der                            0.4585     3.41E-66
+CO_Con_Izq                          CO_Incongruente                       0.4402     1.39E-60
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4124     8.52E-53
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3439     3.18E-36
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3358     1.65E-34
+CO_Pro_Izq                          CO_Incongruente                       0.3263     1.57E-32
+Cercania_Massa                      Indice_Positividad                    0.2875     2.39E-25
+Indice_Progresismo                  Indice_Conservadurismo               -0.2864     3.75E-25
+Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.2862     3.93E-25
+CO_Pro                              CO_Congruente                         0.2852     6.53E-25
+
+--------------------------------------------------------------------------------
+► Centre
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 63
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.9343     1.79E-38
+CO_Pro                              CO_Pro_Izq                            0.8678     1.24E-26
+CO_Pro                              CO_Pro_Der                            0.8047     2.93E-20
+CO_Pro_Izq                          CO_Congruente                         0.7726     7.47E-18
+CO_Con                              CO_Con_Izq                            0.7717     8.66E-18
+CO_Pro_Der                          CO_Incongruente                       0.6887     4.46E-13
+CO_Pro                              CO_Congruente                         0.6511     2.01E-11
+CO_Con_Der                          CO_Congruente                         0.6195     3.34E-10
+CO_Con_Izq                          CO_Con_Der                            0.5685     1.69E-08
+CO_Con_Izq                          CO_Incongruente                       0.5519     5.28E-08
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5497     6.10E-08
+CO_Pro                              CO_Incongruente                       0.5445     8.59E-08
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.5222     3.50E-07
+CO_Con                              CO_Congruente                         0.5191     4.21E-07
+Cercania_Bregman                    Indice_Conservadurismo               -0.4980     1.44E-06
+Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.4854     2.86E-06
+CO_Congruente                       CO_Incongruente                       0.4853     2.89E-06
+Cercania_Massa                      Indice_Conservadurismo               -0.4832     3.24E-06
+Cercania_Bullrich                   Cercania_Milei                        0.4815     3.54E-06
+CO_Pro_Izq                          CO_Pro_Der                            0.4775     4.37E-06
+
+--------------------------------------------------------------------------------
+► Moderate_Right_A
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 69
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8533     7.07E-60
+CO_Pro                              CO_Pro_Der                            0.8208     5.34E-52
+CO_Pro_Der                          CO_Incongruente                       0.8109     7.90E-50
+CO_Pro                              CO_Pro_Izq                            0.7985     2.70E-47
+CO_Pro_Izq                          CO_Congruente                         0.7500     7.87E-39
+CO_Con                              CO_Con_Izq                            0.7402     3.42E-37
+CO_Pro                              CO_Incongruente                       0.6483     3.49E-26
+CO_Con_Der                          CO_Congruente                         0.6469     6.33E-26
+CO_Pro                              CO_Congruente                         0.5888     8.55E-21
+CO_Con                              CO_Congruente                         0.5590     2.08E-18
+CO_Con_Izq                          CO_Incongruente                       0.5523     6.29E-18
+Cercania_Bregman                    Indice_Conservadurismo               -0.5504     7.20E-18
+Cercania_Bregman                    Indice_Progresismo                    0.4981     1.93E-14
+Cercania_Bullrich                   Indice_Progresismo                   -0.4943     3.25E-14
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4759     3.75E-13
+Autopercepcion_Izq_Der              Cercania_Bregman                     -0.4663     1.26E-12
+Cercania_Milei                      Indice_Conservadurismo                0.4590     3.11E-12
+Autopercepcion_Izq_Der              Cercania_Bullrich                     0.4466     1.36E-11
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4348     5.29E-11
+CO_Pro_Izq                          CO_Pro_Der                            0.4293     9.74E-11
+
+--------------------------------------------------------------------------------
+► Moderate_Right_B
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 57
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8550     8.72E-62
+CO_Pro                              CO_Pro_Izq                            0.8483     6.69E-60
+CO_Pro                              CO_Pro_Der                            0.7592     4.93E-41
+CO_Con                              CO_Con_Izq                            0.7580     7.80E-41
+CO_Pro_Izq                          CO_Congruente                         0.6948     6.78E-32
+CO_Pro_Der                          CO_Incongruente                       0.6819     2.43E-30
+CO_Con_Izq                          CO_Incongruente                       0.6698     5.81E-29
+CO_Con_Der                          CO_Congruente                         0.6651     1.92E-28
+CO_Pro                              CO_Congruente                         0.6062     1.16E-22
+CO_Con                              CO_Congruente                         0.5731     6.60E-20
+CO_Pro                              CO_Incongruente                       0.5359     3.73E-17
+CO_Con                              CO_Incongruente                       0.4967     1.31E-14
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.4585     2.04E-12
+CO_Con_Izq                          CO_Con_Der                            0.4254     1.00E-10
+Cercania_Bregman                    Indice_Progresismo                    0.4245     1.11E-10
+CO_Congruente                       CO_Incongruente                       0.4225     1.38E-10
+Autopercepcion_Izq_Der              Cercania_Bregman                     -0.4031     1.09E-09
+CO_Pro_Izq                          CO_Pro_Der                            0.3876     5.23E-09
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3797     1.12E-08
+Cercania_Milei                      Indice_Conservadurismo                0.3773     1.41E-08
+
+--------------------------------------------------------------------------------
+► Right_Wing_Libertarian
+--------------------------------------------------------------------------------
+
+Total de pares: 171
+Pares significativos (p < 0.05): 60
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Izq                            0.8748     1.75E-59
+CO_Con                              CO_Con_Izq                            0.7964     7.94E-42
+CO_Con                              CO_Con_Der                            0.7838     1.03E-39
+CO_Pro_Izq                          CO_Congruente                         0.7831     1.32E-39
+CO_Pro                              CO_Pro_Der                            0.7750     2.55E-38
+CO_Pro                              CO_Congruente                         0.7509     8.30E-35
+CO_Pro_Der                          CO_Incongruente                       0.7436     8.03E-34
+CO_Con_Izq                          CO_Incongruente                       0.6168     8.90E-21
+CO_Con_Der                          CO_Congruente                         0.6092     3.52E-20
+CO_Pro                              CO_Incongruente                       0.5280     1.14E-14
+CO_Con                              CO_Incongruente                       0.5239     1.98E-14
+CO_Pro_Izq                          CO_Pro_Der                            0.4634     3.08E-11
+Autopercepcion_Izq_Der              Cercania_Milei                        0.4608     4.10E-11
+CO_Pro_Der                          CO_Congruente                         0.4569     6.25E-11
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4439     2.47E-10
+Cercania_Milei                      Indice_Conservadurismo                0.4286     1.16E-09
+CO_Congruente                       CO_Incongruente                       0.3824     7.78E-08
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.3627     3.92E-07
+CO_Con                              CO_Congruente                         0.3619     4.14E-07
+CO_Con_Izq                          CO_Con_Der                            0.3483     1.19E-06
+
+
+################################################################################
+# DATASET: BALLOTAGE
+################################################################################
+
+================================================================================
+SECCIÓN 1: TOP 50 CORRELACIONES MÁS FUERTES
+================================================================================
+
+Total de pares: 120
+Pares significativos (p < 0.05): 82
+
+Variable 1                          Variable 2                                 ρ            p   Sig
+----------------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8854     0.00E+00   ***
+CO_Pro                              CO_Pro_Der                            0.8729     0.00E+00   ***
+CO_Con                              CO_Con_Izq                            0.8346     0.00E+00   ***
+CO_Pro                              CO_Pro_Izq                            0.8303    1.18E-319   ***
+CO_Pro_Der                          CO_Incongruente                       0.6728    9.02E-166   ***
+Indice_Progresismo                  Indice_Conservadurismo               -0.6704    1.94E-164   ***
+CO_Pro_Izq                          CO_Congruente                         0.6264    2.11E-137   ***
+CO_Con_Der                          CO_Congruente                         0.6074    5.28E-127   ***
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.6012    4.49E-124   ***
+CO_Con_Izq                          CO_Con_Der                            0.5868    1.31E-116   ***
+CO_Pro                              CO_Incongruente                       0.5817    2.81E-114   ***
+CO_Con_Izq                          CO_Incongruente                       0.5763    1.36E-111   ***
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5736    1.26E-110   ***
+Cercania_Milei                      Indice_Conservadurismo                0.5735    1.38E-110   ***
+Cercania_Milei                      Indice_Progresismo                   -0.5703    4.25E-109   ***
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5479     3.55E-99   ***
+CO_Pro_Izq                          CO_Pro_Der                            0.5405     7.18E-96   ***
+CO_Con                              CO_Congruente                         0.5322     2.06E-92   ***
+Cercania_Massa                      Indice_Positividad                    0.5204     5.97E-88   ***
+CO_Pro                              CO_Congruente                         0.4849     8.16E-75   ***
+Autopercepcion_Per_Antiper          Cercania_Milei                        0.4777     1.74E-72   ***
+Autopercepcion_Izq_Der              Cercania_Milei                        0.4723     1.10E-70   ***
+Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4669     6.83E-69   ***
+Autopercepcion_Per_Antiper          Indice_Conservadurismo                0.4571     9.27E-66   ***
+Cercania_Massa                      Cercania_Milei                       -0.4520     3.58E-64   ***
+Cercania_Massa                      Indice_Conservadurismo               -0.4464     1.95E-62   ***
+Autopercepcion_Per_Antiper          Indice_Positividad                   -0.4447     6.31E-62   ***
+Cercania_Massa                      Indice_Progresismo                    0.4384     4.73E-60   ***
+Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.4348     5.64E-59   ***
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4191     1.61E-54   ***
+CO_Con                              CO_Incongruente                       0.4187     2.93E-54   ***
+CO_Congruente                       CO_Incongruente                       0.4186     2.32E-54   ***
+Autopercepcion_Con_Pro              Indice_Progresismo                    0.4124     1.11E-52   ***
+Indice_Conservadurismo              Indice_Positividad                   -0.4116     1.89E-52   ***
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.3962     2.17E-48   ***
+Indice_Progresismo                  Indice_Positividad                    0.3826     5.51E-45   ***
+Cercania_Milei                      Indice_Positividad                   -0.3490     3.13E-37   ***
+CO_Pro_Izq                          CO_Incongruente                       0.3373     1.10E-34   ***
+CO_Con_Izq                          CO_Congruente                         0.3288     6.23E-33   ***
+Autopercepcion_Izq_Der              Cercania_Massa                       -0.2973     5.29E-27   ***
+CO_Pro_Der                          CO_Congruente                         0.2798     5.91E-24   ***
+CO_Con_Der                          CO_Incongruente                       0.2439     2.14E-18   ***
+Autopercepcion_Izq_Der              Indice_Positividad                   -0.2370     1.78E-17   ***
+Autopercepcion_Con_Pro              Cercania_Milei                       -0.2162     1.01E-14   ***
+Autopercepcion_Con_Pro              Cercania_Massa                        0.1994     1.04E-12   ***
+Autopercepcion_Con_Pro              Indice_Positividad                    0.1814     9.73E-11   ***
+Autopercepcion_Con_Pro              Autopercepcion_Per_Antiper           -0.1785     1.96E-10   ***
+CO_Con_Izq                          Indice_Conservadurismo               -0.1748     4.85E-10   ***
+CO_Con                              Indice_Conservadurismo               -0.1727     7.83E-10   ***
+CO_Pro                              Indice_Progresismo                   -0.1706     1.25E-09   ***
+
+Significancia: *** p < 0.001, ** p < 0.01, * p < 0.05
+
+================================================================================
+SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL
+================================================================================
+
+--------------------------------------------------------------------------------
+► Left_Wing
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 43
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Der                            0.9122     1.33E-52
+CO_Con                              CO_Con_Der                            0.9099     6.44E-52
+CO_Pro                              CO_Pro_Izq                            0.8119     2.04E-32
+CO_Con                              CO_Con_Izq                            0.7894     1.54E-29
+CO_Pro_Izq                          CO_Congruente                         0.6845     1.06E-19
+CO_Pro_Der                          CO_Incongruente                       0.6534     1.54E-17
+Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.6031     1.56E-14
+CO_Con_Izq                          CO_Con_Der                            0.5970     3.35E-14
+CO_Pro                              CO_Incongruente                       0.5941     4.76E-14
+CO_Pro_Izq                          CO_Pro_Der                            0.5763     3.91E-13
+Indice_Progresismo                  Indice_Conservadurismo               -0.5508     6.44E-12
+CO_Con_Izq                          CO_Incongruente                       0.5501     6.94E-12
+CO_Con_Der                          CO_Congruente                         0.5480     8.68E-12
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.5043     6.08E-10
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4971     1.15E-09
+Autopercepcion_Con_Pro              Indice_Progresismo                    0.4947     1.43E-09
+CO_Pro                              CO_Congruente                         0.4661     1.57E-08
+CO_Con                              CO_Congruente                         0.4635     1.93E-08
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4126     8.02E-07
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.3975     2.17E-06
+
+--------------------------------------------------------------------------------
+► Progressivism
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 59
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8875    5.61E-202
+CO_Pro                              CO_Pro_Der                            0.8749    1.63E-189
+CO_Con                              CO_Con_Izq                            0.8400    7.80E-160
+CO_Pro                              CO_Pro_Izq                            0.7977    8.67E-133
+CO_Pro_Der                          CO_Incongruente                       0.6890     3.03E-85
+CO_Con_Der                          CO_Congruente                         0.6054     7.08E-61
+CO_Con_Izq                          CO_Con_Der                            0.6028     3.03E-60
+CO_Pro                              CO_Incongruente                       0.5831     1.12E-55
+CO_Pro_Izq                          CO_Congruente                         0.5791     9.11E-55
+CO_Con                              CO_Congruente                         0.5295     2.23E-44
+CO_Pro_Izq                          CO_Pro_Der                            0.5069     2.75E-40
+CO_Con_Izq                          CO_Incongruente                       0.4807     8.68E-36
+Autopercepcion_Izq_Der              Autopercepcion_Con_Pro               -0.4314     1.84E-28
+CO_Pro                              CO_Congruente                         0.3978     4.47E-24
+Indice_Progresismo                  Indice_Conservadurismo               -0.3938     1.38E-23
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.3597     1.13E-19
+CO_Con_Izq                          CO_Congruente                         0.3550     3.85E-19
+Autopercepcion_Con_Pro              Indice_Conservadurismo               -0.3496     1.32E-18
+CO_Congruente                       CO_Incongruente                       0.3253     3.47E-16
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.3224     6.61E-16
+
+--------------------------------------------------------------------------------
+► Centre
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 26
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.8941     6.86E-16
+CO_Pro                              CO_Pro_Der                            0.8786     9.72E-15
+CO_Con                              CO_Con_Izq                            0.8475     7.63E-13
+CO_Pro                              CO_Pro_Izq                            0.8295     6.25E-12
+CO_Con_Der                          CO_Congruente                         0.7273     3.30E-08
+CO_Pro_Der                          CO_Incongruente                       0.6679     9.95E-07
+CO_Con_Izq                          CO_Incongruente                       0.6632     1.26E-06
+CO_Con                              CO_Congruente                         0.6296     6.10E-06
+CO_Pro                              CO_Incongruente                       0.5945     2.62E-05
+CO_Con_Izq                          CO_Con_Der                            0.5935     2.74E-05
+CO_Pro_Izq                          CO_Congruente                         0.5903     3.09E-05
+Cercania_Milei                      Indice_Conservadurismo                0.5159     3.99E-04
+Cercania_Massa                      Indice_Positividad                    0.5109     4.64E-04
+CO_Pro_Izq                          CO_Pro_Der                            0.4915     8.16E-04
+Autopercepcion_Per_Antiper          Indice_Progresismo                   -0.4780       0.0012
+Autopercepcion_Per_Antiper          Indice_Positividad                   -0.4464       0.0027
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.4378       0.0033
+CO_Con                              CO_Incongruente                       0.4197       0.0051
+CO_Con_Izq                          CO_Congruente                         0.4001       0.0078
+CO_Congruente                       CO_Incongruente                       0.3788       0.0122
+
+--------------------------------------------------------------------------------
+► Moderate_Right_A
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 37
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Con                              CO_Con_Der                            0.9201     1.07E-18
+CO_Pro                              CO_Pro_Der                            0.9147     1.59E-18
+CO_Pro                              CO_Pro_Izq                            0.8045     2.78E-11
+CO_Con                              CO_Con_Izq                            0.8027     5.64E-11
+CO_Con_Izq                          CO_Incongruente                       0.6710     6.22E-07
+Cercania_Milei                      Indice_Conservadurismo                0.6465     1.61E-06
+CO_Pro_Izq                          CO_Congruente                         0.6019     1.22E-05
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5875     2.21E-05
+CO_Con_Izq                          CO_Con_Der                            0.5713     5.12E-05
+CO_Pro_Izq                          CO_Pro_Der                            0.5620     5.89E-05
+Cercania_Massa                      Indice_Positividad                    0.5526     8.27E-05
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.5438     1.13E-04
+Autopercepcion_Per_Antiper          Cercania_Massa                       -0.5332     1.62E-04
+CO_Pro_Der                          CO_Incongruente                       0.5295     1.84E-04
+CO_Con_Der                          CO_Congruente                         0.5197     3.00E-04
+Autopercepcion_Izq_Der              Cercania_Milei                        0.5027     4.33E-04
+Cercania_Massa                      Indice_Conservadurismo               -0.4954     5.41E-04
+Indice_Conservadurismo              Indice_Positividad                   -0.4898     6.38E-04
+Autopercepcion_Izq_Der              Cercania_Massa                       -0.4771     9.21E-04
+Cercania_Milei                      Indice_Progresismo                   -0.4530       0.0018
+
+--------------------------------------------------------------------------------
+► Moderate_Right_B
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 47
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Der                            0.8599     4.38E-35
+CO_Pro                              CO_Pro_Izq                            0.8432     1.64E-32
+CO_Con                              CO_Con_Der                            0.8167     5.42E-29
+CO_Con                              CO_Con_Izq                            0.8157     7.19E-29
+CO_Pro_Der                          CO_Incongruente                       0.7192     9.72E-20
+CO_Pro                              CO_Congruente                         0.6660     3.39E-16
+CO_Pro_Izq                          CO_Congruente                         0.6649     3.96E-16
+CO_Con_Izq                          CO_Incongruente                       0.6194     1.25E-13
+CO_Pro                              CO_Incongruente                       0.6167     1.69E-13
+CO_Con_Der                          CO_Congruente                         0.5966     1.58E-12
+CO_Congruente                       CO_Incongruente                       0.5615     5.50E-11
+CO_Con                              CO_Incongruente                       0.5442     2.73E-10
+CO_Pro_Izq                          CO_Pro_Der                            0.5256     1.38E-09
+Cercania_Milei                      Indice_Progresismo                   -0.5133     3.83E-09
+CO_Pro_Der                          CO_Congruente                         0.5014     9.84E-09
+CO_Con                              CO_Congruente                         0.4985     1.24E-08
+Autopercepcion_Izq_Der              Indice_Progresismo                   -0.4767     6.33E-08
+CO_Con_Izq                          CO_Con_Der                            0.4448     5.65E-07
+Autopercepcion_Izq_Der              Indice_Conservadurismo                0.4130     4.09E-06
+Cercania_Milei                      Indice_Conservadurismo                0.3797     2.62E-05
+
+--------------------------------------------------------------------------------
+► Right_Wing_Libertarian
+--------------------------------------------------------------------------------
+
+Total de pares: 120
+Pares significativos (p < 0.05): 39
+
+Variable 1                          Variable 2                                 ρ            p
+-----------------------------------------------------------------------------------------------
+CO_Pro                              CO_Pro_Izq                            0.8912     1.19E-32
+CO_Con                              CO_Con_Der                            0.8892     1.16E-32
+CO_Con                              CO_Con_Izq                            0.8586     3.74E-28
+CO_Pro                              CO_Pro_Der                            0.8428     6.13E-26
+CO_Pro_Izq                          CO_Congruente                         0.8084     2.00E-22
+CO_Con_Izq                          CO_Incongruente                       0.7217     3.31E-16
+CO_Pro                              CO_Congruente                         0.6794     9.70E-14
+CO_Con_Der                          CO_Congruente                         0.6764     9.98E-14
+CO_Con                              CO_Incongruente                       0.6433     3.56E-12
+CO_Con_Izq                          CO_Con_Der                            0.6224     2.73E-11
+CO_Con                              CO_Congruente                         0.6035     1.53E-10
+CO_Pro_Izq                          CO_Pro_Der                            0.5844     9.60E-10
+CO_Congruente                       CO_Incongruente                       0.5827     8.95E-10
+CO_Pro_Der                          CO_Incongruente                       0.5812     1.24E-09
+CO_Pro                              CO_Incongruente                       0.5770     1.75E-09
+Autopercepcion_Izq_Der              Autopercepcion_Per_Antiper            0.5021     2.94E-07
+CO_Con_Der                          CO_Incongruente                       0.5012     3.11E-07
+Autopercepcion_Izq_Der              Cercania_Milei                        0.4740     1.59E-06
+CO_Pro_Izq                          CO_Incongruente                       0.4735     1.87E-06
+Cercania_Milei                      Indice_Conservadurismo                0.4258     2.09E-05
+
+
+================================================================================
+FIN DEL REPORTE
+================================================================================
