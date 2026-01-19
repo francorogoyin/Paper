@@ -579,6 +579,94 @@ def Ejecutar_Analisis_Correlaciones(
 # GENERACIÓN DE REPORTE TXT.
 # =============================================================================
 
+# Orden temático de las variables para el reporte.
+# El orden es: Índices → Autopercepciones → Cercanías → CO_Agrupados.
+Orden_Tematico_Variables = (
+    Columnas_Indices
+    + Columnas_Autopercepciones
+    + Columnas_Cercanias
+    + Columnas_CO_Agrupados
+)
+
+
+def Obtener_Indice_Tematico(Variable: str) -> int:
+
+    """
+    Obtiene el índice temático de una variable para ordenamiento.
+
+    Parámetros:
+        Variable (str): Nombre de la variable.
+
+    Retorna:
+        int: Índice en el orden temático (999 si no se encuentra).
+
+    """
+
+    if Variable in Orden_Tematico_Variables:
+        return Orden_Tematico_Variables.index(Variable)
+    return 999
+
+
+def Agrupar_Correlaciones_Por_Variable(
+    df_Correlaciones: pd.DataFrame,
+    Solo_Significativas: bool = True
+) -> dict:
+
+    """
+    Agrupa las correlaciones por variable principal, ordenando las
+    variables correlacionadas según el orden temático establecido.
+
+    Parámetros:
+        df_Correlaciones (pd.DataFrame): DataFrame con correlaciones.
+        Solo_Significativas (bool): Si True, solo incluye significativas.
+
+    Retorna:
+        dict: Diccionario con variable como clave y lista de
+              correlaciones ordenadas temáticamente como valor.
+
+    """
+
+    if Solo_Significativas:
+        df_Filtrado = df_Correlaciones[
+            df_Correlaciones['Significativo'] == True
+        ].copy()
+    else:
+        df_Filtrado = df_Correlaciones.copy()
+
+    if len(df_Filtrado) == 0:
+        return {}
+
+    # Crear diccionario para agrupar por variable.
+    Correlaciones_Por_Variable = {}
+
+    for Variable in Orden_Tematico_Variables:
+        # Buscar correlaciones donde esta variable aparece.
+        Correlaciones_Variable = []
+
+        for _, Fila in df_Filtrado.iterrows():
+            if Fila['Variable_1'] == Variable:
+                Correlaciones_Variable.append({
+                    'Variable': Fila['Variable_2'],
+                    'Coeficiente': Fila['Coeficiente'],
+                    'P_Valor': Fila['P_Valor']
+                })
+            elif Fila['Variable_2'] == Variable:
+                Correlaciones_Variable.append({
+                    'Variable': Fila['Variable_1'],
+                    'Coeficiente': Fila['Coeficiente'],
+                    'P_Valor': Fila['P_Valor']
+                })
+
+        if len(Correlaciones_Variable) > 0:
+            # Ordenar por orden temático de la variable correlacionada.
+            Correlaciones_Variable.sort(
+                key=lambda x: Obtener_Indice_Tematico(x['Variable'])
+            )
+            Correlaciones_Por_Variable[Variable] = Correlaciones_Variable
+
+    return Correlaciones_Por_Variable
+
+
 def Generar_Reporte_Correlaciones_TXT(
     Todos_Resultados: dict,
     Ruta_Salida: str,
@@ -587,7 +675,8 @@ def Generar_Reporte_Correlaciones_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con el reporte de correlaciones.
+    Genera un archivo TXT con el reporte de correlaciones,
+    agrupadas por variable y ordenadas temáticamente.
 
     Parámetros:
         Todos_Resultados (dict): Diccionario con los resultados.
@@ -624,10 +713,12 @@ def Generar_Reporte_Correlaciones_TXT(
         Agregar("")
 
         # =================================================================
-        # SECCIÓN 1: TOP CORRELACIONES GENERALES.
+        # SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE.
         # =================================================================
         Separador("=")
-        Agregar(f"SECCIÓN 1: TOP {Top_N} CORRELACIONES MÁS FUERTES")
+        Agregar("SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE")
+        Agregar("(Ordenadas temáticamente: Índices → Autopercepciones "
+                "→ Cercanías → CO)")
         Separador("=")
         Agregar("")
 
@@ -642,33 +733,34 @@ def Generar_Reporte_Correlaciones_TXT(
             Agregar(f"Pares significativos (p < 0.05): {len(Par_A_Par_Sig)}")
             Agregar("")
 
-            # Mostrar top N.
-            Top = Par_A_Par.head(Top_N)
+            # Agrupar por variable.
+            Correlaciones_Agrupadas = Agrupar_Correlaciones_Por_Variable(
+                Par_A_Par,
+                Solo_Significativas=True
+            )
 
-            Agregar(f"{'Variable 1':<35} {'Variable 2':<35} "
-                    f"{Nombre_Coef:>8} {'p':>12} {'Sig':>5}")
-            Agregar("-" * 100)
+            for Variable, Correlaciones in Correlaciones_Agrupadas.items():
+                Agregar(f"► {Variable}")
+                Agregar("-" * 70)
 
-            for _, Fila in Top.iterrows():
-                Sig_Marca = "***" if Fila['P_Valor'] < 0.001 else (
-                    "**" if Fila['P_Valor'] < 0.01 else (
-                        "*" if Fila['P_Valor'] < 0.05 else ""
+                for Corr in Correlaciones:
+                    Sig_Marca = "***" if Corr['P_Valor'] < 0.001 else (
+                        "**" if Corr['P_Valor'] < 0.01 else "*"
                     )
-                )
-                Agregar(
-                    f"{Fila['Variable_1']:<35} "
-                    f"{Fila['Variable_2']:<35} "
-                    f"{Fila['Coeficiente']:>8.4f} "
-                    f"{Formatear_P_Valor(Fila['P_Valor']):>12} "
-                    f"{Sig_Marca:>5}"
-                )
+                    Agregar(
+                        f"  {Corr['Variable']:<40} "
+                        f"{Nombre_Coef}={Corr['Coeficiente']:>7.4f}  "
+                        f"p={Formatear_P_Valor(Corr['P_Valor']):>12}  "
+                        f"{Sig_Marca}"
+                    )
 
-            Agregar("")
+                Agregar("")
+
             Agregar("Significancia: *** p < 0.001, ** p < 0.01, * p < 0.05")
             Agregar("")
 
         # =================================================================
-        # SECCIÓN 2: CORRELACIONES POR CATEGORÍA.
+        # SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL.
         # =================================================================
         Separador("=")
         Agregar("SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL")
@@ -701,22 +793,27 @@ def Generar_Reporte_Correlaciones_TXT(
             Agregar(f"Pares significativos (p < 0.05): {len(Par_A_Par_Sig)}")
             Agregar("")
 
-            # Mostrar top 20 por categoría.
-            Top_Cat = Par_A_Par_Cat.head(20)
+            # Agrupar por variable.
+            Correlaciones_Agrupadas = Agrupar_Correlaciones_Por_Variable(
+                Par_A_Par_Cat,
+                Solo_Significativas=True
+            )
 
-            Agregar(f"{'Variable 1':<35} {'Variable 2':<35} "
-                    f"{Nombre_Coef:>8} {'p':>12}")
-            Agregar("-" * 95)
+            for Variable, Correlaciones in Correlaciones_Agrupadas.items():
+                Agregar(f"  ▸ {Variable}")
 
-            for _, Fila in Top_Cat.iterrows():
-                Agregar(
-                    f"{Fila['Variable_1']:<35} "
-                    f"{Fila['Variable_2']:<35} "
-                    f"{Fila['Coeficiente']:>8.4f} "
-                    f"{Formatear_P_Valor(Fila['P_Valor']):>12}"
-                )
+                for Corr in Correlaciones:
+                    Sig_Marca = "***" if Corr['P_Valor'] < 0.001 else (
+                        "**" if Corr['P_Valor'] < 0.01 else "*"
+                    )
+                    Agregar(
+                        f"      {Corr['Variable']:<36} "
+                        f"{Nombre_Coef}={Corr['Coeficiente']:>7.4f}  "
+                        f"p={Formatear_P_Valor(Corr['P_Valor']):>12}  "
+                        f"{Sig_Marca}"
+                    )
 
-            Agregar("")
+                Agregar("")
 
         Agregar("")
 
