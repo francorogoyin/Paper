@@ -71,7 +71,7 @@ def Main() -> None:
             "Codigo",
             "Analisis_Poblaciones_Segmentadas.py"
         ),
-        #os.path.join(Ruta_Base, "Codigo", "Modelos.py"),
+        os.path.join(Ruta_Base, "Codigo", "Modelos.py"),
         os.path.join(Ruta_Base, "Codigo", "Comparar_Bases.py")
     ]
 

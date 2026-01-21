@@ -485,8 +485,7 @@ def Modelo_Lineal_Robusto(
     Detectar_Outliers: bool = True,
     Iteracion: int = 1,
     Variables_Originales: list = None,
-    Historial_Proceso: list = None,
-    Silencioso: bool = False
+    Historial_Proceso: list = None
 ) -> dict:
 
     """
@@ -509,7 +508,6 @@ def Modelo_Lineal_Robusto(
         Variables_Originales (list): Lista original de variables
             (interno).
         Historial_Proceso (list): Historial del proceso (interno).
-        Silencioso (bool): Si suprimir output en consola.
 
     Retorna:
         dict: Diccionario con resultados del modelo final.
@@ -525,13 +523,11 @@ def Modelo_Lineal_Robusto(
 
     # Verificar datos de entrada.
     if len(Variables_X.columns) == 0:
-        if not Silencioso:
-            print("  ERROR: No quedan variables independientes")
+        print("  ERROR: No quedan variables independientes")
         return None
 
     if len(Variables_X) != len(Variable_Y):
-        if not Silencioso:
-            print("  ERROR: Dimensiones inconsistentes")
+        print("  ERROR: Dimensiones inconsistentes")
         return None
 
     # Detección de outliers influyentes (solo primera iteración).
@@ -610,8 +606,7 @@ def Modelo_Lineal_Robusto(
     Variables_X_Finales = Variables_X_VIF.copy()
 
     if len(Variables_X_Finales.columns) == 0:
-        if not Silencioso:
-            print("  ERROR: Todas las variables eliminadas por VIF")
+        print("  ERROR: Todas las variables eliminadas por VIF")
         return None
 
     # Ajustar modelo con errores estándar robustos HC3.
@@ -801,7 +796,7 @@ def Modelo_Lineal_Robusto(
             Variables_X_Nuevas, Variable_Y, Nombre_Variable,
             Criterio_Eliminacion, Umbral_VIF, Alpha_Significancia,
             Detectar_Outliers, Iteracion + 1, Variables_Originales,
-            Historial_Proceso, Silencioso
+            Historial_Proceso
         )
 
 
@@ -1075,11 +1070,7 @@ def Ajustar_Modelos_Robustos(
 
             print(f"\n  Ajustando: {Variable_Dep}")
 
-            # Filtrar variables independientes existentes.
-            Vars_Indep_Existentes = [
-                v for v in Variables_Independientes
-                if v in df.columns and v != Variable_Dep
-            ]
+            Vars_Indep_Existentes = Variables_Independientes
 
             # Preparar datos con la misma logica de los notebooks.
             X, y = Limpiar_Y_Estructurar_Datos_Para_Modelado(
@@ -1088,10 +1079,6 @@ def Ajustar_Modelos_Robustos(
             X = Codificar_Variables_Booleanas_A_Numericas(X)
             X = Codificar_Variables_Categoricas_A_Numericas(X)
 
-            if len(X) < 50:
-                print(f"    Datos insuficientes: {len(X)}")
-                continue
-
             Resultado = Modelo_Lineal_Robusto(
                 X,
                 y,
@@ -1099,8 +1086,7 @@ def Ajustar_Modelos_Robustos(
                 Criterio_Eliminacion='aic',
                 Umbral_VIF=5.0,
                 Alpha_Significancia=0.05,
-                Detectar_Outliers=True,
-                Silencioso=True
+                Detectar_Outliers=True
             )
 
             if Resultado is not None:
@@ -1128,8 +1114,7 @@ def Ajustar_GLM_Recursivo(
     Variable_Dependiente: str,
     Variables_Indep: list,
     Nombre_Eleccion: str,
-    Familia_GLM = None,
-    Silencioso: bool = False
+    Familia_GLM = None
 ) -> dict:
 
     """
@@ -1145,7 +1130,6 @@ def Ajustar_GLM_Recursivo(
         Nombre_Eleccion (str): Identificador de la elección.
         Familia_GLM: Familia de distribución para el GLM. Si es None,
             usa Gaussiana con link Identity.
-        Silencioso (bool): Si suprimir output en consola.
 
     Retorna:
         dict: Diccionario con modelo final y estadísticos.
@@ -1155,24 +1139,12 @@ def Ajustar_GLM_Recursivo(
     # Preparar datos eliminando NaN.
     Columnas_Necesarias = [Variable_Dependiente] + Variables_Indep
 
-    # Filtrar solo columnas existentes.
-    Columnas_Existentes = [
-        c for c in Columnas_Necesarias if c in df.columns
-    ]
+    df_Limpio = df[Columnas_Necesarias].dropna()
 
-    df_Limpio = df[Columnas_Existentes].dropna()
-
-    if not Silencioso:
-        print(f"    Observaciones válidas: {len(df_Limpio)}")
-
-    if len(df_Limpio) < 50:
-        return None
+    print(f"    Observaciones válidas: {len(df_Limpio)}")
 
     # Variables independientes disponibles.
-    Variables_Actuales = [
-        v for v in Variables_Indep
-        if v in df_Limpio.columns and v != Variable_Dependiente
-    ]
+    Variables_Actuales = Variables_Indep.copy()
 
     Iteracion = 0
     Variables_Anteriores = []
@@ -1488,8 +1460,7 @@ def Ajustar_Regresion_Logistica_Recursiva(
     df: pd.DataFrame,
     Variable_Dependiente: str,
     Variables_Indep: list,
-    Nombre_Eleccion: str,
-    Silencioso: bool = False
+    Nombre_Eleccion: str
 ) -> dict:
 
     """
@@ -1506,7 +1477,6 @@ def Ajustar_Regresion_Logistica_Recursiva(
             binaria.
         Variables_Indep (list): Lista de variables independientes.
         Nombre_Eleccion (str): Identificador de la elección.
-        Silencioso (bool): Si suprimir output en consola.
 
     Retorna:
         dict: Diccionario con modelo final y estadísticos.
@@ -1516,28 +1486,16 @@ def Ajustar_Regresion_Logistica_Recursiva(
     # Preparar datos eliminando NaN.
     Columnas_Necesarias = [Variable_Dependiente] + Variables_Indep
 
-    # Filtrar solo columnas existentes.
-    Columnas_Existentes = [
-        c for c in Columnas_Necesarias if c in df.columns
-    ]
+    df_Limpio = df[Columnas_Necesarias].dropna()
 
-    df_Limpio = df[Columnas_Existentes].dropna()
-
-    if not Silencioso:
-        print(f"    Observaciones válidas: {len(df_Limpio)}")
-
-    if len(df_Limpio) < 50:
-        return None
+    print(f"    Observaciones válidas: {len(df_Limpio)}")
 
     # Verificar variabilidad en variable dependiente.
     if df_Limpio[Variable_Dependiente].nunique() < 2:
         return None
 
     # Variables independientes disponibles.
-    Variables_Actuales = [
-        v for v in Variables_Indep
-        if v in df_Limpio.columns and v != Variable_Dependiente
-    ]
+    Variables_Actuales = Variables_Indep.copy()
 
     Iteracion = 0
     Variables_Anteriores = []
