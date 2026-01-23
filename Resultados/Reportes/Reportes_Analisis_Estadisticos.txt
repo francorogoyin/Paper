@@ -980,6 +980,54 @@ Variables sin diferencias significativas:
   CT_Con_Der           U = 1717493.0000, p = 5.31E-01
 
 ================================================================================
+17. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)
+================================================================================
+
+Verificación de que el efecto Congruente vs Incongruente
+se mantiene después de controlar por Género y Edad.
+
+Método: Regresión OLS de (Congruente - Incongruente) ~ Género + Edad
+Un intercepto significativo indica que el efecto se mantiene.
+
+Generales:
+--------------------------------------------------
+
+  CO Congruente - Incongruente (N=2786):
+    Intercepto:      β =  0.2004, p = 1.20E-04 ***
+    Género (Masc):   β = -0.0308, p = 3.67E-01
+    Edad:            β =  0.0006, p = 6.51E-01
+    R² ajustado:     -0.0007
+    → El efecto CO Cong. vs Incong. SE MANTIENE controlando por Género y Edad.
+
+  CT Congruente - Incongruente (N=2786):
+    Intercepto:      β = -0.3349, p = 3.73E-01 ns
+    Género (Masc):   β = -0.1229, p = 6.18E-01
+    Edad:            β =  0.0042, p = 6.51E-01
+    R² ajustado:     -0.0008
+    → El efecto CT Cong. vs Incong. NO se mantiene controlando por Género y Edad.
+
+Ballotage:
+--------------------------------------------------
+
+  CO Congruente - Incongruente (N=1254):
+    Intercepto:      β =  0.1792, p = 3.37E-02 *
+    Género (Masc):   β =  0.0520, p = 2.01E-01
+    Edad:            β = -0.0027, p = 1.80E-01
+    R² ajustado:     0.0004
+    → El efecto CO Cong. vs Incong. SE MANTIENE controlando por Género y Edad.
+
+  CT Congruente - Incongruente (N=1254):
+    Intercepto:      β =  0.3398, p = 4.88E-01 ns
+    Género (Masc):   β = -0.0934, p = 6.93E-01
+    Edad:            β = -0.0130, p = 2.65E-01
+    R² ajustado:     -0.0010
+    → El efecto CT Cong. vs Incong. NO se mantiene controlando por Género y Edad.
+
+Notas:
+  - Categoría de referencia para Género: Femenino
+  - *** p<.001, ** p<.01, * p<.05, ns = no significativo
+
+================================================================================
 RESUMEN DE RESULTADOS
 ================================================================================
 

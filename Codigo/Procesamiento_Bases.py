@@ -16,8 +16,6 @@ import json
 import os
 from typing import List, Dict, Any
 from unidecode import unidecode
-import matplotlib.pyplot as plt
-import seaborn as sns
 from scipy import stats
 
 
@@ -718,6 +716,24 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
+    # Diccionario para rastrear exclusiones durante el procesamiento.
+    # ========================================================================
+    Registro_Exclusiones = {
+        'Generales': {
+            'Total_N_Inicial': 0,
+            'Exclusion_1_Outliers_Tiempo': 0,
+            'Exclusion_2_Candidatos_Pocos_N': 0,
+            'N_Final_Analizado': 0
+        },
+        'Ballotage': {
+            'Total_N_Inicial': 0,
+            'Exclusion_1_Outliers_Tiempo': 0,
+            'Exclusion_2_Candidatos_Pocos_N': 0,
+            'N_Final_Analizado': 0
+        }
+    }
+
+    # ========================================================================
     # 1: Armar databases de datos crudos
     # ========================================================================
     print("PASO 1: Cargando datos crudos...")
@@ -852,6 +868,9 @@ def Procesar_Datos_Completo(
             f"{len(df_Final.columns)} columnas"
         )
         Dfs_Finales.append(df_Final)
+
+        # Registrar N inicial para el tracking de exclusiones.
+        Registro_Exclusiones[Nombre]['Total_N_Inicial'] = len(df_Final)
 
     print()
 
@@ -2207,60 +2226,6 @@ def Procesar_Datos_Completo(
 
     print("\n" + "="*70)
 
-    print("GRAFICO DE EVOLUCION DE CO CRONOLOGICOS")
-    print("="*70)
-
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-    if 'Generales' in Resultados_Analisis and len(Resultados_Analisis['Generales']) > 0:
-        Estadisticas = Resultados_Analisis['Generales']
-        Posiciones = [stat['Posicion'] for stat in Estadisticas]
-        Medias_Abs = [stat['Media_Absoluta'] for stat in Estadisticas]
-
-        axes[0].plot(
-            Posiciones, Medias_Abs, marker='o', linewidth=2,
-            markersize=8, color='#2E86AB'
-        )
-        axes[0].set_title('Generales', fontsize=14, fontweight='bold')
-        axes[0].set_xlabel('Posicion cronologica', fontsize=12)
-        axes[0].set_ylabel('CO (Promedio)', fontsize=12)
-        axes[0].grid(True, alpha=0.3)
-        axes[0].set_xticks(range(1, 11))
-
-        axes[0].axvline(
-            x=3.5, color='red', linestyle='--', linewidth=2,
-            alpha=0.7, label='Limite (3 items unicos)'
-        )
-        axes[0].legend()
-
-    if 'Ballotage' in Resultados_Analisis and len(Resultados_Analisis['Ballotage']) > 0:
-        Estadisticas = Resultados_Analisis['Ballotage']
-        Posiciones = [stat['Posicion'] for stat in Estadisticas]
-        Medias_Abs = [stat['Media_Absoluta'] for stat in Estadisticas]
-
-        axes[1].plot(
-            Posiciones, Medias_Abs, marker='o', linewidth=2,
-            markersize=8, color='#A23B72'
-        )
-        axes[1].set_title('Ballotage', fontsize=14, fontweight='bold')
-        axes[1].set_xlabel('Posicion cronologica', fontsize=12)
-        axes[1].set_ylabel('CO (Promedio)', fontsize=12)
-        axes[1].grid(True, alpha=0.3)
-        axes[1].set_xticks(range(1, 11))
-
-        axes[1].axvline(
-            x=3.5, color='red', linestyle='--', linewidth=2,
-            alpha=0.7, label='Limite (3 items unicos)'
-        )
-        axes[1].legend()
-
-    plt.suptitle('', fontsize=16, fontweight='bold', y=1.02)
-    plt.tight_layout()
-    plt.show()
-
-    print('\nGrafico generado exitosamente.')
-    print('\n' + '='*70)
-
     print('LIMPIEZA DE COLUMNAS CO PROVISIONALES')
     print('='*70)
 
@@ -2334,6 +2299,11 @@ def Procesar_Datos_Completo(
         )
         Filas_Finales = len(df)
         Eliminados = Filas_Iniciales - Filas_Finales
+
+        # Registrar exclusión por candidatos con pocos n.
+        Registro_Exclusiones[Nombre][
+            'Exclusion_2_Candidatos_Pocos_N'
+        ] = Eliminados
 
         print(
             f"  OK {Nombre}: {Eliminados} participantes eliminados "
@@ -2470,66 +2440,6 @@ def Procesar_Datos_Completo(
 
     print('='*80)
 
-    print('GRAFICOS DE COMPARACION')
-    print('='*80)
-
-    Variables_Graficar = [
-        'ID', 'CP', 'AP', 'Indice_Progresismo', 'Indice_Conservadurismo'
-    ]
-
-    for Nombre_df, df in dfs_Finales.items():
-        print(f"\nGenerando graficos para {Nombre_df}...")
-
-        df_A = df[df['Categoria_PASO_2023'] == 'Moderate_Right_A']
-        df_B = df[df['Categoria_PASO_2023'] == 'Moderate_Right_B']
-
-        Variables_Disponibles = [
-            v for v in Variables_Graficar if v in df.columns
-        ]
-        N_Vars = len(Variables_Disponibles)
-
-        if N_Vars == 0:
-            print('  No hay variables disponibles para graficar.')
-            continue
-
-        Fig, Axes = plt.subplots(1, N_Vars, figsize=(4*N_Vars, 5))
-
-        if N_Vars == 1:
-            Axes = [Axes]
-
-        for i, Variable in enumerate(Variables_Disponibles):
-            Datos_Plot = pd.DataFrame({
-                'Valor': pd.concat([
-                    pd.to_numeric(df_A[Variable], errors='coerce'),
-                    pd.to_numeric(df_B[Variable], errors='coerce')
-                ]),
-                'Categoria': [
-                    'Larreta (A)'
-                ]*len(df_A) + [
-                    'Bullrich (B)'
-                ]*len(df_B)
-            }).dropna()
-
-            sns.boxplot(
-                data=Datos_Plot, x='Categoria', y='Valor',
-                ax=Axes[i], palette=['#66C2A5', '#FC8D62']
-            )
-            Axes[i].set_title(Variable, fontweight='bold')
-            Axes[i].set_xlabel('')
-            Axes[i].set_ylabel('Valor')
-            Axes[i].grid(True, alpha=0.3, axis='y')
-
-        plt.suptitle(
-            f'Comparacion Moderate_Right_A vs B - {Nombre_df}',
-            fontsize=14, fontweight='bold'
-        )
-        plt.tight_layout()
-        plt.show()
-
-        print('  Graficos generados exitosamente.')
-
-    print('\n' + '='*80)
-
     print('EXPORTANDO RESULTADOS')
     print('='*80)
 
@@ -2587,9 +2497,16 @@ def Procesar_Datos_Completo(
             3
         )
         Filas_Finales = len(df)
+        Eliminados_Tiempo = Filas_Iniciales - Filas_Finales
+
+        # Registrar exclusión por outliers de tiempo.
+        Registro_Exclusiones[Nombre][
+            'Exclusion_1_Outliers_Tiempo'
+        ] = Eliminados_Tiempo
 
         print(
-            f"  OK {Nombre}: Muestra final = {Filas_Finales} participantes"
+            f"  OK {Nombre}: {Eliminados_Tiempo} outliers eliminados "
+            f"(quedan {Filas_Finales})"
         )
 
         Dfs_Finales[i] = df
@@ -2966,7 +2883,372 @@ def Procesar_Datos_Completo(
             f"({len(df)} filas × {len(df.columns)} columnas)"
         )
 
+    # ========================================================================
+    # Registrar N final analizado.
+    # ========================================================================
+    for i, df in enumerate(Dfs_Finales):
+        Nombre = "Generales" if i == 0 else "Ballotage"
+        Registro_Exclusiones[Nombre]['N_Final_Analizado'] = len(df)
+
+    # ========================================================================
+    # Cálculo de potencia estadística.
+    # ========================================================================
+    print("PASO POTENCIA: Calculando potencia estadística...")
+    print("-"*70)
+
+    # Función para calcular potencia post-hoc.
+    def Calcular_Potencia_Post_Hoc(
+        N: int,
+        Tamano_Efecto: float,
+        Alfa: float = 0.05
+    ) -> float:
+
+        """
+        Calcula la potencia estadística post-hoc para un
+        tamaño de muestra dado, usando aproximación normal.
+
+        Parámetros:
+            N: Tamaño de la muestra.
+            Tamano_Efecto: Tamaño del efecto (d de Cohen).
+            Alfa: Nivel de significancia (default 0.05).
+
+        Retorna:
+            Potencia estadística (entre 0 y 1).
+
+        """
+
+        from scipy.stats import norm
+
+        # Valor crítico Z para alfa bilateral.
+        Z_Alfa = norm.ppf(1 - Alfa / 2)
+
+        # Potencia usando aproximación normal.
+        Z_Beta = (Tamano_Efecto * np.sqrt(N)) - Z_Alfa
+
+        # Convertir Z a probabilidad.
+        Potencia = norm.cdf(Z_Beta)
+
+        return Potencia
+
+    # Función para calcular efecto mínimo detectable (análisis de sensibilidad).
+    def Calcular_Efecto_Minimo_Detectable(
+        N: int,
+        Potencia_Objetivo: float = 0.80,
+        Alfa: float = 0.05
+    ) -> float:
+
+        """
+        Calcula el tamaño de efecto mínimo detectable dado un
+        tamaño de muestra y una potencia objetivo.
+
+        Este es un análisis de sensibilidad que responde a la
+        pregunta: "¿Cuál es el efecto más pequeño que podemos
+        detectar con X% de potencia dado nuestro N?"
+
+        Parámetros:
+            N: Tamaño de la muestra.
+            Potencia_Objetivo: Potencia deseada (default 0.80).
+            Alfa: Nivel de significancia (default 0.05).
+
+        Retorna:
+            Tamaño de efecto mínimo detectable (d de Cohen).
+
+        """
+
+        from scipy.stats import norm
+
+        # Valor crítico Z para alfa bilateral.
+        Z_Alfa = norm.ppf(1 - Alfa / 2)
+
+        # Valor Z correspondiente a la potencia objetivo.
+        Z_Beta = norm.ppf(Potencia_Objetivo)
+
+        # Despejar d de la fórmula: Z_Beta = (d * sqrt(N)) - Z_Alfa.
+        # d = (Z_Beta + Z_Alfa) / sqrt(N).
+        Efecto_Minimo = (Z_Beta + Z_Alfa) / np.sqrt(N)
+
+        return Efecto_Minimo
+
+    # Tamaños de efecto según Cohen.
+    Tamanos_Efecto = {
+        'pequeño': 0.2,
+        'mediano': 0.5,
+        'grande': 0.8
+    }
+
+    # Calcular potencia para cada dataset y tamaño de efecto.
+    Potencias = {}
+
+    for Nombre in ['Generales', 'Ballotage']:
+        N = Registro_Exclusiones[Nombre]['N_Final_Analizado']
+        Potencias[Nombre] = {}
+
+        for Nombre_Efecto, D_Cohen in Tamanos_Efecto.items():
+            Potencia = Calcular_Potencia_Post_Hoc(N, D_Cohen)
+            Potencias[Nombre][Nombre_Efecto] = Potencia
+
+        print(f"  {Nombre} (N={N}):")
+        print(
+            f"    Efecto pequeño (d=0.2): "
+            f"Potencia = {Potencias[Nombre]['pequeño']:.4f}"
+        )
+        print(
+            f"    Efecto mediano (d=0.5): "
+            f"Potencia = {Potencias[Nombre]['mediano']:.4f}"
+        )
+        print(
+            f"    Efecto grande  (d=0.8): "
+            f"Potencia = {Potencias[Nombre]['grande']:.4f}"
+        )
+
     print()
+
+    # Análisis de sensibilidad: efecto mínimo detectable.
+    print("ANÁLISIS DE SENSIBILIDAD: Efecto mínimo detectable...")
+    print("-"*70)
+
+    Efectos_Minimos = {}
+
+    for Nombre in ['Generales', 'Ballotage']:
+        N = Registro_Exclusiones[Nombre]['N_Final_Analizado']
+        Efecto_80 = Calcular_Efecto_Minimo_Detectable(N, 0.80)
+        Efecto_90 = Calcular_Efecto_Minimo_Detectable(N, 0.90)
+        Efecto_95 = Calcular_Efecto_Minimo_Detectable(N, 0.95)
+
+        Efectos_Minimos[Nombre] = {
+            '80%': Efecto_80,
+            '90%': Efecto_90,
+            '95%': Efecto_95
+        }
+
+        print(f"  {Nombre} (N={N}):")
+        print(f"    Con 80% potencia: d >= {Efecto_80:.4f}")
+        print(f"    Con 90% potencia: d >= {Efecto_90:.4f}")
+        print(f"    Con 95% potencia: d >= {Efecto_95:.4f}")
+
+    print()
+
+    # ========================================================================
+    # Generar reporte TXT con exclusiones y potencia.
+    # ========================================================================
+    print("PASO REPORTE: Generando reporte de exclusiones y potencia...")
+    print("-"*70)
+
+    # Crear carpeta de reportes si no existe.
+    Ruta_Reportes = os.path.join(
+        os.path.dirname(Ruta_Salida),
+        'Resultados',
+        'Reportes'
+    )
+    os.makedirs(Ruta_Reportes, exist_ok=True)
+
+    Ruta_Reporte = os.path.join(
+        Ruta_Reportes,
+        'Reporte_Exclusiones_Y_Potencia.txt'
+    )
+
+    with open(Ruta_Reporte, 'w', encoding='utf-8') as Archivo:
+        Archivo.write("="*70 + "\n")
+        Archivo.write("REPORTE DE EXCLUSIONES Y POTENCIA ESTADÍSTICA\n")
+        Archivo.write("Experimento Electoral Argentina 2023\n")
+        Archivo.write("="*70 + "\n\n")
+
+        # Sección de exclusiones.
+        Archivo.write("EXCLUSIONES DE LA MUESTRA\n")
+        Archivo.write("-"*70 + "\n\n")
+
+        for Nombre in ['Generales', 'Ballotage']:
+            Reg = Registro_Exclusiones[Nombre]
+            Archivo.write(f"{Nombre.upper()}\n")
+            Archivo.write(f"  Total n inicial: {Reg['Total_N_Inicial']}\n")
+            Archivo.write(f"  Analysed n: {Reg['N_Final_Analizado']}\n")
+            Archivo.write(
+                f"  Exclusion 1 (outliers tiempo 3 DE): "
+                f"{Reg['Exclusion_1_Outliers_Tiempo']}\n"
+            )
+            Archivo.write(
+                f"  Exclusion 2 (candidatos pocos n): "
+                f"{Reg['Exclusion_2_Candidatos_Pocos_N']}\n"
+            )
+            Archivo.write("\n")
+
+        # Sección de potencia.
+        Archivo.write("\nPOTENCIA ESTADÍSTICA (POST-HOC)\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write("Nivel de significancia: alfa = 0.05\n\n")
+
+        for Nombre in ['Generales', 'Ballotage']:
+            N = Registro_Exclusiones[Nombre]['N_Final_Analizado']
+            Archivo.write(f"{Nombre.upper()} (N={N})\n")
+            Archivo.write(
+                f"  Efecto pequeño (d=0.2): "
+                f"{Potencias[Nombre]['pequeño']:.4f}\n"
+            )
+            Archivo.write(
+                f"  Efecto mediano (d=0.5): "
+                f"{Potencias[Nombre]['mediano']:.4f}\n"
+            )
+            Archivo.write(
+                f"  Efecto grande  (d=0.8): "
+                f"{Potencias[Nombre]['grande']:.4f}\n"
+            )
+            Archivo.write("\n")
+
+        # Interpretación de potencia.
+        Archivo.write("\nINTERPRETACIÓN DE POTENCIA\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "Una potencia >= 0.80 se considera adecuada para detectar\n"
+        )
+        Archivo.write(
+            "efectos del tamaño especificado con confianza suficiente.\n"
+        )
+        Archivo.write(
+            "Los valores cercanos a 1.00 indican alta probabilidad de\n"
+        )
+        Archivo.write(
+            "detectar efectos reales si existen.\n"
+        )
+        Archivo.write("\n")
+
+        # Análisis de sensibilidad.
+        Archivo.write("\nANÁLISIS DE SENSIBILIDAD\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "Efecto mínimo detectable (d de Cohen) dado el tamaño muestral.\n"
+        )
+        Archivo.write("Nivel de significancia: alfa = 0.05\n\n")
+
+        for Nombre in ['Generales', 'Ballotage']:
+            N = Registro_Exclusiones[Nombre]['N_Final_Analizado']
+            Archivo.write(f"{Nombre.upper()} (N={N})\n")
+            Archivo.write(
+                f"  Con 80% potencia: d >= {Efectos_Minimos[Nombre]['80%']:.4f}\n"
+            )
+            Archivo.write(
+                f"  Con 90% potencia: d >= {Efectos_Minimos[Nombre]['90%']:.4f}\n"
+            )
+            Archivo.write(
+                f"  Con 95% potencia: d >= {Efectos_Minimos[Nombre]['95%']:.4f}\n"
+            )
+            Archivo.write("\n")
+
+        # Interpretación de sensibilidad.
+        Archivo.write("INTERPRETACIÓN DE SENSIBILIDAD\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "El efecto mínimo detectable indica el tamaño de efecto más\n"
+        )
+        Archivo.write(
+            "pequeño que la muestra puede detectar con la potencia indicada.\n"
+        )
+        Archivo.write(
+            "Según Cohen: d=0.2 (pequeño), d=0.5 (mediano), d=0.8 (grande).\n"
+        )
+        Archivo.write("\n")
+
+        # Criterios de exclusión.
+        Archivo.write("\nCRITERIOS DE EXCLUSIÓN\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "Exclusion 1: Outlier values of response time in IP items "
+            "(3 standard deviations)\n"
+        )
+        Archivo.write(
+            "Exclusion 2: Candidates in the 2023 step with very few n\n"
+        )
+        Archivo.write("\n")
+
+        # Sección de análisis de CO cronológicos (warm-up effect).
+        Archivo.write("\nANÁLISIS DE CO CRONOLÓGICOS (WARM-UP EFFECT)\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "Estadísticas por posición cronológica de los ítems IP.\n\n"
+        )
+
+        for Nombre_Df, Estadisticas in Resultados_Analisis.items():
+            Archivo.write(f"{Nombre_Df.upper()}\n")
+            Archivo.write(
+                f"  {'Pos':<5} {'N':<8} {'Media':<10} "
+                f"{'Mediana':<10} {'DE':<10} {'|CO| Media':<10}\n"
+            )
+
+            for Est in Estadisticas:
+                Archivo.write(
+                    f"  {Est['Posicion']:<5} {Est['N']:<8} "
+                    f"{Est['Media']:<10.3f} {Est['Mediana']:<10.3f} "
+                    f"{Est['DE']:<10.3f} {Est['Media_Absoluta']:<10.3f}\n"
+                )
+
+            Archivo.write("\n")
+
+        # Sección de comparación Moderate Right A vs B.
+        Archivo.write("\nCOMPARACIÓN MODERATE RIGHT A (LARRETA) VS B (BULLRICH)\n")
+        Archivo.write("-"*70 + "\n")
+        Archivo.write(
+            "Análisis a priori de equivalencia entre grupos.\n\n"
+        )
+
+        for Nombre_Df, Resultados in Resultados_Comparacion.items():
+            Archivo.write(f"{Nombre_Df.upper()}\n")
+
+            # Obtener N de cada grupo.
+            if len(Resultados) > 0:
+                N_A = Resultados[0]['N_A']
+                N_B = Resultados[0]['N_B']
+                Archivo.write(
+                    f"  N Moderate_Right_A (Larreta): {N_A}\n"
+                )
+                Archivo.write(
+                    f"  N Moderate_Right_B (Bullrich): {N_B}\n\n"
+                )
+
+            # Listar variables significativas.
+            Significativas = [r for r in Resultados if r['Sig'] != 'ns']
+
+            if len(Significativas) > 0:
+                Archivo.write(
+                    f"  Variables con diferencias significativas: "
+                    f"{len(Significativas)}/{len(Resultados)}\n\n"
+                )
+
+                for Resultado in Significativas:
+                    Diferencia = Resultado['Media_B'] - Resultado['Media_A']
+                    Direccion = 'Mayor' if Diferencia > 0 else 'Menor'
+                    P_Str = (
+                        f"{Resultado['p_valor']:.4f}"
+                        if Resultado['p_valor'] >= 0.0001
+                        else '<.0001'
+                    )
+
+                    Archivo.write(f"  {Resultado['Nombre']}:\n")
+                    Archivo.write(
+                        f"    Larreta (A):  M={Resultado['Media_A']:.2f}, "
+                        f"DE={Resultado['DE_A']:.2f}\n"
+                    )
+                    Archivo.write(
+                        f"    Bullrich (B): M={Resultado['Media_B']:.2f}, "
+                        f"DE={Resultado['DE_B']:.2f}\n"
+                    )
+                    Archivo.write(
+                        f"    Diferencia:   {Diferencia:+.2f} "
+                        f"({Direccion} en Bullrich)\n"
+                    )
+                    Archivo.write(
+                        f"    p-valor:      {P_Str} {Resultado['Sig']}\n\n"
+                    )
+            else:
+                Archivo.write(
+                    "  No se encontraron diferencias significativas.\n"
+                )
+
+            Archivo.write("\n")
+
+        Archivo.write("Notas: *** p<.001, ** p<.01, * p<.05, ns = no significativo\n")
+
+    print(f"  OK Reporte guardado en: {Ruta_Reporte}")
+    print()
+
     print("="*70)
     print("PROCESAMIENTO COMPLETO FINALIZADO")
     print("="*70)
@@ -2978,7 +3260,9 @@ def Procesar_Datos_Completo(
 
     return {
         'Generales': Dfs_Finales[0],
-        'Ballotage': Dfs_Finales[1]
+        'Ballotage': Dfs_Finales[1],
+        'Registro_Exclusiones': Registro_Exclusiones,
+        'Potencias': Potencias
     }
 
 

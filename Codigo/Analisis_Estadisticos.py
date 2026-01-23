@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Análisis estadísticos para el proyecto de tesis.
+Análisis estadísticos.
 
 Este script contiene funciones para realizar análisis estadísticos
 de Kruskal-Wallis, Dunn post-hoc, Wilcoxon y Mann-Whitney sobre
@@ -12,6 +12,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import kruskal, wilcoxon, mannwhitneyu
 import scikit_posthocs as sp
+import statsmodels.api as sm
 import os
 
 
@@ -2044,6 +2045,155 @@ def Analisis_Dunn_Cercanias(
 
 
 # =============================================================================
+# CONTROL POR COVARIABLES DEMOGRÁFICAS.
+# =============================================================================
+
+def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
+
+    """
+    Realiza análisis de regresión para verificar si el efecto
+    Congruente vs Incongruente se mantiene después de controlar
+    por Género y Edad.
+
+    Método: Regresión OLS de la diferencia (CO_Congruente - CO_Incongruente)
+    sobre Género y Edad. Si el intercepto es significativo, el efecto
+    se mantiene controlando por las covariables demográficas.
+
+    Parámetros:
+        dfs_Finales (dict): Diccionario con DataFrames de cada elección.
+
+    Retorna:
+        dict: Resultados de la regresión para cada elección y tipo (CO, CT).
+
+    """
+
+    print("\nAnálisis de control por Género y Edad...")
+    print("-" * 70)
+
+    Resultados = {}
+
+    for Nombre_df, df in dfs_Finales.items():
+        print(f"\n{Nombre_df}:")
+        print("-" * 50)
+
+        Resultados[Nombre_df] = {}
+
+        for Tipo in ['CO', 'CT']:
+            Variable_Congruente = f'{Tipo}_Congruente'
+            Variable_Incongruente = f'{Tipo}_Incongruente'
+
+            # Verificar que existan las columnas necesarias.
+            Columnas_Requeridas = [
+                Variable_Congruente, Variable_Incongruente,
+                'Genero', 'Edad'
+            ]
+
+            if not all(Col in df.columns for Col in Columnas_Requeridas):
+                print(f"  {Tipo}: Faltan columnas requeridas.")
+                continue
+
+            # Crear DataFrame para regresión.
+            df_Regresion = df[Columnas_Requeridas].copy()
+            df_Regresion = df_Regresion.dropna()
+
+            if len(df_Regresion) < 10:
+                print(f"  {Tipo}: Datos insuficientes (n={len(df_Regresion)}).")
+                continue
+
+            # Calcular diferencia Congruente - Incongruente.
+            df_Regresion['Diferencia'] = (
+                df_Regresion[Variable_Congruente] -
+                df_Regresion[Variable_Incongruente]
+            )
+
+            # Crear variables dummy para Género.
+            # Usamos Femenino como categoría de referencia.
+            df_Regresion['Genero_Masculino'] = (
+                df_Regresion['Genero'] == 'Masculino'
+            ).astype(int)
+            df_Regresion['Genero_Otro'] = (
+                df_Regresion['Genero'] == 'Otro'
+            ).astype(int)
+
+            # Convertir Edad a numérico.
+            df_Regresion['Edad'] = pd.to_numeric(
+                df_Regresion['Edad'], errors='coerce'
+            )
+            df_Regresion = df_Regresion.dropna()
+
+            if len(df_Regresion) < 10:
+                print(f"  {Tipo}: Datos insuficientes después de limpieza.")
+                continue
+
+            # Preparar variables para regresión.
+            Y = df_Regresion['Diferencia']
+            X = df_Regresion[['Genero_Masculino', 'Genero_Otro', 'Edad']]
+            X = sm.add_constant(X)
+
+            # Ajustar modelo OLS.
+            Modelo = sm.OLS(Y, X).fit()
+
+            # Extraer resultados.
+            Intercepto = Modelo.params['const']
+            P_Intercepto = Modelo.pvalues['const']
+            R2 = Modelo.rsquared
+            R2_Ajustado = Modelo.rsquared_adj
+            N = len(df_Regresion)
+
+            # Coeficientes de covariables.
+            Coef_Masculino = Modelo.params['Genero_Masculino']
+            P_Masculino = Modelo.pvalues['Genero_Masculino']
+            Coef_Otro = Modelo.params.get('Genero_Otro', np.nan)
+            P_Otro = Modelo.pvalues.get('Genero_Otro', np.nan)
+            Coef_Edad = Modelo.params['Edad']
+            P_Edad = Modelo.pvalues['Edad']
+
+            # Guardar resultados.
+            Resultados[Nombre_df][Tipo] = {
+                'N': N,
+                'Intercepto': Intercepto,
+                'P_Intercepto': P_Intercepto,
+                'Intercepto_Significativo': P_Intercepto < 0.05,
+                'Coef_Genero_Masculino': Coef_Masculino,
+                'P_Genero_Masculino': P_Masculino,
+                'Coef_Genero_Otro': Coef_Otro,
+                'P_Genero_Otro': P_Otro,
+                'Coef_Edad': Coef_Edad,
+                'P_Edad': P_Edad,
+                'R2': R2,
+                'R2_Ajustado': R2_Ajustado,
+                'Modelo': Modelo
+            }
+
+            # Determinar significancia del intercepto.
+            if P_Intercepto < 0.001:
+                Sig_Int = '***'
+            elif P_Intercepto < 0.01:
+                Sig_Int = '**'
+            elif P_Intercepto < 0.05:
+                Sig_Int = '*'
+            else:
+                Sig_Int = 'ns'
+
+            print(f"\n  {Tipo} Congruente - Incongruente (N={N}):")
+            print(f"    Intercepto: {Intercepto:.4f} (p={P_Intercepto:.4f}) "
+                  f"{Sig_Int}")
+            print(f"    Género Masculino: β={Coef_Masculino:.4f} "
+                  f"(p={P_Masculino:.4f})")
+            print(f"    Edad: β={Coef_Edad:.4f} (p={P_Edad:.4f})")
+            print(f"    R² ajustado: {R2_Ajustado:.4f}")
+
+            if P_Intercepto < 0.05:
+                print(f"    → El efecto {Tipo} Congruente vs Incongruente "
+                      f"SE MANTIENE controlando por Género y Edad.")
+            else:
+                print(f"    → El efecto {Tipo} Congruente vs Incongruente "
+                      f"NO se mantiene controlando por Género y Edad.")
+
+    return Resultados
+
+
+# =============================================================================
 # EJECUCIÓN PRINCIPAL.
 # =============================================================================
 
@@ -2238,6 +2388,13 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
             dfs_Finales,
             Variables_Comparar
         )
+
+    # 17. Control por covariables demográficas.
+    print("\n" + "="*70)
+    print("17. CONTROL POR GÉNERO Y EDAD (REGRESIÓN)")
+    print("="*70)
+    Todos_Resultados['Control_Demografico'] = \
+        Analisis_Control_Demografico(dfs_Finales)
 
     print("\n" + "="*70)
     print("ANÁLISIS COMPLETADOS")
@@ -2636,6 +2793,74 @@ def Generar_Reporte_TXT(
                 Agregar(f"  {Fila['Variable']:20s} "
                         f"U = {Fila['Estadistico_U']:.4f}, "
                         f"p = {Formatear_P_Valor(Fila['Valor_p'])}")
+    Agregar("")
+
+    # 17. Control por covariables demográficas.
+    Separador("=")
+    Agregar("17. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)")
+    Separador("=")
+    Agregar("")
+    Agregar("Verificación de que el efecto Congruente vs Incongruente")
+    Agregar("se mantiene después de controlar por Género y Edad.")
+    Agregar("")
+    Agregar("Método: Regresión OLS de (Congruente - Incongruente) ~ Género + Edad")
+    Agregar("Un intercepto significativo indica que el efecto se mantiene.")
+    Agregar("")
+
+    Resultados_Control = Todos_Resultados.get('Control_Demografico', {})
+
+    for Nombre_df in ['Generales', 'Ballotage']:
+        if Nombre_df not in Resultados_Control:
+            continue
+
+        Agregar(f"{Nombre_df}:")
+        Separador("-", 50)
+
+        for Tipo in ['CO', 'CT']:
+            if Tipo not in Resultados_Control[Nombre_df]:
+                continue
+
+            Res = Resultados_Control[Nombre_df][Tipo]
+            N = Res['N']
+            Intercepto = Res['Intercepto']
+            P_Int = Res['P_Intercepto']
+            Coef_Masc = Res['Coef_Genero_Masculino']
+            P_Masc = Res['P_Genero_Masculino']
+            Coef_Edad = Res['Coef_Edad']
+            P_Edad = Res['P_Edad']
+            R2_Aj = Res['R2_Ajustado']
+
+            # Determinar significancia.
+            if P_Int < 0.001:
+                Sig_Int = '***'
+            elif P_Int < 0.01:
+                Sig_Int = '**'
+            elif P_Int < 0.05:
+                Sig_Int = '*'
+            else:
+                Sig_Int = 'ns'
+
+            Agregar(f"\n  {Tipo} Congruente - Incongruente (N={N}):")
+            Agregar(f"    Intercepto:      β = {Intercepto:7.4f}, "
+                    f"p = {Formatear_P_Valor(P_Int)} {Sig_Int}")
+            Agregar(f"    Género (Masc):   β = {Coef_Masc:7.4f}, "
+                    f"p = {Formatear_P_Valor(P_Masc)}")
+            Agregar(f"    Edad:            β = {Coef_Edad:7.4f}, "
+                    f"p = {Formatear_P_Valor(P_Edad)}")
+            Agregar(f"    R² ajustado:     {R2_Aj:.4f}")
+
+            if Res['Intercepto_Significativo']:
+                Agregar(f"    → El efecto {Tipo} Cong. vs Incong. SE MANTIENE "
+                        f"controlando por Género y Edad.")
+            else:
+                Agregar(f"    → El efecto {Tipo} Cong. vs Incong. NO se "
+                        f"mantiene controlando por Género y Edad.")
+
+        Agregar("")
+
+    Agregar("Notas:")
+    Agregar("  - Categoría de referencia para Género: Femenino")
+    Agregar("  - *** p<.001, ** p<.01, * p<.05, ns = no significativo")
     Agregar("")
 
     # =========================================================================
