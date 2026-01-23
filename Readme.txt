@@ -10,7 +10,6 @@ Carpetas de primer nivel.
 - Resultados: salidas de analisis, tablas y graficos.
 
 Archivos de primer nivel.
-- Agents.md: instrucciones internas del agente.
 - Ejecutar_Todo.py: script orquestador de ejecuciones.
 - Requirements.txt: dependencias de Python.
 - Readme.txt: este documento.
