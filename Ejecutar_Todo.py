@@ -10,7 +10,6 @@ Orden de ejecucion:
 4) Analisis de correlaciones.
 5) Analisis de poblaciones segmentadas.
 6) Modelos.
-7) Comparacion de bases.
 
 """
 
@@ -71,8 +70,7 @@ def Main() -> None:
             "Codigo",
             "Analisis_Poblaciones_Segmentadas.py"
         ),
-        os.path.join(Ruta_Base, "Codigo", "Modelos.py"),
-        os.path.join(Ruta_Base, "Codigo", "Comparar_Bases.py")
+        os.path.join(Ruta_Base, "Codigo", "Modelos.py")
     ]
 
     for Ruta_Script in Scripts:

@@ -357,12 +357,36 @@ Resultados:
   Cercania_Milei                 H = 609.0801  p = 2.21E-129 ***
   Cercania_Massa                 H = 457.5716  p = 1.14E-96 ***
 
+================================================================================
+8. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA
+================================================================================
+
+Influencia percibida de Redes Sociales y Prensa.
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 1/2
+
+Resultados:
+  Influencia_Redes               H =  32.4157  p = 4.91E-06 ***
+  Influencia_Prensa              H =   8.7253  p = 1.21E-01 
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 0/2
+
+Resultados:
+  Influencia_Redes               H =   8.8248  p = 1.16E-01 
+  Influencia_Prensa              H =   6.3321  p = 2.75E-01 
+
 ################################################################################
 # SECCIÓN B: TESTS DUNN POST-HOC (Corrección Bonferroni)
 ################################################################################
 
 ================================================================================
-8. DUNN POST-HOC: ÍTEMS CO
+9. DUNN POST-HOC: ÍTEMS CO
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -437,7 +461,7 @@ Dataset: Ballotage
   CO_Item_25_Izq: Sin comparaciones significativas
 
 ================================================================================
-9. DUNN POST-HOC: ÍTEMS CT
+10. DUNN POST-HOC: ÍTEMS CT
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -506,7 +530,7 @@ Dataset: Ballotage
     - Centre                    vs Right_Wing_Libertarian    p = 3.94E-02
 
 ================================================================================
-10. DUNN POST-HOC: VARIABLES AGREGADAS
+11. DUNN POST-HOC: VARIABLES AGREGADAS
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -538,7 +562,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 4.34E-02
 
 ================================================================================
-11. DUNN POST-HOC: AUTOPERCEPCIONES
+12. DUNN POST-HOC: AUTOPERCEPCIONES
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -624,7 +648,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 1.73E-07
 
 ================================================================================
-12. DUNN POST-HOC: ÍNDICES
+13. DUNN POST-HOC: ÍNDICES
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -707,7 +731,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 2.32E-27
 
 ================================================================================
-13. DUNN POST-HOC: CERCANÍAS A CANDIDATOS
+14. DUNN POST-HOC: CERCANÍAS A CANDIDATOS
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -816,12 +840,26 @@ Dataset: Ballotage
     - Moderate_Right_B          vs Progressivism             p = 6.78E-55
     - Progressivism             vs Right_Wing_Libertarian    p = 3.43E-48
 
+================================================================================
+15. DUNN POST-HOC: INFLUENCIAS
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  Influencia_Redes:
+    - Left_Wing                 vs Progressivism             p = 3.82E-02
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 4.35E-02
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 1.38E-04
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.53E-05
+
 ################################################################################
 # SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY)
 ################################################################################
 
 ================================================================================
-14. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA
+16. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA
 ================================================================================
 
 Comparación Congruente vs Incongruente (mismo participante)
@@ -892,7 +930,7 @@ Definiciones:
       - Moderate Right B          p = 3.39E-02 (*)
 
 ================================================================================
-15. WILCOXON PAREADO: IZQ VS DER POR ÍTEM
+17. WILCOXON PAREADO: IZQ VS DER POR ÍTEM
 ================================================================================
 
 Compara CO_Item_X_Izq vs CO_Item_X_Der (mismo participante)
@@ -938,7 +976,7 @@ Dataset: Ballotage
   Item 23 (Conservador ): Δ = -0.1465, p = 1.50E-02 (*)
 
 ================================================================================
-16. MANN-WHITNEY U: GENERALES VS BALLOTAGE
+18. MANN-WHITNEY U: GENERALES VS BALLOTAGE
 ================================================================================
 
 Comparación de variables entre ambas elecciones (no pareado)
@@ -980,7 +1018,7 @@ Variables sin diferencias significativas:
   CT_Con_Der           U = 1717493.0000, p = 5.31E-01
 
 ================================================================================
-17. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)
+19. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)
 ================================================================================
 
 Verificación de que el efecto Congruente vs Incongruente
@@ -1039,6 +1077,7 @@ Generales:
   KW Autopercepciones    : 3/3 sig.
   KW Índices             : 3/3 sig.
   KW Cercanías           : 5/5 sig.
+  KW Influencias         : 1/2 sig.
 
 Ballotage:
 ----------------------------------------
@@ -1048,6 +1087,7 @@ Ballotage:
   KW Autopercepciones    : 3/3 sig.
   KW Índices             : 3/3 sig.
   KW Cercanías           : 2/2 sig.
+  KW Influencias         : 0/2 sig.
 
 Wilcoxon Congruencia (General):
 ----------------------------------------
