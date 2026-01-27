@@ -1,0 +1,8 @@
+# Archivos de sistema Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# Archivos temporales
+*.tmp
+~$*
