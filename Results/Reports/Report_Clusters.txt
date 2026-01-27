@@ -1,0 +1,14 @@
+Resumen general del clustering.
+  Excel exportado: i:\Mi unidad\Rechazo (IP)\Results\Tables\Clustering.xlsx
+  Reporte guardado: i:\Mi unidad\Rechazo (IP)\Results\Reports\Report_Clusters.txt
+  Total de registros: 4040
+General: 2786 registros
+  Conservative_Cluster: 0=71, 1=4, 2=2711
+  Progressive_Cluster: 0=399, 1=438, 2=1949
+  Mediana conservador: 1.000
+  Mediana progresista: 4.000
+Ballotage: 1254 registros
+  Conservative_Cluster: 0=56, 1=2, 2=1196
+  Progressive_Cluster: 0=233, 1=153, 2=868
+  Mediana conservador: 1.000
+  Mediana progresista: 4.000

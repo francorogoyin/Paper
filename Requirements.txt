@@ -1,7 +1,7 @@
-# Dependencias para los scripts de análisis del proyecto de tesis.
-# Experimento de Toma de Decisiones Electorales - Argentina 2023.
+# Dependencies for the thesis project analysis scripts.
+# Electoral Decision-Making Experiment - Argentina 2023.
 #
-# Instalación: pip install -r requirements.txt
+# Installation: pip install -r requirements.txt
 
 pandas>=2.0.0
 numpy>=1.24.0

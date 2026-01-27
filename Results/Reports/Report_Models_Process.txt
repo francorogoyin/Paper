@@ -1,0 +1,1303 @@
+================================================================================
+PROCESO DE AJUSTE DE MODELOS - DETALLE DE RECURSIONES
+Proyecto de Tesis - Experimento Electoral Argentina 2023
+================================================================================
+
+################################################################################
+# SECCIÓN 1: MODELOS ROBUSTOS - PROCESO DE AJUSTE
+################################################################################
+
+================================================================================
+MODELOS ROBUSTOS - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Congruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 34
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Edad
+  + Red_Social_Facebook
+  + Written_Media_Influence
+  + Progressivism_Index
+  + Conservatism_Index
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.0532
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Incongruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 41
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Conservative_Cluster
+  + Peronist_Anti_Peronist_Self_Perception
+  + Red_Social_Facebook
+  + Positivity_Index
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0419
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Congruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 46
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Edad
+  + Red_Social_Tiktok
+  + Progressivism_Index_Time
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.3119
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Incongruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 41
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Edad
+  + Red_Social_Threads
+  + Medios_Prensa_Prensa_Obrera
+  + Medios_Prensa_Popular
+  + Progressivism_Index_Time
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.3694
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 36
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Conservative_Cluster
+  + Edad
+  + Conservative_Progressive_Self_Perception
+  + Peronist_Anti_Peronist_Self_Perception
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0642
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Red_Social_Tiktok
+  + Medios_Prensa_Clarin
+  + Medios_Prensa_Pagina_12
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0537
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 40
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Conservative_Cluster
+  + Peronist_Anti_Peronist_Self_Perception
+  + Red_Social_Facebook
+  + Positivity_Index
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0457
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 37
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Edad
+  + Left_Right_Self_Perception
+  + Closeness_Milei
+  + Red_Social_Facebook
+  + Medios_Prensa_Clarin
+  + Conservatism_Index
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.0390
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 32
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 11
+  + Conservative_Cluster
+  + Voto_2019_J_Gomez_Centurion
+  + Categoria_PASO_2023_Left_Wing
+  + Conservative_Progressive_Self_Perception
+  + Closeness_Massa
+  + Red_Social_Tiktok
+  + Written_Media_Influence
+  + Medios_Prensa_Pagina_12
+  + Medios_Prensa_El_Cronista
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0564
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 39
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Conservative_Progressive_Self_Perception
+  + Red_Social_Tiktok
+  + Medios_Prensa_Prensa_Obrera
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0439
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_5_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 31
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Edad
+  + Male
+  + CABA
+  + Voto_2019_Mauricio_Macri
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0744
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 40
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 5
+  + Progressive_Cluster
+  + Categoria_PASO_2023_Centre
+  + Conservative_Progressive_Self_Perception
+  + Written_Media_Influence
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0430
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_9_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 37
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Categoria_PASO_2023_Left_Wing
+  + Categoria_PASO_2023_Centre
+  + Closeness_Massa
+  + Medios_Prensa_Diario_Universal
+  + Medios_Prensa_Popular
+  + Medios_Prensa_Clarin
+  + Medios_Prensa_Pagina_12
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0363
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_24_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 42
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 5
+  + Edad
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Left_Right_Self_Perception
+  + Medios_Prensa_El_Cronista
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0509
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_8_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 40
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 5
+  + Cuyo
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Peronist_Anti_Peronist_Self_Perception
+  + Red_Social_Telegram
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0562
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 41
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 3
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Medios_Prensa_Clarin
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0613
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_7_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 6
+  + Conservative_Cluster
+  + Voto_2019_Mauricio_Macri
+  + Categoria_PASO_2023_Left_Wing
+  + Closeness_Massa
+  + Closeness_Milei
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0835
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_3_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 3
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Medios_Prensa_Prensa_Obrera
+  + Medios_Prensa_Popular
+
+Convergencia: R² ajustado = 0.0527
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_10_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Conservative_Cluster
+  + Progressive_Cluster
+  + Voto_2019_Mauricio_Macri
+  + Red_Social_Instagram
+  + Medios_Prensa_Diario_Universal
+  + Medios_Prensa_Izquierda_Diario
+  + Medios_Prensa_Infobae
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0613
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Conservative_Cluster
+  + Conservative_Progressive_Self_Perception
+  + Closeness_Milei
+  + Medios_Prensa_Perfil
+  + Medios_Prensa_Infobae
+  + Medios_Prensa_El_Cronista
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0748
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_10_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 39
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Conservative_Cluster
+  + North
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Closeness_Milei
+  + Red_Social_Telegram
+  + Medios_Prensa_Tiempo_Argentino
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0524
+
+================================================================================
+MODELOS ROBUSTOS - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Congruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 42
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 5
+  + Categoria_PASO_2023_Centre
+  + Closeness_Milei
+  + Medios_Prensa_Prensa_Obrera
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0525
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Incongruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 35
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 5
+  + Voto_2019_Roberto_Lavagna
+  + Left_Right_Self_Perception
+  + Peronist_Anti_Peronist_Self_Perception
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0717
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Congruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 36
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Edad
+  + Categoria_PASO_2023_Left_Wing
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Peronist_Anti_Peronist_Self_Perception
+  + Progressivism_Index_Time
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.2988
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CT_Incongruente
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 34
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Edad
+  + Patagonia
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Peronist_Anti_Peronist_Self_Perception
+  + Written_Media_Influence
+  + Positivity_Index
+  + Progressivism_Index_Time
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.2990
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 33
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 10
+  + CABA
+  + Voto_2019_J_Gomez_Centurion
+  + Voto_2019_Roberto_Lavagna
+  + Peronist_Anti_Peronist_Self_Perception
+  + Closeness_Milei
+  + Social_Networks_Influence
+  + Medios_Prensa_Clarin
+  + Medios_Prensa_La_Nacion
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0966
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 43
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 2
+  + Left_Right_Self_Perception
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0498
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 32
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 9
+  + CABA
+  + Voto_2019_J_Gomez_Centurion
+  + Voto_2019_Roberto_Lavagna
+  + Peronist_Anti_Peronist_Self_Perception
+  + Closeness_Massa
+  + Medios_Prensa_Clarin
+  + Medios_Prensa_La_Nacion
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0809
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 46
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 2
+  + Left_Right_Self_Perception
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0315
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Pro_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 38
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Voto_2019_Roberto_Lavagna
+  + Categoria_PASO_2023_Centre
+  + Peronist_Anti_Peronist_Self_Perception
+  + Closeness_Milei
+  + Social_Networks_Influence
+  + Medios_Prensa_Clarin
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0727
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Con_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 37
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Male
+  + Voto_2019_J_Gomez_Centurion
+  + Left_Right_Self_Perception
+  + Social_Networks_Influence
+  + Red_Social_Threads
+  + Medios_Prensa_Pagina_12
+  + Conservatism_Index
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.0553
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_6_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 41
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Conservative_Cluster
+  + Male
+  + Medios_Prensa_Perfil
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0650
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 39
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Patagonia
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Peronist_Anti_Peronist_Self_Perception
+  + Medios_Prensa_Prensa_Obrera
+  + Medios_Prensa_Perfil
+  + Medios_Prensa_El_Cronista
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0912
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_25_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 42
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 3
+  + Male
+  + Peronist_Anti_Peronist_Self_Perception
+  + Progressivism_Index
+
+Convergencia: R² ajustado = 0.0851
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_11_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 32
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 9
+  + Conservative_Cluster
+  + Edad
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Categoria_PASO_2023_Centre
+  + Closeness_Massa
+  + Medios_Prensa_Popular
+  + Medios_Prensa_Pagina_12
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.1162
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_29_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 45
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Voto_2019_Mauricio_Macri
+  + Medios_Prensa_Infobae
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0888
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_30_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 40
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 7
+  + Conservative_Cluster
+  + North
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Peronist_Anti_Peronist_Self_Perception
+  + Written_Media_Influence
+  + Progressivism_Index
+  + Conservatism_Index
+
+Convergencia: R² ajustado = 0.0968
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_22_Izq
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 37
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 8
+  + Progressive_Cluster
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Categoria_PASO_2023_Centre
+  + Conservative_Progressive_Self_Perception
+  + Social_Networks_Influence
+  + Written_Media_Influence
+  + Conservatism_Index
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.1227
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_7_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 40
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 4
+  + Categoria_PASO_2023_Left_Wing
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Red_Social_Tiktok
+  + Medios_Prensa_Prensa_Obrera
+
+Convergencia: R² ajustado = 0.0904
+
+--------------------------------------------------------------------------------
+Variable Dependiente: CO_Item_22_Der
+--------------------------------------------------------------------------------
+Variables iniciales: 0
+Iteraciones totales: 47
+Criterio de eliminación: AIC
+Umbral VIF: 5.0
+Alpha significancia: 0.05
+
+Variables eliminadas: 0
+
+Variables finales (significativas): 2
+  + Conservatism_Index
+  + Conservatism_Index_Time
+
+Convergencia: R² ajustado = 0.0539
+
+################################################################################
+# SECCIÓN 2: MODELOS GLM - PROCESO DE AJUSTE
+################################################################################
+
+================================================================================
+MODELOS GLM - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Progresismo
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 17
+  + Progressive_Cluster
+  + Autopercepcion_Izq_Der
+  + Indice_Conservadurismo
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Categoria_PASO_2023_Centre
+  + Edad
+  + Medios_Prensa_Infobae
+  + Medios_Prensa_Pagina_12
+  + Medios_Prensa_Izquierda_Diario
+  + Cercania_Massa
+  + Influencia_Redes
+  + Medios_Prensa_Tiempo_Argentino
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Cercania_Milei
+  + Indice_Progresismo_Tiempo
+  + Autopercepcion_Con_Pro
+
+Convergencia: Deviance explicada = 0.7017
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Conservadurismo
+--------------------------------------------------------------------------------
+Familia GLM: Gamma con link Log
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 22
+  + Conservative_Cluster
+  + Cercania_Milei
+  + Autopercepcion_Con_Pro
+  + Indice_Progresismo
+  + Cercania_Massa
+  + Medios_Prensa_Clarin
+  + Autopercepcion_Per_Antiper
+  + Genero_Masculino
+  + Autopercepcion_Izq_Der
+  + Medios_Prensa_Pagina_12
+  + Indice_Conservadurismo_Tiempo
+  + Medios_Prensa_Tiempo_Argentino
+  + Medios_Prensa_Izquierda_Diario
+  + Categoria_PASO_2023_Left_Wing
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Red_Social_Youtube
+  + Region_Norte
+  + Categoria_PASO_2023_Centre
+  + Indice_Progresismo_Tiempo
+  + Progressive_Cluster
+  + Indice_Positividad
+  + Voto_2019_Roberto_Lavagna
+
+Convergencia: Deviance explicada = 0.6365
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Izq_Der
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 16
+  + Indice_Progresismo
+  + Autopercepcion_Con_Pro
+  + Cercania_Milei
+  + Autopercepcion_Per_Antiper
+  + Voto_2019_Mauricio_Macri
+  + Medios_Prensa_Izquierda_Diario
+  + Categoria_PASO_2023_Left_Wing
+  + Voto_2019_Nicolas_Del_Caño
+  + Medios_Prensa_La_Nacion
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Indice_Conservadurismo
+  + Cercania_Massa
+  + Voto_2019_JL_Espert
+  + Medios_Prensa_Prensa_Obrera
+  + Medios_Prensa_Diario_Universal
+  + Region_Patagonia
+
+Convergencia: Deviance explicada = 0.5623
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Con_Pro
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 15
+  + Autopercepcion_Izq_Der
+  + Indice_Conservadurismo
+  + Medios_Prensa_Izquierda_Diario
+  + Region_Centro
+  + Red_Social_Facebook
+  + Edad
+  + Cercania_Milei
+  + Region_CABA
+  + Region_Patagonia
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Indice_Progresismo
+  + Genero_Otro
+  + Cercania_Massa
+  + Voto_2019_J_Gomez_Centurion
+  + Voto_2019_Mauricio_Macri
+
+Convergencia: Deviance explicada = 0.2575
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Per_Antiper
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 18
+  + Cercania_Massa
+  + Autopercepcion_Izq_Der
+  + Voto_2019_Mauricio_Macri
+  + Cercania_Milei
+  + Categoria_PASO_2023_Left_Wing
+  + Voto_2019_Nicolas_Del_Caño
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Voto_2019_JL_Espert
+  + Indice_Positividad
+  + Indice_Conservadurismo
+  + Progressive_Cluster
+  + Voto_2019_Roberto_Lavagna
+  + Medios_Prensa_La_Nacion
+  + Red_Social_Telegram
+  + Medios_Prensa_Popular
+  + Medios_Prensa_Pagina_12
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Medios_Prensa_Izquierda_Diario
+
+Convergencia: Deviance explicada = 0.5636
+
+================================================================================
+MODELOS GLM - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Progresismo
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 15
+  + Progressive_Cluster
+  + Indice_Conservadurismo
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Cercania_Milei
+  + Medios_Prensa_Infobae
+  + Autopercepcion_Con_Pro
+  + Autopercepcion_Izq_Der
+  + Medios_Prensa_Izquierda_Diario
+  + Medios_Prensa_Pagina_12
+  + Indice_Positividad
+  + Indice_Progresismo_Tiempo
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Genero_Masculino
+  + Conservative_Cluster
+  + Medios_Prensa_Prensa_Obrera
+
+Convergencia: Deviance explicada = 0.7206
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Indice_Conservadurismo
+--------------------------------------------------------------------------------
+Familia GLM: Gamma con link Log
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 15
+  + Conservative_Cluster
+  + Indice_Progresismo
+  + Autopercepcion_Con_Pro
+  + Cercania_Milei
+  + Indice_Positividad
+  + Autopercepcion_Per_Antiper
+  + Medios_Prensa_Izquierda_Diario
+  + Autopercepcion_Izq_Der
+  + Indice_Conservadurismo_Tiempo
+  + Medios_Prensa_La_Nacion
+  + Medios_Prensa_Pagina_12
+  + Voto_2019_J_Gomez_Centurion
+  + Indice_Progresismo_Tiempo
+  + Categoria_PASO_2023_Centre
+  + Medios_Prensa_El_Cronista
+
+Convergencia: Deviance explicada = 0.6508
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Izq_Der
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 11
+  + Autopercepcion_Per_Antiper
+  + Cercania_Milei
+  + Indice_Progresismo
+  + Autopercepcion_Con_Pro
+  + Voto_2019_Nicolas_Del_Caño
+  + Indice_Conservadurismo
+  + Medios_Prensa_Izquierda_Diario
+  + Medios_Prensa_Clarin
+  + Medios_Prensa_Prensa_Obrera
+  + Genero_Otro
+  + Cercania_Massa
+
+Convergencia: Deviance explicada = 0.4702
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Con_Pro
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 11
+  + Indice_Conservadurismo
+  + Indice_Progresismo
+  + Cercania_Milei
+  + Autopercepcion_Izq_Der
+  + Voto_2019_Mauricio_Macri
+  + Voto_2019_Nicolas_Del_Caño
+  + Edad
+  + Genero_Otro
+  + Genero_Masculino
+  + Medios_Prensa_Pagina_12
+  + Medios_Prensa_Tiempo_Argentino
+
+Convergencia: Deviance explicada = 0.2347
+
+--------------------------------------------------------------------------------
+Variable Dependiente: Autopercepcion_Per_Antiper
+--------------------------------------------------------------------------------
+Familia GLM: Gaussiana con link Identity
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 13
+  + Cercania_Massa
+  + Autopercepcion_Izq_Der
+  + Voto_2019_Nicolas_Del_Caño
+  + Cercania_Milei
+  + Voto_2019_Mauricio_Macri
+  + Indice_Conservadurismo
+  + Medios_Prensa_Izquierda_Diario
+  + Indice_Positividad
+  + Medios_Prensa_Tiempo_Argentino
+  + Conservative_Cluster
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Region_Norte
+
+Convergencia: Deviance explicada = 0.5377
+
+################################################################################
+# SECCIÓN 3: MODELOS LOGÍSTICOS - PROCESO DE AJUSTE
+################################################################################
+
+================================================================================
+MODELOS LOGÍSTICOS - Generales
+================================================================================
+
+--------------------------------------------------------------------------------
+Cercanía a: Massa
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Massa
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 14
+  + Autopercepcion_Per_Antiper
+  + Indice_Positividad
+  + Categoria_PASO_2023_Left_Wing
+  + Indice_Conservadurismo
+  + Medios_Prensa_Izquierda_Diario
+  + Voto_2019_Mauricio_Macri
+  + Voto_2019_Nicolas_Del_Caño
+  + Progressive_Cluster
+  + Medios_Prensa_Tiempo_Argentino
+  + Edad
+  + Influencia_Prensa
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Region_Norte
+  + Red_Social_Tiktok
+
+Convergencia: Pseudo R² = 0.3087
+
+--------------------------------------------------------------------------------
+Cercanía a: Milei
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Milei
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 7
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Indice_Conservadurismo
+  + Edad
+  + Autopercepcion_Izq_Der
+  + Indice_Progresismo
+  + Red_Social_Tiktok
+  + Autopercepcion_Per_Antiper
+
+Convergencia: Pseudo R² = 0.5651
+
+--------------------------------------------------------------------------------
+Cercanía a: Schiaretti
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Schiaretti
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 15
+  + Categoria_PASO_2023_Centre
+  + Categoria_PASO_2023_Moderate_Right_A
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Region_Centro
+  + Autopercepcion_Izq_Der
+  + Voto_2019_Roberto_Lavagna
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Influencia_Prensa
+  + Indice_Conservadurismo
+  + Edad
+  + Medios_Prensa_Tiempo_Argentino
+  + Red_Social_Facebook
+  + Voto_2019_Mauricio_Macri
+  + Indice_Positividad
+  + Region_Cuyo
+
+Convergencia: Pseudo R² = 0.2353
+
+--------------------------------------------------------------------------------
+Cercanía a: Bullrich
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Bullrich
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 4
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 10
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Voto_2019_Mauricio_Macri
+  + Autopercepcion_Per_Antiper
+  + Indice_Progresismo
+  + Medios_Prensa_La_Nacion
+  + Edad
+  + Genero_Masculino
+  + Influencia_Prensa
+  + Indice_Conservadurismo
+  + Voto_2019_J_Gomez_Centurion
+
+Convergencia: Pseudo R² = 0.4709
+
+--------------------------------------------------------------------------------
+Cercanía a: Bregman
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Bregman
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 17
+  + Categoria_PASO_2023_Left_Wing
+  + Indice_Progresismo
+  + Autopercepcion_Izq_Der
+  + Medios_Prensa_Izquierda_Diario
+  + Autopercepcion_Per_Antiper
+  + Indice_Conservadurismo
+  + Influencia_Prensa
+  + Voto_2019_Nicolas_Del_Caño
+  + Voto_2019_Mauricio_Macri
+  + Medios_Prensa_Prensa_Obrera
+  + Edad
+  + Autopercepcion_Con_Pro
+  + Medios_Prensa_Tiempo_Argentino
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Medios_Prensa_El_Cronista
+  + Red_Social_Facebook
+  + Medios_Prensa_La_Nacion
+
+Convergencia: Pseudo R² = 0.3009
+
+================================================================================
+MODELOS LOGÍSTICOS - Ballotage
+================================================================================
+
+--------------------------------------------------------------------------------
+Cercanía a: Massa
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Massa
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 7
+  + Autopercepcion_Per_Antiper
+  + Indice_Positividad
+  + Region_Patagonia
+  + Voto_2019_Mauricio_Macri
+  + Medios_Prensa_El_Cronista
+  + Categoria_PASO_2023_Moderate_Right_B
+  + Autopercepcion_Izq_Der
+
+Convergencia: Pseudo R² = 0.2671
+
+--------------------------------------------------------------------------------
+Cercanía a: Milei
+--------------------------------------------------------------------------------
+Variable binarizada: Cercano_Milei
+Criterio binarización: >= 4 es cercano (1), <= 3 no cercano (0)
+Iteraciones hasta convergencia: 3
+Criterio de convergencia: p < 0.05
+
+Variables en modelo final: 5
+  + Categoria_PASO_2023_Right_Wing_Libertarian
+  + Indice_Progresismo
+  + Indice_Conservadurismo
+  + Autopercepcion_Izq_Der
+  + Influencia_Redes
+
+Convergencia: Pseudo R² = 0.5545
+
+================================================================================
+FIN DEL REPORTE DE PROCESO
+================================================================================
