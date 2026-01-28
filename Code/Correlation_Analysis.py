@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Análisis de correlaciones para el proyecto de tesis.
+Correlation Analysis.
 
-Este script genera matrices de correlación para las variables
-numéricas del estudio, tanto a nivel general como segmentado
-por categoría electoral (Categoria_PASO_2023).
+This script generates correlation matrices for the numeric
+variables of the study, both at a general level and segmented
+by electoral category (Categoria_PASO_2023).
 
 """
 
@@ -17,10 +17,10 @@ warnings.filterwarnings('ignore')
 
 
 # =============================================================================
-# CONSTANTES Y CONFIGURACIÓN.
+# CONSTANTS AND CONFIGURATION.
 # =============================================================================
 
-# Categorías electorales válidas.
+# Valid electoral categories.
 Categorias_Validas = [
     'Left_Wing',
     'Progressivism',
@@ -30,31 +30,31 @@ Categorias_Validas = [
     'Right_Wing_Libertarian'
 ]
 
-# Mapeo de nombres de variables español -> inglés.
+# Variable name mapping Spanish -> English.
 Mapeo_Variables_Es_En = {
-    # Autopercepciones.
+    # Self-perceptions.
     'Autopercepcion_Izq_Der': 'Left_Right_Self_Perception',
     'Autopercepcion_Con_Pro': 'Conservative_Progressive_Self_Perception',
     'Autopercepcion_Per_Antiper': 'Peronist_Anti_Peronist_Self_Perception',
-    # Índices.
+    # Indices.
     'Indice_Progresismo': 'Progressivism_Index',
     'Indice_Conservadurismo': 'Conservatism_Index',
     'Indice_Positividad': 'Positivity_Index',
     'Indice_Progresismo_Tiempo': 'Progressivism_Index_Time',
     'Indice_Conservadurismo_Tiempo': 'Conservatism_Index_Time',
-    # Cercanías.
+    # Closeness to candidates.
     'Cercania_Bregman': 'Closeness_Bregman',
     'Cercania_Massa': 'Closeness_Massa',
     'Cercania_Schiaretti': 'Closeness_Schiaretti',
     'Cercania_Bullrich': 'Closeness_Bullrich',
     'Cercania_Milei': 'Closeness_Milei',
-    # Influencias.
+    # Influences.
     'Influencia_Prensa': 'Written_Media_Influence',
     'Influencia_Redes': 'Social_Networks_Influence',
-    # Género.
+    # Gender.
     'Genero_Masculino': 'Male',
     'Genero_Otro': 'Other_Gender',
-    # Regiones.
+    # Regions.
     'Region_Norte': 'North',
     'Region_Patagonia': 'Patagonia',
     'Region_Centro': 'Central',
@@ -66,20 +66,20 @@ Mapeo_Variables_Es_En = {
 def Traducir_Variable(Nombre_Variable: str) -> str:
 
     """
-    Traduce el nombre de una variable de español a inglés.
+    Translates a variable name from Spanish to English.
 
-    Parámetros:
-        Nombre_Variable (str): Nombre de la variable en español.
+    Parameters:
+        Nombre_Variable (str): Variable name in Spanish.
 
-    Retorna:
-        str: Nombre de la variable traducido o el original si no existe.
+    Returns:
+        str: Translated variable name or the original if not found.
 
     """
 
     return Mapeo_Variables_Es_En.get(Nombre_Variable, Nombre_Variable)
 
 
-# Variables a excluir del análisis (identificadores, listas, etc.).
+# Variables to exclude from analysis (identifiers, lists, etc.).
 Variables_Excluir = [
     'ID',
     'Fecha',
@@ -89,12 +89,12 @@ Variables_Excluir = [
     'Orden_IP_Items_Asociados'
 ]
 
-# Prefijos de variables a excluir (variables de tipo lista).
+# Variable prefixes to exclude (list-type variables).
 Prefijos_Excluir = [
     'Orden_'
 ]
 
-# Variables seleccionadas para correlaciones.
+# Selected variables for correlations.
 Columnas_Autopercepciones = [
     'Autopercepcion_Izq_Der',
     'Autopercepcion_Con_Pro',
@@ -128,21 +128,21 @@ Columnas_CO_Agrupados = [
 
 
 # =============================================================================
-# FUNCIONES AUXILIARES.
+# AUXILIARY FUNCTIONS.
 # =============================================================================
 
 def Formatear_Numero(Valor: float, Decimales: int = 4) -> str:
 
     """
-    Formatea un número con la cantidad de decimales especificada.
-    Usa notación científica solo para valores muy pequeños.
+    Formats a number with the specified number of decimals.
+    Uses scientific notation only for very small values.
 
-    Parámetros:
-        Valor (float): El número a formatear.
-        Decimales (int): Cantidad de decimales a mostrar.
+    Parameters:
+        Valor (float): The number to format.
+        Decimales (int): Number of decimals to display.
 
-    Retorna:
-        str: El número formateado como string.
+    Returns:
+        str: The formatted number as a string.
 
     """
 
@@ -161,14 +161,14 @@ def Formatear_Numero(Valor: float, Decimales: int = 4) -> str:
 def Formatear_P_Valor(P_Valor: float) -> str:
 
     """
-    Formatea un p-valor con notación científica para valores
-    muy pequeños.
+    Formats a p-value with scientific notation for very
+    small values.
 
-    Parámetros:
-        P_Valor (float): El p-valor a formatear.
+    Parameters:
+        P_Valor (float): The p-value to format.
 
-    Retorna:
-        str: El p-valor formateado.
+    Returns:
+        str: The formatted p-value.
 
     """
 
@@ -184,32 +184,32 @@ def Formatear_P_Valor(P_Valor: float) -> str:
 def Es_Variable_Valida(Nombre_Variable: str, Serie: pd.Series) -> bool:
 
     """
-    Verifica si una variable es válida para el análisis de
-    correlaciones (numérica y no es lista).
+    Checks if a variable is valid for correlation analysis
+    (numeric and not a list).
 
-    Parámetros:
-        Nombre_Variable (str): Nombre de la variable.
-        Serie (pd.Series): Serie con los datos.
+    Parameters:
+        Nombre_Variable (str): Variable name.
+        Serie (pd.Series): Series with the data.
 
-    Retorna:
-        bool: True si es válida, False en caso contrario.
+    Returns:
+        bool: True if valid, False otherwise.
 
     """
 
-    # Excluir por nombre exacto.
+    # Exclude by exact name.
     if Nombre_Variable in Variables_Excluir:
         return False
 
-    # Excluir por prefijo.
+    # Exclude by prefix.
     for Prefijo in Prefijos_Excluir:
         if Nombre_Variable.startswith(Prefijo):
             return False
 
-    # Verificar que sea numérica.
+    # Verify that it is numeric.
     if not np.issubdtype(Serie.dtype, np.number):
         return False
 
-    # Verificar que tenga variabilidad.
+    # Verify that it has variability.
     Serie_Limpia = Serie.dropna()
     if len(Serie_Limpia) < 3:
         return False
@@ -223,14 +223,14 @@ def Es_Variable_Valida(Nombre_Variable: str, Serie: pd.Series) -> bool:
 def Obtener_Variables_Numericas(df: pd.DataFrame) -> list:
 
     """
-    Obtiene la lista de variables numéricas válidas para
-    el análisis de correlaciones.
+    Gets the list of valid numeric variables for
+    correlation analysis.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
 
-    Retorna:
-        list: Lista de nombres de variables numéricas válidas.
+    Returns:
+        list: List of valid numeric variable names.
 
     """
 
@@ -246,13 +246,13 @@ def Obtener_Variables_Numericas(df: pd.DataFrame) -> list:
 def Obtener_Variables_Seleccionadas(df: pd.DataFrame) -> list:
 
     """
-    Obtiene variables seleccionadas para correlaciones.
+    Gets selected variables for correlations.
 
-    ParamÇ­metros:
-        df (pd.DataFrame): DataFrame con los datos.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
 
-    Retorna:
-        list: Lista de variables seleccionadas.
+    Returns:
+        list: List of selected variables.
 
     """
 
@@ -279,7 +279,7 @@ def Obtener_Variables_Seleccionadas(df: pd.DataFrame) -> list:
 
 
 # =============================================================================
-# FUNCIONES DE CÁLCULO DE CORRELACIONES.
+# CORRELATION CALCULATION FUNCTIONS.
 # =============================================================================
 
 def Calcular_Correlacion_Pearson(
@@ -288,18 +288,18 @@ def Calcular_Correlacion_Pearson(
 ) -> dict:
 
     """
-    Calcula la correlación de Pearson entre dos variables.
+    Calculates Pearson correlation between two variables.
 
-    Parámetros:
-        X (pd.Series): Primera variable.
-        Y (pd.Series): Segunda variable.
+    Parameters:
+        X (pd.Series): First variable.
+        Y (pd.Series): Second variable.
 
-    Retorna:
-        dict: Diccionario con coeficiente r y p-valor.
+    Returns:
+        dict: Dictionary with r coefficient and p-value.
 
     """
 
-    # Eliminar valores faltantes pareados.
+    # Remove paired missing values.
     Datos_Validos = pd.DataFrame({'X': X, 'Y': Y}).dropna()
 
     if len(Datos_Validos) < 3:
@@ -320,18 +320,18 @@ def Calcular_Correlacion_Spearman(
 ) -> dict:
 
     """
-    Calcula la correlación de Spearman entre dos variables.
+    Calculates Spearman correlation between two variables.
 
-    Parámetros:
-        X (pd.Series): Primera variable.
-        Y (pd.Series): Segunda variable.
+    Parameters:
+        X (pd.Series): First variable.
+        Y (pd.Series): Second variable.
 
-    Retorna:
-        dict: Diccionario con coeficiente rho y p-valor.
+    Returns:
+        dict: Dictionary with rho coefficient and p-value.
 
     """
 
-    # Eliminar valores faltantes pareados.
+    # Remove paired missing values.
     Datos_Validos = pd.DataFrame({'X': X, 'Y': Y}).dropna()
 
     if len(Datos_Validos) < 3:
@@ -353,21 +353,21 @@ def Calcular_Matriz_Correlacion(
 ) -> dict:
 
     """
-    Calcula la matriz de correlación para un conjunto de variables.
+    Calculates the correlation matrix for a set of variables.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variables (list): Lista de variables a correlacionar.
-        Metodo (str): 'pearson' o 'spearman'.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Variables (list): List of variables to correlate.
+        Metodo (str): 'pearson' or 'spearman'.
 
-    Retorna:
-        dict: Diccionario con matrices de coeficientes y p-valores.
+    Returns:
+        dict: Dictionary with coefficient and p-value matrices.
 
     """
 
     N_Variables = len(Variables)
 
-    # Inicializar matrices.
+    # Initialize matrices.
     Matriz_Coef = pd.DataFrame(
         np.zeros((N_Variables, N_Variables)),
         index=Variables,
@@ -386,18 +386,18 @@ def Calcular_Matriz_Correlacion(
         columns=Variables
     )
 
-    # Calcular correlaciones.
+    # Calculate correlations.
     for i, Var_1 in enumerate(Variables):
         for j, Var_2 in enumerate(Variables):
 
             if i == j:
-                # Diagonal: correlación perfecta.
+                # Diagonal: perfect correlation.
                 Matriz_Coef.iloc[i, j] = 1.0
                 Matriz_P.iloc[i, j] = 0.0
                 Matriz_N.iloc[i, j] = df[Var_1].dropna().shape[0]
 
             elif i < j:
-                # Triangular superior: calcular.
+                # Upper triangular: calculate.
                 if Metodo == 'pearson':
                     Resultado = Calcular_Correlacion_Pearson(
                         df[Var_1], df[Var_2]
@@ -430,16 +430,16 @@ def Calcular_Correlaciones_Par_A_Par(
 ) -> pd.DataFrame:
 
     """
-    Calcula las correlaciones par a par y las devuelve en formato
-    de tabla larga (para facilitar el filtrado).
+    Calculates pairwise correlations and returns them in long
+    table format (for easier filtering).
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variables (list): Lista de variables a correlacionar.
-        Metodo (str): 'pearson' o 'spearman'.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Variables (list): List of variables to correlate.
+        Metodo (str): 'pearson' or 'spearman'.
 
-    Retorna:
-        pd.DataFrame: Tabla con Variable_1, Variable_2, Coef, P, N.
+    Returns:
+        pd.DataFrame: Table with Variable_1, Variable_2, Coef, P, N.
 
     """
 
@@ -471,7 +471,7 @@ def Calcular_Correlaciones_Par_A_Par(
 
     df_Resultados = pd.DataFrame(Resultados)
 
-    # Ordenar por valor absoluto del coeficiente.
+    # Sort by absolute value of coefficient.
     if len(df_Resultados) > 0:
         df_Resultados['Abs_Coef'] = df_Resultados['Coeficiente'].abs()
         df_Resultados = df_Resultados.sort_values(
@@ -484,20 +484,19 @@ def Calcular_Correlaciones_Par_A_Par(
 
 
 # =============================================================================
-# FUNCIÓN DE CARGA DE DATOS.
+# DATA LOADING FUNCTION.
 # =============================================================================
 
 def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
     """
-    Carga las bases de datos de Generales y Ballotage desde
-    archivos Excel.
+    Loads General and Ballotage databases from Excel files.
 
-    Parámetros:
-        Ruta_Carpeta (str): Ruta a la carpeta con los archivos.
+    Parameters:
+        Ruta_Carpeta (str): Path to the folder with the files.
 
-    Retorna:
-        dict: Diccionario con DataFrames cargados.
+    Returns:
+        dict: Dictionary with loaded DataFrames.
 
     """
 
@@ -518,7 +517,7 @@ def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
 
 # =============================================================================
-# FUNCIÓN DE EJECUCIÓN COMPLETA.
+# COMPLETE EXECUTION FUNCTION.
 # =============================================================================
 
 def Ejecutar_Analisis_Correlaciones(
@@ -527,15 +526,15 @@ def Ejecutar_Analisis_Correlaciones(
 ) -> dict:
 
     """
-    Ejecuta el análisis de correlaciones completo para todas las
-    variables numéricas en ambos datasets.
+    Executes the complete correlation analysis for all numeric
+    variables in both datasets.
 
-    Parámetros:
-        Ruta_Datos (str): Ruta a la carpeta con los datos.
-        Metodo (str): 'pearson' o 'spearman'.
+    Parameters:
+        Ruta_Datos (str): Path to the folder with the data.
+        Metodo (str): 'pearson' or 'spearman'.
 
-    Retorna:
-        dict: Diccionario con todos los resultados del análisis.
+    Returns:
+        dict: Dictionary with all analysis results.
 
     """
 
@@ -543,7 +542,7 @@ def Ejecutar_Analisis_Correlaciones(
     print(f"ANÁLISIS DE CORRELACIONES ({Metodo.upper()})")
     print("=" * 70)
 
-    # Cargar datos.
+    # Load data.
     print("\nCargando datos...")
     dfs = Cargar_Bases_Datos(Ruta_Datos)
 
@@ -563,7 +562,7 @@ def Ejecutar_Analisis_Correlaciones(
             'Por_Categoria': {}
         }
 
-        # Obtener variables seleccionadas.
+        # Get selected variables.
         Variables = Obtener_Variables_Seleccionadas(df)
         print(f"Variables seleccionadas v?lidas: {len(Variables)}")
 
@@ -572,7 +571,7 @@ def Ejecutar_Analisis_Correlaciones(
             Todos_Resultados[Nombre_df] = Resultados_df
             continue
 
-        # Análisis general.
+        # General analysis.
         print("\nCalculando correlaciones generales...")
         Resultados_df['General']['Matriz'] = Calcular_Matriz_Correlacion(
             df, Variables, Metodo
@@ -583,7 +582,7 @@ def Ejecutar_Analisis_Correlaciones(
         print(f"  Pares calculados: "
               f"{len(Resultados_df['General']['Par_A_Par'])}")
 
-        # Análisis por categoría.
+        # Analysis by category.
         if 'Categoria_PASO_2023' in df.columns:
             print("\nCalculando correlaciones por categoría electoral...")
 
@@ -594,7 +593,7 @@ def Ejecutar_Analisis_Correlaciones(
                     print(f"  {Categoria}: Insuficientes datos")
                     continue
 
-                # Obtener variables válidas para esta categoría.
+                # Get valid variables for this category.
                 Variables_Cat = [
                     v for v in Variables
                     if Es_Variable_Valida(v, df_Categoria[v])
@@ -625,11 +624,11 @@ def Ejecutar_Analisis_Correlaciones(
 
 
 # =============================================================================
-# GENERACIÓN DE REPORTE TXT.
+# TXT REPORT GENERATION.
 # =============================================================================
 
-# Orden temático de las variables para el reporte.
-# El orden es: Índices → Autopercepciones → Cercanías → CO_Agrupados.
+# Thematic order of variables for the report.
+# The order is: Indices -> Self-perceptions -> Closeness -> CO_Grouped.
 Orden_Tematico_Variables = (
     Columnas_Indices
     + Columnas_Autopercepciones
@@ -641,13 +640,13 @@ Orden_Tematico_Variables = (
 def Obtener_Indice_Tematico(Variable: str) -> int:
 
     """
-    Obtiene el índice temático de una variable para ordenamiento.
+    Gets the thematic index of a variable for sorting.
 
-    Parámetros:
-        Variable (str): Nombre de la variable.
+    Parameters:
+        Variable (str): Variable name.
 
-    Retorna:
-        int: Índice en el orden temático (999 si no se encuentra).
+    Returns:
+        int: Index in the thematic order (999 if not found).
 
     """
 
@@ -662,16 +661,16 @@ def Agrupar_Correlaciones_Por_Variable(
 ) -> dict:
 
     """
-    Agrupa las correlaciones por variable principal, ordenando las
-    variables correlacionadas según el orden temático establecido.
+    Groups correlations by main variable, ordering the correlated
+    variables according to the established thematic order.
 
-    Parámetros:
-        df_Correlaciones (pd.DataFrame): DataFrame con correlaciones.
-        Solo_Significativas (bool): Si True, solo incluye significativas.
+    Parameters:
+        df_Correlaciones (pd.DataFrame): DataFrame with correlations.
+        Solo_Significativas (bool): If True, only includes significant ones.
 
-    Retorna:
-        dict: Diccionario con variable como clave y lista de
-              correlaciones ordenadas temáticamente como valor.
+    Returns:
+        dict: Dictionary with variable as key and list of thematically
+              ordered correlations as value.
 
     """
 
@@ -685,11 +684,11 @@ def Agrupar_Correlaciones_Por_Variable(
     if len(df_Filtrado) == 0:
         return {}
 
-    # Crear diccionario para agrupar por variable.
+    # Create dictionary to group by variable.
     Correlaciones_Por_Variable = {}
 
     for Variable in Orden_Tematico_Variables:
-        # Buscar correlaciones donde esta variable aparece.
+        # Find correlations where this variable appears.
         Correlaciones_Variable = []
 
         for _, Fila in df_Filtrado.iterrows():
@@ -707,7 +706,7 @@ def Agrupar_Correlaciones_Por_Variable(
                 })
 
         if len(Correlaciones_Variable) > 0:
-            # Ordenar por orden temático de la variable correlacionada.
+            # Sort by thematic order of the correlated variable.
             Correlaciones_Variable.sort(
                 key=lambda x: Obtener_Indice_Tematico(x['Variable'])
             )
@@ -724,14 +723,14 @@ def Generar_Reporte_Correlaciones_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con el reporte de correlaciones,
-    agrupadas por variable y ordenadas temáticamente.
+    Generates a TXT file with the correlation report, grouped
+    by variable and thematically ordered.
 
-    Parámetros:
-        Todos_Resultados (dict): Diccionario con los resultados.
-        Ruta_Salida (str): Ruta al archivo de salida.
-        Metodo (str): Método de correlación usado.
-        Top_N (int): Cantidad de correlaciones top a mostrar.
+    Parameters:
+        Todos_Resultados (dict): Dictionary with the results.
+        Ruta_Salida (str): Path to the output file.
+        Metodo (str): Correlation method used.
+        Top_N (int): Number of top correlations to display.
 
     """
 
@@ -743,11 +742,11 @@ def Generar_Reporte_Correlaciones_TXT(
     def Separador(Caracter: str = "=", Largo: int = 80):
         Lineas.append(Caracter * Largo)
 
-    # Nombre del coeficiente.
+    # Coefficient name.
     Nombre_Coef = "r" if Metodo == 'pearson' else "ρ"
 
     # =========================================================================
-    # ENCABEZADO.
+    # HEADER.
     # =========================================================================
     Separador("=")
     Agregar(f"ANÁLISIS DE CORRELACIONES ({Metodo.upper()}) - RESULTADOS")
@@ -762,7 +761,7 @@ def Generar_Reporte_Correlaciones_TXT(
         Agregar("")
 
         # =================================================================
-        # SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE.
+        # SECTION 1: SIGNIFICANT CORRELATIONS BY VARIABLE.
         # =================================================================
         Separador("=")
         Agregar("SECCIÓN 1: CORRELACIONES SIGNIFICATIVAS POR VARIABLE")
@@ -775,14 +774,14 @@ def Generar_Reporte_Correlaciones_TXT(
         Par_A_Par = Resultados_General.get('Par_A_Par', pd.DataFrame())
 
         if len(Par_A_Par) > 0:
-            # Filtrar significativas.
+            # Filter significant ones.
             Par_A_Par_Sig = Par_A_Par[Par_A_Par['Significativo'] == True]
 
             Agregar(f"Total de pares: {len(Par_A_Par)}")
             Agregar(f"Pares significativos (p < 0.05): {len(Par_A_Par_Sig)}")
             Agregar("")
 
-            # Agrupar por variable.
+            # Group by variable.
             Correlaciones_Agrupadas = Agrupar_Correlaciones_Por_Variable(
                 Par_A_Par,
                 Solo_Significativas=True
@@ -811,7 +810,7 @@ def Generar_Reporte_Correlaciones_TXT(
             Agregar("")
 
         # =================================================================
-        # SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL.
+        # SECTION 2: CORRELATIONS BY ELECTORAL CATEGORY.
         # =================================================================
         Separador("=")
         Agregar("SECCIÓN 2: CORRELACIONES POR CATEGORÍA ELECTORAL")
@@ -835,7 +834,7 @@ def Generar_Reporte_Correlaciones_TXT(
             Separador("-")
             Agregar("")
 
-            # Filtrar significativas.
+            # Filter significant ones.
             Par_A_Par_Sig = Par_A_Par_Cat[
                 Par_A_Par_Cat['Significativo'] == True
             ]
@@ -844,7 +843,7 @@ def Generar_Reporte_Correlaciones_TXT(
             Agregar(f"Pares significativos (p < 0.05): {len(Par_A_Par_Sig)}")
             Agregar("")
 
-            # Agrupar por variable.
+            # Group by variable.
             Correlaciones_Agrupadas = Agrupar_Correlaciones_Por_Variable(
                 Par_A_Par_Cat,
                 Solo_Significativas=True
@@ -874,7 +873,7 @@ def Generar_Reporte_Correlaciones_TXT(
     Agregar("FIN DEL REPORTE")
     Separador("=")
 
-    # Escribir archivo.
+    # Write file.
     with open(Ruta_Salida, 'w', encoding='utf-8') as Archivo:
         Archivo.write('\n'.join(Lineas))
 
@@ -882,26 +881,26 @@ def Generar_Reporte_Correlaciones_TXT(
 
 
 # =============================================================================
-# EJECUCIÓN PRINCIPAL.
+# MAIN EXECUTION.
 # =============================================================================
 
 if __name__ == '__main__':
-    # Ruta a la carpeta con los datos definitivos.
+    # Path to the folder with the definitive data.
     Ruta_Base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     Ruta_Datos = os.path.join(Ruta_Base, 'Processed_Data')
 
-    # Ejecutar análisis de correlaciones (Spearman por defecto).
+    # Execute correlation analysis (Spearman by default).
     Resultados, dfs = Ejecutar_Analisis_Correlaciones(
         Ruta_Datos,
         Metodo='spearman'
     )
 
-    # Crear carpeta Results/Reports si no existe.
+    # Create Results/Reports folder if it doesn't exist.
     Ruta_Reportes = os.path.join(Ruta_Base, 'Results', 'Reports')
     if not os.path.exists(Ruta_Reportes):
         os.makedirs(Ruta_Reportes)
 
-    # Generar reporte TXT.
+    # Generate TXT report.
     Ruta_Reporte = os.path.join(
         Ruta_Reportes,
         'Report_Correlation_Analysis.txt'

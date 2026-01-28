@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Análisis descriptivo para el proyecto de tesis.
+Descriptive Analysis.
 
-Este script genera estadísticos descriptivos completos para todas
-las variables del estudio, tanto a nivel general como segmentado
-por categoría electoral (Categoria_PASO_2023).
+This script generates complete descriptive statistics for all
+variables in the study, both at a general level and segmented
+by electoral category (Categoria_PASO_2023).
 
 """
 
@@ -17,10 +17,10 @@ warnings.filterwarnings('ignore')
 
 
 # =============================================================================
-# CONSTANTES Y CONFIGURACIÓN.
+# CONSTANTS AND CONFIGURATION.
 # =============================================================================
 
-# Categorías electorales válidas.
+# Valid electoral categories.
 Categorias_Validas = [
     'Left_Wing',
     'Progressivism',
@@ -30,7 +30,7 @@ Categorias_Validas = [
     'Right_Wing_Libertarian'
 ]
 
-# Variables a excluir del análisis (identificadores, etc.).
+# Variables to exclude from analysis (identifiers, etc.).
 Variables_Excluir = [
     'ID',
     'Fecha',
@@ -40,21 +40,21 @@ Variables_Excluir = [
 
 
 # =============================================================================
-# FUNCIONES AUXILIARES.
+# AUXILIARY FUNCTIONS.
 # =============================================================================
 
 def Formatear_Numero(Valor: float, Decimales: int = 4) -> str:
 
     """
-    Formatea un número con la cantidad de decimales especificada.
-    Usa notación científica solo para valores muy pequeños.
+    Formats a number with the specified number of decimals.
+    Uses scientific notation only for very small values.
 
-    Parámetros:
-        Valor (float): El número a formatear.
-        Decimales (int): Cantidad de decimales a mostrar.
+    Parameters:
+        Valor (float): The number to format.
+        Decimales (int): Number of decimals to display.
 
-    Retorna:
-        str: El número formateado como string.
+    Returns:
+        str: The formatted number as a string.
 
     """
 
@@ -73,37 +73,37 @@ def Formatear_Numero(Valor: float, Decimales: int = 4) -> str:
 def Determinar_Tipo_Variable(Serie: pd.Series) -> str:
 
     """
-    Determina el tipo de una variable para aplicar el análisis
-    descriptivo apropiado.
+    Determines the type of a variable to apply the appropriate
+    descriptive analysis.
 
-    Parámetros:
-        Serie (pd.Series): Serie con los datos de la variable.
+    Parameters:
+        Serie (pd.Series): Series with the variable data.
 
-    Retorna:
-        str: Tipo de variable ('continua', 'discreta', 'categorica',
+    Returns:
+        str: Variable type ('continua', 'discreta', 'categorica',
             'binaria', 'booleana', 'lista').
 
     """
 
-    # Eliminar valores nulos para el análisis.
+    # Remove null values for analysis.
     Serie_Limpia = Serie.dropna()
 
     if len(Serie_Limpia) == 0:
         return 'vacia'
 
-    # Verificar si contiene listas o estructuras complejas.
+    # Check if it contains lists or complex structures.
     if len(Serie_Limpia) > 0:
         Primer_Valor = Serie_Limpia.iloc[0]
         if isinstance(Primer_Valor, (list, dict, tuple)):
             return 'lista'
 
-    # Booleanos.
+    # Booleans.
     if Serie.dtype == bool:
         return 'booleana'
 
-    # Categóricas (objeto/string).
+    # Categorical (object/string).
     if Serie.dtype == 'object' or Serie.dtype.name == 'category':
-        # Verificar si son strings que parecen listas.
+        # Check if they are strings that look like lists.
         if len(Serie_Limpia) > 0:
             Primer_Valor = Serie_Limpia.iloc[0]
             if isinstance(Primer_Valor, str):
@@ -111,40 +111,40 @@ def Determinar_Tipo_Variable(Serie: pd.Series) -> str:
                     return 'lista'
         return 'categorica'
 
-    # Numéricas.
+    # Numeric.
     Valores_Unicos = Serie_Limpia.nunique()
 
-    # Binarias (solo 2 valores).
+    # Binary (only 2 values).
     if Valores_Unicos == 2:
         return 'binaria'
 
-    # Discretas (pocos valores únicos o todos enteros).
+    # Discrete (few unique values or all integers).
     if Valores_Unicos <= 10:
         return 'discreta'
 
-    # Verificar si todos son enteros.
+    # Check if all are integers.
     if Serie_Limpia.dtype in ['int64', 'int32']:
         if Valores_Unicos <= 20:
             return 'discreta'
 
-    # Continuas.
+    # Continuous.
     return 'continua'
 
 
 # =============================================================================
-# FUNCIONES DE ESTADÍSTICOS DESCRIPTIVOS.
+# DESCRIPTIVE STATISTICS FUNCTIONS.
 # =============================================================================
 
 def Calcular_Estadisticos_Continuos(Serie: pd.Series) -> dict:
 
     """
-    Calcula estadísticos descriptivos para variables continuas.
+    Calculates descriptive statistics for continuous variables.
 
-    Parámetros:
-        Serie (pd.Series): Serie con los datos numéricos.
+    Parameters:
+        Serie (pd.Series): Series with numeric data.
 
-    Retorna:
-        dict: Diccionario con todos los estadísticos calculados.
+    Returns:
+        dict: Dictionary with all calculated statistics.
 
     """
 
@@ -161,20 +161,20 @@ def Calcular_Estadisticos_Continuos(Serie: pd.Series) -> dict:
             'Porcentaje_Faltantes': 100.0
         }
 
-    # Estadísticos de tendencia central.
+    # Central tendency statistics.
     Media = Serie_Limpia.mean()
     Mediana = Serie_Limpia.median()
     Moda_Resultado = Serie_Limpia.mode()
     Moda = Moda_Resultado.iloc[0] if len(Moda_Resultado) > 0 else np.nan
 
-    # Estadísticos de dispersión.
+    # Dispersion statistics.
     Desviacion_Estandar = Serie_Limpia.std()
     Varianza = Serie_Limpia.var()
     Minimo = Serie_Limpia.min()
     Maximo = Serie_Limpia.max()
     Rango = Maximo - Minimo
 
-    # Forma de la distribución.
+    # Distribution shape.
     Asimetria = Serie_Limpia.skew()
     Curtosis = Serie_Limpia.kurtosis()
 
@@ -197,31 +197,31 @@ def Calcular_Estadisticos_Continuos(Serie: pd.Series) -> dict:
 def Calcular_Estadisticos_Discretos(Serie: pd.Series) -> dict:
 
     """
-    Calcula estadísticos descriptivos para variables discretas,
-    incluyendo conteo de valores únicos.
+    Calculates descriptive statistics for discrete variables,
+    including unique value counts.
 
-    Parámetros:
-        Serie (pd.Series): Serie con los datos discretos.
+    Parameters:
+        Serie (pd.Series): Series with discrete data.
 
-    Retorna:
-        dict: Diccionario con estadísticos y frecuencias.
+    Returns:
+        dict: Dictionary with statistics and frequencies.
 
     """
 
-    # Primero calcular estadísticos como si fuera continua.
+    # First calculate statistics as if continuous.
     Estadisticos = Calcular_Estadisticos_Continuos(Serie)
 
-    # Agregar conteo de valores únicos.
+    # Add unique value count.
     Serie_Limpia = Serie.dropna()
     Valores_Unicos = Serie_Limpia.nunique()
 
-    # Frecuencias.
+    # Frequencies.
     Frecuencias = Serie_Limpia.value_counts().sort_index()
     Frecuencias_Relativas = Serie_Limpia.value_counts(
         normalize=True
     ).sort_index() * 100
 
-    # Construir diccionario de frecuencias.
+    # Build frequency dictionary.
     Conteo_Valores = {}
     for Valor in Frecuencias.index:
         Conteo_Valores[Valor] = {
@@ -238,13 +238,13 @@ def Calcular_Estadisticos_Discretos(Serie: pd.Series) -> dict:
 def Calcular_Estadisticos_Categoricos(Serie: pd.Series) -> dict:
 
     """
-    Calcula estadísticos descriptivos para variables categóricas.
+    Calculates descriptive statistics for categorical variables.
 
-    Parámetros:
-        Serie (pd.Series): Serie con los datos categóricos.
+    Parameters:
+        Serie (pd.Series): Series with categorical data.
 
-    Retorna:
-        dict: Diccionario con frecuencias y porcentajes.
+    Returns:
+        dict: Dictionary with frequencies and percentages.
 
     """
 
@@ -261,18 +261,18 @@ def Calcular_Estadisticos_Categoricos(Serie: pd.Series) -> dict:
             'Porcentaje_Faltantes': 100.0
         }
 
-    # Valores únicos.
+    # Unique values.
     Valores_Unicos = Serie_Limpia.nunique()
 
-    # Moda.
+    # Mode.
     Moda_Resultado = Serie_Limpia.mode()
     Moda = Moda_Resultado.iloc[0] if len(Moda_Resultado) > 0 else None
 
-    # Frecuencias.
+    # Frequencies.
     Frecuencias = Serie_Limpia.value_counts()
     Frecuencias_Relativas = Serie_Limpia.value_counts(normalize=True) * 100
 
-    # Construir diccionario de frecuencias.
+    # Build frequency dictionary.
     Conteo_Valores = {}
     for Valor in Frecuencias.index:
         Conteo_Valores[str(Valor)] = {
@@ -294,14 +294,14 @@ def Calcular_Estadisticos_Categoricos(Serie: pd.Series) -> dict:
 def Calcular_Estadisticos_Binarios(Serie: pd.Series) -> dict:
 
     """
-    Calcula estadísticos descriptivos para variables binarias
-    (incluyendo booleanas).
+    Calculates descriptive statistics for binary variables
+    (including booleans).
 
-    Parámetros:
-        Serie (pd.Series): Serie con los datos binarios.
+    Parameters:
+        Serie (pd.Series): Series with binary data.
 
-    Retorna:
-        dict: Diccionario con frecuencias y proporciones.
+    Returns:
+        dict: Dictionary with frequencies and proportions.
 
     """
 
@@ -318,14 +318,14 @@ def Calcular_Estadisticos_Binarios(Serie: pd.Series) -> dict:
             'Porcentaje_Faltantes': 100.0
         }
 
-    # Frecuencias.
+    # Frequencies.
     Frecuencias = Serie_Limpia.value_counts()
     Frecuencias_Relativas = Serie_Limpia.value_counts(normalize=True) * 100
 
-    # Identificar valores.
+    # Identify values.
     Valores = sorted(Serie_Limpia.unique())
 
-    # Proporción del valor "positivo" (True, 1, o el mayor).
+    # Proportion of "positive" value (True, 1, or the highest).
     if Serie.dtype == bool:
         Proporcion_Positivo = Serie_Limpia.mean() * 100
     else:
@@ -333,7 +333,7 @@ def Calcular_Estadisticos_Binarios(Serie: pd.Series) -> dict:
             Serie_Limpia == max(Valores)
         ).mean() * 100
 
-    # Construir diccionario de frecuencias.
+    # Build frequency dictionary.
     Conteo_Valores = {}
     for Valor in Frecuencias.index:
         Conteo_Valores[str(Valor)] = {
@@ -352,7 +352,7 @@ def Calcular_Estadisticos_Binarios(Serie: pd.Series) -> dict:
 
 
 # =============================================================================
-# FUNCIÓN PRINCIPAL DE ANÁLISIS.
+# MAIN ANALYSIS FUNCTION.
 # =============================================================================
 
 def Analizar_Variable(
@@ -361,15 +361,15 @@ def Analizar_Variable(
 ) -> dict:
 
     """
-    Analiza una variable y retorna sus estadísticos descriptivos
-    según su tipo.
+    Analyzes a variable and returns its descriptive statistics
+    according to its type.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Nombre_Variable (str): Nombre de la variable a analizar.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Nombre_Variable (str): Name of the variable to analyze.
 
-    Retorna:
-        dict: Diccionario con tipo de variable y estadísticos.
+    Returns:
+        dict: Dictionary with variable type and statistics.
 
     """
 
@@ -385,7 +385,7 @@ def Analizar_Variable(
             'Estadisticos': {'N_Total': len(Serie), 'N_Validos': 0}
         }
 
-    # Ignorar variables que contienen listas.
+    # Ignore variables that contain lists.
     elif Tipo == 'lista':
         return None
 
@@ -423,15 +423,15 @@ def Analizar_Variable_Por_Categoria(
 ) -> dict:
 
     """
-    Analiza una variable segmentada por categoría electoral.
+    Analyzes a variable segmented by electoral category.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Nombre_Variable (str): Nombre de la variable a analizar.
-        Columna_Categoria (str): Nombre de la columna de categoría.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Nombre_Variable (str): Name of the variable to analyze.
+        Columna_Categoria (str): Name of the category column.
 
-    Retorna:
-        dict: Diccionario con estadísticos por cada categoría.
+    Returns:
+        dict: Dictionary with statistics for each category.
 
     """
 
@@ -458,20 +458,20 @@ def Analizar_Variable_Por_Categoria(
 
 
 # =============================================================================
-# FUNCIÓN DE CARGA DE DATOS.
+# DATA LOADING FUNCTION.
 # =============================================================================
 
 def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
     """
-    Carga las bases de datos de Generales y Ballotage desde
-    archivos Excel.
+    Loads the Generales and Ballotage databases from
+    Excel files.
 
-    Parámetros:
-        Ruta_Carpeta (str): Ruta a la carpeta con los archivos.
+    Parameters:
+        Ruta_Carpeta (str): Path to the folder with the files.
 
-    Retorna:
-        dict: Diccionario con DataFrames cargados.
+    Returns:
+        dict: Dictionary with loaded DataFrames.
 
     """
 
@@ -492,20 +492,20 @@ def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
 
 # =============================================================================
-# FUNCIÓN DE EJECUCIÓN COMPLETA.
+# COMPLETE EXECUTION FUNCTION.
 # =============================================================================
 
 def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
 
     """
-    Ejecuta el análisis descriptivo completo para todas las
-    variables en ambos datasets.
+    Executes the complete descriptive analysis for all
+    variables in both datasets.
 
-    Parámetros:
-        Ruta_Datos (str): Ruta a la carpeta con los datos.
+    Parameters:
+        Ruta_Datos (str): Path to the folder with the data.
 
-    Retorna:
-        dict: Diccionario con todos los resultados del análisis.
+    Returns:
+        dict: Dictionary with all analysis results.
 
     """
 
@@ -513,7 +513,7 @@ def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
     print("ANÁLISIS DESCRIPTIVO COMPLETO")
     print("=" * 70)
 
-    # Cargar datos.
+    # Load data.
     print("\nCargando datos...")
     dfs = Cargar_Bases_Datos(Ruta_Datos)
 
@@ -533,7 +533,7 @@ def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
             'Por_Categoria': {}
         }
 
-        # Obtener lista de variables a analizar.
+        # Get list of variables to analyze.
         Variables = [
             col for col in df.columns
             if col not in Variables_Excluir
@@ -541,7 +541,7 @@ def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
 
         print(f"Variables a analizar: {len(Variables)}")
 
-        # Análisis general de cada variable.
+        # General analysis of each variable.
         print("\nAnálisis general...")
         for i, Variable in enumerate(Variables):
             Resultado = Analizar_Variable(df, Variable)
@@ -553,7 +553,7 @@ def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
 
         print(f"  Completado: {len(Variables)} variables")
 
-        # Análisis por categoría.
+        # Analysis by category.
         if 'Categoria_PASO_2023' in df.columns:
             print("\nAnálisis por categoría electoral...")
 
@@ -583,7 +583,7 @@ def Ejecutar_Analisis_Descriptivo(Ruta_Datos: str) -> dict:
 
 
 # =============================================================================
-# GENERACIÓN DE REPORTE TXT.
+# TXT REPORT GENERATION.
 # =============================================================================
 
 def Generar_Reporte_Descriptivo_TXT(
@@ -592,12 +592,12 @@ def Generar_Reporte_Descriptivo_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con el reporte completo del análisis
-    descriptivo.
+    Generates a TXT file with the complete descriptive analysis
+    report.
 
-    Parámetros:
-        Todos_Resultados (dict): Diccionario con los resultados.
-        Ruta_Salida (str): Ruta al archivo de salida.
+    Parameters:
+        Todos_Resultados (dict): Dictionary with the results.
+        Ruta_Salida (str): Path to the output file.
 
     """
 
@@ -610,7 +610,7 @@ def Generar_Reporte_Descriptivo_TXT(
         Lineas.append(Caracter * Largo)
 
     # =========================================================================
-    # ENCABEZADO.
+    # HEADER.
     # =========================================================================
     Separador("=")
     Agregar("ANÁLISIS DESCRIPTIVO - RESULTADOS COMPLETOS")
@@ -625,7 +625,7 @@ def Generar_Reporte_Descriptivo_TXT(
         Agregar("")
 
         # =================================================================
-        # SECCIÓN 1: ANÁLISIS GENERAL.
+        # SECTION 1: GENERAL ANALYSIS.
         # =================================================================
         Separador("=")
         Agregar("SECCIÓN 1: ESTADÍSTICOS GENERALES POR VARIABLE")
@@ -634,7 +634,7 @@ def Generar_Reporte_Descriptivo_TXT(
 
         Resultados_General = Resultados_df.get('General', {})
 
-        # Agrupar por tipo de variable.
+        # Group by variable type.
         Variables_Por_Tipo = {
             'continua': [],
             'discreta': [],
@@ -648,7 +648,7 @@ def Generar_Reporte_Descriptivo_TXT(
             if Tipo in Variables_Por_Tipo:
                 Variables_Por_Tipo[Tipo].append((Variable, Resultado))
 
-        # Variables continuas.
+        # Continuous variables.
         if Variables_Por_Tipo['continua']:
             Separador("-")
             Agregar("VARIABLES CONTINUAS")
@@ -671,7 +671,7 @@ def Generar_Reporte_Descriptivo_TXT(
                         f"Curtosis: {Formatear_Numero(Est['Curtosis'])}")
                 Agregar("")
 
-        # Variables discretas.
+        # Discrete variables.
         if Variables_Por_Tipo['discreta']:
             Separador("-")
             Agregar("VARIABLES DISCRETAS")
@@ -699,7 +699,7 @@ def Generar_Reporte_Descriptivo_TXT(
 
                 Agregar("")
 
-        # Variables categóricas.
+        # Categorical variables.
         if Variables_Por_Tipo['categorica']:
             Separador("-")
             Agregar("VARIABLES CATEGÓRICAS")
@@ -717,7 +717,7 @@ def Generar_Reporte_Descriptivo_TXT(
                 Agregar(f"  Distribución de valores:")
 
                 Conteo = Est.get('Conteo_Valores', {})
-                # Ordenar por frecuencia descendente.
+                # Sort by descending frequency.
                 Conteo_Ordenado = sorted(
                     Conteo.items(),
                     key=lambda x: x[1]['Frecuencia'],
@@ -729,7 +729,7 @@ def Generar_Reporte_Descriptivo_TXT(
 
                 Agregar("")
 
-        # Variables binarias y booleanas.
+        # Binary and boolean variables.
         Binarias_Y_Bool = (
             Variables_Por_Tipo['binaria'] +
             Variables_Por_Tipo['booleana']
@@ -756,7 +756,7 @@ def Generar_Reporte_Descriptivo_TXT(
                 Agregar("")
 
         # =================================================================
-        # SECCIÓN 2: ANÁLISIS POR CATEGORÍA.
+        # SECTION 2: ANALYSIS BY CATEGORY.
         # =================================================================
         Separador("=")
         Agregar("SECCIÓN 2: ESTADÍSTICOS POR CATEGORÍA ELECTORAL")
@@ -765,14 +765,14 @@ def Generar_Reporte_Descriptivo_TXT(
 
         Resultados_Por_Cat = Resultados_df.get('Por_Categoria', {})
 
-        # Solo mostrar variables numéricas por categoría.
+        # Only show numeric variables by category.
         for Variable, Resultados_Cats in Resultados_Por_Cat.items():
 
-            # Verificar que haya resultados.
+            # Verify that there are results.
             if not Resultados_Cats:
                 continue
 
-            # Verificar si es numérica.
+            # Verify if it is numeric.
             Primer_Resultado = list(Resultados_Cats.values())[0]
             Tipo = Primer_Resultado.get('Tipo', '')
 
@@ -784,7 +784,7 @@ def Generar_Reporte_Descriptivo_TXT(
             Separador("-")
             Agregar("")
 
-            # Encabezado de tabla.
+            # Table header.
             Agregar(f"{'Categoría':<25} {'N':>6} {'Media':>10} "
                     f"{'Mediana':>10} {'DE':>10} {'Mín':>8} {'Máx':>8}")
             Agregar("-" * 80)
@@ -796,7 +796,7 @@ def Generar_Reporte_Descriptivo_TXT(
                 Res = Resultados_Cats[Categoria]
                 Est = Res['Estadisticos']
 
-                # Verificar que los estadísticos numéricos existan.
+                # Verify that the numeric statistics exist.
                 if 'Media' not in Est:
                     continue
 
@@ -818,7 +818,7 @@ def Generar_Reporte_Descriptivo_TXT(
     Agregar("FIN DEL REPORTE")
     Separador("=")
 
-    # Escribir archivo.
+    # Write file.
     with open(Ruta_Salida, 'w', encoding='utf-8') as Archivo:
         Archivo.write('\n'.join(Lineas))
 
@@ -826,23 +826,23 @@ def Generar_Reporte_Descriptivo_TXT(
 
 
 # =============================================================================
-# EJECUCIÓN PRINCIPAL.
+# MAIN EXECUTION.
 # =============================================================================
 
 if __name__ == '__main__':
-    # Ruta a la carpeta con los datos definitivos.
+    # Path to the folder with the final data.
     Ruta_Base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     Ruta_Datos = os.path.join(Ruta_Base, 'Processed_Data')
 
-    # Ejecutar análisis descriptivo.
+    # Execute descriptive analysis.
     Resultados, dfs = Ejecutar_Analisis_Descriptivo(Ruta_Datos)
 
-    # Crear carpeta Results/Reports si no existe.
+    # Create Results/Reports folder if it doesn't exist.
     Ruta_Reportes = os.path.join(Ruta_Base, 'Results', 'Reports')
     if not os.path.exists(Ruta_Reportes):
         os.makedirs(Ruta_Reportes)
 
-    # Generar reporte TXT.
+    # Generate TXT report.
     Ruta_Reporte = os.path.join(
         Ruta_Reportes,
         'Report_Descriptive_Analysis.txt'

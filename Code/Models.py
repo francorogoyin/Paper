@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Modelos estadísticos para el proyecto de tesis.
+Statistical Models.
 
-Este script contiene funciones para ajustar modelos de regresión:
-- Modelo Lineal Robusto con errores HC3
-- Modelo GLM recursivo (Gaussiano)
-- Regresión Logística Binaria recursiva
+This script contains functions to fit regression models:
+- Robust Linear Model with HC3 errors
+- Recursive GLM model (Gaussian)
+- Recursive Binary Logistic Regression
 
-Cada modelo utiliza eliminación secuencial de variables basada en
-criterios de información (AIC) y significancia estadística (p < 0.05).
+Each model uses sequential variable elimination based on
+information criteria (AIC) and statistical significance (p < 0.05).
 
 """
 
@@ -27,33 +27,33 @@ warnings.filterwarnings('ignore')
 
 
 # =============================================================================
-# MAPEO DE NOMBRES DE VARIABLES ESPAÑOL -> INGLÉS.
+# VARIABLE NAME MAPPING SPANISH -> ENGLISH.
 # =============================================================================
 
 Mapeo_Variables_Es_En = {
-    # Autopercepciones.
+    # Self-perceptions.
     'Autopercepcion_Izq_Der': 'Left_Right_Self_Perception',
     'Autopercepcion_Con_Pro': 'Conservative_Progressive_Self_Perception',
     'Autopercepcion_Per_Antiper': 'Peronist_Anti_Peronist_Self_Perception',
-    # Índices.
+    # Indices.
     'Indice_Progresismo': 'Progressivism_Index',
     'Indice_Conservadurismo': 'Conservatism_Index',
     'Indice_Positividad': 'Positivity_Index',
     'Indice_Progresismo_Tiempo': 'Progressivism_Index_Time',
     'Indice_Conservadurismo_Tiempo': 'Conservatism_Index_Time',
-    # Cercanías.
+    # Closeness.
     'Cercania_Bregman': 'Closeness_Bregman',
     'Cercania_Massa': 'Closeness_Massa',
     'Cercania_Schiaretti': 'Closeness_Schiaretti',
     'Cercania_Bullrich': 'Closeness_Bullrich',
     'Cercania_Milei': 'Closeness_Milei',
-    # Influencias.
+    # Influences.
     'Influencia_Prensa': 'Written_Media_Influence',
     'Influencia_Redes': 'Social_Networks_Influence',
-    # Género.
+    # Gender.
     'Genero_Masculino': 'Male',
     'Genero_Otro': 'Other_Gender',
-    # Regiones.
+    # Regions.
     'Region_Norte': 'North',
     'Region_Patagonia': 'Patagonia',
     'Region_Centro': 'Central',
@@ -65,13 +65,13 @@ Mapeo_Variables_Es_En = {
 def Traducir_Variable(Nombre_Variable: str) -> str:
 
     """
-    Traduce el nombre de una variable de español a inglés.
+    Translates the variable name from Spanish to English.
 
-    Parámetros:
-        Nombre_Variable (str): Nombre de la variable en español.
+    Parameters:
+        Nombre_Variable (str): Name of the variable in Spanish.
 
-    Retorna:
-        str: Nombre de la variable traducido o el original si no existe.
+    Returns:
+        str: Translated variable name or the original if not found.
 
     """
 
@@ -79,11 +79,11 @@ def Traducir_Variable(Nombre_Variable: str) -> str:
 
 
 # =============================================================================
-# CONSTANTES Y CONFIGURACIÓN.
+# CONSTANTS AND CONFIGURATION.
 # =============================================================================
 
-# Variables dependientes para modelo robusto (Cambio de Opinión).
-# Incluye variables agregadas e ítems individuales significativos.
+# Dependent variables for robust model (Opinion Change).
+# Includes aggregated variables and significant individual items.
 Variables_Dependientes_Robusto = {
     'Generales': [
         'CO_Congruente',
@@ -131,7 +131,7 @@ Variables_Dependientes_Robusto = {
     ]
 }
 
-# Variables dependientes para GLM (Índices y Autopercepciones).
+# Dependent variables for GLM (Indices and Self-perceptions).
 Variables_Dependientes_GLM = [
     'Indice_Progresismo',
     'Indice_Conservadurismo',
@@ -140,7 +140,7 @@ Variables_Dependientes_GLM = [
     'Autopercepcion_Per_Antiper'
 ]
 
-# Candidatos para regresión logística de cercanía.
+# Candidates for closeness logistic regression.
 Candidatos_Cercania = [
     'Massa',
     'Milei',
@@ -149,7 +149,7 @@ Candidatos_Cercania = [
     'Bregman'
 ]
 
-# Variables independientes comunes para todos los modelos.
+# Common independent variables for all models.
 Variables_Independientes = [
     'Conservative_Cluster',
     'Progressive_Cluster',
@@ -207,17 +207,17 @@ Variables_Independientes = [
 def Formatear_P_Valor(P_Valor: float) -> str:
 
     """
-    Formatea un p-valor en notación científica con 2 decimales
-    solo cuando es muy pequeño (< 0.001). Para valores mayores
-    usa formato decimal estándar.
+    Formats a p-value in scientific notation with 2 decimals
+    only when it is very small (< 0.001). For larger values
+    uses standard decimal format.
 
-    Parámetros:
-        P_Valor (float): El p-valor a formatear.
+    Parameters:
+        P_Valor (float): The p-value to format.
 
-    Retorna:
-        str: El p-valor formateado como string.
-            - Si p < 0.001: notación científica (ej: "2.12E-15")
-            - Si p >= 0.001: formato decimal (ej: "0.043")
+    Returns:
+        str: The formatted p-value as string.
+            - If p < 0.001: scientific notation (e.g.: "2.12E-15")
+            - If p >= 0.001: decimal format (e.g.: "0.043")
 
     """
 
@@ -231,7 +231,7 @@ def Formatear_P_Valor(P_Valor: float) -> str:
 
 
 # =============================================================================
-# FUNCIONES DE ANÁLISIS Y PREPARACIÓN DE DATOS.
+# DATA ANALYSIS AND PREPARATION FUNCTIONS.
 # =============================================================================
 
 def Analizar_Variable_Dependiente(
@@ -240,32 +240,32 @@ def Analizar_Variable_Dependiente(
 ) -> dict:
 
     """
-    Analiza exhaustivamente las características estadísticas de una
-    variable dependiente para determinar el modelo de regresión más
-    apropiado.
+    Exhaustively analyzes the statistical characteristics of a
+    dependent variable to determine the most appropriate regression
+    model.
 
-    Esta función examina la distribución, características clave y
-    propiedades estadísticas de la variable dependiente, proporcionando
-    recomendaciones específicas sobre qué tipo de modelo utilizar.
+    This function examines the distribution, key characteristics and
+    statistical properties of the dependent variable, providing
+    specific recommendations on which type of model to use.
 
-    Parámetros:
-        Variable_Y (pd.Series): Serie con los valores de la variable
-            dependiente a analizar.
-        Nombre_Variable (str): Nombre descriptivo de la variable.
+    Parameters:
+        Variable_Y (pd.Series): Series with the values of the
+            dependent variable to analyze.
+        Nombre_Variable (str): Descriptive name of the variable.
 
-    Retorna:
-        dict: Diccionario con las características booleanas detectadas:
-            - 'Es_Ordinal': True si tiene características ordinales.
-            - 'Tiene_Muchos_Ceros': True si más del 50% son ceros.
-            - 'Es_Simetrica': True si la distribución es simétrica.
-            - 'Rango_Limitado': True si el rango total es <= 10.
+    Returns:
+        dict: Dictionary with detected boolean characteristics:
+            - 'Es_Ordinal': True if it has ordinal characteristics.
+            - 'Tiene_Muchos_Ceros': True if more than 50% are zeros.
+            - 'Es_Simetrica': True if the distribution is symmetric.
+            - 'Rango_Limitado': True if the total range is <= 10.
 
     """
 
     print(f"ANÁLISIS DE {Nombre_Variable}:")
     print("=" * 50)
 
-    # Distribución de valores.
+    # Value distribution.
     print("Distribución de valores:")
     Distribucion = Variable_Y.value_counts().sort_index()
     Porcentajes = Variable_Y.value_counts(normalize=True).sort_index() * 100
@@ -275,7 +275,7 @@ def Analizar_Variable_Dependiente(
         Porcentaje = Porcentajes[Valor]
         print(f"  Valor {Valor:2.0f}: {Frecuencia:4d} obs ({Porcentaje:5.1f}%)")
 
-    # Características clave.
+    # Key characteristics.
     Es_Ordinal = (
         len(Variable_Y.unique()) <= 10 and
         Variable_Y.min() >= -10 and
@@ -294,7 +294,7 @@ def Analizar_Variable_Dependiente(
     print(f"  Asimetría: {Variable_Y.skew():.3f}")
     print(f"  Exceso de ceros: {(Variable_Y == 0).mean()*100:.1f}%")
 
-    # Recomendación de modelo.
+    # Model recommendation.
     print(f"\nRECOMENDACIÓN DE MODELO:")
 
     if Es_Ordinal and Rango_Limitado:
@@ -327,41 +327,40 @@ def Limpiar_Y_Estructurar_Datos_Para_Modelado(
 ) -> tuple:
 
     """
-    Limpia, estructura y prepara un conjunto de datos para el
-    entrenamiento de modelos, manejando valores faltantes y filtrando
-    observaciones válidas.
+    Cleans, structures and prepares a dataset for model training,
+    handling missing values and filtering valid observations.
 
-    Realiza el preprocesamiento esencial que incluye: eliminación de
-    observaciones sin variable dependiente, imputación inteligente de
-    valores faltantes usando mediana para numéricas y moda para
-    categóricas, y validación final de la integridad de los datos.
+    Performs essential preprocessing including: removal of
+    observations without dependent variable, intelligent imputation
+    of missing values using median for numeric and mode for
+    categorical, and final validation of data integrity.
 
-    Parámetros:
-        Dataframe (pd.DataFrame): DataFrame completo con todas las
-            variables del estudio.
-        Variable_Dependiente (str): Nombre de la columna que representa
-            la variable dependiente (Y).
-        Variables_Independientes (list): Lista con los nombres de las
-            columnas que serán utilizadas como variables independientes.
+    Parameters:
+        Dataframe (pd.DataFrame): Complete DataFrame with all
+            study variables.
+        Variable_Dependiente (str): Name of the column representing
+            the dependent variable (Y).
+        Variables_Independientes (list): List with the names of
+            columns to be used as independent variables.
 
-    Retorna:
-        tuple: (Variables_X, Variable_Y) donde Variables_X es un
-            DataFrame con las variables independientes limpias y
-            Variable_Y es una Serie con la variable dependiente.
+    Returns:
+        tuple: (Variables_X, Variable_Y) where Variables_X is a
+            DataFrame with clean independent variables and
+            Variable_Y is a Series with the dependent variable.
 
     """
 
-    # Filtrar observaciones que tienen la variable dependiente.
+    # Filter observations that have the dependent variable.
     Datos_Modelo = Dataframe.dropna(subset=[Variable_Dependiente]).copy()
 
     print(f"Variable dependiente: {Variable_Dependiente}")
     print(f"Observaciones disponibles: {len(Datos_Modelo)}")
 
-    # Preparar variables independientes.
+    # Prepare independent variables.
     Variables_X = Datos_Modelo[Variables_Independientes].copy()
     Variable_Y = Datos_Modelo[Variable_Dependiente].copy()
 
-    # Imputar valores faltantes en variables independientes.
+    # Impute missing values in independent variables.
     print(f"Valores faltantes en X antes de imputación:")
     Faltantes_Antes = Variables_X.isnull().sum()
     Faltantes_Antes = Faltantes_Antes[Faltantes_Antes > 0]
@@ -369,14 +368,14 @@ def Limpiar_Y_Estructurar_Datos_Para_Modelado(
     if len(Faltantes_Antes) > 0:
         for Variable in Faltantes_Antes.index:
             if Variables_X[Variable].dtype in ['int64', 'float64']:
-                # Variables numéricas: imputar con mediana.
+                # Numeric variables: impute with median.
                 Variables_X[Variable] = Variables_X[Variable].fillna(
                     Variables_X[Variable].median()
                 )
                 print(f"  {Variable}: {Faltantes_Antes[Variable]} → "
                       f"imputados con mediana")
             else:
-                # Variables categóricas: imputar con moda.
+                # Categorical variables: impute with mode.
                 Moda = Variables_X[Variable].mode()
                 if len(Moda) > 0:
                     Variables_X[Variable] = Variables_X[Variable].fillna(
@@ -387,11 +386,11 @@ def Limpiar_Y_Estructurar_Datos_Para_Modelado(
     else:
         print("  ✅ No hay valores faltantes")
 
-    # Verificar que no queden faltantes.
+    # Verify that no missing values remain.
     Faltantes_Despues = Variables_X.isnull().sum().sum()
     if Faltantes_Despues > 0:
         print(f"⚠️  Quedan {Faltantes_Despues} valores faltantes")
-        # Eliminar observaciones con faltantes restantes.
+        # Remove observations with remaining missing values.
         Indices_Completos = Variables_X.dropna().index
         Variables_X = Variables_X.loc[Indices_Completos]
         Variable_Y = Variable_Y.loc[Indices_Completos]
@@ -405,23 +404,22 @@ def Codificar_Variables_Categoricas_A_Numericas(
 ) -> pd.DataFrame:
 
     """
-    Transforma variables categóricas en representaciones numéricas
-    utilizando conversión directa y codificación por etiquetas
-    (Label Encoding) como estrategia de respaldo.
+    Transforms categorical variables into numeric representations
+    using direct conversion and label encoding as a fallback
+    strategy.
 
-    Procesa sistemáticamente todas las columnas de tipo objeto,
-    intentando primero una conversión directa a valores numéricos.
-    Para variables que no pueden convertirse directamente, aplica
-    Label Encoding.
+    Systematically processes all object-type columns, first
+    attempting direct conversion to numeric values. For variables
+    that cannot be converted directly, applies Label Encoding.
 
-    Parámetros:
-        Variables_X (pd.DataFrame): DataFrame que contiene las
-            variables independientes, incluyendo columnas de tipo
-            objeto que necesitan ser convertidas.
+    Parameters:
+        Variables_X (pd.DataFrame): DataFrame containing the
+            independent variables, including object-type columns
+            that need to be converted.
 
-    Retorna:
-        pd.DataFrame: DataFrame con todas las variables convertidas
-            a tipos numéricos.
+    Returns:
+        pd.DataFrame: DataFrame with all variables converted
+            to numeric types.
 
     """
 
@@ -433,12 +431,12 @@ def Codificar_Variables_Categoricas_A_Numericas(
         if Variables_X[Columna].dtype == 'object':
             print(f"Convirtiendo {Columna} a numérica...")
 
-            # Intentar convertir a numérica directamente.
+            # Try to convert to numeric directly.
             Variables_X_Convertidas[Columna] = pd.to_numeric(
                 Variables_X[Columna], errors='coerce'
             )
 
-            # Si quedan valores no numéricos, usar LabelEncoder.
+            # If non-numeric values remain, use LabelEncoder.
             if Variables_X_Convertidas[Columna].isnull().any():
                 Encoder = LabelEncoder()
                 Valores_Validos = Variables_X[Columna].dropna()
@@ -457,21 +455,21 @@ def Codificar_Variables_Booleanas_A_Numericas(
 ) -> pd.DataFrame:
 
     """
-    Transforma variables booleanas (True/False) a representación
-    entera binaria (1/0) para garantizar compatibilidad con librerías
-    de modelado estadístico.
+    Transforms boolean variables (True/False) to binary integer
+    representation (1/0) to ensure compatibility with statistical
+    modeling libraries.
 
-    Identifica automáticamente todas las columnas de tipo booleano
-    y las convierte a enteros binarios: True -> 1, False -> 0.
+    Automatically identifies all boolean-type columns and converts
+    them to binary integers: True -> 1, False -> 0.
 
-    Parámetros:
-        Variables_X (pd.DataFrame): DataFrame que contiene las
-            variables independientes, incluyendo posibles columnas
-            de tipo booleano.
+    Parameters:
+        Variables_X (pd.DataFrame): DataFrame containing the
+            independent variables, including possible boolean-type
+            columns.
 
-    Retorna:
-        pd.DataFrame: DataFrame con todas las variables booleanas
-            convertidas a enteros (0 y 1).
+    Returns:
+        pd.DataFrame: DataFrame with all boolean variables
+            converted to integers (0 and 1).
 
     """
 
@@ -491,21 +489,21 @@ def Codificar_Variables_Booleanas_A_Numericas(
 
 
 # =============================================================================
-# FUNCIONES DE CARGA DE DATOS.
+# DATA LOADING FUNCTIONS.
 # =============================================================================
 
 def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
     """
-    Carga las bases de datos de Generales y Ballotage desde
-    archivos Excel.
+    Loads the Generales and Ballotage databases from
+    Excel files.
 
-    Parámetros:
-        Ruta_Carpeta (str): Ruta a la carpeta que contiene
-            los archivos Excel.
+    Parameters:
+        Ruta_Carpeta (str): Path to the folder containing
+            the Excel files.
 
-    Retorna:
-        dict: Diccionario con las bases de datos cargadas.
+    Returns:
+        dict: Dictionary with the loaded databases.
 
     """
 
@@ -524,7 +522,7 @@ def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
 
 # =============================================================================
-# MODELO LINEAL ROBUSTO (OLS CON ERRORES HC3).
+# ROBUST LINEAR MODEL (OLS WITH HC3 ERRORS).
 # =============================================================================
 
 def Modelo_Lineal_Robusto(
@@ -541,39 +539,39 @@ def Modelo_Lineal_Robusto(
 ) -> dict:
 
     """
-    Implementa regresión lineal robusta con errores estándar HC3,
-    eliminación secuencial de variables basada en AIC y detección
-    de multicolinealidad mediante VIF.
+    Implements robust linear regression with HC3 standard errors,
+    sequential variable elimination based on AIC and multicollinearity
+    detection using VIF.
 
-    Parámetros:
-        Variables_X (pd.DataFrame): DataFrame con variables
-            independientes numéricas.
-        Variable_Y (pd.Series): Variable dependiente numérica.
-        Nombre_Variable (str): Nombre descriptivo de la variable
-            dependiente.
-        Criterio_Eliminacion (str): Criterio de eliminación
+    Parameters:
+        Variables_X (pd.DataFrame): DataFrame with numeric
+            independent variables.
+        Variable_Y (pd.Series): Numeric dependent variable.
+        Nombre_Variable (str): Descriptive name of the dependent
+            variable.
+        Criterio_Eliminacion (str): Elimination criterion
             ('aic', 'bic', 'pvalue').
-        Umbral_VIF (float): Umbral máximo para VIF.
-        Alpha_Significancia (float): Nivel de significancia.
-        Detectar_Outliers (bool): Si detectar outliers influyentes.
-        Iteracion (int): Número de iteración actual (interno).
-        Variables_Originales (list): Lista original de variables
-            (interno).
-        Historial_Proceso (list): Historial del proceso (interno).
+        Umbral_VIF (float): Maximum threshold for VIF.
+        Alpha_Significancia (float): Significance level.
+        Detectar_Outliers (bool): Whether to detect influential outliers.
+        Iteracion (int): Current iteration number (internal).
+        Variables_Originales (list): Original list of variables
+            (internal).
+        Historial_Proceso (list): Process history (internal).
 
-    Retorna:
-        dict: Diccionario con resultados del modelo final.
+    Returns:
+        dict: Dictionary with final model results.
 
     """
 
-    # Inicializar parámetros en primera iteración.
+    # Initialize parameters in first iteration.
     if Variables_Originales is None:
         Variables_Originales = Variables_X.columns.tolist()
 
     if Historial_Proceso is None:
         Historial_Proceso = []
 
-    # Verificar datos de entrada.
+    # Verify input data.
     if len(Variables_X.columns) == 0:
         print("  ERROR: No quedan variables independientes")
         return None
@@ -582,7 +580,7 @@ def Modelo_Lineal_Robusto(
         print("  ERROR: Dimensiones inconsistentes")
         return None
 
-    # Detección de outliers influyentes (solo primera iteración).
+    # Detection of influential outliers (first iteration only).
     Indices_Outliers = []
     if Detectar_Outliers and Iteracion == 1:
         Variables_X_Temp = sm.add_constant(Variables_X)
@@ -609,7 +607,7 @@ def Modelo_Lineal_Robusto(
             Outliers_Cooks, Outliers_Leverage, Outliers_Residuos
         ])).tolist()
 
-    # Detección y eliminación de multicolinealidad con VIF.
+    # Detection and elimination of multicollinearity with VIF.
     Variables_X_VIF = Variables_X.copy()
     Variables_Eliminadas_VIF = []
 
@@ -643,7 +641,7 @@ def Modelo_Lineal_Robusto(
             columns=[Max_VIF_Variable]
         )
 
-    # Calcular VIF final.
+    # Calculate final VIF.
     VIF_Final = {}
     if len(Variables_X_VIF.columns) >= 2:
         Variables_X_Con_Constante = sm.add_constant(Variables_X_VIF)
@@ -661,13 +659,13 @@ def Modelo_Lineal_Robusto(
         print("  ERROR: Todas las variables eliminadas por VIF")
         return None
 
-    # Ajustar modelo con errores estándar robustos HC3.
+    # Fit model with robust HC3 standard errors.
     Variables_X_Con_Constante = sm.add_constant(Variables_X_Finales)
     Modelo = sm.OLS(
         Variable_Y, Variables_X_Con_Constante
     ).fit(cov_type='HC3')
 
-    # Evaluación de variables y criterios de eliminación.
+    # Variable evaluation and elimination criteria.
     P_Valores = Modelo.pvalues
     Variables_Candidatas = [
         var for var in P_Valores.index if var != 'const'
@@ -726,7 +724,7 @@ def Modelo_Lineal_Robusto(
                 )
 
     elif Criterio_Eliminacion == 'combinado':
-        # Combinado: AIC + significancia.
+        # Combined: AIC + significance.
         P_Vals_Variables = {
             var: P_Valores[var] for var in Variables_Candidatas
         }
@@ -736,7 +734,7 @@ def Modelo_Lineal_Robusto(
         ]
 
         if Variables_No_Sig:
-            # Si hay no significativas, usar AIC entre ellas.
+            # If there are non-significant ones, use AIC among them.
             AIC_Actual = Modelo.aic
             Mejor_AIC = AIC_Actual
 
@@ -764,13 +762,13 @@ def Modelo_Lineal_Robusto(
                         f"+ AIC mejora"
                     )
 
-    # Identificar variables significativas.
+    # Identify significant variables.
     Variables_Significativas = [
         var for var in Variables_Candidatas
         if P_Valores[var] < Alpha_Significancia
     ]
 
-    # Registrar iteración en historial.
+    # Record iteration in history.
     Historial_Actual = {
         'Iteracion': Iteracion,
         'Variables_Incluidas': Variables_Candidatas.copy(),
@@ -783,11 +781,11 @@ def Modelo_Lineal_Robusto(
     }
     Historial_Proceso.append(Historial_Actual)
 
-    # Decidir siguiente acción.
+    # Decide next action.
     if Variable_A_Eliminar is None:
-        # Modelo final alcanzado.
+        # Final model reached.
 
-        # Tests diagnósticos.
+        # Diagnostic tests.
         JB_Stat, JB_Pval = jarque_bera(Modelo.resid)
         BP_LM, BP_LM_Pval, BP_F, BP_F_Pval = het_breuschpagan(
             Modelo.resid, Variables_X_Con_Constante
@@ -839,7 +837,7 @@ def Modelo_Lineal_Robusto(
         return Resultados_Finales
 
     else:
-        # Continuar eliminando variables.
+        # Continue eliminating variables.
         Variables_X_Nuevas = Variables_X_Finales.drop(
             columns=[Variable_A_Eliminar]
         )
@@ -858,27 +856,27 @@ def Evaluar_Modelo_Robusto(
 ) -> dict:
 
     """
-    Interpreta y evalúa los resultados de un modelo de regresión
-    lineal robusto, proporcionando análisis de validez metodológica,
-    calidad de ajuste, significancia de predictores y recomendaciones.
+    Interprets and evaluates the results of a robust linear
+    regression model, providing analysis of methodological validity,
+    goodness of fit, predictor significance and recommendations.
 
-    La evaluación incluye análisis de:
-    - Calidad de ajuste y poder explicativo
-    - Validez de supuestos estadísticos fundamentales
-    - Significancia e interpretación de coeficientes
-    - Presencia de multicolinealidad residual
-    - Detección de observaciones influyentes
-    - Adecuación del tamaño muestral
-    - Estabilidad numérica del modelo
+    The evaluation includes analysis of:
+    - Goodness of fit and explanatory power
+    - Validity of fundamental statistical assumptions
+    - Significance and interpretation of coefficients
+    - Presence of residual multicollinearity
+    - Detection of influential observations
+    - Adequacy of sample size
+    - Numerical stability of the model
 
-    Parámetros:
-        Resultados_Modelo (dict): Diccionario con resultados completos
-            del modelo robusto generado por Modelo_Lineal_Robusto().
-        Mostrar_Detalles_Tecnicos (bool): Si True, incluye sección
-            con diagnósticos técnicos detallados.
+    Parameters:
+        Resultados_Modelo (dict): Dictionary with complete results
+            from the robust model generated by Modelo_Lineal_Robusto().
+        Mostrar_Detalles_Tecnicos (bool): If True, includes section
+            with detailed technical diagnostics.
 
-    Retorna:
-        dict: Diccionario con evaluación estructurada del modelo:
+    Returns:
+        dict: Dictionary with structured model evaluation:
             - 'Validez_General': str
             - 'Calidad_Ajuste': str
             - 'Cumplimiento_Supuestos': dict
@@ -892,13 +890,13 @@ def Evaluar_Modelo_Robusto(
     if Resultados_Modelo is None:
         return None
 
-    # Criterios de validez general.
+    # General validity criteria.
     R2_Ajustado = Resultados_Modelo['R_Cuadrado_Ajustado']
     N_Variables = len(Resultados_Modelo['Variables_Significativas'])
     N_Obs = Resultados_Modelo['N_Observaciones']
     P_Valor_Modelo = Resultados_Modelo['P_Valor_Modelo']
 
-    # Evaluar criterios básicos.
+    # Evaluate basic criteria.
     Criterios_Validez = {
         'Variables_Significativas': N_Variables > 0,
         'Modelo_Globalmente_Significativo': P_Valor_Modelo < 0.05,
@@ -909,7 +907,7 @@ def Evaluar_Modelo_Robusto(
     Criterios_Cumplidos = sum(Criterios_Validez.values())
     Total_Criterios = len(Criterios_Validez)
 
-    # Determinar validez general.
+    # Determine general validity.
     if Criterios_Cumplidos == Total_Criterios:
         Validez_General = "VALIDO"
     elif Criterios_Cumplidos >= Total_Criterios * 0.75:
@@ -917,7 +915,7 @@ def Evaluar_Modelo_Robusto(
     else:
         Validez_General = "NO_VALIDO"
 
-    # Categorizar calidad según R² ajustado.
+    # Categorize quality according to adjusted R².
     if R2_Ajustado >= 0.70:
         Calidad_Ajuste = "EXCELENTE"
     elif R2_Ajustado >= 0.50:
@@ -929,22 +927,22 @@ def Evaluar_Modelo_Robusto(
     else:
         Calidad_Ajuste = "MUY_BAJA"
 
-    # Evaluar supuestos estadísticos.
+    # Evaluate statistical assumptions.
     Supuestos = {}
 
-    # Normalidad de residuos (Jarque-Bera).
+    # Normality of residuals (Jarque-Bera).
     JB_Stat, JB_Pval = Resultados_Modelo['Test_Normalidad_JB']
     Supuestos['Normalidad'] = JB_Pval >= 0.05
 
-    # Homocedasticidad (Breusch-Pagan).
+    # Homoscedasticity (Breusch-Pagan).
     BP_Stat, BP_Pval = Resultados_Modelo['Test_Heterocedasticidad_BP']
     Supuestos['Homocedasticidad'] = BP_Pval >= 0.05
 
-    # Independencia (Durbin-Watson).
+    # Independence (Durbin-Watson).
     DW = Resultados_Modelo['Durbin_Watson']
     Supuestos['Independencia'] = 1.5 <= DW <= 2.5
 
-    # Multicolinealidad (VIF).
+    # Multicollinearity (VIF).
     VIF_Valores = list(Resultados_Modelo['VIF_Final'].values()) \
                   if Resultados_Modelo['VIF_Final'] else []
     Max_VIF = max(VIF_Valores) if VIF_Valores else 1.0
@@ -953,7 +951,7 @@ def Evaluar_Modelo_Robusto(
     Supuestos_Cumplidos = sum(Supuestos.values())
     Total_Supuestos = len(Supuestos)
 
-    # Interpretar coeficientes.
+    # Interpret coefficients.
     Variables_Sig = Resultados_Modelo['Variables_Significativas']
     Coeficientes = Resultados_Modelo['Coeficientes']
     P_Valores = Resultados_Modelo['P_Valores']
@@ -966,7 +964,7 @@ def Evaluar_Modelo_Robusto(
             Beta = Coeficientes[Variable]
             P_Val = P_Valores[Variable]
 
-            # Determinar magnitud del efecto.
+            # Determine effect magnitude.
             Magnitud_Abs = abs(Beta)
             if Magnitud_Abs >= 1.0:
                 Magnitud_Desc = "GRANDE"
@@ -986,7 +984,7 @@ def Evaluar_Modelo_Robusto(
                 'Direccion': Direccion
             }
 
-    # Generar recomendaciones y limitaciones.
+    # Generate recommendations and limitations.
     Recomendaciones = []
     Limitaciones = []
 
@@ -1036,7 +1034,7 @@ def Evaluar_Modelo_Robusto(
             "Bajo poder explicativo"
         )
 
-    # Calcular puntuación de confianza (0-100).
+    # Calculate confidence score (0-100).
     N_Outliers = Resultados_Modelo['N_Observaciones_Outliers']
     Porcentaje_Outliers = (N_Outliers / N_Obs) * 100
 
@@ -1058,7 +1056,7 @@ def Evaluar_Modelo_Robusto(
     elif Porcentaje_Outliers <= 10:
         Puntuacion += 5
 
-    # Determinar nivel de confianza.
+    # Determine confidence level.
     if Puntuacion >= 80:
         Nivel_Confianza = "ALTA"
     elif Puntuacion >= 60:
@@ -1088,16 +1086,16 @@ def Ajustar_Modelos_Robustos(
 ) -> dict:
 
     """
-    Ajusta modelos lineales robustos para todas las variables
-    dependientes especificadas en ambos datasets.
+    Fits robust linear models for all dependent variables
+    specified in both datasets.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Variables_Dep (dict): Diccionario con variables dependientes
-            por dataset.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Variables_Dep (dict): Dictionary with dependent variables
+            per dataset.
 
-    Retorna:
-        dict: Resultados de modelos por dataset y variable.
+    Returns:
+        dict: Model results by dataset and variable.
 
     """
 
@@ -1124,7 +1122,7 @@ def Ajustar_Modelos_Robustos(
 
             Vars_Indep_Existentes = Variables_Independientes
 
-            # Preparar datos con la misma logica de los notebooks.
+            # Prepare data with the same logic as the notebooks.
             X, y = Limpiar_Y_Estructurar_Datos_Para_Modelado(
                 df, Variable_Dep, Vars_Indep_Existentes
             )
@@ -1158,7 +1156,7 @@ def Ajustar_Modelos_Robustos(
 
 
 # =============================================================================
-# MODELO GLM RECURSIVO.
+# RECURSIVE GLM MODEL.
 # =============================================================================
 
 def Ajustar_GLM_Recursivo(
@@ -1170,38 +1168,37 @@ def Ajustar_GLM_Recursivo(
 ) -> dict:
 
     """
-    Ajusta modelo GLM recursivamente hasta convergencia.
-    Elimina variables no significativas (p >= 0.05) en cada
-    iteración hasta que todas las variables restantes sean
-    significativas.
+    Fits GLM model recursively until convergence.
+    Removes non-significant variables (p >= 0.05) in each
+    iteration until all remaining variables are significant.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variable_Dependiente (str): Nombre de la variable dependiente.
-        Variables_Indep (list): Lista de variables independientes.
-        Nombre_Eleccion (str): Identificador de la elección.
-        Familia_GLM: Familia de distribución para el GLM. Si es None,
-            usa Gaussiana con link Identity.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Variable_Dependiente (str): Name of the dependent variable.
+        Variables_Indep (list): List of independent variables.
+        Nombre_Eleccion (str): Election identifier.
+        Familia_GLM: Distribution family for the GLM. If None,
+            uses Gaussian with Identity link.
 
-    Retorna:
-        dict: Diccionario con modelo final y estadísticos.
+    Returns:
+        dict: Dictionary with final model and statistics.
 
     """
 
-    # Preparar datos eliminando NaN.
+    # Prepare data removing NaN.
     Columnas_Necesarias = [Variable_Dependiente] + Variables_Indep
 
     df_Limpio = df[Columnas_Necesarias].dropna()
 
     print(f"    Observaciones válidas: {len(df_Limpio)}")
 
-    # Variables independientes disponibles.
+    # Available independent variables.
     Variables_Actuales = Variables_Indep.copy()
 
     Iteracion = 0
     Variables_Anteriores = []
 
-    # Familia por defecto: Gaussiana con link Identity.
+    # Default family: Gaussian with Identity link.
     if Familia_GLM is None:
         Familia_GLM = sm.families.Gaussian(sm.families.links.Identity())
 
@@ -1211,42 +1208,42 @@ def Ajustar_GLM_Recursivo(
         if len(Variables_Actuales) == 0:
             return None
 
-        # Preparar X e y.
+        # Prepare X and y.
         X = df_Limpio[Variables_Actuales].copy()
         y = df_Limpio[Variable_Dependiente]
 
-        # Convertir booleanos a int.
+        # Convert booleans to int.
         for Col in X.columns:
             if X[Col].dtype == bool:
                 X[Col] = X[Col].astype(int)
 
-        # Agregar constante.
+        # Add constant.
         X_Con_Constante = sm.add_constant(X)
 
-        # Ajustar modelo.
+        # Fit model.
         Modelo = sm.GLM(y, X_Con_Constante, family=Familia_GLM).fit()
 
-        # Extraer p-valores.
+        # Extract p-values.
         P_Valores = Modelo.pvalues
 
-        # Filtrar variables significativas.
+        # Filter significant variables.
         Variables_Significativas = [
             var for var in Variables_Actuales
             if P_Valores[var] < 0.05
         ]
 
-        # Verificar convergencia.
+        # Verify convergence.
         if set(Variables_Significativas) == set(Variables_Anteriores):
             break
 
         if len(Variables_Significativas) == 0:
             break
 
-        # Actualizar para siguiente iteración.
+        # Update for next iteration.
         Variables_Anteriores = Variables_Actuales.copy()
         Variables_Actuales = Variables_Significativas.copy()
 
-    # Calcular estadísticos finales.
+    # Calculate final statistics.
     AIC = Modelo.aic
     BIC = Modelo.bic
 
@@ -1267,7 +1264,7 @@ def Ajustar_GLM_Recursivo(
         F_Estadistico = np.nan
         P_Valor_F = np.nan
 
-    # Construir DataFrame de resultados por variable.
+    # Build results DataFrame by variable.
     Resultados_Vars = []
 
     for Var in Variables_Actuales:
@@ -1307,43 +1304,43 @@ def Ajustar_GLM_Recursivo(
 def Obtener_Familia_GLM(Variable_Dependiente: str):
 
     """
-    Retorna la familia GLM apropiada según la variable dependiente.
+    Returns the appropriate GLM family according to the dependent variable.
 
-    - Indice_Conservadurismo: Gamma con link Log (distribución sesgada).
-    - Resto: Gaussiana con link Identity.
+    - Indice_Conservadurismo: Gamma with Log link (skewed distribution).
+    - Rest: Gaussian with Identity link.
 
-    Parámetros:
-        Variable_Dependiente (str): Nombre de la variable dependiente.
+    Parameters:
+        Variable_Dependiente (str): Name of the dependent variable.
 
-    Retorna:
-        statsmodels.families: Familia GLM correspondiente.
+    Returns:
+        statsmodels.families: Corresponding GLM family.
 
     """
 
     if Variable_Dependiente == 'Indice_Conservadurismo':
-        # Distribución sesgada positivamente, colas pesadas.
+        # Positively skewed distribution, heavy tails.
         return sm.families.Gamma(sm.families.links.Log())
     else:
-        # Distribución aproximadamente normal.
+        # Approximately normal distribution.
         return sm.families.Gaussian(sm.families.links.Identity())
 
 
 def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
 
     """
-    Retorna la lista de variables independientes apropiada para cada
-    variable dependiente GLM, excluyendo la variable dependiente pero
-    manteniendo su variable de tiempo si existe.
+    Returns the appropriate list of independent variables for each
+    GLM dependent variable, excluding the dependent variable but
+    keeping its time variable if it exists.
 
-    Parámetros:
-        Variable_Dependiente (str): Nombre de la variable dependiente.
+    Parameters:
+        Variable_Dependiente (str): Name of the dependent variable.
 
-    Retorna:
-        list: Lista de variables independientes.
+    Returns:
+        list: List of independent variables.
 
     """
 
-    # Lista base de variables independientes.
+    # Base list of independent variables.
     Variables_Base = [
         'Conservative_Cluster',
         'Progressive_Cluster',
@@ -1390,9 +1387,9 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
         'Indice_Positividad'
     ]
 
-    # Agregar variables según la variable dependiente.
+    # Add variables according to the dependent variable.
     if Variable_Dependiente == 'Indice_Progresismo':
-        # Excluye Indice_Progresismo, incluye las demás.
+        # Excludes Indice_Progresismo, includes the rest.
         Variables_Base.extend([
             'Autopercepcion_Izq_Der',
             'Autopercepcion_Con_Pro',
@@ -1403,7 +1400,7 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
         ])
 
     elif Variable_Dependiente == 'Indice_Conservadurismo':
-        # Excluye Indice_Conservadurismo, incluye las demás.
+        # Excludes Indice_Conservadurismo, includes the rest.
         Variables_Base.extend([
             'Autopercepcion_Izq_Der',
             'Autopercepcion_Con_Pro',
@@ -1414,7 +1411,7 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
         ])
 
     elif Variable_Dependiente == 'Autopercepcion_Izq_Der':
-        # Excluye Autopercepcion_Izq_Der, incluye las demás.
+        # Excludes Autopercepcion_Izq_Der, includes the rest.
         Variables_Base.extend([
             'Autopercepcion_Con_Pro',
             'Autopercepcion_Per_Antiper',
@@ -1425,7 +1422,7 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
         ])
 
     elif Variable_Dependiente == 'Autopercepcion_Con_Pro':
-        # Excluye Autopercepcion_Con_Pro, incluye las demás.
+        # Excludes Autopercepcion_Con_Pro, includes the rest.
         Variables_Base.extend([
             'Autopercepcion_Izq_Der',
             'Autopercepcion_Per_Antiper',
@@ -1436,7 +1433,7 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
         ])
 
     elif Variable_Dependiente == 'Autopercepcion_Per_Antiper':
-        # Excluye Autopercepcion_Per_Antiper, incluye las demás.
+        # Excludes Autopercepcion_Per_Antiper, includes the rest.
         Variables_Base.extend([
             'Autopercepcion_Izq_Der',
             'Autopercepcion_Con_Pro',
@@ -1452,18 +1449,18 @@ def Obtener_Variables_Independientes_GLM(Variable_Dependiente: str) -> list:
 def Ajustar_Modelos_GLM(dfs_Finales: dict) -> dict:
 
     """
-    Ajusta modelos GLM para índices y autopercepciones en ambos
+    Fits GLM models for indices and self-perceptions in both
     datasets.
 
-    Usa familia Gamma con link Log para Indice_Conservadurismo
-    (distribución sesgada) y familia Gaussiana con link Identity
-    para el resto.
+    Uses Gamma family with Log link for Indice_Conservadurismo
+    (skewed distribution) and Gaussian family with Identity link
+    for the rest.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados de modelos GLM.
+    Returns:
+        dict: GLM model results.
 
     """
 
@@ -1483,10 +1480,10 @@ def Ajustar_Modelos_GLM(dfs_Finales: dict) -> dict:
 
             print(f"\n  Ajustando: {Variable_Dep}")
 
-            # Obtener variables independientes específicas.
+            # Get specific independent variables.
             Vars_Indep = Obtener_Variables_Independientes_GLM(Variable_Dep)
 
-            # Obtener familia GLM apropiada.
+            # Get appropriate GLM family.
             Familia = Obtener_Familia_GLM(Variable_Dep)
 
             Resultado = Ajustar_GLM_Recursivo(
@@ -1505,7 +1502,7 @@ def Ajustar_Modelos_GLM(dfs_Finales: dict) -> dict:
 
 
 # =============================================================================
-# REGRESIÓN LOGÍSTICA BINARIA.
+# BINARY LOGISTIC REGRESSION.
 # =============================================================================
 
 def Ajustar_Regresion_Logistica_Recursiva(
@@ -1516,37 +1513,37 @@ def Ajustar_Regresion_Logistica_Recursiva(
 ) -> dict:
 
     """
-    Ajusta modelo de regresión logística binaria recursivamente
-    hasta convergencia.
+    Fits binary logistic regression model recursively until
+    convergence.
 
-    La variable dependiente debe ser binaria (0/1).
-    Elimina variables no significativas (p >= 0.05) en cada
-    iteración.
+    The dependent variable must be binary (0/1).
+    Removes non-significant variables (p >= 0.05) in each
+    iteration.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variable_Dependiente (str): Nombre de variable dependiente
-            binaria.
-        Variables_Indep (list): Lista de variables independientes.
-        Nombre_Eleccion (str): Identificador de la elección.
+    Parameters:
+        df (pd.DataFrame): DataFrame with the data.
+        Variable_Dependiente (str): Name of binary dependent
+            variable.
+        Variables_Indep (list): List of independent variables.
+        Nombre_Eleccion (str): Election identifier.
 
-    Retorna:
-        dict: Diccionario con modelo final y estadísticos.
+    Returns:
+        dict: Dictionary with final model and statistics.
 
     """
 
-    # Preparar datos eliminando NaN.
+    # Prepare data removing NaN.
     Columnas_Necesarias = [Variable_Dependiente] + Variables_Indep
 
     df_Limpio = df[Columnas_Necesarias].dropna()
 
     print(f"    Observaciones válidas: {len(df_Limpio)}")
 
-    # Verificar variabilidad en variable dependiente.
+    # Verify variability in dependent variable.
     if df_Limpio[Variable_Dependiente].nunique() < 2:
         return None
 
-    # Variables independientes disponibles.
+    # Available independent variables.
     Variables_Actuales = Variables_Indep.copy()
 
     Iteracion = 0
@@ -1558,45 +1555,45 @@ def Ajustar_Regresion_Logistica_Recursiva(
         if len(Variables_Actuales) == 0:
             return None
 
-        # Preparar X e y.
+        # Prepare X and y.
         X = df_Limpio[Variables_Actuales].copy()
         y = df_Limpio[Variable_Dependiente]
 
-        # Convertir booleanos a int.
+        # Convert booleans to int.
         for Col in X.columns:
             if X[Col].dtype == bool:
                 X[Col] = X[Col].astype(int)
 
-        # Agregar constante.
+        # Add constant.
         X_Con_Constante = sm.add_constant(X)
 
-        # Ajustar modelo logístico.
+        # Fit logistic model.
         Modelo = sm.GLM(
             y, X_Con_Constante,
             family=sm.families.Binomial()
         ).fit()
 
-        # Extraer p-valores.
+        # Extract p-values.
         P_Valores = Modelo.pvalues
 
-        # Filtrar variables significativas.
+        # Filter significant variables.
         Variables_Significativas = [
             var for var in Variables_Actuales
             if P_Valores[var] < 0.05
         ]
 
-        # Verificar convergencia.
+        # Verify convergence.
         if set(Variables_Significativas) == set(Variables_Anteriores):
             break
 
         if len(Variables_Significativas) == 0:
             break
 
-        # Actualizar para siguiente iteración.
+        # Update for next iteration.
         Variables_Anteriores = Variables_Actuales.copy()
         Variables_Actuales = Variables_Significativas.copy()
 
-    # Calcular estadísticos finales.
+    # Calculate final statistics.
     AIC = Modelo.aic
     BIC = Modelo.bic
 
@@ -1611,7 +1608,7 @@ def Ajustar_Regresion_Logistica_Recursiva(
     P_Valor_Chi2 = 1 - stats.chi2.cdf(Chi2_Estadistico, K) if K > 0 \
                    else np.nan
 
-    # Construir DataFrame de resultados con Odds Ratios.
+    # Build results DataFrame with Odds Ratios.
     Resultados_Vars = []
 
     for Var in Variables_Actuales:
@@ -1658,17 +1655,17 @@ def Ajustar_Regresion_Logistica_Recursiva(
 def Ajustar_Modelos_Logisticos(dfs_Finales: dict) -> dict:
 
     """
-    Ajusta modelos de regresión logística binaria para cercanía
-    a cada candidato en ambos datasets.
+    Fits binary logistic regression models for closeness to each
+    candidate in both datasets.
 
-    La variable dependiente se binariza: Cercano (1) si >= 4,
-    No cercano (0) si <= 3.
+    The dependent variable is binarized: Close (1) if >= 4,
+    Not close (0) if <= 3.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados de modelos logísticos.
+    Returns:
+        dict: Logistic model results.
 
     """
 
@@ -1684,7 +1681,7 @@ def Ajustar_Modelos_Logisticos(dfs_Finales: dict) -> dict:
         for Candidato in Candidatos_Cercania:
             Variable_Cercania = f'Cercania_{Candidato}'
 
-            # Seguir notebooks: estos candidatos solo en Generales.
+            # Follow notebooks: these candidates only in Generales.
             if (Nombre_df == 'Ballotage' and
                 Candidato in ['Schiaretti', 'Bullrich', 'Bregman']):
                 print(f"  Cercania_{Candidato}: Omitido en Ballotage")
@@ -1696,14 +1693,14 @@ def Ajustar_Modelos_Logisticos(dfs_Finales: dict) -> dict:
 
             print(f"\n  Ajustando: Cercanía a {Candidato}")
 
-            # Binarizar variable: 1 si cercano (>= 4), 0 si no.
+            # Binarize variable: 1 if close (>= 4), 0 if not.
             Nombre_Binaria = f'Cercano_{Candidato}'
             df[Nombre_Binaria] = (df[Variable_Cercania] >= 4).astype(int)
 
             Proporcion = df[Nombre_Binaria].mean()
             print(f"    Proporción cercanos: {Proporcion:.2%}")
 
-            # Excluir cercanías a candidatos de las independientes.
+            # Exclude closeness to candidates from independent variables.
             Vars_Indep = [
                 v for v in Variables_Independientes
                 if not v.startswith('Cercania_')
@@ -1725,24 +1722,24 @@ def Ajustar_Modelos_Logisticos(dfs_Finales: dict) -> dict:
 
 
 # =============================================================================
-# EJECUCIÓN PRINCIPAL.
+# MAIN EXECUTION.
 # =============================================================================
 
 def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
 
     """
-    Ejecuta todos los modelos estadísticos y retorna los resultados.
+    Executes all statistical models and returns the results.
 
-    Orden de ejecución:
-    1. Modelos Robustos (OLS con HC3) para CO/CT
-    2. Modelos GLM para Índices y Autopercepciones
-    3. Modelos Logísticos para Cercanía a Candidatos
+    Execution order:
+    1. Robust Models (OLS with HC3) for CO/CT
+    2. GLM Models for Indices and Self-perceptions
+    3. Logistic Models for Closeness to Candidates
 
-    Parámetros:
-        Ruta_Datos (str): Ruta a la carpeta con los datos.
+    Parameters:
+        Ruta_Datos (str): Path to the folder with the data.
 
-    Retorna:
-        dict: Diccionario con todos los resultados.
+    Returns:
+        dict: Dictionary with all results.
 
     """
 
@@ -1750,7 +1747,7 @@ def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
     print("MODELOS ESTADÍSTICOS COMPLETOS")
     print("="*70)
 
-    # Cargar datos.
+    # Load data.
     print("\nCargando datos...")
     dfs_Finales = Cargar_Bases_Datos(Ruta_Datos)
 
@@ -1761,7 +1758,7 @@ def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
     Todos_Resultados = {}
 
     # =========================================================================
-    # SECCIÓN 1: MODELOS ROBUSTOS (OLS CON HC3).
+    # SECTION 1: ROBUST MODELS (OLS WITH HC3).
     # =========================================================================
 
     print("\n" + "#"*70)
@@ -1772,7 +1769,7 @@ def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
         dfs_Finales
     )
 
-    # Resumenes adicionales como en notebooks.
+    # Additional summaries as in notebooks.
     Evaluaciones_Robustos = {}
     Variables_Que_Explican = {}
     for Nombre_df, Resultados_df in Todos_Resultados['Modelos_Robustos'].items():
@@ -1794,7 +1791,7 @@ def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
     )
 
     # =========================================================================
-    # SECCIÓN 2: MODELOS GLM (ÍNDICES Y AUTOPERCEPCIONES).
+    # SECTION 2: GLM MODELS (INDICES AND SELF-PERCEPTIONS).
     # =========================================================================
 
     print("\n" + "#"*70)
@@ -1804,7 +1801,7 @@ def Ejecutar_Todos_Los_Modelos(Ruta_Datos: str) -> dict:
     Todos_Resultados['Modelos_GLM'] = Ajustar_Modelos_GLM(dfs_Finales)
 
     # =========================================================================
-    # SECCIÓN 3: MODELOS LOGÍSTICOS (CERCANÍA A CANDIDATOS).
+    # SECTION 3: LOGISTIC MODELS (CLOSENESS TO CANDIDATES).
     # =========================================================================
 
     print("\n" + "#"*70)
@@ -1828,13 +1825,12 @@ def Generar_Reporte_Proceso_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con el detalle del proceso de ajuste
-    de los modelos: iteraciones, eliminación de variables,
-    convergencia, etc.
+    Generates a TXT file with the detail of the model fitting
+    process: iterations, variable elimination, convergence, etc.
 
-    Parámetros:
-        Todos_Resultados (dict): Diccionario con todos los resultados.
-        Ruta_Salida (str): Ruta al archivo TXT de salida.
+    Parameters:
+        Todos_Resultados (dict): Dictionary with all results.
+        Ruta_Salida (str): Path to the output TXT file.
 
     """
 
@@ -1847,16 +1843,16 @@ def Generar_Reporte_Proceso_TXT(
         Lineas.append(Caracter * Largo)
 
     # =========================================================================
-    # ENCABEZADO.
+    # HEADER.
     # =========================================================================
     Separador("=")
-    Agregar("PROCESO DE AJUSTE DE MODELOS - DETALLE DE RECURSIONES")
+    Agregar("MODEL FITTING PROCESS - RECURSION DETAILS")
     Agregar("Proyecto de Tesis - Experimento Electoral Argentina 2023")
     Separador("=")
     Agregar("")
 
     # =========================================================================
-    # SECCIÓN 1: MODELOS ROBUSTOS - PROCESO.
+    # SECTION 1: ROBUST MODELS - PROCESS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 1: MODELOS ROBUSTOS - PROCESO DE AJUSTE")
@@ -1881,7 +1877,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar(f"Variable Dependiente: {Variable_Dep}")
             Separador("-")
 
-            # Información del proceso.
+            # Process information.
             Agregar(f"Variables iniciales: "
                     f"{len(Resultado.get('Variables_Originales', []))}")
             Agregar(f"Iteraciones totales: "
@@ -1891,7 +1887,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar(f"Alpha significancia: 0.05")
             Agregar("")
 
-            # Historial del proceso si está disponible.
+            # Process history if available.
             Historial = Resultado.get('Historial_Proceso', [])
             if Historial:
                 Agregar("Historial de iteraciones:")
@@ -1908,7 +1904,7 @@ def Generar_Reporte_Proceso_TXT(
                         Agregar(f"    AIC: {Paso['AIC']:.2f}")
                 Agregar("")
 
-            # Variables finales.
+            # Final variables.
             Variables_Sig = Resultado['Variables_Significativas']
             Variables_Orig = Resultado.get('Variables_Originales', [])
             Variables_Elim = set(Variables_Orig) - set(Variables_Sig)
@@ -1930,7 +1926,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar("")
 
     # =========================================================================
-    # SECCIÓN 2: MODELOS GLM - PROCESO.
+    # SECTION 2: GLM MODELS - PROCESS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 2: MODELOS GLM - PROCESO DE AJUSTE")
@@ -1955,7 +1951,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar(f"Variable Dependiente: {Variable_Dep}")
             Separador("-")
 
-            # Familia GLM utilizada.
+            # GLM family used.
             if Variable_Dep == 'Indice_Conservadurismo':
                 Familia = "Gamma con link Log"
             else:
@@ -1967,7 +1963,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar(f"Criterio de convergencia: p < 0.05")
             Agregar("")
 
-            # Variables finales.
+            # Final variables.
             df_Vars = Resultado['Resultados_Variables']
             Agregar(f"Variables en modelo final: {len(df_Vars)}")
             for _, Fila in df_Vars.iterrows():
@@ -1979,7 +1975,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar("")
 
     # =========================================================================
-    # SECCIÓN 3: MODELOS LOGÍSTICOS - PROCESO.
+    # SECTION 3: LOGISTIC MODELS - PROCESS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 3: MODELOS LOGÍSTICOS - PROCESO DE AJUSTE")
@@ -2012,7 +2008,7 @@ def Generar_Reporte_Proceso_TXT(
             Agregar(f"Criterio de convergencia: p < 0.05")
             Agregar("")
 
-            # Variables finales.
+            # Final variables.
             df_Vars = Resultado['Resultados_Variables']
             Agregar(f"Variables en modelo final: {len(df_Vars)}")
             for _, Fila in df_Vars.iterrows():
@@ -2027,7 +2023,7 @@ def Generar_Reporte_Proceso_TXT(
     Agregar("FIN DEL REPORTE DE PROCESO")
     Separador("=")
 
-    # Escribir archivo.
+    # Write file.
     with open(Ruta_Salida, 'w', encoding='utf-8') as Archivo:
         Archivo.write('\n'.join(Lineas))
 
@@ -2040,12 +2036,12 @@ def Generar_Reporte_Resultados_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con los resultados finales de los modelos:
-    coeficientes, estadísticos, Odds Ratios, etc.
+    Generates a TXT file with the final results of the models:
+    coefficients, statistics, Odds Ratios, etc.
 
-    Parámetros:
-        Todos_Resultados (dict): Diccionario con todos los resultados.
-        Ruta_Salida (str): Ruta al archivo TXT de salida.
+    Parameters:
+        Todos_Resultados (dict): Dictionary with all results.
+        Ruta_Salida (str): Path to the output TXT file.
 
     """
 
@@ -2058,16 +2054,16 @@ def Generar_Reporte_Resultados_TXT(
         Lineas.append(Caracter * Largo)
 
     # =========================================================================
-    # ENCABEZADO.
+    # HEADER.
     # =========================================================================
     Separador("=")
-    Agregar("RESULTADOS DE MODELOS ESTADÍSTICOS")
+    Agregar("STATISTICAL MODEL RESULTS")
     Agregar("Proyecto de Tesis - Experimento Electoral Argentina 2023")
     Separador("=")
     Agregar("")
 
     # =========================================================================
-    # SECCIÓN 1: MODELOS ROBUSTOS.
+    # SECTION 1: ROBUST MODELS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 1: MODELOS ROBUSTOS (OLS CON ERRORES HC3)")
@@ -2107,7 +2103,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar(f"Iteraciones: {Resultado['Iteraciones_Totales']}")
             Agregar("")
 
-            # Variables significativas.
+            # Significant variables.
             Variables_Sig = Resultado['Variables_Significativas']
             Agregar(f"Variables significativas: {len(Variables_Sig)}")
 
@@ -2122,7 +2118,7 @@ def Generar_Reporte_Resultados_TXT(
                             f"β = {Beta:8.4f}  "
                             f"p = {Formatear_P_Valor(P_Val)}")
 
-            # Diagnósticos.
+            # Diagnostics.
             Agregar("")
             Agregar("Diagnósticos:")
             JB_Stat, JB_Pval = Resultado['Test_Normalidad_JB']
@@ -2137,7 +2133,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar("")
 
     # =========================================================================
-    # SECCIÓN 2: MODELOS GLM.
+    # SECTION 2: GLM MODELS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 2: MODELOS GLM (ÍNDICES Y AUTOPERCEPCIONES)")
@@ -2179,7 +2175,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar(f"Iteraciones: {Resultado['N_Iteraciones']}")
             Agregar("")
 
-            # Variables significativas.
+            # Significant variables.
             df_Vars = Resultado['Resultados_Variables']
 
             if len(df_Vars) > 0:
@@ -2197,7 +2193,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar("")
 
     # =========================================================================
-    # SECCIÓN 3: MODELOS LOGÍSTICOS.
+    # SECTION 3: LOGISTIC MODELS.
     # =========================================================================
     Separador("#")
     Agregar("# SECCIÓN 3: MODELOS LOGÍSTICOS (CERCANÍA A CANDIDATOS)")
@@ -2240,7 +2236,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar(f"Iteraciones: {Resultado['N_Iteraciones']}")
             Agregar("")
 
-            # Variables significativas con Odds Ratios.
+            # Significant variables with Odds Ratios.
             df_Vars = Resultado['Resultados_Variables']
 
             if len(df_Vars) > 0:
@@ -2258,7 +2254,7 @@ def Generar_Reporte_Resultados_TXT(
             Agregar("")
 
     # =========================================================================
-    # RESUMEN FINAL.
+    # FINAL SUMMARY.
     # =========================================================================
     Separador("=")
     Agregar("RESUMEN DE MODELOS")
@@ -2269,7 +2265,7 @@ def Generar_Reporte_Resultados_TXT(
         Agregar(f"{Nombre_df}:")
         Separador("-", 40)
 
-        # Modelos robustos.
+        # Robust models.
         Robustos = Modelos_Robustos.get(Nombre_df, {})
         if Robustos:
             Agregar(f"  Modelos Robustos: {len(Robustos)} ajustados")
@@ -2277,7 +2273,7 @@ def Generar_Reporte_Resultados_TXT(
                 Agregar(f"    {Var}: R²={Res['R_Cuadrado_Ajustado']:.4f}, "
                         f"Vars={len(Res['Variables_Significativas'])}")
 
-        # Modelos GLM.
+        # GLM models.
         GLM = Modelos_GLM.get(Nombre_df, {})
         if GLM:
             Agregar(f"  Modelos GLM: {len(GLM)} ajustados")
@@ -2285,7 +2281,7 @@ def Generar_Reporte_Resultados_TXT(
                 Agregar(f"    {Var}: R²={Res['Deviance_Explicada']:.4f}, "
                         f"Vars={Res['N_Variables']}")
 
-        # Modelos logísticos.
+        # Logistic models.
         Log = Modelos_Log.get(Nombre_df, {})
         if Log:
             Agregar(f"  Modelos Logísticos: {len(Log)} ajustados")
@@ -2300,7 +2296,7 @@ def Generar_Reporte_Resultados_TXT(
     Agregar("FIN DEL REPORTE")
     Separador("=")
 
-    # Escribir archivo.
+    # Write file.
     with open(Ruta_Salida, 'w', encoding='utf-8') as Archivo:
         Archivo.write('\n'.join(Lineas))
 
@@ -2308,26 +2304,26 @@ def Generar_Reporte_Resultados_TXT(
 
 
 if __name__ == '__main__':
-    # Ruta a la carpeta con los datos definitivos.
+    # Path to the folder with the final data.
     Ruta_Base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     Ruta_Datos = os.path.join(Ruta_Base, 'Processed_Data')
 
-    # Ejecutar todos los modelos.
+    # Execute all models.
     Resultados, dfs = Ejecutar_Todos_Los_Modelos(Ruta_Datos)
 
-    # Crear carpeta Results/Reports si no existe.
+    # Create Results/Reports folder if it doesn't exist.
     Ruta_Reportes = os.path.join(Ruta_Base, 'Results', 'Reports')
     if not os.path.exists(Ruta_Reportes):
         os.makedirs(Ruta_Reportes)
 
-    # Generar reporte de PROCESO (recursiones, iteraciones).
+    # Generate PROCESS report (recursions, iterations).
     Ruta_Proceso = os.path.join(
         Ruta_Reportes,
         'Report_Models_Process.txt'
     )
     Generar_Reporte_Proceso_TXT(Resultados, Ruta_Proceso)
 
-    # Generar reporte de RESULTADOS (coeficientes, estadísticos).
+    # Generate RESULTS report (coefficients, statistics).
     Ruta_Resultados_Archivo = os.path.join(
         Ruta_Reportes,
         'Report_Models_Results.txt'

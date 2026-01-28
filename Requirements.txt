@@ -1,4 +1,4 @@
-# Dependencies for the thesis project analysis scripts.
+# Dependencies.
 # Electoral Decision-Making Experiment - Argentina 2023.
 #
 # Installation: pip install -r requirements.txt

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Análisis estadísticos.
+Statistical analyses.
 
-Este script contiene funciones para realizar análisis estadísticos
-de Kruskal-Wallis, Dunn post-hoc, Wilcoxon y Mann-Whitney sobre
-las bases de datos procesadas.
+This script contains functions to perform statistical analyses
+including Kruskal-Wallis, Dunn post-hoc, Wilcoxon, and Mann-Whitney
+tests on the processed databases.
 
 """
 
@@ -17,14 +17,14 @@ import os
 
 
 # =============================================================================
-# CONSTANTES Y CONFIGURACIÓN.
+# CONSTANTS AND CONFIGURATION.
 # =============================================================================
 
-# Ítems progresistas y conservadores.
+# Progressive and conservative items.
 Items_Progresistas = [5, 6, 9, 11, 16, 20, 24, 25, 27, 28]
 Items_Conservadores = [3, 4, 7, 8, 10, 19, 22, 23, 29, 30]
 
-# Categorías válidas para análisis.
+# Valid categories for analysis.
 Categorias_Validas = [
     'Left_Wing',
     'Progressivism',
@@ -34,7 +34,7 @@ Categorias_Validas = [
     'Right_Wing_Libertarian'
 ]
 
-# Etiquetas para categorías.
+# Category labels.
 Etiquetas_Categorias = {
     'Left_Wing': 'Left Wing',
     'Progressivism': 'Progressivism',
@@ -44,31 +44,31 @@ Etiquetas_Categorias = {
     'Right_Wing_Libertarian': 'Right Wing Libertarian'
 }
 
-# Mapeo de nombres de variables español -> inglés.
+# Variable name mapping Spanish -> English.
 Mapeo_Variables_Es_En = {
-    # Autopercepciones.
+    # Self-perceptions.
     'Autopercepcion_Izq_Der': 'Left_Right_Self_Perception',
     'Autopercepcion_Con_Pro': 'Conservative_Progressive_Self_Perception',
     'Autopercepcion_Per_Antiper': 'Peronist_Anti_Peronist_Self_Perception',
-    # Índices.
+    # Indices.
     'Indice_Progresismo': 'Progressivism_Index',
     'Indice_Conservadurismo': 'Conservatism_Index',
     'Indice_Positividad': 'Positivity_Index',
     'Indice_Progresismo_Tiempo': 'Progressivism_Index_Time',
     'Indice_Conservadurismo_Tiempo': 'Conservatism_Index_Time',
-    # Cercanías.
+    # Closeness ratings.
     'Cercania_Bregman': 'Closeness_Bregman',
     'Cercania_Massa': 'Closeness_Massa',
     'Cercania_Schiaretti': 'Closeness_Schiaretti',
     'Cercania_Bullrich': 'Closeness_Bullrich',
     'Cercania_Milei': 'Closeness_Milei',
-    # Influencias.
+    # Influences.
     'Influencia_Prensa': 'Written_Media_Influence',
     'Influencia_Redes': 'Social_Networks_Influence',
-    # Género.
+    # Gender.
     'Genero_Masculino': 'Male',
     'Genero_Otro': 'Other_Gender',
-    # Regiones.
+    # Regions.
     'Region_Norte': 'North',
     'Region_Patagonia': 'Patagonia',
     'Region_Centro': 'Central',
@@ -80,13 +80,13 @@ Mapeo_Variables_Es_En = {
 def Traducir_Variable(Nombre_Variable: str) -> str:
 
     """
-    Traduce el nombre de una variable de español a inglés.
+    Translates a variable name from Spanish to English.
 
-    Parámetros:
-        Nombre_Variable (str): Nombre de la variable en español.
+    Parameters:
+        Nombre_Variable (str): Variable name in Spanish.
 
-    Retorna:
-        str: Nombre de la variable traducido o el original si no existe.
+    Returns:
+        str: Translated variable name or original if not found.
 
     """
 
@@ -96,13 +96,13 @@ def Traducir_Variable(Nombre_Variable: str) -> str:
 def Formatear_P_Valor(P_Valor: float) -> str:
 
     """
-    Formatea un p-valor en notación científica con 2 decimales.
+    Formats a p-value in scientific notation with 2 decimals.
 
-    Parámetros:
-        P_Valor (float): El p-valor a formatear.
+    Parameters:
+        P_Valor (float): The p-value to format.
 
-    Retorna:
-        str: El p-valor formateado como string (ej: "2.12E-15").
+    Returns:
+        str: The formatted p-value as string (e.g., "2.12E-15").
 
     """
 
@@ -113,21 +113,20 @@ def Formatear_P_Valor(P_Valor: float) -> str:
 
 
 # =============================================================================
-# FUNCIONES DE CARGA DE DATOS.
+# DATA LOADING FUNCTIONS.
 # =============================================================================
 
 def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
     """
-    Carga las bases de datos de Generales y Ballotage desde
-    archivos Excel.
+    Loads General and Ballotage databases from Excel files.
 
-    Parámetros:
-        Ruta_Carpeta (str): Ruta a la carpeta que contiene
-            los archivos Excel.
+    Parameters:
+        Ruta_Carpeta (str): Path to folder containing
+            the Excel files.
 
-    Retorna:
-        dict: Diccionario con las bases de datos cargadas.
+    Returns:
+        dict: Dictionary with loaded databases.
 
     """
 
@@ -137,15 +136,15 @@ def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
         Ruta_Archivo = os.path.join(Ruta_Carpeta, f'{Nombre}.xlsx')
         if os.path.exists(Ruta_Archivo):
             dfs_Finales[Nombre] = pd.read_excel(Ruta_Archivo)
-            print(f"  Cargado: {Nombre} ({len(dfs_Finales[Nombre])} registros)")
+            print(f"  Loaded: {Nombre} ({len(dfs_Finales[Nombre])} records)")
         else:
-            print(f"  Advertencia: No se encontró {Ruta_Archivo}")
+            print(f"  Warning: {Ruta_Archivo} not found")
 
     return dfs_Finales
 
 
 # =============================================================================
-# FUNCIONES DE KRUSKAL-WALLIS.
+# KRUSKAL-WALLIS FUNCTIONS.
 # =============================================================================
 
 def Kruskal_Wallis_Por_Categoria(
@@ -155,27 +154,27 @@ def Kruskal_Wallis_Por_Categoria(
 ) -> pd.DataFrame:
 
     """
-    Aplica el test de Kruskal-Wallis para comparar múltiples grupos
-    definidos por una columna categórica.
+    Applies Kruskal-Wallis test to compare multiple groups
+    defined by a categorical column.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Columnas (list): Lista de columnas numéricas a analizar.
-        Columna_Categoria (str): Nombre de la columna categórica
-            para agrupar.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Columnas (list): List of numeric columns to analyze.
+        Columna_Categoria (str): Categorical column name
+            for grouping.
 
-    Retorna:
-        pd.DataFrame: Tabla con resultados de Kruskal-Wallis.
+    Returns:
+        pd.DataFrame: Table with Kruskal-Wallis results.
 
     """
 
-    # Filtrar solo las categorías válidas.
+    # Filter only valid categories.
     df_Filtrado = df[df[Columna_Categoria].isin(Categorias_Validas)].copy()
 
     Resultados = {}
 
     for Nombre_Columna in Columnas:
-        # Crear grupos por categoría.
+        # Create groups by category.
         Grupos = [
             df_Filtrado[
                 df_Filtrado[Columna_Categoria] == Categoria
@@ -183,7 +182,7 @@ def Kruskal_Wallis_Por_Categoria(
             for Categoria in Categorias_Validas
         ]
 
-        # Verificar que todos los grupos tengan al menos 2 datos.
+        # Verify that all groups have at least 2 data points.
         if all(len(Grupo) > 1 for Grupo in Grupos):
             Estadistico, P_Valor = kruskal(*Grupos)
             Resultados[Nombre_Columna] = {
@@ -191,17 +190,17 @@ def Kruskal_Wallis_Por_Categoria(
                 'Valor_p': P_Valor
             }
 
-    # Convertir a DataFrame.
+    # Convert to DataFrame.
     Tabla_Resultados = pd.DataFrame.from_dict(
         Resultados, orient='index'
     ).reset_index().rename(columns={'index': 'Variable'})
 
-    # Ordenar por p-valor ascendente.
+    # Sort by p-value ascending.
     Tabla_Resultados = Tabla_Resultados.sort_values(
         by='Valor_p'
     ).reset_index(drop=True)
 
-    # Agregar columna de significancia.
+    # Add significance column.
     Tabla_Resultados['Significativo'] = \
         Tabla_Resultados['Valor_p'] < 0.05
 
@@ -211,9 +210,9 @@ def Kruskal_Wallis_Por_Categoria(
 def Obtener_Columnas_CO_Items() -> tuple:
 
     """
-    Genera las listas de columnas de Cambio de Opinión por ítem.
+    Generates lists of Opinion Change columns by item.
 
-    Retorna:
+    Returns:
         tuple: (Columnas_CO_Pro_Izq, Columnas_CO_Pro_Der,
                 Columnas_CO_Con_Izq, Columnas_CO_Con_Der,
                 Todas_Columnas_CO)
@@ -250,9 +249,9 @@ def Obtener_Columnas_CO_Items() -> tuple:
 def Obtener_Columnas_CT_Items() -> tuple:
 
     """
-    Genera las listas de columnas de Cambio de Tiempo por ítem.
+    Generates lists of Time Change columns by item.
 
-    Retorna:
+    Returns:
         tuple: (Columnas_CT_Pro_Izq, Columnas_CT_Pro_Der,
                 Columnas_CT_Con_Izq, Columnas_CT_Con_Der,
                 Todas_Columnas_CT)
@@ -287,7 +286,7 @@ def Obtener_Columnas_CT_Items() -> tuple:
 
 
 # =============================================================================
-# FUNCIONES DE DUNN POST-HOC.
+# DUNN POST-HOC FUNCTIONS.
 # =============================================================================
 
 def Dunn_Post_Hoc(
@@ -298,26 +297,26 @@ def Dunn_Post_Hoc(
 ) -> pd.DataFrame:
 
     """
-    Aplica la prueba post-hoc de Dunn con corrección de Bonferroni
-    para comparaciones pareadas entre categorías.
+    Applies Dunn post-hoc test with Bonferroni correction
+    for pairwise comparisons between categories.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variable (str): Nombre de la columna a analizar.
-        Columna_Categoria (str): Nombre de la columna categórica.
-        Metodo_Ajuste (str): Método de ajuste de p-valores.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Variable (str): Name of column to analyze.
+        Columna_Categoria (str): Categorical column name.
+        Metodo_Ajuste (str): P-value adjustment method.
 
-    Retorna:
-        pd.DataFrame: Matriz de p-valores ajustados.
+    Returns:
+        pd.DataFrame: Matrix of adjusted p-values.
 
     """
 
-    # Filtrar categorías válidas y eliminar NaN.
+    # Filter valid categories and remove NaN.
     df_Filtrado = df[
         df[Columna_Categoria].isin(Categorias_Validas)
     ][[Columna_Categoria, Variable]].dropna()
 
-    # Aplicar prueba de Dunn.
+    # Apply Dunn test.
     Matriz_Dunn = sp.posthoc_dunn(
         df_Filtrado,
         val_col=Variable,
@@ -334,15 +333,15 @@ def Extraer_Comparaciones_Significativas(
 ) -> list:
 
     """
-    Extrae las comparaciones pareadas significativas de una
-    matriz de Dunn.
+    Extracts significant pairwise comparisons from a
+    Dunn matrix.
 
-    Parámetros:
-        Matriz_Dunn (pd.DataFrame): Matriz de p-valores.
-        Umbral_P (float): Umbral de significancia.
+    Parameters:
+        Matriz_Dunn (pd.DataFrame): P-value matrix.
+        Umbral_P (float): Significance threshold.
 
-    Retorna:
-        list: Lista de diccionarios con comparaciones significativas.
+    Returns:
+        list: List of dictionaries with significant comparisons.
 
     """
 
@@ -350,7 +349,7 @@ def Extraer_Comparaciones_Significativas(
 
     for Categoria_1 in Matriz_Dunn.index:
         for Categoria_2 in Matriz_Dunn.columns:
-            # Evitar duplicados (solo triángulo superior).
+            # Avoid duplicates (upper triangle only).
             if Categoria_1 < Categoria_2:
                 P_Valor = Matriz_Dunn.loc[Categoria_1, Categoria_2]
                 if P_Valor < Umbral_P:
@@ -370,16 +369,16 @@ def Ejecutar_Dunn_Variables_Significativas(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para todas las variables significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for all significant Kruskal-Wallis
+    variables.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variables_Significativas (list): Lista de variables.
-        Columna_Categoria (str): Columna categórica.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Variables_Significativas (list): List of variables.
+        Columna_Categoria (str): Categorical column.
 
-    Retorna:
-        dict: Diccionario con matrices de Dunn por variable.
+    Returns:
+        dict: Dictionary with Dunn matrices by variable.
 
     """
 
@@ -393,7 +392,7 @@ def Ejecutar_Dunn_Variables_Significativas(
 
 
 # =============================================================================
-# FUNCIONES DE WILCOXON.
+# WILCOXON FUNCTIONS.
 # =============================================================================
 
 def Wilcoxon_Pareado(
@@ -403,19 +402,19 @@ def Wilcoxon_Pareado(
 ) -> dict:
 
     """
-    Aplica el test de Wilcoxon pareado entre dos variables.
+    Applies paired Wilcoxon test between two variables.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Variable_1 (str): Primera variable.
-        Variable_2 (str): Segunda variable.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Variable_1 (str): First variable.
+        Variable_2 (str): Second variable.
 
-    Retorna:
-        dict: Diccionario con resultados del test.
+    Returns:
+        dict: Dictionary with test results.
 
     """
 
-    # Eliminar NaN en ambas variables.
+    # Remove NaN in both variables.
     Datos_Pareados = df[[Variable_1, Variable_2]].dropna()
 
     if len(Datos_Pareados) < 2:
@@ -424,7 +423,7 @@ def Wilcoxon_Pareado(
             'Estadistico_W': np.nan,
             'Valor_p': np.nan,
             'Significativo': False,
-            'Error': 'Datos insuficientes'
+            'Error': 'Insufficient data'
         }
 
     try:
@@ -433,7 +432,7 @@ def Wilcoxon_Pareado(
             Datos_Pareados[Variable_2]
         )
 
-        # Determinar nivel de significancia.
+        # Determine significance level.
         if P_Valor < 0.001:
             Sig = '***'
         elif P_Valor < 0.01:
@@ -469,15 +468,15 @@ def Wilcoxon_Congruencia(
 ) -> dict:
 
     """
-    Aplica Wilcoxon para comparar Congruente vs Incongruente.
+    Applies Wilcoxon to compare Congruent vs Incongruent.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Tipo (str): 'CO' para Cambio de Opinión o 'CT' para
-            Cambio de Tiempo.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Tipo (str): 'CO' for Opinion Change or 'CT' for
+            Time Change.
 
-    Retorna:
-        dict: Resultados del test.
+    Returns:
+        dict: Test results.
 
     """
 
@@ -494,15 +493,15 @@ def Wilcoxon_Congruencia_Por_Categoria(
 ) -> pd.DataFrame:
 
     """
-    Aplica Wilcoxon Congruente vs Incongruente por cada categoría.
+    Applies Wilcoxon Congruent vs Incongruent for each category.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Tipo (str): 'CO' o 'CT'.
-        Columna_Categoria (str): Columna categórica.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Tipo (str): 'CO' or 'CT'.
+        Columna_Categoria (str): Categorical column.
 
-    Retorna:
-        pd.DataFrame: Resultados por categoría.
+    Returns:
+        pd.DataFrame: Results by category.
 
     """
 
@@ -522,7 +521,7 @@ def Wilcoxon_Congruencia_Por_Categoria(
 
 
 # =============================================================================
-# FUNCIONES DE WILCOXON PARA CURVAS (SIN ASOCIAR VS ASOCIADA).
+# WILCOXON FUNCTIONS FOR CURVES (UNASSOCIATED VS ASSOCIATED).
 # =============================================================================
 
 def Calcular_Significancia_Wilcoxon_Curvas_Asociacion(
@@ -530,15 +529,15 @@ def Calcular_Significancia_Wilcoxon_Curvas_Asociacion(
 ) -> dict:
 
     """
-    Calcula Wilcoxon entre ítems sin asociar y asociados para
-    poblaciones de derecha e izquierda.
+    Calculates Wilcoxon between unassociated and associated items
+    for right and left populations.
 
-    Parámetros:
-        Datos (dict): Diccionario con 'Orden_Items', 'df_Derecha'
-            y 'df_Izquierda'.
+    Parameters:
+        Datos (dict): Dictionary with 'Orden_Items', 'df_Derecha'
+            and 'df_Izquierda'.
 
-    Retorna:
-        dict: P-valores por ítem para derecha e izquierda.
+    Returns:
+        dict: P-values by item for right and left.
 
     """
 
@@ -595,14 +594,14 @@ def Calcular_Significancia_Wilcoxon_Baseline_Propia(
 ) -> dict:
 
     """
-    Calcula Wilcoxon para cada población comparando su baseline
-    (sin asociar) vs asociada.
+    Calculates Wilcoxon for each population comparing its baseline
+    (unassociated) vs associated.
 
-    Parámetros:
-        Datos (dict): Diccionario con 'Orden_Items', 'df_Izq' y 'df_Der'.
+    Parameters:
+        Datos (dict): Dictionary with 'Orden_Items', 'df_Izq' and 'df_Der'.
 
-    Retorna:
-        dict: P-valores por ítem para izquierda y derecha.
+    Returns:
+        dict: P-values by item for left and right.
 
     """
 
@@ -648,14 +647,14 @@ def Calcular_Significancia_Wilcoxon_Balanceada(
 ) -> dict:
 
     """
-    Calcula Wilcoxon en muestra balanceada (mismas personas)
-    comparando baseline vs asociado.
+    Calculates Wilcoxon on balanced sample (same individuals)
+    comparing baseline vs associated.
 
-    Parámetros:
-        Datos (dict): Diccionario con 'Orden_Items', 'df_Izq' y 'df_Der'.
+    Parameters:
+        Datos (dict): Dictionary with 'Orden_Items', 'df_Izq' and 'df_Der'.
 
-    Retorna:
-        dict: P-valores por ítem para izquierda y derecha.
+    Returns:
+        dict: P-values by item for left and right.
 
     """
 
@@ -705,15 +704,15 @@ def Calcular_Significancia_Wilcoxon_Tres_Poblaciones(
 ) -> dict:
 
     """
-    Calcula Wilcoxon para izquierda, centro y derecha.
-    En centro compara baseline vs promedio de Izq+Der.
+    Calculates Wilcoxon for left, center and right populations.
+    For center, compares baseline vs average of Left+Right.
 
-    Parámetros:
-        Datos (dict): Diccionario con 'Orden_Items', 'df_Izq',
-            'df_Centro' y 'df_Der'.
+    Parameters:
+        Datos (dict): Dictionary with 'Orden_Items', 'df_Izq',
+            'df_Centro' and 'df_Der'.
 
-    Retorna:
-        dict: P-valores por ítem para izquierda, centro y derecha.
+    Returns:
+        dict: P-values by item for left, center and right.
 
     """
 
@@ -785,15 +784,15 @@ def Calcular_Significancia_Wilcoxon_Centro_Dos_Asociaciones(
 ) -> dict:
 
     """
-    Calcula Wilcoxon para izquierda, centro (asoc Izq y Der)
-    y derecha.
+    Calculates Wilcoxon for left, center (Left and Right associations)
+    and right populations.
 
-    Parámetros:
-        Datos (dict): Diccionario con 'Orden_Items', 'df_Izq',
-            'df_Centro' y 'df_Der'.
+    Parameters:
+        Datos (dict): Dictionary with 'Orden_Items', 'df_Izq',
+            'df_Centro' and 'df_Der'.
 
-    Retorna:
-        dict: P-valores por ítem para izquierda, centro y derecha.
+    Returns:
+        dict: P-values by item for left, center and right.
 
     """
 
@@ -873,13 +872,13 @@ def Calcular_Significancia_Wilcoxon_Centro_Dos_Asociaciones(
 
 
 # =============================================================================
-# FUNCIONES DE MANN-WHITNEY U.
+# MANN-WHITNEY U FUNCTIONS.
 # =============================================================================
 
 def Test_Mann_Whitney(Valores_1: list, Valores_2: list) -> float:
 
     """
-    Realiza test de Mann-Whitney U para comparar dos grupos.
+    Performs Mann-Whitney U test to compare two groups.
 
     """
 
@@ -900,8 +899,8 @@ def Test_Mann_Whitney(Valores_1: list, Valores_2: list) -> float:
 def Test_Wilcoxon_Contra_Cero(Valores: list) -> float:
 
     """
-    Realiza test de Wilcoxon signed-rank contra cero.
-    Testea si las diferencias son significativamente distintas de 0.
+    Performs Wilcoxon signed-rank test against zero.
+    Tests if differences are significantly different from 0.
 
     """
 
@@ -918,7 +917,7 @@ def Test_Wilcoxon_Contra_Cero(Valores: list) -> float:
 def Obtener_Significancia_Str(P_Valor: float) -> str:
 
     """
-    Convierte p-valor a string de significancia.
+    Converts p-value to significance string.
 
     """
 
@@ -941,18 +940,18 @@ def Mann_Whitney_Entre_Datasets(
 ) -> dict:
 
     """
-    Aplica Mann-Whitney U para comparar una variable entre
-    dos datasets (Generales vs Ballotage).
+    Applies Mann-Whitney U to compare a variable between
+    two datasets (General vs Ballotage).
 
-    Parámetros:
-        df_1 (pd.DataFrame): Primer DataFrame.
-        df_2 (pd.DataFrame): Segundo DataFrame.
-        Variable (str): Variable a comparar.
-        Nombre_1 (str): Nombre del primer dataset.
-        Nombre_2 (str): Nombre del segundo dataset.
+    Parameters:
+        df_1 (pd.DataFrame): First DataFrame.
+        df_2 (pd.DataFrame): Second DataFrame.
+        Variable (str): Variable to compare.
+        Nombre_1 (str): First dataset name.
+        Nombre_2 (str): Second dataset name.
 
-    Retorna:
-        dict: Resultados del test.
+    Returns:
+        dict: Test results.
 
     """
 
@@ -967,7 +966,7 @@ def Mann_Whitney_Entre_Datasets(
             'Estadistico_U': np.nan,
             'Valor_p': np.nan,
             'Significativo': False,
-            'Error': 'Datos insuficientes'
+            'Error': 'Insufficient data'
         }
 
     try:
@@ -1011,20 +1010,20 @@ def Mann_Whitney_Entre_Datasets(
 
 
 # =============================================================================
-# FUNCIONES DE ANÁLISIS COMPLETO.
+# COMPLETE ANALYSIS FUNCTIONS.
 # =============================================================================
 
 def Analisis_Kruskal_CO_Items(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para todos los ítems CO individuales
-    en ambos datasets.
+    Executes Kruskal-Wallis for all individual CO items
+    in both datasets.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1040,12 +1039,12 @@ def Analisis_Kruskal_CO_Items(dfs_Finales: dict) -> dict:
         Tabla = Kruskal_Wallis_Por_Categoria(df, Todas_Columnas_CO)
         Resultados[Nombre_df] = Tabla
 
-        # Mostrar resumen.
+        # Show summary.
         N_Significativas = Tabla['Significativo'].sum()
-        print(f"Variables significativas: {N_Significativas}/{len(Tabla)}")
+        print(f"Significant variables: {N_Significativas}/{len(Tabla)}")
 
         if N_Significativas > 0:
-            print("\nVariables significativas (p < 0.05):")
+            print("\nSignificant variables (p < 0.05):")
             Sig = Tabla[Tabla['Significativo']]
             for _, Fila in Sig.iterrows():
                 print(f"  - {Fila['Variable']}: "
@@ -1058,14 +1057,14 @@ def Analisis_Kruskal_CO_Items(dfs_Finales: dict) -> dict:
 def Analisis_Kruskal_CT_Items(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para todos los ítems CT individuales
-    en ambos datasets.
+    Executes Kruskal-Wallis for all individual CT items
+    in both datasets.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1081,12 +1080,12 @@ def Analisis_Kruskal_CT_Items(dfs_Finales: dict) -> dict:
         Tabla = Kruskal_Wallis_Por_Categoria(df, Todas_Columnas_CT)
         Resultados[Nombre_df] = Tabla
 
-        # Mostrar resumen.
+        # Show summary.
         N_Significativas = Tabla['Significativo'].sum()
-        print(f"Variables significativas: {N_Significativas}/{len(Tabla)}")
+        print(f"Significant variables: {N_Significativas}/{len(Tabla)}")
 
         if N_Significativas > 0:
-            print("\nVariables significativas (p < 0.05):")
+            print("\nSignificant variables (p < 0.05):")
             Sig = Tabla[Tabla['Significativo']]
             for _, Fila in Sig.iterrows():
                 print(f"  - {Fila['Variable']}: "
@@ -1099,20 +1098,20 @@ def Analisis_Kruskal_CT_Items(dfs_Finales: dict) -> dict:
 def Obtener_Columnas_Agregadas() -> list:
 
     """
-    Retorna la lista de todas las columnas agregadas de CO y CT.
+    Returns the list of all aggregated CO and CT columns.
 
-    Retorna:
-        list: Lista de nombres de columnas agregadas.
+    Returns:
+        list: List of aggregated column names.
 
     """
 
-    # Variables agregadas de CO.
+    # Aggregated CO variables.
     Columnas_CO_Agregadas = [
         'CO_Pro_Izq', 'CO_Con_Izq', 'CO_Pro_Der', 'CO_Con_Der',
         'CO_Congruente', 'CO_Incongruente'
     ]
 
-    # Variables agregadas de CT.
+    # Aggregated CT variables.
     Columnas_CT_Agregadas = [
         'CT_Pro_Izq', 'CT_Con_Izq', 'CT_Pro_Der', 'CT_Con_Der',
         'CT_Congruente', 'CT_Incongruente'
@@ -1124,13 +1123,13 @@ def Obtener_Columnas_Agregadas() -> list:
 def Analisis_Kruskal_Variables_Agregadas(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para variables agregadas de CO y CT.
+    Executes Kruskal-Wallis for aggregated CO and CT variables.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1143,23 +1142,23 @@ def Analisis_Kruskal_Variables_Agregadas(dfs_Finales: dict) -> dict:
         print(f"Kruskal-Wallis Variables Agregadas - {Nombre_df}")
         print('='*60)
 
-        # Filtrar solo columnas que existen.
+        # Filter only existing columns.
         Columnas_Existentes = [
             c for c in Todas_Agregadas if c in df.columns
         ]
 
         if not Columnas_Existentes:
-            print("  No se encontraron variables agregadas.")
+            print("  No aggregated variables found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
         Resultados[Nombre_df] = Tabla
 
-        # Mostrar resumen.
+        # Show summary.
         N_Significativas = Tabla['Significativo'].sum()
-        print(f"Variables significativas: {N_Significativas}/{len(Tabla)}")
+        print(f"Significant variables: {N_Significativas}/{len(Tabla)}")
 
-        print("\nResultados:")
+        print("\nResults:")
         for _, Fila in Tabla.iterrows():
             Marca = "***" if Fila['Valor_p'] < 0.001 else \
                     "**" if Fila['Valor_p'] < 0.01 else \
@@ -1177,16 +1176,16 @@ def Analisis_Dunn_Variables_Agregadas(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para variables agregadas significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    aggregated variables.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal_Agregadas (dict): Resultados de Kruskal-Wallis
-            para variables agregadas.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Agregadas (dict): Kruskal-Wallis results
+            for aggregated variables.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -1200,19 +1199,19 @@ def Analisis_Dunn_Variables_Agregadas(
         Tabla_Kruskal = Resultados_Kruskal_Agregadas.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -1220,7 +1219,7 @@ def Analisis_Dunn_Variables_Agregadas(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -1231,7 +1230,7 @@ def Analisis_Dunn_Variables_Agregadas(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
@@ -1242,15 +1241,15 @@ def Analisis_Dunn_Post_Hoc(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para variables significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    variables.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal (dict): Resultados de Kruskal-Wallis.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal (dict): Kruskal-Wallis results.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -1264,19 +1263,19 @@ def Analisis_Dunn_Post_Hoc(
         Tabla_Kruskal = Resultados_Kruskal.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -1284,7 +1283,7 @@ def Analisis_Dunn_Post_Hoc(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -1295,7 +1294,7 @@ def Analisis_Dunn_Post_Hoc(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
@@ -1303,13 +1302,13 @@ def Analisis_Dunn_Post_Hoc(
 def Analisis_Wilcoxon_Congruencia(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Wilcoxon para comparar Congruente vs Incongruente.
+    Executes Wilcoxon to compare Congruent vs Incongruent.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset y tipo.
+    Returns:
+        dict: Results by dataset and type.
 
     """
 
@@ -1320,7 +1319,7 @@ def Analisis_Wilcoxon_Congruencia(dfs_Finales: dict) -> dict:
         print(f"Wilcoxon Congruencia - {Nombre_df}")
         print('='*60)
 
-        # Análisis general (todas las poblaciones).
+        # General analysis (all populations).
         for Tipo in ['CO', 'CT']:
             Resultado = Wilcoxon_Congruencia(df, Tipo)
             Resultado['Dataset'] = Nombre_df
@@ -1336,8 +1335,8 @@ def Analisis_Wilcoxon_Congruencia(dfs_Finales: dict) -> dict:
                 print(f"    p = {Formatear_P_Valor(Resultado['Valor_p'])} "
                       f"({Resultado['Significancia']})")
 
-        # Análisis por categoría.
-        print("\n  Por Categoría:")
+        # Analysis by category.
+        print("\n  By Category:")
         for Tipo in ['CO', 'CT']:
             Tabla_Cat = Wilcoxon_Congruencia_Por_Categoria(df, Tipo)
             Tabla_Cat['Dataset'] = Nombre_df
@@ -1359,20 +1358,20 @@ def Analisis_Mann_Whitney_Entre_Elecciones(
 ) -> pd.DataFrame:
 
     """
-    Compara variables entre Generales y Ballotage usando
+    Compares variables between General and Ballotage using
     Mann-Whitney U.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Variables (list): Lista de variables a comparar.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Variables (list): List of variables to compare.
 
-    Retorna:
-        pd.DataFrame: Resultados de las comparaciones.
+    Returns:
+        pd.DataFrame: Comparison results.
 
     """
 
     if 'Generales' not in dfs_Finales or 'Ballotage' not in dfs_Finales:
-        print("Error: Se necesitan ambos datasets.")
+        print("Error: Both datasets are required.")
         return pd.DataFrame()
 
     df_Gen = dfs_Finales['Generales']
@@ -1401,7 +1400,7 @@ def Analisis_Mann_Whitney_Entre_Elecciones(
 
 
 # =============================================================================
-# FUNCIONES DE COMPARACIÓN IZQ VS DER POR ÍTEM.
+# LEFT VS RIGHT COMPARISON FUNCTIONS BY ITEM.
 # =============================================================================
 
 def Wilcoxon_Izq_vs_Der_Por_Item(
@@ -1410,15 +1409,15 @@ def Wilcoxon_Izq_vs_Der_Por_Item(
 ) -> pd.DataFrame:
 
     """
-    Compara CO_Item_X_Izq vs CO_Item_X_Der usando Wilcoxon pareado
-    para cada ítem (mismo participante, diferente asociación).
+    Compares CO_Item_X_Izq vs CO_Item_X_Der using paired Wilcoxon
+    for each item (same participant, different association).
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Items (list): Lista de números de ítems a analizar.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Items (list): List of item numbers to analyze.
 
-    Retorna:
-        pd.DataFrame: Resultados por ítem.
+    Returns:
+        pd.DataFrame: Results by item.
 
     """
 
@@ -1435,7 +1434,7 @@ def Wilcoxon_Izq_vs_Der_Por_Item(
            Variable_Der not in df.columns:
             continue
 
-        # Datos pareados (sin NaN en ninguna de las dos).
+        # Paired data (no NaN in either variable).
         Datos_Pareados = df[[Variable_Izq, Variable_Der]].dropna()
 
         if len(Datos_Pareados) < 10:
@@ -1456,7 +1455,7 @@ def Wilcoxon_Izq_vs_Der_Por_Item(
             else:
                 Sig = 'ns'
 
-            # Determinar tipo de ítem.
+            # Determine item type.
             Tipo = 'Progresista' if Item in Items_Progresistas \
                    else 'Conservador'
 
@@ -1492,14 +1491,14 @@ def Wilcoxon_Izq_vs_Der_Por_Item(
 def Analisis_Wilcoxon_Izq_vs_Der(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Wilcoxon pareado Izq vs Der para todos los ítems
-    en ambos datasets.
+    Executes paired Wilcoxon Left vs Right for all items
+    in both datasets.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1514,10 +1513,10 @@ def Analisis_Wilcoxon_Izq_vs_Der(dfs_Finales: dict) -> dict:
         Resultados[Nombre_df] = Tabla
 
         N_Sig = Tabla['Significativo'].sum() if len(Tabla) > 0 else 0
-        print(f"Ítems con diferencia significativa: {N_Sig}/{len(Tabla)}")
+        print(f"Items with significant difference: {N_Sig}/{len(Tabla)}")
 
         if N_Sig > 0:
-            print("\nÍtems significativos (Izq ≠ Der):")
+            print("\nSignificant items (Left ≠ Right):")
             Sig = Tabla[Tabla['Significativo']]
             for _, Fila in Sig.iterrows():
                 print(f"  - Item {Fila['Item']} ({Fila['Tipo_Item']}): "
@@ -1534,14 +1533,14 @@ def Calcular_Diferencias_Izq_Der(
 ) -> pd.DataFrame:
 
     """
-    Calcula la diferencia (Izq - Der) para cada ítem y participante.
+    Calculates the difference (Left - Right) for each item and participant.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con los datos.
-        Items (list): Lista de números de ítems.
+    Parameters:
+        df (pd.DataFrame): DataFrame with data.
+        Items (list): List of item numbers.
 
-    Retorna:
-        pd.DataFrame: DataFrame con columnas Diff_CO_Item_X.
+    Returns:
+        pd.DataFrame: DataFrame with Diff_CO_Item_X columns.
 
     """
 
@@ -1570,23 +1569,23 @@ def Kruskal_Wallis_Diferencias_Entre_Poblaciones(
 ) -> pd.DataFrame:
 
     """
-    Compara la diferencia (Izq - Der) entre las 6 categorías
-    electorales usando Kruskal-Wallis.
+    Compares the difference (Left - Right) among the 6 electoral
+    categories using Kruskal-Wallis.
 
-    Parámetros:
-        df (pd.DataFrame): DataFrame con diferencias calculadas.
-        Items (list): Lista de números de ítems.
-        Columna_Categoria (str): Columna de categoría.
+    Parameters:
+        df (pd.DataFrame): DataFrame with calculated differences.
+        Items (list): List of item numbers.
+        Columna_Categoria (str): Category column.
 
-    Retorna:
-        pd.DataFrame: Resultados de Kruskal-Wallis por ítem.
+    Returns:
+        pd.DataFrame: Kruskal-Wallis results by item.
 
     """
 
     if Items is None:
         Items = Items_Progresistas + Items_Conservadores
 
-    # Filtrar categorías válidas.
+    # Filter valid categories.
     df_Filtrado = df[df[Columna_Categoria].isin(Categorias_Validas)]
 
     Resultados = []
@@ -1597,7 +1596,7 @@ def Kruskal_Wallis_Diferencias_Entre_Poblaciones(
         if Variable_Diff not in df_Filtrado.columns:
             continue
 
-        # Crear grupos por categoría.
+        # Create groups by category.
         Grupos = [
             df_Filtrado[
                 df_Filtrado[Columna_Categoria] == Cat
@@ -1605,7 +1604,7 @@ def Kruskal_Wallis_Diferencias_Entre_Poblaciones(
             for Cat in Categorias_Validas
         ]
 
-        # Verificar datos suficientes.
+        # Verify sufficient data.
         if all(len(Grupo) >= 2 for Grupo in Grupos):
             try:
                 H_Stat, P_Valor = kruskal(*Grupos)
@@ -1648,14 +1647,14 @@ def Kruskal_Wallis_Diferencias_Entre_Poblaciones(
 def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
 
     """
-    Analiza si la diferencia (Izq - Der) varía entre poblaciones
-    usando Kruskal-Wallis y Dunn post-hoc.
+    Analyzes if the difference (Left - Right) varies among populations
+    using Kruskal-Wallis and Dunn post-hoc.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados con Kruskal-Wallis y Dunn.
+    Returns:
+        dict: Results with Kruskal-Wallis and Dunn.
 
     """
 
@@ -1663,10 +1662,10 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
 
     for Nombre_df, df in dfs_Finales.items():
         print(f"\n{'='*60}")
-        print(f"Diferencias (Izq-Der) Entre Poblaciones - {Nombre_df}")
+        print(f"Differences (Left-Right) Among Populations - {Nombre_df}")
         print('='*60)
 
-        # Calcular diferencias.
+        # Calculate differences.
         df_Con_Diff = Calcular_Diferencias_Izq_Der(df)
 
         # Kruskal-Wallis.
@@ -1677,10 +1676,10 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
 
         N_Sig = Tabla_Kruskal['Significativo'].sum() \
                 if len(Tabla_Kruskal) > 0 else 0
-        print(f"Ítems con diferencias entre poblaciones: "
+        print(f"Items with differences among populations: "
               f"{N_Sig}/{len(Tabla_Kruskal)}")
 
-        # Dunn post-hoc para significativos.
+        # Dunn post-hoc for significant items.
         Items_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Item'].tolist() if len(Tabla_Kruskal) > 0 else []
@@ -1688,7 +1687,7 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
         Resultados_Dunn = {}
 
         if Items_Sig:
-            print(f"\nPost-hoc Dunn para {len(Items_Sig)} ítems:")
+            print(f"\nPost-hoc Dunn for {len(Items_Sig)} items:")
 
             for Item in Items_Sig:
                 Variable_Diff = f'Diff_CO_Item_{Item}'
@@ -1711,7 +1710,7 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
                     )
                     Resultados_Dunn[Item] = Matriz
 
-                    # Extraer comparaciones significativas.
+                    # Extract significant comparisons.
                     Comparaciones = Extraer_Comparaciones_Significativas(
                         Matriz
                     )
@@ -1723,8 +1722,8 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
                                   f"{Comp['Categoria_2']}: "
                                   f"p={Formatear_P_Valor(Comp['Valor_p'])}")
                     else:
-                        print(f"\n  Item {Item}: Sin comparaciones "
-                              f"significativas post-Bonferroni")
+                        print(f"\n  Item {Item}: No significant comparisons "
+                              f"post-Bonferroni")
 
                 except Exception:
                     continue
@@ -1735,24 +1734,24 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
 
 
 # =============================================================================
-# FUNCIONES PARA AUTOPERCEPCIONES, ÍNDICES Y CERCANÍAS.
+# FUNCTIONS FOR SELF-PERCEPTIONS, INDICES AND CLOSENESS.
 # =============================================================================
 
-# Columnas de autopercepciones.
+# Self-perception columns.
 Columnas_Autopercepciones = [
     'Autopercepcion_Izq_Der',
     'Autopercepcion_Con_Pro',
     'Autopercepcion_Per_Antiper'
 ]
 
-# Columnas de índices.
+# Index columns.
 Columnas_Indices = [
     'Indice_Progresismo',
     'Indice_Conservadurismo',
     'Indice_Positividad'
 ]
 
-# Columnas de cercanías a candidatos.
+# Candidate closeness columns.
 Columnas_Cercanias = [
     'Cercania_Massa',
     'Cercania_Bullrich',
@@ -1770,14 +1769,14 @@ Columnas_Influencias = [
 def Analisis_Kruskal_Autopercepciones(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para autopercepciones entre las
-    categorías electorales.
+    Executes Kruskal-Wallis for self-perceptions among electoral
+    categories.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1788,19 +1787,19 @@ def Analisis_Kruskal_Autopercepciones(dfs_Finales: dict) -> dict:
         print(f"Kruskal-Wallis Autopercepciones - {Nombre_df}")
         print('='*60)
 
-        # Filtrar columnas existentes.
+        # Filter existing columns.
         Columnas_Existentes = [
             c for c in Columnas_Autopercepciones if c in df.columns
         ]
 
         if not Columnas_Existentes:
-            print("  No se encontraron columnas de autopercepciones.")
+            print("  No self-perception columns found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
         Resultados[Nombre_df] = Tabla
 
-        print("\nResultados:")
+        print("\nResults:")
         for _, Fila in Tabla.iterrows():
             Marca = "***" if Fila['Valor_p'] < 0.001 else \
                     "**" if Fila['Valor_p'] < 0.01 else \
@@ -1815,14 +1814,14 @@ def Analisis_Kruskal_Autopercepciones(dfs_Finales: dict) -> dict:
 def Analisis_Kruskal_Indices(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para índices (Progresismo, Conservadurismo,
-    Positividad) entre las categorías electorales.
+    Executes Kruskal-Wallis for indices (Progressivism, Conservatism,
+    Positivity) among electoral categories.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1833,19 +1832,19 @@ def Analisis_Kruskal_Indices(dfs_Finales: dict) -> dict:
         print(f"Kruskal-Wallis Índices - {Nombre_df}")
         print('='*60)
 
-        # Filtrar columnas existentes.
+        # Filter existing columns.
         Columnas_Existentes = [
             c for c in Columnas_Indices if c in df.columns
         ]
 
         if not Columnas_Existentes:
-            print("  No se encontraron columnas de índices.")
+            print("  No index columns found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
         Resultados[Nombre_df] = Tabla
 
-        print("\nResultados:")
+        print("\nResults:")
         for _, Fila in Tabla.iterrows():
             Marca = "***" if Fila['Valor_p'] < 0.001 else \
                     "**" if Fila['Valor_p'] < 0.01 else \
@@ -1860,14 +1859,14 @@ def Analisis_Kruskal_Indices(dfs_Finales: dict) -> dict:
 def Analisis_Kruskal_Cercanias(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para cercanías a candidatos entre
-    las categorías electorales.
+    Executes Kruskal-Wallis for candidate closeness among
+    electoral categories.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1878,19 +1877,19 @@ def Analisis_Kruskal_Cercanias(dfs_Finales: dict) -> dict:
         print(f"Kruskal-Wallis Cercanías a Candidatos - {Nombre_df}")
         print('='*60)
 
-        # Filtrar columnas existentes.
+        # Filter existing columns.
         Columnas_Existentes = [
             c for c in Columnas_Cercanias if c in df.columns
         ]
 
         if not Columnas_Existentes:
-            print("  No se encontraron columnas de cercanías.")
+            print("  No closeness columns found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
         Resultados[Nombre_df] = Tabla
 
-        print("\nResultados:")
+        print("\nResults:")
         for _, Fila in Tabla.iterrows():
             Marca = "***" if Fila['Valor_p'] < 0.001 else \
                     "**" if Fila['Valor_p'] < 0.01 else \
@@ -1905,14 +1904,14 @@ def Analisis_Kruskal_Cercanias(dfs_Finales: dict) -> dict:
 def Analisis_Kruskal_Influencias(dfs_Finales: dict) -> dict:
 
     """
-    Ejecuta Kruskal-Wallis para influencia de redes y prensa entre
-    las categorías electorales.
+    Executes Kruskal-Wallis for social media and press influence
+    among electoral categories.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
 
-    Retorna:
-        dict: Resultados por dataset.
+    Returns:
+        dict: Results by dataset.
 
     """
 
@@ -1923,19 +1922,19 @@ def Analisis_Kruskal_Influencias(dfs_Finales: dict) -> dict:
         print(f"Kruskal-Wallis Influencias - {Nombre_df}")
         print('='*60)
 
-        # Filtrar columnas existentes.
+        # Filter existing columns.
         Columnas_Existentes = [
             c for c in Columnas_Influencias if c in df.columns
         ]
 
         if not Columnas_Existentes:
-            print("  No se encontraron columnas de influencias.")
+            print("  No influence columns found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
         Resultados[Nombre_df] = Tabla
 
-        print("\nResultados:")
+        print("\nResults:")
         for _, Fila in Tabla.iterrows():
             Marca = "***" if Fila['Valor_p'] < 0.001 else \
                     "**" if Fila['Valor_p'] < 0.01 else \
@@ -1953,16 +1952,16 @@ def Analisis_Dunn_Autopercepciones(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para autopercepciones significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    self-perceptions.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal_Autopercepciones (dict): Resultados de
-            Kruskal-Wallis para autopercepciones.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Autopercepciones (dict): Kruskal-Wallis
+            results for self-perceptions.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -1976,19 +1975,19 @@ def Analisis_Dunn_Autopercepciones(
         Tabla_Kruskal = Resultados_Kruskal_Autopercepciones.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -1996,7 +1995,7 @@ def Analisis_Dunn_Autopercepciones(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -2007,7 +2006,7 @@ def Analisis_Dunn_Autopercepciones(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
@@ -2018,16 +2017,16 @@ def Analisis_Dunn_Indices(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para índices significativos
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    indices.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal_Indices (dict): Resultados de
-            Kruskal-Wallis para índices.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Indices (dict): Kruskal-Wallis
+            results for indices.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -2041,19 +2040,19 @@ def Analisis_Dunn_Indices(
         Tabla_Kruskal = Resultados_Kruskal_Indices.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -2061,7 +2060,7 @@ def Analisis_Dunn_Indices(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -2072,7 +2071,7 @@ def Analisis_Dunn_Indices(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
@@ -2083,16 +2082,16 @@ def Analisis_Dunn_Cercanias(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para cercanías a candidatos significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    candidate closeness ratings.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal_Cercanias (dict): Resultados de
-            Kruskal-Wallis para cercanías.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Cercanias (dict): Kruskal-Wallis
+            results for closeness.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -2106,19 +2105,19 @@ def Analisis_Dunn_Cercanias(
         Tabla_Kruskal = Resultados_Kruskal_Cercanias.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -2126,7 +2125,7 @@ def Analisis_Dunn_Cercanias(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -2137,7 +2136,7 @@ def Analisis_Dunn_Cercanias(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
@@ -2148,16 +2147,16 @@ def Analisis_Dunn_Influencias(
 ) -> dict:
 
     """
-    Ejecuta Dunn post-hoc para influencias significativas
-    de Kruskal-Wallis.
+    Executes Dunn post-hoc for significant Kruskal-Wallis
+    influences.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames.
-        Resultados_Kruskal_Influencias (dict): Resultados de
-            Kruskal-Wallis para influencias.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Influencias (dict): Kruskal-Wallis
+            results for influences.
 
-    Retorna:
-        dict: Resultados de Dunn por dataset.
+    Returns:
+        dict: Dunn results by dataset.
 
     """
 
@@ -2171,19 +2170,19 @@ def Analisis_Dunn_Influencias(
         Tabla_Kruskal = Resultados_Kruskal_Influencias.get(Nombre_df)
 
         if Tabla_Kruskal is None:
-            print("  No hay resultados de Kruskal-Wallis.")
+            print("  No Kruskal-Wallis results available.")
             continue
 
-        # Obtener variables significativas.
+        # Get significant variables.
         Variables_Sig = Tabla_Kruskal[
             Tabla_Kruskal['Significativo']
         ]['Variable'].tolist()
 
         if not Variables_Sig:
-            print("  No hay variables significativas para post-hoc.")
+            print("  No significant variables for post-hoc.")
             continue
 
-        print(f"Variables para post-hoc: {len(Variables_Sig)}")
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
 
         Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
             df, Variables_Sig
@@ -2191,7 +2190,7 @@ def Analisis_Dunn_Influencias(
 
         Resultados[Nombre_df] = Resultados_Dunn
 
-        # Mostrar resumen de comparaciones significativas.
+        # Show summary of significant comparisons.
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -2202,35 +2201,34 @@ def Analisis_Dunn_Influencias(
                           f"{Comp['Categoria_2']}: "
                           f"p={Formatear_P_Valor(Comp['Valor_p'])}")
             else:
-                print(f"\n  {Variable}: Sin comparaciones significativas")
+                print(f"\n  {Variable}: No significant comparisons")
 
     return Resultados
 
 
 # =============================================================================
-# CONTROL POR COVARIABLES DEMOGRÁFICAS.
+# DEMOGRAPHIC COVARIATE CONTROL.
 # =============================================================================
 
 def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
 
     """
-    Realiza análisis de regresión para verificar si el efecto
-    Congruente vs Incongruente se mantiene después de controlar
-    por Género y Edad.
+    Performs regression analysis to verify if the Congruent vs
+    Incongruent effect persists after controlling for Gender and Age.
 
-    Método: Regresión OLS de la diferencia (CO_Congruente - CO_Incongruente)
-    sobre Género y Edad. Si el intercepto es significativo, el efecto
-    se mantiene controlando por las covariables demográficas.
+    Method: OLS regression of the difference (CO_Congruent - CO_Incongruent)
+    on Gender and Age. If the intercept is significant, the effect
+    persists when controlling for demographic covariates.
 
-    Parámetros:
-        dfs_Finales (dict): Diccionario con DataFrames de cada elección.
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames for each election.
 
-    Retorna:
-        dict: Resultados de la regresión para cada elección y tipo (CO, CT).
+    Returns:
+        dict: Regression results for each election and type (CO, CT).
 
     """
 
-    print("\nAnálisis de control por Género y Edad...")
+    print("\nAnalysis controlling for Gender and Age...")
     print("-" * 70)
 
     Resultados = {}
@@ -2245,32 +2243,32 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
             Variable_Congruente = f'{Tipo}_Congruente'
             Variable_Incongruente = f'{Tipo}_Incongruente'
 
-            # Verificar que existan las columnas necesarias.
+            # Verify required columns exist.
             Columnas_Requeridas = [
                 Variable_Congruente, Variable_Incongruente,
                 'Genero', 'Edad'
             ]
 
             if not all(Col in df.columns for Col in Columnas_Requeridas):
-                print(f"  {Tipo}: Faltan columnas requeridas.")
+                print(f"  {Tipo}: Missing required columns.")
                 continue
 
-            # Crear DataFrame para regresión.
+            # Create DataFrame for regression.
             df_Regresion = df[Columnas_Requeridas].copy()
             df_Regresion = df_Regresion.dropna()
 
             if len(df_Regresion) < 10:
-                print(f"  {Tipo}: Datos insuficientes (n={len(df_Regresion)}).")
+                print(f"  {Tipo}: Insufficient data (n={len(df_Regresion)}).")
                 continue
 
-            # Calcular diferencia Congruente - Incongruente.
+            # Calculate Congruent - Incongruent difference.
             df_Regresion['Diferencia'] = (
                 df_Regresion[Variable_Congruente] -
                 df_Regresion[Variable_Incongruente]
             )
 
-            # Crear variables dummy para Género.
-            # Usamos Femenino como categoría de referencia.
+            # Create dummy variables for Gender.
+            # Using Female as reference category.
             df_Regresion['Genero_Masculino'] = (
                 df_Regresion['Genero'] == 'Masculino'
             ).astype(int)
@@ -2278,32 +2276,32 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
                 df_Regresion['Genero'] == 'Otro'
             ).astype(int)
 
-            # Convertir Edad a numérico.
+            # Convert Age to numeric.
             df_Regresion['Edad'] = pd.to_numeric(
                 df_Regresion['Edad'], errors='coerce'
             )
             df_Regresion = df_Regresion.dropna()
 
             if len(df_Regresion) < 10:
-                print(f"  {Tipo}: Datos insuficientes después de limpieza.")
+                print(f"  {Tipo}: Insufficient data after cleaning.")
                 continue
 
-            # Preparar variables para regresión.
+            # Prepare variables for regression.
             Y = df_Regresion['Diferencia']
             X = df_Regresion[['Genero_Masculino', 'Genero_Otro', 'Edad']]
             X = sm.add_constant(X)
 
-            # Ajustar modelo OLS.
+            # Fit OLS model.
             Modelo = sm.OLS(Y, X).fit()
 
-            # Extraer resultados.
+            # Extract results.
             Intercepto = Modelo.params['const']
             P_Intercepto = Modelo.pvalues['const']
             R2 = Modelo.rsquared
             R2_Ajustado = Modelo.rsquared_adj
             N = len(df_Regresion)
 
-            # Coeficientes de covariables.
+            # Covariate coefficients.
             Coef_Masculino = Modelo.params['Genero_Masculino']
             P_Masculino = Modelo.pvalues['Genero_Masculino']
             Coef_Otro = Modelo.params.get('Genero_Otro', np.nan)
@@ -2311,7 +2309,7 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
             Coef_Edad = Modelo.params['Edad']
             P_Edad = Modelo.pvalues['Edad']
 
-            # Guardar resultados.
+            # Save results.
             Resultados[Nombre_df][Tipo] = {
                 'N': N,
                 'Intercepto': Intercepto,
@@ -2328,7 +2326,7 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
                 'Modelo': Modelo
             }
 
-            # Determinar significancia del intercepto.
+            # Determine intercept significance.
             if P_Intercepto < 0.001:
                 Sig_Int = '***'
             elif P_Intercepto < 0.01:
@@ -2341,63 +2339,63 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
             print(f"\n  {Tipo} Congruente - Incongruente (N={N}):")
             print(f"    Intercepto: {Intercepto:.4f} (p={P_Intercepto:.4f}) "
                   f"{Sig_Int}")
-            print(f"    Género Masculino: β={Coef_Masculino:.4f} "
+            print(f"    Male Gender: β={Coef_Masculino:.4f} "
                   f"(p={P_Masculino:.4f})")
-            print(f"    Edad: β={Coef_Edad:.4f} (p={P_Edad:.4f})")
+            print(f"    Age: β={Coef_Edad:.4f} (p={P_Edad:.4f})")
             print(f"    R² ajustado: {R2_Ajustado:.4f}")
 
             if P_Intercepto < 0.05:
-                print(f"    → El efecto {Tipo} Congruente vs Incongruente "
-                      f"SE MANTIENE controlando por Género y Edad.")
+                print(f"    → The {Tipo} Congruent vs Incongruent effect "
+                      f"PERSISTS when controlling for Gender and Age.")
             else:
-                print(f"    → El efecto {Tipo} Congruente vs Incongruente "
-                      f"NO se mantiene controlando por Género y Edad.")
+                print(f"    → The {Tipo} Congruent vs Incongruent effect "
+                      f"does NOT persist when controlling for Gender and Age.")
 
     return Resultados
 
 
 # =============================================================================
-# EJECUCIÓN PRINCIPAL.
+# MAIN EXECUTION.
 # =============================================================================
 
 def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
 
     """
-    Ejecuta todos los análisis estadísticos y retorna los resultados.
+    Executes all statistical analyses and returns results.
 
-    Orden de ejecución:
-    - Primero: Todos los Kruskal-Wallis (1-8)
-    - Segundo: Todos los Dunn post-hoc (9-16)
-    - Tercero: Tests pareados - Wilcoxon y Mann-Whitney (17-19)
+    Execution order:
+    - First: All Kruskal-Wallis (1-8)
+    - Second: All Dunn post-hoc (9-16)
+    - Third: Paired tests - Wilcoxon and Mann-Whitney (17-19)
 
-    Parámetros:
-        Ruta_Datos (str): Ruta a la carpeta con los datos.
+    Parameters:
+        Ruta_Datos (str): Path to folder with data.
 
-    Retorna:
-        dict: Diccionario con todos los resultados.
+    Returns:
+        dict: Dictionary with all results.
 
     """
 
     print("="*70)
-    print("ANÁLISIS ESTADÍSTICOS COMPLETOS")
+    print("COMPLETE STATISTICAL ANALYSES")
     print("="*70)
 
-    # Cargar datos.
-    print("\nCargando datos...")
+    # Load data.
+    print("\nLoading data...")
     dfs_Finales = Cargar_Bases_Datos(Ruta_Datos)
 
     if not dfs_Finales:
-        print("Error: No se pudieron cargar los datos.")
+        print("Error: Could not load data.")
         return {}
 
     Todos_Resultados = {}
 
     # =========================================================================
-    # SECCIÓN A: TESTS KRUSKAL-WALLIS.
+    # SECTION A: KRUSKAL-WALLIS TESTS.
     # =========================================================================
 
     print("\n" + "#"*70)
-    print("# SECCIÓN A: TESTS KRUSKAL-WALLIS")
+    print("# SECTION A: KRUSKAL-WALLIS TESTS")
     print("#"*70)
 
     # 1. Kruskal-Wallis para ítems CO individuales.
@@ -2457,11 +2455,11 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
         Analisis_Kruskal_Influencias(dfs_Finales)
 
     # =========================================================================
-    # SECCIÓN B: TESTS DUNN POST-HOC.
+    # SECTION B: DUNN POST-HOC TESTS.
     # =========================================================================
 
     print("\n" + "#"*70)
-    print("# SECCIÓN B: TESTS DUNN POST-HOC (Corrección Bonferroni)")
+    print("# SECTION B: DUNN POST-HOC TESTS (Corrección Bonferroni)")
     print("#"*70)
 
     # 8. Dunn post-hoc para CO items.
@@ -2528,11 +2526,11 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
     )
 
     # =========================================================================
-    # SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY).
+    # SECTION C: PAIRED TESTS (WILCOXON AND MANN-WHITNEY).
     # =========================================================================
 
     print("\n" + "#"*70)
-    print("# SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY)")
+    print("# SECTION C: PAIRED TESTS (WILCOXON AND MANN-WHITNEY)")
     print("#"*70)
 
     # 14. Wilcoxon para congruencia ideológica.
@@ -2554,7 +2552,7 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
     print("18. MANN-WHITNEY: GENERALES VS BALLOTAGE")
     print("="*70)
 
-    # Variables a comparar entre elecciones.
+    # Variables to compare between elections.
     Variables_Comparar = [
         'CO_Congruente', 'CO_Incongruente',
         'CT_Congruente', 'CT_Incongruente',
@@ -2576,7 +2574,7 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
         Analisis_Control_Demografico(dfs_Finales)
 
     print("\n" + "="*70)
-    print("ANÁLISIS COMPLETADOS")
+    print("ANALYSES COMPLETED")
     print("="*70)
 
     return Todos_Resultados, dfs_Finales
@@ -2589,18 +2587,18 @@ def Generar_Reporte_TXT(
 ) -> None:
 
     """
-    Genera un archivo TXT con todos los resultados formateados
-    de manera legible.
+    Generates a TXT file with all results formatted
+    in a readable manner.
 
-    Orden del reporte:
-    - Sección A: Todos los Kruskal-Wallis (1-7)
-    - Sección B: Todos los Dunn post-hoc (8-13)
-    - Sección C: Tests pareados Wilcoxon y Mann-Whitney (14-16)
+    Report order:
+    - Section A: All Kruskal-Wallis (1-7)
+    - Section B: All Dunn post-hoc (8-13)
+    - Section C: Paired Wilcoxon and Mann-Whitney tests (14-16)
 
-    Parámetros:
-        Todos_Resultados (dict): Diccionario con todos los resultados.
-        dfs_Finales (dict): Diccionario con los DataFrames.
-        Ruta_Salida (str): Ruta al archivo TXT de salida.
+    Parameters:
+        Todos_Resultados (dict): Dictionary with all results.
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Ruta_Salida (str): Path to output TXT file.
 
     """
 
@@ -2618,7 +2616,7 @@ def Generar_Reporte_TXT(
         Descripcion: str = ""
     ):
         """
-        Función auxiliar para escribir secciones de Kruskal-Wallis.
+        Helper function to write Kruskal-Wallis sections.
 
         """
 
@@ -2655,7 +2653,7 @@ def Generar_Reporte_TXT(
 
     def Escribir_Dunn(Nombre_Seccion: str, Clave_Resultado: str):
         """
-        Función auxiliar para escribir secciones de Dunn post-hoc.
+        Helper function to write Dunn post-hoc sections.
 
         """
 
@@ -2701,10 +2699,10 @@ def Generar_Reporte_TXT(
     Agregar("")
 
     # =========================================================================
-    # SECCIÓN A: TESTS KRUSKAL-WALLIS.
+    # SECTION A: KRUSKAL-WALLIS TESTS.
     # =========================================================================
     Separador("#")
-    Agregar("# SECCIÓN A: TESTS KRUSKAL-WALLIS")
+    Agregar("# SECTION A: KRUSKAL-WALLIS TESTS")
     Separador("#")
     Agregar("")
 
@@ -2794,10 +2792,10 @@ def Generar_Reporte_TXT(
     )
 
     # =========================================================================
-    # SECCIÓN B: TESTS DUNN POST-HOC.
+    # SECTION B: DUNN POST-HOC TESTS.
     # =========================================================================
     Separador("#")
-    Agregar("# SECCIÓN B: TESTS DUNN POST-HOC (Corrección Bonferroni)")
+    Agregar("# SECTION B: DUNN POST-HOC TESTS (Corrección Bonferroni)")
     Separador("#")
     Agregar("")
 
@@ -2847,7 +2845,7 @@ def Generar_Reporte_TXT(
     # SECCIÓN C: TESTS PAREADOS.
     # =========================================================================
     Separador("#")
-    Agregar("# SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY)")
+    Agregar("# SECTION C: PAIRED TESTS (WILCOXON AND MANN-WHITNEY)")
     Separador("#")
     Agregar("")
 

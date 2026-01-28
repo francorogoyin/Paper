@@ -1,13 +1,10 @@
 """
-Script consolidado de procesamiento de datos del experimento de tesis.
+Consolidated data processing script for the experiment.
 
-Este script combina los notebooks 1-19 del directorio Código en un único
-pipeline de procesamiento que transforma los datos crudos del experimento
-electoral argentino 2023 en bases de datos limpias y procesadas listas para
-análisis estadístico.
+This script transforms the raw data from the Argentine 2023
+electoral experiment into clean and processed databases ready
+for statistical analysis.
 
-Autor: Patricio Nogueroles
-Proyecto: Tesis de Licenciatura - Experimento de Toma de Decisiones Electorales
 """
 
 import pandas as pd
@@ -20,13 +17,13 @@ from scipy import stats
 
 
 # ============================================================================
-# FUNCIONES AUXILIARES
+# AUXILIARY FUNCTIONS
 # ============================================================================
 
 def Crear_Variables_De_Orden_IP_Items(df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Procesa todo el DataFrame para extraer orden de IP Items y último Item.
+    Processes the entire DataFrame to extract IP Items order and last Item.
 
     """
 
@@ -66,8 +63,8 @@ def Crear_Variables_De_Orden_IP_Items_Asociados(
 ) -> pd.DataFrame:
 
     """
-    Procesa todo el DataFrame para extraer orden de IP Items asociados
-    a candidatos y último Item.
+    Processes the entire DataFrame to extract order of IP Items associated
+    with candidates and last Item.
 
     """
 
@@ -111,7 +108,7 @@ def Crear_Primeros_IP_Items_Asociados(
 ) -> pd.DataFrame:
 
     """
-    Crea una nueva columna con los primeros N elementos de
+    Creates a new column with the first N elements of
     'Orden_IP_Items_Asociados'.
 
     """
@@ -132,8 +129,8 @@ def Aplanar_Diccionario(
 ) -> Dict:
 
     """
-    Convierte un diccionario anidado en uno plano, usando puntos para
-    separar los niveles de anidamiento.
+    Converts a nested dictionary into a flat one, using dots to
+    separate nesting levels.
 
     """
 
@@ -157,8 +154,8 @@ def Aplanar_Diccionario(
 def Procesar_Columna_Results(df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Extrae y procesa la columna 'results' de un DataFrame, convirtiendo
-    el contenido JSON en un DataFrame de pandas.
+    Extracts and processes the 'results' column from a DataFrame,
+    converting the JSON content into a pandas DataFrame.
 
     """
 
@@ -203,8 +200,8 @@ def Procesar_Columna_Results(df: pd.DataFrame) -> pd.DataFrame:
 def Rellenar_IP_Items_Asociados_Faltantes(df: pd.DataFrame) -> None:
 
     """
-    Rellena los valores faltantes en columnas IP_Item_X_Izq/Der cuando
-    uno tiene valor y el otro es NaN, usando la mediana por categoría.
+    Fills missing values in IP_Item_X_Izq/Der columns when one has
+    a value and the other is NaN, using the median by category.
 
     """
 
@@ -264,9 +261,9 @@ def Eliminar_Primeros_Datos_IP_Items_Asociados(
 ) -> pd.DataFrame:
 
     """
-    Elimina los datos de los primeros 3 IP Items únicos basándose en
-    'Orden_IP_Items_Asociados'. Para cada IP Item, elimina tanto la
-    versión _Izq como _Der.
+    Removes data from the first 3 unique IP Items based on
+    'Orden_IP_Items_Asociados'. For each IP Item, removes both
+    the _Izq and _Der versions.
 
     """
 
@@ -307,9 +304,8 @@ def Eliminar_Filas_Por_Desviacion_Estandar(
 ) -> pd.DataFrame:
 
     """
-    Elimina filas donde algún valor de tiempo exceda el número
-    especificado de desvíos estándar desde la media global de todas
-    las columnas de tiempo.
+    Removes rows where any time value exceeds the specified number
+    of standard deviations from the global mean of all time columns.
 
     """
 
@@ -386,9 +382,9 @@ def Crear_Columnas_Cambio_Opinion(
 ) -> Dict[str, pd.DataFrame]:
 
     """
-    Crea columnas de cambio de opinión para cada ítem IP comparando
-    las respuestas con candidatos de izquierda/derecha versus las
-    respuestas base de cada ítem.
+    Creates opinion change columns for each IP item by comparing
+    responses with left/right candidates versus the base responses
+    for each item.
 
     """
 
@@ -439,9 +435,9 @@ def Crear_Columnas_Cambio_Tiempo(
 ) -> Dict[str, pd.DataFrame]:
 
     """
-    Crea columnas de cambio de tiempo para cada ítem IP comparando
-    los tiempos de respuesta con candidatos de izquierda/derecha versus
-    los tiempos base de cada ítem.
+    Creates time change columns for each IP item by comparing
+    response times with left/right candidates versus the base
+    times for each item.
 
     """
 
@@ -488,25 +484,25 @@ def Crear_Columnas_Cambio_Tiempo(
 
 
 # ============================================================================
-# DICCIONARIO DE MAPEO DE NOMBRES DE COLUMNAS
+# COLUMN NAME MAPPING DICTIONARY
 # ============================================================================
 
 def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
 
     """
-    Retorna el diccionario completo de mapeo de nombres de columnas
-    desde el formato JSON expandido al formato legible.
+    Returns the complete dictionary mapping column names from the
+    expanded JSON format to a readable format.
 
     """
 
     Mapeo = {
-        # Metadatos.
+        # Metadata.
         'id': 'ID',
         'fase_0.url_params.PROLIFIC_PID': 'Prolific_PID',
         'fase_0.url_params.STUDY_ID': 'Study_ID',
         'fase_0.url_params.SESSION_ID': 'Session_ID',
 
-        # Caracterización personal.
+        # Personal characterization.
         'fase_1.caracterizacion_personal.genero': 'Genero',
         'fase_1.caracterizacion_personal.edad': 'Edad',
         'fase_1.caracterizacion_personal.nacionalidad': 'Nacionalidad',
@@ -522,7 +518,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             'Inmueble_Residencia'
         ),
 
-        # Caracterización política.
+        # Political characterization.
         'fase_1.caracterizacion_politica.voto_2019': 'Voto_2019',
         'fase_1.caracterizacion_politica.voto_PASO_2023': (
             'Voto_PASO_2023'
@@ -544,7 +540,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             'Autopercepcion_Per_Antiper'
         ),
 
-        # Cercanía a candidatos.
+        # Closeness to candidates.
         'fase_1.caracterizacion_politica.cercania_Sergio_MassaSergio Massa': (
             'Cercania_Massa'
         ),
@@ -561,7 +557,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             'Cercania_Schiaretti'
         ),
 
-        # Medios y redes sociales.
+        # Media and social networks.
         'fase_1.caracterizacion_medios_comunicacion.medios_informacion': (
             'Medios_Informacion'
         ),
@@ -578,7 +574,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             'Influencia_Prensa'
         ),
 
-        # Clima electoral.
+        # Electoral climate.
         'fase_2.caracterizacion_electoral.ece_item_1': 'ECE_Item_1',
         'fase_2.caracterizacion_electoral.ece_item_2': 'ECE_Item_2',
         'fase_2.caracterizacion_electoral.ece_item_3': 'ECE_Item_3',
@@ -587,7 +583,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
         'fase_2.caracterizacion_electoral.ece_item_6': 'ECE_Item_6',
         'fase_2.caracterizacion_electoral.ece_item_7': 'ECE_Item_7',
 
-        # Caracterización de candidatos.
+        # Candidate characterization.
         'fase_2.caracterizacion_candidatos.Sergio Massa.cdc_0': (
             'CDC_Massa_0'
         ),
@@ -634,7 +630,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             'CDC_Bregman_Tiempo'
         ),
 
-        # Fase 4 - Cuestionario final.
+        # Phase 4 - Final questionnaire.
         'fase_4.sentimiento_fase_final': 'Sentimiento_Fase_Final',
         'fase_4.evento_estresante': 'Evento_Estresante',
         'fase_4.sabia_del_experimento': 'Sabia_Del_Experimento',
@@ -651,7 +647,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
         'fase_4.sueño_noche_anterior': 'Sueno_Noche_Anterior',
     }
 
-    # IP Items sin asociar (20 ítems × Respuesta + Tiempo).
+    # IP Items without association (20 items x Response + Time).
     Numeros_IP = [
         3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 19, 20, 22, 23, 24, 25,
         27, 28, 29, 30
@@ -665,8 +661,8 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
             f'IP_Item_{Numero}_Tiempo'
         )
 
-    # IP Items asociados (20 ítems × 2 direcciones × Respuesta +
-    # Candidato + Tiempo).
+    # Associated IP Items (20 items x 2 directions x Response +
+    # Candidate + Time).
     for Numero in Numeros_IP:
         for Direccion in ['Izq', 'Der']:
             Mapeo[
@@ -688,7 +684,7 @@ def Obtener_Mapeo_Nombres_Columnas() -> Dict[str, str]:
 
 
 # ============================================================================
-# PIPELINE PRINCIPAL DE PROCESAMIENTO
+# MAIN PROCESSING PIPELINE
 # ============================================================================
 
 def Procesar_Datos_Completo(
@@ -697,15 +693,15 @@ def Procesar_Datos_Completo(
 ) -> Dict[str, pd.DataFrame]:
 
     """
-    Pipeline completo de procesamiento de datos del experimento.
-    Combina los notebooks 1-19 en un único flujo de transformación.
+    Complete data processing pipeline for the experiment.
+    Combines notebooks 1-19 into a single transformation flow.
 
-    Parámetros:
-    - Ruta_Datos_Crudos: Carpeta donde están los archivos CSV crudos.
-    - Ruta_Salida: Carpeta donde se guardarán los Excel finales.
+    Parameters:
+    - Ruta_Datos_Crudos: Folder where the raw CSV files are located.
+    - Ruta_Salida: Folder where the final Excel files will be saved.
 
-    Retorna:
-    - Diccionario con DataFrames procesados {'Generales': df,
+    Returns:
+    - Dictionary with processed DataFrames {'Generales': df,
       'Ballotage': df}.
 
     """
@@ -716,7 +712,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # Diccionario para rastrear exclusiones durante el procesamiento.
+    # Dictionary to track exclusions during processing.
     # ========================================================================
     Registro_Exclusiones = {
         'Generales': {
@@ -734,12 +730,12 @@ def Procesar_Datos_Completo(
     }
 
     # ========================================================================
-    # 1: Armar databases de datos crudos
+    # 1: Build databases from raw data
     # ========================================================================
     print("PASO 1: Cargando datos crudos...")
     print("-"*70)
 
-    # Cargar archivos de Generales.
+    # Load General files.
     Archivos_Generales = [
         f"Generales {i}.csv" for i in range(1, 6)
     ]
@@ -757,7 +753,7 @@ def Procesar_Datos_Completo(
     Df_Generales = pd.concat(Dfs_Generales, ignore_index=True)
     print(f"\n  Total Generales: {len(Df_Generales)} filas")
 
-    # Cargar archivos de Ballotage.
+    # Load Ballotage files.
     Archivos_Ballotage = [
         f"Ballotage {i}.csv" for i in range(1, 3)
     ]
@@ -779,7 +775,7 @@ def Procesar_Datos_Completo(
     Dataframes_Procesados = [Df_Generales, Df_Ballotage]
 
     # ========================================================================
-    # 1.1: Variables de orden de ítems sin asociar
+    # 1.1: Order variables for unassociated items
     # ========================================================================
     print("PASO 1.1: Creando variables de orden de ítems...")
     print("-"*70)
@@ -790,10 +786,10 @@ def Procesar_Datos_Completo(
 
         Filas_Iniciales = len(df)
 
-        # Filtrar solo columnas necesarias.
+        # Filter only necessary columns.
         df = df[['id', 'results']].copy()
 
-        # Eliminar filas con results nulos.
+        # Remove rows with null results.
         df = df[df['results'].notna()].reset_index(drop=True)
 
         Filas_Validas = len(df)
@@ -806,7 +802,7 @@ def Procesar_Datos_Completo(
         df = Crear_Variables_De_Orden_IP_Items_Asociados(df)
         df = Crear_Primeros_IP_Items_Asociados(df, 3)
 
-        # Conservar solo columnas de interés.
+        # Keep only columns of interest.
         df = df[[
             'id', 'results',
             'Orden_IP_Items', 'Ultimo_IP_Item',
@@ -820,7 +816,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 2: Formatear databases
+    # 2: Format databases
     # ========================================================================
     print("PASO 2: Formateando databases...")
     print("-"*70)
@@ -832,7 +828,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Guardar columnas de orden antes de procesar results.
+        # Save order columns before processing results.
         Columnas_Orden = df[[
             'id',
             'Orden_IP_Items',
@@ -842,20 +838,20 @@ def Procesar_Datos_Completo(
             'Primeros_IP_Items_Asociados'
         ]].copy()
 
-        # Renombrar 'id' a 'ID' en columnas de orden.
+        # Rename 'id' to 'ID' in order columns.
         Columnas_Orden = Columnas_Orden.rename(columns={'id': 'ID'})
 
-        # Procesar columna results.
+        # Process results column.
         df_Expandido = Procesar_Columna_Results(df)
 
-        # Renombrar columnas según mapeo.
+        # Rename columns according to mapping.
         df_Expandido = df_Expandido.rename(columns=Mapeo_Nombres)
 
-        # Convertir ID a int.
+        # Convert ID to int.
         df_Expandido['ID'] = df_Expandido['ID'].astype(int)
         Columnas_Orden['ID'] = Columnas_Orden['ID'].astype(int)
 
-        # Hacer merge por ID (igual que el notebook).
+        # Merge by ID (same as the notebook).
         df_Final = pd.merge(
             df_Expandido,
             Columnas_Orden,
@@ -869,13 +865,13 @@ def Procesar_Datos_Completo(
         )
         Dfs_Finales.append(df_Final)
 
-        # Registrar N inicial para el tracking de exclusiones.
+        # Register initial N for exclusion tracking.
         Registro_Exclusiones[Nombre]['Total_N_Inicial'] = len(df_Final)
 
     print()
 
     # ========================================================================
-    # 3: Índice de positividad
+    # 3: Positivity index
     # ========================================================================
     print("PASO 3: Calculando índice de positividad...")
     print("-"*70)
@@ -884,7 +880,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Convertir columnas ECE a numérico.
+        # Convert ECE columns to numeric.
         Columnas_ECE = [
             'ECE_Item_1', 'ECE_Item_2', 'ECE_Item_3', 'ECE_Item_4',
             'ECE_Item_5', 'ECE_Item_6', 'ECE_Item_7'
@@ -893,12 +889,12 @@ def Procesar_Datos_Completo(
         for Columna in Columnas_ECE:
             df[Columna] = pd.to_numeric(df[Columna])
 
-        # Invertir ECE_Item_5 (escala 1-5 → 5-1).
+        # Reverse ECE_Item_5 (scale 1-5 -> 5-1).
         df['ECE_Item_5_Negativo'] = df['ECE_Item_5'].map({
             1: 5, 2: 4, 3: 3, 4: 2, 5: 1
         })
 
-        # Calcular suma de 7 ítems ECE.
+        # Calculate sum of 7 ECE items.
         Columnas_ECE_Con_Negativo = [
             'ECE_Item_1', 'ECE_Item_2', 'ECE_Item_3', 'ECE_Item_4',
             'ECE_Item_5_Negativo', 'ECE_Item_6', 'ECE_Item_7'
@@ -921,7 +917,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 4: Categorías de candidatos
+    # 4: Candidate categories
     # ========================================================================
     print("PASO 4: Asignando categorías electorales...")
     print("-"*70)
@@ -959,7 +955,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 5: Relleno de medianas de IP no asociados
+    # 5: Median imputation for unassociated IP
     # ========================================================================
     print("PASO 5: Rellenando valores faltantes en IP Items...")
     print("-"*70)
@@ -973,7 +969,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Paso 1: Guardar valores originales (solo respuestas).
+        # Step 1: Save original values (responses only).
         for Numero in Numeros_IP:
             Col_Respuesta = f'IP_Item_{Numero}_Respuesta'
             if Col_Respuesta in df.columns:
@@ -981,7 +977,7 @@ def Procesar_Datos_Completo(
                 if Columna_Original not in df.columns:
                     df[Columna_Original] = df[Col_Respuesta]
 
-        # Paso 2: Convertir todas las columnas a numérico.
+        # Step 2: Convert all columns to numeric.
         for Numero in Numeros_IP:
             Col_Respuesta = f'IP_Item_{Numero}_Respuesta'
             Col_Tiempo = f'IP_Item_{Numero}_Tiempo'
@@ -995,14 +991,14 @@ def Procesar_Datos_Completo(
                     df[Col_Tiempo], errors='coerce'
                 )
 
-        # Contar faltantes antes de imputar.
+        # Count missing values before imputation.
         Total_Faltantes_Inicial = sum(
             df[f'IP_Item_{Num}_Respuesta'].isna().sum()
             for Num in Numeros_IP
             if f'IP_Item_{Num}_Respuesta' in df.columns
         )
 
-        # Paso 3: Imputar con mediana por categoría.
+        # Step 3: Impute with median by category.
         for Numero in Numeros_IP:
             Col_Respuesta = f'IP_Item_{Numero}_Respuesta'
             Col_Tiempo = f'IP_Item_{Numero}_Tiempo'
@@ -1035,7 +1031,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 6: Relleno de medianas de IP asociados
+    # 6: Median imputation for associated IP
     # ========================================================================
     print("PASO 6: Rellenando IP Items asociados faltantes...")
     print("-"*70)
@@ -1051,7 +1047,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 7: Índice de progresismo
+    # 7: Progressivism index
     # ========================================================================
     print("PASO 7: Calculando índice de progresismo...")
     print("-"*70)
@@ -1062,7 +1058,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Construir listas de nombres de columnas.
+        # Build column name lists.
         Columnas_Progresistas = [
             f'IP_Item_{Num}_Respuesta' for Num in Items_Progresistas
         ]
@@ -1070,19 +1066,19 @@ def Procesar_Datos_Completo(
             f'IP_Item_{Num}_Tiempo' for Num in Items_Progresistas
         ]
 
-        # Invertir ítems progresistas (1→5, 5→1).
+        # Reverse progressive items (1->5, 5->1).
         df[Columnas_Progresistas] = df[Columnas_Progresistas].apply(
             lambda x: 6 - pd.to_numeric(x, errors='coerce')
         )
 
-        # Convertir a float.
+        # Convert to float.
         df[Columnas_Progresistas] = df[Columnas_Progresistas].astype(float)
         df[Columnas_Tiempos] = df[Columnas_Tiempos].astype(float)
 
-        # Calcular Indice de progresismo.
+        # Calculate Progressivism Index.
         df['Indice_Progresismo'] = df[Columnas_Progresistas].mean(axis=1)
 
-        # Calcular Indice de tiempo en items de progresismo.
+        # Calculate Time Index for progressivism items.
         df['Indice_Progresismo_Tiempo'] = df[Columnas_Tiempos].mean(axis=1)
 
         Media = df['Indice_Progresismo'].mean()
@@ -1096,7 +1092,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 8: Índice de conservadurismo
+    # 8: Conservatism index
     # ========================================================================
     print("PASO 8: Calculando índice de conservadurismo...")
     print("-"*70)
@@ -1107,7 +1103,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Construir listas de nombres de columnas.
+        # Build column name lists.
         Columnas_Conservadores = [
             f'IP_Item_{Num}_Respuesta' for Num in Items_Conservadores
         ]
@@ -1115,19 +1111,19 @@ def Procesar_Datos_Completo(
             f'IP_Item_{Num}_Tiempo' for Num in Items_Conservadores
         ]
 
-        # Invertir ítems conservadores.
+        # Reverse conservative items.
         df[Columnas_Conservadores] = df[Columnas_Conservadores].apply(
             lambda x: 6 - pd.to_numeric(x, errors='coerce')
         )
 
-        # Convertir a float.
+        # Convert to float.
         df[Columnas_Conservadores] = df[Columnas_Conservadores].astype(float)
         df[Columnas_Tiempos] = df[Columnas_Tiempos].astype(float)
 
-        # Calcular Indice de conservadurismo.
+        # Calculate Conservatism Index.
         df['Indice_Conservadurismo'] = df[Columnas_Conservadores].mean(axis=1)
 
-        # Calcular Indice de tiempo en items de conservadurismo.
+        # Calculate Time Index for conservatism items.
         df['Indice_Conservadurismo_Tiempo'] = df[Columnas_Tiempos].mean(axis=1)
 
         Media = df['Indice_Conservadurismo'].mean()
@@ -1141,7 +1137,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 9: Promedios de tiempos de respuesta
+    # 9: Response time averages
     # ========================================================================
     print("PASO 9: Calculando promedios de tiempos de respuesta...")
     print("-"*70)
@@ -1150,7 +1146,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Tiempos progresistas.
+        # Progressive times.
         Columnas_Pro_Izq = [
             f'IP_Item_{Num}_Izq_Tiempo' for Num in Items_Progresistas
         ]
@@ -1169,7 +1165,7 @@ def Procesar_Datos_Completo(
             df['Tiempos_Respuesta_Promedio_Pro_Der']
         ) / 2
 
-        # Tiempos conservadores.
+        # Conservative times.
         Columnas_Con_Izq = [
             f'IP_Item_{Num}_Izq_Tiempo' for Num in Items_Conservadores
         ]
@@ -1199,7 +1195,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 10: Redes sociales
+    # 10: Social networks
     # ========================================================================
     print("PASO 10: Procesando redes sociales...")
     print("-"*70)
@@ -1213,23 +1209,23 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Normalizar columna Red_Social.
+        # Normalize Red_Social column.
         df['Red_Social'] = df['Red_Social'].apply(
             lambda x: unidecode(str(x)).lower() if pd.notna(x) else x
         )
 
-        # Crear columna binaria para cada red social.
+        # Create binary column for each social network.
         for Red in Redes_Sociales:
             Nombre_Columna = f"{Red}"
             df[Nombre_Columna] = df['Red_Social'].str.contains(
                 Red, case=False, na=False
             ).astype(int)
 
-        # Renombrar columnas a nombres capitalizados.
+        # Rename columns to capitalized names.
         Mapeo_Redes = {Red: Red.capitalize() for Red in Redes_Sociales}
         df.rename(columns=Mapeo_Redes, inplace=True)
 
-        # Calcular promedio de redes por usuario.
+        # Calculate average of networks per user.
         Redes_Capitalizadas = [Red.capitalize() for Red in Redes_Sociales]
         Promedio_Redes = sum(
             df[Red].sum() for Red in Redes_Capitalizadas
@@ -1243,7 +1239,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 11: Medios
+    # 11: Media outlets
     # ========================================================================
     print("PASO 11: Procesando medios de prensa...")
     print("-"*70)
@@ -1268,31 +1264,31 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Normalizar columna Medios_Prensa.
+        # Normalize Medios_Prensa column.
         df['Medios_Prensa'] = df['Medios_Prensa'].apply(
             lambda x: unidecode(str(x)).lower() if pd.notna(x) else x
         )
 
-        # Crear columna binaria para cada medio.
+        # Create binary column for each media outlet.
         for Medio in Medios_Prensa:
             Nombre_Columna = f"{Medio}"
             df[Nombre_Columna] = df['Medios_Prensa'].str.contains(
                 Medio, case=False, na=False
             ).astype(int)
 
-        # Renombrar columnas a Pascal_Snake_Case.
+        # Rename columns to Pascal_Snake_Case.
         Mapeo_Medios = {
             Medio: Medio.title().replace(' ', '_')
             for Medio in Medios_Prensa
         }
         df.rename(columns=Mapeo_Medios, inplace=True)
 
-        # Renombrar especialmente la columna "Ninguno".
+        # Specifically rename the "Ninguno" column.
         df.rename(
             columns={'Ninguno': 'Medios_Prensa_Ninguno'}, inplace=True
         )
 
-        # Calcular promedio de medios por usuario (sin Ninguno).
+        # Calculate average of media outlets per user (without Ninguno).
         Medios_Pascal = [
             Medio.title().replace(' ', '_') for Medio in Medios_Prensa
             if Medio != 'ninguno'
@@ -1309,7 +1305,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 12: Agrupamientos de variables socioeconómicas
+    # 12: Socioeconomic variable groupings
     # ========================================================================
     print(
         "PASO 12: Agrupando variables socioeconómicas y demográficas..."
@@ -1593,12 +1589,12 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Región geográfica.
+        # Geographic region.
         df['Region'] = df['Provincia'].str.strip().str.lower().map(
             Region
         ).fillna('Sin region')
 
-        # Edad agrupada.
+        # Grouped age.
         Rangos = [0, 18, 35, 50, 70, float('inf')]
         Etiquetas = ['0_18', '19_35', '36_50', '51_70', '71_100']
         df['Edad'] = pd.to_numeric(df['Edad'], errors='coerce')
@@ -1606,7 +1602,7 @@ def Procesar_Datos_Completo(
             df['Edad'], bins=Rangos, labels=Etiquetas, right=True
         )
 
-        # Autopercepciones agrupadas.
+        # Grouped self-perceptions.
         df['Autopercepcion_Izq_Der'] = pd.to_numeric(
             df['Autopercepcion_Izq_Der'], errors='coerce'
         )
@@ -1628,7 +1624,7 @@ def Procesar_Datos_Completo(
             'Autopercepcion_Per_Antiper'
         ].map(APA).fillna('Otro')
 
-        # Aplicar mapeos de variables.
+        # Apply variable mappings.
         if 'Genero' in df.columns:
             df['Genero'] = df['Genero'].map(
                 Mapeo_Genero
@@ -1689,7 +1685,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 13: Crear dummies
+    # 13: Create dummies
     # ========================================================================
     print("PASO 13: Creando variables dummy...")
     print("-"*70)
@@ -1719,20 +1715,20 @@ def Procesar_Datos_Completo(
 
         Columnas_Iniciales = len(df.columns)
 
-        # Verificar qué variables existen en este DataFrame.
+        # Check which variables exist in this DataFrame.
         Variables_Existentes = [
             var for var in Variables_A_Dummear if var in df.columns
         ]
 
-        # Crear dummies para las variables existentes.
+        # Create dummies for existing variables.
         if Variables_Existentes:
             for Variable in Variables_Existentes:
-                # Crear variables dummy.
+                # Create dummy variables.
                 Dummies = pd.get_dummies(
                     df[Variable], prefix=Variable, dummy_na=False
                 )
 
-                # Agregar las columnas dummy al DataFrame.
+                # Add dummy columns to the DataFrame.
                 df = pd.concat([df, Dummies], axis=1)
 
         Columnas_Finales = len(df.columns)
@@ -1743,35 +1739,35 @@ def Procesar_Datos_Completo(
             f"({Columnas_Finales} columnas totales)"
         )
 
-        # Actualizar el DataFrame en la lista.
+        # Update the DataFrame in the list.
         Dfs_Finales[i] = df
 
     print()
 
     # ========================================================================
-    # 14: Ordenamiento de columnas
+    # 14: Column ordering
     # ========================================================================
     print("PASO 14: Ordenando columnas...")
     print("-"*70)
 
-    # Lista explícita de orden de columnas (igual que notebook 14).
+    # Explicit column order list (same as notebook 14).
     Orden_Columnas = [
         'ID',
-        # Demográficos - Edad.
+        # Demographics - Age.
         'Edad', 'Edad_Agrupada', 'Edad_Agrupada_0_18',
         'Edad_Agrupada_19_35', 'Edad_Agrupada_36_50',
         'Edad_Agrupada_51_70', 'Edad_Agrupada_71_100',
-        # Género.
+        # Gender.
         'Genero', 'Genero_Femenino', 'Genero_Masculino', 'Genero_Otro',
-        # Estrato social.
+        # Social stratum.
         'Estrato_Social', 'Estrato_Social_Alto', 'Estrato_Social_Bajo',
         'Estrato_Social_Bajo_Medio', 'Estrato_Social_Medio',
         'Estrato_Social_Medio_Alto',
-        # Nivel educativo.
+        # Educational level.
         'Nivel_Educativo', 'Nivel_Educativo_Primario',
         'Nivel_Educativo_Secundario', 'Nivel_Educativo_Terciario',
         'Nivel_Educativo_Universitario', 'Nivel_Educativo_Posgrado',
-        # Fuente de ingreso.
+        # Income source.
         'Fuente_Ingreso', 'Fuente_Ingreso_Trabajo',
         'Fuente_Ingreso_Ama_De_Casa', 'Fuente_Ingreso_Asistencia_Social',
         'Fuente_Ingreso_Beca', 'Fuente_Ingreso_Desocupado',
@@ -1779,26 +1775,26 @@ def Procesar_Datos_Completo(
         'Fuente_Ingreso_Jubilacion', 'Fuente_Ingreso_Pension',
         'Fuente_Ingreso_Renta', 'Fuente_Ingreso_Sustento_Familiar',
         'Fuente_Ingreso_Otro',
-        # Inmueble de residencia.
+        # Residence property.
         'Inmueble_Residencia', 'Inmueble_Residencia_Alquilo',
         'Inmueble_Residencia_Cedido', 'Inmueble_Residencia_Familiar',
         'Inmueble_Residencia_Prestado', 'Inmueble_Residencia_Propio',
         'Inmueble_Residencia_Otro',
-        # Residencia.
+        # Residence.
         'Provincia', 'Region', 'Region_BsAs', 'Region_CABA',
         'Region_Centro', 'Region_Cuyo', 'Region_Norte', 'Region_Patagonia',
-        # Datos demográficos básicos.
+        # Basic demographic data.
         'Nacionalidad',
-        # Electorales - Voto 2019.
+        # Electoral - Vote 2019.
         'Voto_2019', 'Voto_2019_Alberto_Fernandez', 'Voto_2019_JL_Espert',
         'Voto_2019_J_Gomez_Centurion', 'Voto_2019_Mauricio_Macri',
         'Voto_2019_Nicolas_Del_Caño', 'Voto_2019_Roberto_Lavagna',
         'Voto_2019_Voto_En_Blanco', 'Voto_2019_No_Vote',
         'Voto_2019_Prefiero_No_Decirlo',
-        # Voto PASO 2023.
+        # PASO 2023 Vote.
         'Voto_PASO_2023', 'Voto_PASO_2023_Si', 'Voto_PASO_2023_No',
         'Voto_PASO_2023_Prefiero_No_Decirlo',
-        # Candidato PASO 2023.
+        # PASO 2023 Candidate.
         'Candidato_PASO_2023', 'Candidato_PASO_2023_Sergio_Massa',
         'Candidato_PASO_2023_Javier_Milei', 'Candidato_PASO_2023_Myriam_Bregman',
         'Candidato_PASO_2023_Horacio_Rodriguez_Larreta',
@@ -1811,18 +1807,18 @@ def Procesar_Datos_Completo(
         'Candidato_PASO_2023_Nazareno_Etchepare',
         'Candidato_PASO_2023_Santiago_Cuneo', 'Candidato_PASO_2023_Blanco',
         'Candidato_PASO_2023_Prefiero_No_Decirlo', 'Candidato_PASO_2023_No_Aplica',
-        # Categoría PASO 2023.
+        # PASO 2023 Category.
         'Categoria_PASO_2023', 'Categoria_PASO_2023_Blank',
         'Categoria_PASO_2023_Centre', 'Categoria_PASO_2023_Left_Wing',
         'Categoria_PASO_2023_Moderate_Right_A', 'Categoria_PASO_2023_Moderate_Right_B',
         'Categoria_PASO_2023_Progressivism', 'Categoria_PASO_2023_Right_Wing_Libertarian',
         'Categoria_PASO_2023_Other', 'Categoria_PASO_2023_No_Response',
         'Categoria_PASO_2023_No_Apply',
-        # Votará 2023.
+        # Will vote 2023.
         'Votara_2023', 'Votara_2023_Si', 'Votara_2023_No', 'Votara_2023_No_Sabe',
-        # Políticos - Afiliación política.
+        # Political - Political affiliation.
         'Afiliacion_Politica', 'Afiliacion_Politica_Si', 'Afiliacion_Politica_No',
-        # Autopercepciones.
+        # Self-perceptions.
         'Autopercepcion_Izq_Der', 'Autopercepcion_Izq_Der_Agrupada',
         'Autopercepcion_Izq_Der_Agrupada_A', 'Autopercepcion_Izq_Der_Agrupada_B',
         'Autopercepcion_Izq_Der_Agrupada_C',
@@ -1833,28 +1829,28 @@ def Procesar_Datos_Completo(
         'Autopercepcion_Per_Antiper_Agrupada_A',
         'Autopercepcion_Per_Antiper_Agrupada_B',
         'Autopercepcion_Per_Antiper_Agrupada_C',
-        # Cercanía con candidatos.
+        # Closeness with candidates.
         'Cercania_Massa', 'Cercania_Bullrich', 'Cercania_Bregman',
         'Cercania_Milei', 'Cercania_Schiaretti',
-        # Redes sociales.
+        # Social networks.
         'Influencia_Redes', 'Red_Social',
         'Twitter', 'Facebook', 'Instagram', 'Threads', 'Tiktok',
         'Youtube', 'Whatsapp', 'Telegram',
-        # Medios de prensa.
+        # Press media.
         'Influencia_Prensa', 'Medios_Informacion', 'Medios_Prensa',
         'Ambito_Financiero', 'Prensa_Obrera', 'Diario_Universal', 'Popular',
         'Izquierda_Diario', 'Clarin', 'Perfil', 'Pagina_12', 'Infobae',
         'El_Cronista', 'La_Nacion', 'Tiempo_Argentino', 'Medios_Prensa_Ninguno',
-        # Clima electoral - ECE.
+        # Electoral climate - ECE.
         'ECE_Item_1', 'ECE_Item_2', 'ECE_Item_3', 'ECE_Item_4',
         'ECE_Item_5', 'ECE_Item_6', 'ECE_Item_7', 'ECE_Item_5_Negativo',
-        # Caracterización de candidatos - CDC.
+        # Candidate characterization - CDC.
         'CDC_Massa_0', 'CDC_Massa_1', 'CDC_Massa_Tiempo',
         'CDC_Bullrich_0', 'CDC_Bullrich_1', 'CDC_Bullrich_Tiempo',
         'CDC_Schiaretti_0', 'CDC_Schiaretti_1', 'CDC_Schiaretti_Tiempo',
         'CDC_Milei_0', 'CDC_Milei_1', 'CDC_Milei_Tiempo',
         'CDC_Bregman_0', 'CDC_Bregman_1', 'CDC_Bregman_Tiempo',
-        # IP Items.
+        # IP Items (kept as is - standard abbreviation).
         'IP_Item_3_Respuesta', 'IP_Item_3_Tiempo',
         'IP_Item_3_Izq_Candidato', 'IP_Item_3_Izq_Respuesta', 'IP_Item_3_Izq_Tiempo',
         'IP_Item_3_Der_Candidato', 'IP_Item_3_Der_Respuesta', 'IP_Item_3_Der_Tiempo',
@@ -1915,27 +1911,27 @@ def Procesar_Datos_Completo(
         'IP_Item_30_Respuesta', 'IP_Item_30_Tiempo',
         'IP_Item_30_Izq_Candidato', 'IP_Item_30_Izq_Respuesta', 'IP_Item_30_Izq_Tiempo',
         'IP_Item_30_Der_Candidato', 'IP_Item_30_Der_Respuesta', 'IP_Item_30_Der_Tiempo',
-        # Orden de IP Items.
+        # IP Items order.
         'Orden_IP_Items', 'Ultimo_IP_Item', 'Orden_IP_Items_Asociados',
         'Primeros_IP_Items_Asociados', 'Ultimo_IP_Item_Asociado',
-        # Variables calculadas.
+        # Calculated variables.
         'Indice_Positividad', 'Indice_Progresismo', 'Indice_Progresismo_Tiempo',
         'Indice_Conservadurismo', 'Indice_Conservadurismo_Tiempo',
-        # Tiempos de respuesta promedio.
+        # Average response times.
         'Tiempos_Respuesta_Promedio_Pro_Izq', 'Tiempos_Respuesta_Promedio_Pro_Der',
         'Tiempos_Respuesta_Promedio_Con_Izq', 'Tiempos_Respuesta_Promedio_Con_Der',
         'Tiempos_Respuesta_Promedio_Pro', 'Tiempos_Respuesta_Promedio_Con',
-        # Control.
+        # Control variables.
         'Sentimiento_Fase_Final', 'Evento_Estresante', 'Sabia_Del_Experimento',
-        # Uso de sustancias.
+        # Substance use.
         'Usa_Sustancias', 'Tabaco', 'Alcohol', 'Marihuana',
         'Drogas_Recreativas', 'Cual_Droga_Recreativa',
         'Medicamentos', 'Cual_Medicamento', 'Otras_Sustancias',
-        # Sueño.
+        # Sleep.
         'Horas_Sueno_Promedio', 'Sueno_Noche_Anterior'
     ]
 
-    # Mapeos para renombrar columnas.
+    # Mappings to rename columns.
     Mapeo_Redes_Sociales = {
         'Twitter': 'Red_Social_Twitter',
         'Facebook': 'Red_Social_Facebook',
@@ -1966,18 +1962,18 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # Filtrar solo las columnas que existen en este DataFrame.
+        # Filter only the columns that exist in this DataFrame.
         Columnas_Existentes = [
             Columna for Columna in Orden_Columnas if Columna in df.columns
         ]
 
-        # Reordenar el DataFrame.
+        # Reorder the DataFrame.
         df = df[Columnas_Existentes]
 
-        # Renombrar redes sociales.
+        # Rename social networks.
         df.rename(columns=Mapeo_Redes_Sociales, inplace=True)
 
-        # Renombrar medios de prensa.
+        # Rename press media.
         df.rename(columns=Mapeo_Medios_Prensa, inplace=True)
 
         Dfs_Finales[i] = df
@@ -1989,7 +1985,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 14.5: Analisis de warm-up
+    # 14.5: Warm-up analysis
     # ========================================================================
     print("PASO 14.5: Analisis de warm-up...")
     print("-"*70)
@@ -2248,7 +2244,7 @@ def Procesar_Datos_Completo(
     )
     os.makedirs(Ruta_Tablas, exist_ok=True)
 
-    # Exportar analisis de warm-up en un solo archivo con dos hojas.
+    # Export warm-up analysis in a single file with two sheets.
     Ruta_Archivo_Warmup = os.path.join(
         Ruta_Tablas, 'Warm_Up_Analysis.xlsx'
     )
@@ -2262,7 +2258,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 15: Eliminación de primeros ítems
+    # 15: Remove first items
     # ========================================================================
     print(
         "PASO 15: Eliminando primeros 3 ítems asociados (warm-up)..."
@@ -2284,7 +2280,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 16: Eliminación de outliers por categoría
+    # 16: Remove outliers by category
     # ========================================================================
     print("PASO 16: Eliminando categoría 'Other'...")
     print("-"*70)
@@ -2300,7 +2296,7 @@ def Procesar_Datos_Completo(
         Filas_Finales = len(df)
         Eliminados = Filas_Iniciales - Filas_Finales
 
-        # Registrar exclusión por candidatos con pocos n.
+        # Register exclusion for candidates with few n.
         Registro_Exclusiones[Nombre][
             'Exclusion_2_Candidatos_Pocos_N'
         ] = Eliminados
@@ -2315,7 +2311,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 16.5: Comparacion Moderate Right A vs B
+    # 16.5: Comparison Moderate Right A vs B
     # ========================================================================
     print('PASO 16.5: Comparacion Moderate Right A vs B...')
     print('-'*70)
@@ -2448,7 +2444,7 @@ def Procesar_Datos_Completo(
     )
     os.makedirs(Ruta_Tablas, exist_ok=True)
 
-    # Exportar comparacion en un solo archivo con dos hojas.
+    # Export comparison in a single file with two sheets.
     Ruta_Archivo_Comparacion = os.path.join(
         Ruta_Tablas, 'Comparison_Moderate_Right_A_vs_B.xlsx'
     )
@@ -2471,14 +2467,14 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 17: Eliminación de outliers por tiempos
+    # 17: Remove outliers by response times
     # ========================================================================
     print(
         "PASO 17: Eliminando outliers por tiempos de respuesta..."
     )
     print("-"*70)
 
-    # Crear lista de todas las columnas de tiempo.
+    # Create list of all time columns.
     Columnas_Tiempo = []
 
     for Numero in Numeros_IP:
@@ -2499,7 +2495,7 @@ def Procesar_Datos_Completo(
         Filas_Finales = len(df)
         Eliminados_Tiempo = Filas_Iniciales - Filas_Finales
 
-        # Registrar exclusión por outliers de tiempo.
+        # Register exclusion for time outliers.
         Registro_Exclusiones[Nombre][
             'Exclusion_1_Outliers_Tiempo'
         ] = Eliminados_Tiempo
@@ -2514,7 +2510,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 18: Columnas de CO y CT
+    # 18: CO and CT columns
     # ========================================================================
     print("PASO 18: Creando columnas de CO y CT por ítem...")
     print("-"*70)
@@ -2552,7 +2548,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 19: CO y CT agregados
+    # 19: Aggregated CO and CT
     # ========================================================================
     print("PASO 19: Creando variables agregadas de CO y CT...")
     print("-"*70)
@@ -2561,7 +2557,7 @@ def Procesar_Datos_Completo(
         Nombre = "Generales" if i == 0 else "Ballotage"
         print(f"  Procesando {Nombre}...")
 
-        # CO agregados.
+        # Aggregated CO.
         Cols_CO_Pro_Izq = [
             f'CO_Item_{Num}_Izq' for Num in Items_Progresistas
         ]
@@ -2575,11 +2571,11 @@ def Procesar_Datos_Completo(
             f'CO_Item_{Num}_Der' for Num in Items_Conservadores
         ]
 
-        # CO_Pro y CO_Con se calculan sobre todas las columnas directamente.
+        # CO_Pro and CO_Con are calculated directly from all columns.
         Cols_CO_Pro = Cols_CO_Pro_Izq + Cols_CO_Pro_Der
         Cols_CO_Con = Cols_CO_Con_Izq + Cols_CO_Con_Der
 
-        # Variables de promedio (CO).
+        # Average variables (CO).
         df['CO_Pro'] = df[Cols_CO_Pro].mean(axis=1)
         df['CO_Pro_Izq'] = df[Cols_CO_Pro_Izq].mean(axis=1)
         df['CO_Pro_Der'] = df[Cols_CO_Pro_Der].mean(axis=1)
@@ -2587,13 +2583,13 @@ def Procesar_Datos_Completo(
         df['CO_Con_Izq'] = df[Cols_CO_Con_Izq].mean(axis=1)
         df['CO_Con_Der'] = df[Cols_CO_Con_Der].mean(axis=1)
 
-        # Variables de suma (CO) - Notebook 27.
+        # Sum variables (CO) - Notebook 27.
         df['Cambio_Op_Sum_Pro_Izq'] = df[Cols_CO_Pro_Izq].sum(axis=1)
         df['Cambio_Op_Sum_Pro_Der'] = df[Cols_CO_Pro_Der].sum(axis=1)
         df['Cambio_Op_Sum_Con_Izq'] = df[Cols_CO_Con_Izq].sum(axis=1)
         df['Cambio_Op_Sum_Con_Der'] = df[Cols_CO_Con_Der].sum(axis=1)
 
-        # CT agregados.
+        # Aggregated CT.
         Cols_CT_Pro_Izq = [
             f'CT_Item_{Num}_Izq' for Num in Items_Progresistas
         ]
@@ -2607,11 +2603,11 @@ def Procesar_Datos_Completo(
             f'CT_Item_{Num}_Der' for Num in Items_Conservadores
         ]
 
-        # CT_Pro y CT_Con se calculan sobre todas las columnas directamente.
+        # CT_Pro and CT_Con are calculated directly from all columns.
         Cols_CT_Pro = Cols_CT_Pro_Izq + Cols_CT_Pro_Der
         Cols_CT_Con = Cols_CT_Con_Izq + Cols_CT_Con_Der
 
-        # Variables de promedio (CT).
+        # Average variables (CT).
         df['CT_Pro'] = df[Cols_CT_Pro].mean(axis=1)
         df['CT_Pro_Izq'] = df[Cols_CT_Pro_Izq].mean(axis=1)
         df['CT_Pro_Der'] = df[Cols_CT_Pro_Der].mean(axis=1)
@@ -2619,13 +2615,13 @@ def Procesar_Datos_Completo(
         df['CT_Con_Izq'] = df[Cols_CT_Con_Izq].mean(axis=1)
         df['CT_Con_Der'] = df[Cols_CT_Con_Der].mean(axis=1)
 
-        # Variables de suma (CT) - Notebook 27.
+        # Sum variables (CT) - Notebook 27.
         df['Cambio_Tiempo_Sum_Pro_Izq'] = df[Cols_CT_Pro_Izq].sum(axis=1)
         df['Cambio_Tiempo_Sum_Pro_Der'] = df[Cols_CT_Pro_Der].sum(axis=1)
         df['Cambio_Tiempo_Sum_Con_Izq'] = df[Cols_CT_Con_Izq].sum(axis=1)
         df['Cambio_Tiempo_Sum_Con_Der'] = df[Cols_CT_Con_Der].sum(axis=1)
 
-        # Estadísticas.
+        # Statistics.
         CO_Pro_Media = df['CO_Pro'].mean()
         CO_Con_Media = df['CO_Con'].mean()
         CT_Pro_Media = df['CT_Pro'].mean()
@@ -2646,7 +2642,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # 20: CO y CT Congruente e Incongruente
+    # 20: Congruent and Incongruent CO and CT
     # ========================================================================
     print(
         "PASO 20: Creando variables de congruencia ideológica..."
@@ -2660,24 +2656,24 @@ def Procesar_Datos_Completo(
         # ====================================================================
         # CO CONGRUENTE
         # ====================================================================
-        # Congruente = Progresistas→Izq + Conservadores→Der.
+        # Congruent = Progressives->Left + Conservatives->Right.
 
-        # Contar ítems progresistas hacia izquierda.
+        # Count progressive items towards left.
         Cols_CO_Pro_Izq = [
             f'CO_Item_{Num}_Izq' for Num in Items_Progresistas
         ]
         N_Pro_Izq = df[Cols_CO_Pro_Izq].notna().sum(axis=1)
 
-        # Contar ítems conservadores hacia derecha.
+        # Count conservative items towards right.
         Cols_CO_Con_Der = [
             f'CO_Item_{Num}_Der' for Num in Items_Conservadores
         ]
         N_Con_Der = df[Cols_CO_Con_Der].notna().sum(axis=1)
 
-        # Total de ítems congruentes.
+        # Total congruent items.
         N_Congruente_CO = N_Pro_Izq + N_Con_Der
 
-        # Suma y promedio.
+        # Sum and average.
         Suma_Congruente_CO = (
             df['Cambio_Op_Sum_Pro_Izq'] +
             df['Cambio_Op_Sum_Con_Der']
@@ -2691,24 +2687,24 @@ def Procesar_Datos_Completo(
         # ====================================================================
         # CO INCONGRUENTE
         # ====================================================================
-        # Incongruente = Progresistas→Der + Conservadores→Izq.
+        # Incongruent = Progressives->Right + Conservatives->Left.
 
-        # Contar ítems progresistas hacia derecha.
+        # Count progressive items towards right.
         Cols_CO_Pro_Der = [
             f'CO_Item_{Num}_Der' for Num in Items_Progresistas
         ]
         N_Pro_Der = df[Cols_CO_Pro_Der].notna().sum(axis=1)
 
-        # Contar ítems conservadores hacia izquierda.
+        # Count conservative items towards left.
         Cols_CO_Con_Izq = [
             f'CO_Item_{Num}_Izq' for Num in Items_Conservadores
         ]
         N_Con_Izq = df[Cols_CO_Con_Izq].notna().sum(axis=1)
 
-        # Total de ítems incongruentes.
+        # Total incongruent items.
         N_Incongruente_CO = N_Pro_Der + N_Con_Izq
 
-        # Suma y promedio.
+        # Sum and average.
         Suma_Incongruente_CO = (
             df['Cambio_Op_Sum_Pro_Der'] +
             df['Cambio_Op_Sum_Con_Izq']
@@ -2723,22 +2719,22 @@ def Procesar_Datos_Completo(
         # CT CONGRUENTE
         # ====================================================================
 
-        # Contar ítems progresistas hacia izquierda (CT).
+        # Count progressive items towards left (CT).
         Cols_CT_Pro_Izq = [
             f'CT_Item_{Num}_Izq' for Num in Items_Progresistas
         ]
         N_CT_Pro_Izq = df[Cols_CT_Pro_Izq].notna().sum(axis=1)
 
-        # Contar ítems conservadores hacia derecha (CT).
+        # Count conservative items towards right (CT).
         Cols_CT_Con_Der = [
             f'CT_Item_{Num}_Der' for Num in Items_Conservadores
         ]
         N_CT_Con_Der = df[Cols_CT_Con_Der].notna().sum(axis=1)
 
-        # Total de ítems congruentes CT.
+        # Total congruent CT items.
         N_Congruente_CT = N_CT_Pro_Izq + N_CT_Con_Der
 
-        # Suma y promedio.
+        # Sum and average.
         Suma_Congruente_CT = (
             df['Cambio_Tiempo_Sum_Pro_Izq'] +
             df['Cambio_Tiempo_Sum_Con_Der']
@@ -2753,22 +2749,22 @@ def Procesar_Datos_Completo(
         # CT INCONGRUENTE
         # ====================================================================
 
-        # Contar ítems progresistas hacia derecha (CT).
+        # Count progressive items towards right (CT).
         Cols_CT_Pro_Der = [
             f'CT_Item_{Num}_Der' for Num in Items_Progresistas
         ]
         N_CT_Pro_Der = df[Cols_CT_Pro_Der].notna().sum(axis=1)
 
-        # Contar ítems conservadores hacia izquierda (CT).
+        # Count conservative items towards left (CT).
         Cols_CT_Con_Izq = [
             f'CT_Item_{Num}_Izq' for Num in Items_Conservadores
         ]
         N_CT_Con_Izq = df[Cols_CT_Con_Izq].notna().sum(axis=1)
 
-        # Total de ítems incongruentes CT.
+        # Total incongruent CT items.
         N_Incongruente_CT = N_CT_Pro_Der + N_CT_Con_Izq
 
-        # Suma y promedio.
+        # Sum and average.
         Suma_Incongruente_CT = (
             df['Cambio_Tiempo_Sum_Pro_Der'] +
             df['Cambio_Tiempo_Sum_Con_Izq']
@@ -2779,7 +2775,7 @@ def Procesar_Datos_Completo(
             np.nan
         )
 
-        # Estadísticas.
+        # Statistics.
         CO_Cong_Media = df['CO_Congruente'].mean()
         CO_Incong_Media = df['CO_Incongruente'].mean()
         CT_Cong_Media = df['CT_Congruente'].mean()
@@ -2800,7 +2796,7 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # EXPORTAR A EXCEL
+    # EXPORT TO EXCEL
     # ========================================================================
     print("PASO FINAL: Exportando bases de datos a Excel...")
     print("-"*70)
@@ -2822,19 +2818,19 @@ def Procesar_Datos_Completo(
         )
 
     # ========================================================================
-    # Registrar N final analizado.
+    # Register final N analyzed.
     # ========================================================================
     for i, df in enumerate(Dfs_Finales):
         Nombre = "Generales" if i == 0 else "Ballotage"
         Registro_Exclusiones[Nombre]['N_Final_Analizado'] = len(df)
 
     # ========================================================================
-    # Cálculo de potencia estadística.
+    # Statistical power calculation.
     # ========================================================================
     print("PASO POTENCIA: Calculando potencia estadística...")
     print("-"*70)
 
-    # Función para calcular potencia post-hoc.
+    # Function to calculate post-hoc power.
     def Calcular_Potencia_Post_Hoc(
         N: int,
         Tamano_Efecto: float,
@@ -2842,33 +2838,33 @@ def Procesar_Datos_Completo(
     ) -> float:
 
         """
-        Calcula la potencia estadística post-hoc para un
-        tamaño de muestra dado, usando aproximación normal.
+        Calculates post-hoc statistical power for a given
+        sample size, using normal approximation.
 
-        Parámetros:
-            N: Tamaño de la muestra.
-            Tamano_Efecto: Tamaño del efecto (d de Cohen).
-            Alfa: Nivel de significancia (default 0.05).
+        Parameters:
+            N: Sample size.
+            Tamano_Efecto: Effect size (Cohen's d).
+            Alfa: Significance level (default 0.05).
 
-        Retorna:
-            Potencia estadística (entre 0 y 1).
+        Returns:
+            Statistical power (between 0 and 1).
 
         """
 
         from scipy.stats import norm
 
-        # Valor crítico Z para alfa bilateral.
+        # Critical Z value for two-tailed alpha.
         Z_Alfa = norm.ppf(1 - Alfa / 2)
 
-        # Potencia usando aproximación normal.
+        # Power using normal approximation.
         Z_Beta = (Tamano_Efecto * np.sqrt(N)) - Z_Alfa
 
-        # Convertir Z a probabilidad.
+        # Convert Z to probability.
         Potencia = norm.cdf(Z_Beta)
 
         return Potencia
 
-    # Función para calcular efecto mínimo detectable (análisis de sensibilidad).
+    # Function to calculate minimum detectable effect (sensitivity analysis).
     def Calcular_Efecto_Minimo_Detectable(
         N: int,
         Potencia_Objetivo: float = 0.80,
@@ -2876,45 +2872,45 @@ def Procesar_Datos_Completo(
     ) -> float:
 
         """
-        Calcula el tamaño de efecto mínimo detectable dado un
-        tamaño de muestra y una potencia objetivo.
+        Calculates the minimum detectable effect size given a
+        sample size and target power.
 
-        Este es un análisis de sensibilidad que responde a la
-        pregunta: "¿Cuál es el efecto más pequeño que podemos
-        detectar con X% de potencia dado nuestro N?"
+        This is a sensitivity analysis that answers the question:
+        "What is the smallest effect we can detect with X% power
+        given our N?"
 
-        Parámetros:
-            N: Tamaño de la muestra.
-            Potencia_Objetivo: Potencia deseada (default 0.80).
-            Alfa: Nivel de significancia (default 0.05).
+        Parameters:
+            N: Sample size.
+            Potencia_Objetivo: Desired power (default 0.80).
+            Alfa: Significance level (default 0.05).
 
-        Retorna:
-            Tamaño de efecto mínimo detectable (d de Cohen).
+        Returns:
+            Minimum detectable effect size (Cohen's d).
 
         """
 
         from scipy.stats import norm
 
-        # Valor crítico Z para alfa bilateral.
+        # Critical Z value for two-tailed alpha.
         Z_Alfa = norm.ppf(1 - Alfa / 2)
 
-        # Valor Z correspondiente a la potencia objetivo.
+        # Z value corresponding to target power.
         Z_Beta = norm.ppf(Potencia_Objetivo)
 
-        # Despejar d de la fórmula: Z_Beta = (d * sqrt(N)) - Z_Alfa.
+        # Solve for d from the formula: Z_Beta = (d * sqrt(N)) - Z_Alfa.
         # d = (Z_Beta + Z_Alfa) / sqrt(N).
         Efecto_Minimo = (Z_Beta + Z_Alfa) / np.sqrt(N)
 
         return Efecto_Minimo
 
-    # Tamaños de efecto según Cohen.
+    # Effect sizes according to Cohen.
     Tamanos_Efecto = {
         'pequeño': 0.2,
         'mediano': 0.5,
         'grande': 0.8
     }
 
-    # Calcular potencia para cada dataset y tamaño de efecto.
+    # Calculate power for each dataset and effect size.
     Potencias = {}
 
     for Nombre in ['Generales', 'Ballotage']:
@@ -2941,7 +2937,7 @@ def Procesar_Datos_Completo(
 
     print()
 
-    # Análisis de sensibilidad: efecto mínimo detectable.
+    # Sensitivity analysis: minimum detectable effect.
     print("ANÁLISIS DE SENSIBILIDAD: Efecto mínimo detectable...")
     print("-"*70)
 
@@ -2967,12 +2963,12 @@ def Procesar_Datos_Completo(
     print()
 
     # ========================================================================
-    # Generar reporte TXT con exclusiones y potencia.
+    # Generate TXT report with exclusions and power.
     # ========================================================================
     print("PASO REPORTE: Generando reporte de exclusiones y potencia...")
     print("-"*70)
 
-    # Crear carpeta de reportes si no existe.
+    # Create reports folder if it doesn't exist.
     Ruta_Reportes = os.path.join(
         os.path.dirname(Ruta_Salida),
         'Results',
@@ -2991,7 +2987,7 @@ def Procesar_Datos_Completo(
         Archivo.write("Experimento Electoral Argentina 2023\n")
         Archivo.write("="*70 + "\n\n")
 
-        # Sección de exclusiones.
+        # Exclusions section.
         Archivo.write("EXCLUSIONES DE LA MUESTRA\n")
         Archivo.write("-"*70 + "\n\n")
 
@@ -3010,7 +3006,7 @@ def Procesar_Datos_Completo(
             )
             Archivo.write("\n")
 
-        # Sección de potencia.
+        # Power section.
         Archivo.write("\nPOTENCIA ESTADÍSTICA (POST-HOC)\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write("Nivel de significancia: alfa = 0.05\n\n")
@@ -3032,7 +3028,7 @@ def Procesar_Datos_Completo(
             )
             Archivo.write("\n")
 
-        # Interpretación de potencia.
+        # Power interpretation.
         Archivo.write("\nINTERPRETACIÓN DE POTENCIA\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3049,7 +3045,7 @@ def Procesar_Datos_Completo(
         )
         Archivo.write("\n")
 
-        # Análisis de sensibilidad.
+        # Sensitivity analysis.
         Archivo.write("\nANÁLISIS DE SENSIBILIDAD\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3071,7 +3067,7 @@ def Procesar_Datos_Completo(
             )
             Archivo.write("\n")
 
-        # Interpretación de sensibilidad.
+        # Sensitivity interpretation.
         Archivo.write("INTERPRETACIÓN DE SENSIBILIDAD\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3085,7 +3081,7 @@ def Procesar_Datos_Completo(
         )
         Archivo.write("\n")
 
-        # Criterios de exclusión.
+        # Exclusion criteria.
         Archivo.write("\nCRITERIOS DE EXCLUSIÓN\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3097,7 +3093,7 @@ def Procesar_Datos_Completo(
         )
         Archivo.write("\n")
 
-        # Sección de análisis de CO cronológicos (warm-up effect).
+        # Chronological CO analysis section (warm-up effect).
         Archivo.write("\nANÁLISIS DE CO CRONOLÓGICOS (WARM-UP EFFECT)\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3120,7 +3116,7 @@ def Procesar_Datos_Completo(
 
             Archivo.write("\n")
 
-        # Sección de comparación Moderate Right A vs B.
+        # Moderate Right A vs B comparison section.
         Archivo.write("\nCOMPARACIÓN MODERATE RIGHT A (LARRETA) VS B (BULLRICH)\n")
         Archivo.write("-"*70 + "\n")
         Archivo.write(
@@ -3130,7 +3126,7 @@ def Procesar_Datos_Completo(
         for Nombre_Df, Resultados in Resultados_Comparacion.items():
             Archivo.write(f"{Nombre_Df.upper()}\n")
 
-            # Obtener N de cada grupo.
+            # Get N for each group.
             if len(Resultados) > 0:
                 N_A = Resultados[0]['N_A']
                 N_B = Resultados[0]['N_B']
@@ -3141,7 +3137,7 @@ def Procesar_Datos_Completo(
                     f"  N Moderate_Right_B (Bullrich): {N_B}\n\n"
                 )
 
-            # Listar variables significativas.
+            # List significant variables.
             Significativas = [r for r in Resultados if r['Sig'] != 'ns']
 
             if len(Significativas) > 0:

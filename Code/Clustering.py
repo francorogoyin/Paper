@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Clustering de participantes basado en respuestas a items IP.
+Participant clustering based on IP item responses.
 
-Este script realiza clustering jerarquico aglomerativo sobre las
-respuestas a items conservadores y progresistas, utilizando
-distancia de Hamming como metrica de similitud.
+This script performs hierarchical agglomerative clustering on
+responses to conservative and progressive items, using Hamming
+distance as the similarity metric.
 
 """
 
@@ -17,10 +17,10 @@ import os
 
 
 # =============================================================================
-# CONFIGURACION DE ITEMS.
+# ITEM CONFIGURATION.
 # =============================================================================
 
-# Items conservadores (10 items).
+# Conservative items (10 items).
 Items_Conservadores = [
     'IP_Item_3_Respuesta',
     'IP_Item_4_Respuesta',
@@ -34,7 +34,7 @@ Items_Conservadores = [
     'IP_Item_30_Respuesta'
 ]
 
-# Items progresistas (10 items).
+# Progressive items (10 items).
 Items_Progresistas = [
     'IP_Item_5_Respuesta',
     'IP_Item_6_Respuesta',
@@ -50,34 +50,34 @@ Items_Progresistas = [
 
 
 # =============================================================================
-# FUNCIONES DE PROCESAMIENTO.
+# PROCESSING FUNCTIONS.
 # =============================================================================
 
 def Cargar_Bases_Definitivas(Ruta_Datos: str) -> tuple:
 
     """
-    Carga las bases de datos definitivas de Generales y Ballotage.
+    Loads the definitive databases for General and Ballotage elections.
 
-    Parametros:
-        Ruta_Datos (str): Ruta a la carpeta con los datos definitivos.
+    Parameters:
+        Ruta_Datos (str): Path to folder containing definitive data.
 
-    Retorna:
-        tuple: (DataFrame Generales, DataFrame Ballotage).
+    Returns:
+        tuple: (DataFrame General, DataFrame Ballotage).
 
     """
 
     Ruta_Generales = os.path.join(Ruta_Datos, 'Generales.xlsx')
     Ruta_Ballotage = os.path.join(Ruta_Datos, 'Ballotage.xlsx')
 
-    print("Cargando bases de datos definitivas...")
-    print(f"  Generales: {Ruta_Generales}")
+    print("Loading definitive databases...")
+    print(f"  General: {Ruta_Generales}")
     print(f"  Ballotage: {Ruta_Ballotage}")
 
     Df_Generales = pd.read_excel(Ruta_Generales)
     Df_Ballotage = pd.read_excel(Ruta_Ballotage)
 
-    print(f"  OK Generales: {len(Df_Generales)} registros")
-    print(f"  OK Ballotage: {len(Df_Ballotage)} registros")
+    print(f"  OK General: {len(Df_Generales)} records")
+    print(f"  OK Ballotage: {len(Df_Ballotage)} records")
 
     return Df_Generales, Df_Ballotage
 
@@ -88,24 +88,24 @@ def Preparar_Dataframes_Clustering(
 ) -> pd.DataFrame:
 
     """
-    Prepara los DataFrames para el clustering extrayendo las columnas
-    necesarias y agregando la columna de eleccion.
+    Prepares DataFrames for clustering by extracting necessary columns
+    and adding the election column.
 
-    Parametros:
-        Df_Generales (pd.DataFrame): DataFrame de Generales.
-        Df_Ballotage (pd.DataFrame): DataFrame de Ballotage.
+    Parameters:
+        Df_Generales (pd.DataFrame): General election DataFrame.
+        Df_Ballotage (pd.DataFrame): Ballotage election DataFrame.
 
-    Retorna:
-        pd.DataFrame: DataFrame combinado con columnas para clustering.
+    Returns:
+        pd.DataFrame: Combined DataFrame with clustering columns.
 
     """
 
-    print("\nPreparando DataFrames para clustering...")
+    print("\nPreparing DataFrames for clustering...")
 
-    # Columnas necesarias para clustering.
+    # Columns required for clustering.
     Columnas_Clustering = ['ID'] + Items_Conservadores + Items_Progresistas
 
-    # Extraer columnas relevantes.
+    # Extract relevant columns.
     Df_Items_Generales = Df_Generales[Columnas_Clustering].copy()
     Df_Items_Ballotage = Df_Ballotage[Columnas_Clustering].copy()
 
@@ -116,17 +116,17 @@ def Preparar_Dataframes_Clustering(
         Construir_Columnas_Cambio_Opinion(Df_Items_Ballotage)
     )
 
-    # Agregar columna de eleccion.
+    # Add election column.
     Df_Items_Generales['Election'] = 'General'
     Df_Items_Ballotage['Election'] = 'Ballotage'
 
-    # Combinar ambos DataFrames.
+    # Combine both DataFrames.
     Df_Combinado = pd.concat(
         [Df_Items_Generales, Df_Items_Ballotage],
         ignore_index=True
     )
 
-    print(f"  Total de registros combinados: {len(Df_Combinado)}")
+    print(f"  Total combined records: {len(Df_Combinado)}")
 
     return Df_Combinado
 
@@ -134,23 +134,23 @@ def Preparar_Dataframes_Clustering(
 def Crear_Vectores_Respuestas(Df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Crea vectores de respuestas conservadoras y progresistas
-    para cada participante.
+    Creates conservative and progressive response vectors
+    for each participant.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con las respuestas a items.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with item responses.
 
-    Retorna:
-        pd.DataFrame: DataFrame con columnas de vectores agregadas.
+    Returns:
+        pd.DataFrame: DataFrame with vector columns added.
 
     """
 
-    print("\nCreando vectores de respuestas...")
+    print("\nCreating response vectors...")
 
     Df['Conservative_Vector'] = Df[Items_Conservadores].values.tolist()
     Df['Progressive_Vector'] = Df[Items_Progresistas].values.tolist()
 
-    print("  OK Vectores creados.")
+    print("  OK Vectors created.")
 
     return Df
 
@@ -158,14 +158,14 @@ def Crear_Vectores_Respuestas(Df: pd.DataFrame) -> pd.DataFrame:
 def Construir_Columnas_Cambio_Opinion(Df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Genera los campos CO_Item para cada ítem IP a partir de las
-    respuestas base, de izquierda y de derecha.
+    Generates CO_Item fields for each IP item from base, left,
+    and right responses.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con las respuestas raw.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with raw responses.
 
-    Retorna:
-        pd.DataFrame: DataFrame con columnas CO_Item_* agregadas.
+    Returns:
+        pd.DataFrame: DataFrame with CO_Item_* columns added.
 
     """
 
@@ -207,14 +207,14 @@ def Construir_Columnas_Cambio_Opinion(Df: pd.DataFrame) -> pd.DataFrame:
 def Construir_Columnas_Cambio_Tiempo(Df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Genera los campos CT_Item para cada ítem IP a partir de los
-    tiempos base, de izquierda y de derecha.
+    Generates CT_Item fields for each IP item from base, left,
+    and right response times.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los tiempos raw.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with raw times.
 
-    Retorna:
-        pd.DataFrame: DataFrame con columnas CT_Item_* agregadas.
+    Returns:
+        pd.DataFrame: DataFrame with CT_Item_* columns added.
 
     """
 
@@ -256,14 +256,14 @@ def Construir_Columnas_Cambio_Tiempo(Df: pd.DataFrame) -> pd.DataFrame:
 def Agregar_Variables_Co_Ct(Df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Calcula los agregados CO/CT (promedios, sumas, congruencia e
-    incongruencia) que usaba el procesamiento original.
+    Calculates CO/CT aggregates (means, sums, congruence and
+    incongruence) used in the original processing.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los vectores y columnas CO/CT.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with vectors and CO/CT columns.
 
-    Retorna:
-        pd.DataFrame: DataFrame enriquecido con las nuevas variables.
+    Returns:
+        pd.DataFrame: DataFrame enriched with new variables.
 
     """
 
@@ -415,34 +415,34 @@ def Agregar_Variables_Co_Ct(Df: pd.DataFrame) -> pd.DataFrame:
 def Calcular_Distancias_Hamming(Df: pd.DataFrame) -> tuple:
 
     """
-    Calcula las matrices de distancia de Hamming para los vectores
-    conservadores y progresistas.
+    Calculates Hamming distance matrices for conservative and
+    progressive vectors.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los vectores de respuestas.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with response vectors.
 
-    Retorna:
-        tuple: (Matriz conservadora, Matriz progresista, IDs de sujetos).
+    Returns:
+        tuple: (Conservative matrix, Progressive matrix, Subject IDs).
 
     """
 
-    print("\nCalculando distancias de Hamming...")
+    print("\nCalculating Hamming distances...")
 
     Ids_Sujetos = Df['ID'].tolist()
     Num_Sujetos = len(Ids_Sujetos)
 
-    # Crear indice de ID a posicion.
+    # Create ID to position index.
     Indice_Id = {Id: Idx for Idx, Id in enumerate(Ids_Sujetos)}
 
-    # Calcular distancias para cada par de sujetos.
+    # Calculate distances for each pair of subjects.
     Distancias_Conservadoras = []
     Distancias_Progresistas = []
 
     Total_Pares = len(list(combinations(Ids_Sujetos, 2)))
-    print(f"  Calculando {Total_Pares} pares de distancias...")
+    print(f"  Calculating {Total_Pares} distance pairs...")
 
     for Id_1, Id_2 in combinations(Ids_Sujetos, 2):
-        # Obtener vectores.
+        # Get vectors.
         Vector_Cons_1 = Df.loc[
             Df['ID'] == Id_1, 'Conservative_Vector'
         ].values[0]
@@ -456,17 +456,17 @@ def Calcular_Distancias_Hamming(Df: pd.DataFrame) -> tuple:
             Df['ID'] == Id_2, 'Progressive_Vector'
         ].values[0]
 
-        # Calcular distancias de Hamming.
+        # Calculate Hamming distances.
         Distancia_Conservadora = hamming(Vector_Cons_1, Vector_Cons_2)
         Distancia_Progresista = hamming(Vector_Prog_1, Vector_Prog_2)
 
         Distancias_Conservadoras.append((Id_1, Id_2, Distancia_Conservadora))
         Distancias_Progresistas.append((Id_1, Id_2, Distancia_Progresista))
 
-    print("  OK Distancias calculadas.")
+    print("  OK Distances calculated.")
 
-    # Crear matrices de distancia simetricas.
-    print("  Construyendo matrices de distancia...")
+    # Create symmetric distance matrices.
+    print("  Building distance matrices...")
 
     Matriz_Conservadora = np.zeros((Num_Sujetos, Num_Sujetos))
     Matriz_Progresista = np.zeros((Num_Sujetos, Num_Sujetos))
@@ -483,7 +483,7 @@ def Calcular_Distancias_Hamming(Df: pd.DataFrame) -> tuple:
         Matriz_Progresista[Idx_1, Idx_2] = Distancia
         Matriz_Progresista[Idx_2, Idx_1] = Distancia
 
-    print("  OK Matrices construidas.")
+    print("  OK Matrices built.")
 
     return Matriz_Conservadora, Matriz_Progresista, Ids_Sujetos
 
@@ -496,23 +496,23 @@ def Aplicar_Clustering(
 ) -> tuple:
 
     """
-    Aplica clustering jerarquico aglomerativo sobre las matrices
-    de distancia.
+    Applies hierarchical agglomerative clustering on the
+    distance matrices.
 
-    Parametros:
-        Matriz_Conservadora (np.ndarray): Matriz de distancia conservadora.
-        Matriz_Progresista (np.ndarray): Matriz de distancia progresista.
-        N_Clusters_Conservador (int): Numero de clusters conservadores.
-        N_Clusters_Progresista (int): Numero de clusters progresistas.
+    Parameters:
+        Matriz_Conservadora (np.ndarray): Conservative distance matrix.
+        Matriz_Progresista (np.ndarray): Progressive distance matrix.
+        N_Clusters_Conservador (int): Number of conservative clusters.
+        N_Clusters_Progresista (int): Number of progressive clusters.
 
-    Retorna:
-        tuple: (Labels conservadores, Labels progresistas).
+    Returns:
+        tuple: (Conservative labels, Progressive labels).
 
     """
 
-    print("\nAplicando clustering jerarquico aglomerativo...")
+    print("\nApplying hierarchical agglomerative clustering...")
 
-    # Clustering conservador.
+    # Conservative clustering.
     Clustering_Conservador = AgglomerativeClustering(
         n_clusters=N_Clusters_Conservador,
         linkage='average',
@@ -522,7 +522,7 @@ def Aplicar_Clustering(
         Matriz_Conservadora
     )
 
-    # Clustering progresista.
+    # Progressive clustering.
     Clustering_Progresista = AgglomerativeClustering(
         n_clusters=N_Clusters_Progresista,
         linkage='average',
@@ -541,23 +541,23 @@ def Aplicar_Clustering(
 def Calcular_Medianas(Df: pd.DataFrame) -> pd.DataFrame:
 
     """
-    Calcula las medianas de los vectores conservadores y progresistas
-    para cada participante.
+    Calculates medians of conservative and progressive vectors
+    for each participant.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los vectores.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with vectors.
 
-    Retorna:
-        pd.DataFrame: DataFrame con columnas de medianas agregadas.
+    Returns:
+        pd.DataFrame: DataFrame with median columns added.
 
     """
 
-    print("\nCalculando medianas de vectores...")
+    print("\nCalculating vector medians...")
 
     Df['Conservative_Median'] = Df['Conservative_Vector'].apply(np.median)
     Df['Progressive_Median'] = Df['Progressive_Vector'].apply(np.median)
 
-    print("  OK Medianas calculadas.")
+    print("  OK Medians calculated.")
 
     return Df
 
@@ -568,22 +568,22 @@ def Exportar_Resultados(
 ) -> None:
 
     """
-    Exporta el DataFrame con los resultados del clustering a Excel.
+    Exports the DataFrame with clustering results to Excel.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los resultados.
-        Ruta_Salida (str): Ruta al archivo Excel de salida.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with results.
+        Ruta_Salida (str): Path to output Excel file.
 
     """
 
-    print(f"\nExportando resultados a: {Ruta_Salida}")
+    print(f"\nExporting results to: {Ruta_Salida}")
     Carpeta_Salida = os.path.dirname(Ruta_Salida)
     if Carpeta_Salida:
         os.makedirs(Carpeta_Salida, exist_ok=True)
 
     Df.to_excel(Ruta_Salida, index=False)
 
-    print("  OK Archivo exportado.")
+    print("  OK File exported.")
 
 
 def Generar_Resumen_Clusters(
@@ -593,15 +593,15 @@ def Generar_Resumen_Clusters(
 ) -> str:
 
     """
-    Arma un resumen textual de los clusters por eleccion.
+    Builds a text summary of clusters by election.
 
-    Parametros:
-        Df (pd.DataFrame): DataFrame con los resultados del clustering.
-        Ruta_Excel (str): Ruta al Excel exportado.
-        Ruta_Reporte (str): Ruta donde se guardara el reporte de texto.
+    Parameters:
+        Df (pd.DataFrame): DataFrame with clustering results.
+        Ruta_Excel (str): Path to exported Excel file.
+        Ruta_Reporte (str): Path where text report will be saved.
 
-    Retorna:
-        str: Contenido formateado del reporte.
+    Returns:
+        str: Formatted report content.
 
     """
 
@@ -609,15 +609,15 @@ def Generar_Resumen_Clusters(
         return f"{Valor:.3f}" if pd.notna(Valor) else "N/A"
 
     Lineas = [
-        "Resumen general del clustering.",
-        f"  Excel exportado: {Ruta_Excel}",
-        f"  Reporte guardado: {Ruta_Reporte}",
-        f"  Total de registros: {len(Df)}"
+        "Clustering general summary.",
+        f"  Exported Excel: {Ruta_Excel}",
+        f"  Saved report: {Ruta_Reporte}",
+        f"  Total records: {len(Df)}"
     ]
 
     for Eleccion in ['General', 'Ballotage']:
         Df_Eleccion = Df.loc[Df['Election'] == Eleccion]
-        Lineas.append(f"{Eleccion}: {len(Df_Eleccion)} registros")
+        Lineas.append(f"{Eleccion}: {len(Df_Eleccion)} records")
 
         for Tipo_Cluster in ['Conservative_Cluster', 'Progressive_Cluster']:
             if Tipo_Cluster not in Df.columns:
@@ -645,10 +645,10 @@ def Generar_Resumen_Clusters(
             Mediana_Cons = Df_Eleccion['Conservative_Median'].median()
             Mediana_Prog = Df_Eleccion['Progressive_Median'].median()
             Lineas.append(
-                f"  Mediana conservador: {Formatear_Flotante(Mediana_Cons)}"
+                f"  Conservative median: {Formatear_Flotante(Mediana_Cons)}"
             )
             Lineas.append(
-                f"  Mediana progresista: {Formatear_Flotante(Mediana_Prog)}"
+                f"  Progressive median: {Formatear_Flotante(Mediana_Prog)}"
             )
 
     return "\n".join(Lineas) + "\n"
@@ -660,13 +660,13 @@ def Guardar_Reporte_Clusters(
 ) -> None:
 
     """
-    Guarda el reporte de clusters en disco.
+    Saves the cluster report to disk.
 
-    Parametros:
-        Ruta_Reporte (str): Ruta de destino del archivo.
-        Contenido (str): Texto que se escribira.
+    Parameters:
+        Ruta_Reporte (str): Destination file path.
+        Contenido (str): Text to be written.
 
-    Retorna:
+    Returns:
         None.
 
     """
@@ -685,14 +685,14 @@ def Actualizar_Bases_Definitivas(
 ) -> None:
 
     """
-    Agrega las columnas de cluster a las bases definitivas y sobrescribe
-    los archivos de Generales y Ballotage.
+    Adds cluster columns to definitive databases and overwrites
+    General and Ballotage files.
 
-    Parametros:
-        Ruta_Datos_Definitivos (str): Carpeta donde se encuentran las bases.
-        Df_Clusters (pd.DataFrame): DataFrame combinado con columnas de clusters.
+    Parameters:
+        Ruta_Datos_Definitivos (str): Folder containing the databases.
+        Df_Clusters (pd.DataFrame): Combined DataFrame with cluster columns.
 
-    Retorna:
+    Returns:
         None.
 
     """
@@ -712,7 +712,7 @@ def Actualizar_Bases_Definitivas(
     for Archivo_Base, Eleccion in Mapeo_Eleccion.items():
         Ruta_Archivo = os.path.join(Ruta_Datos_Definitivos, Archivo_Base)
         if not os.path.exists(Ruta_Archivo):
-            print(f"  Advertencia: no existe {Ruta_Archivo}.")
+            print(f"  Warning: {Ruta_Archivo} does not exist.")
             continue
 
         Df_Base = pd.read_excel(Ruta_Archivo)
@@ -743,8 +743,8 @@ def Actualizar_Bases_Definitivas(
         )
 
         print(
-            f"  OK {Archivo_Base}: columnas de cluster agregadas "
-            f"({len(Df_Cluster_Eleccion)} registros con cluster)."
+            f"  OK {Archivo_Base}: cluster columns added "
+            f"({len(Df_Cluster_Eleccion)} records with cluster)."
         )
 
 def Ejecutar_Clustering_Completo(
@@ -754,58 +754,58 @@ def Ejecutar_Clustering_Completo(
 ) -> dict:
 
     """
-    Ejecuta el pipeline completo de clustering.
+    Executes the complete clustering pipeline.
 
-    Si el archivo Clusters.xlsx ya existe en Ruta_Salida, usa esos datos
-    en lugar de recalcular el clustering. Solo recalcula si no existe.
+    If Clusters.xlsx file already exists at Ruta_Salida, uses that data
+    instead of recalculating clustering. Only recalculates if not present.
 
-    Parametros:
-        Ruta_Datos_Definitivos (str): Ruta a la carpeta con datos definitivos.
-        Ruta_Salida (str): Ruta al archivo Excel de salida.
-        Ruta_Reporte (str): Ruta al archivo de texto de reporte.
+    Parameters:
+        Ruta_Datos_Definitivos (str): Path to folder with definitive data.
+        Ruta_Salida (str): Path to output Excel file.
+        Ruta_Reporte (str): Path to text report file.
 
-    Retorna:
-        dict: Diccionario con el DataFrame generado y la ruta del reporte.
+    Returns:
+        dict: Dictionary with generated DataFrame and report path.
 
     """
 
     print("="*70)
-    print("CLUSTERING DE PARTICIPANTES")
+    print("PARTICIPANT CLUSTERING")
     print("="*70)
 
-    # Verificar si ya existe el archivo de clusters.
+    # Check if cluster file already exists.
     if os.path.exists(Ruta_Salida):
-        print(f"\nArchivo de clusters existente detectado: {Ruta_Salida}")
-        print("Usando datos de clusters existentes (no se recalcula).")
+        print(f"\nExisting cluster file detected: {Ruta_Salida}")
+        print("Using existing cluster data (not recalculating).")
         print("-"*70)
 
-        # Cargar clusters existentes.
+        # Load existing clusters.
         Df_Combinado = pd.read_excel(Ruta_Salida)
-        print(f"  OK Clusters cargados: {len(Df_Combinado)} registros.")
+        print(f"  OK Clusters loaded: {len(Df_Combinado)} records.")
 
     else:
-        print("\nNo existe archivo de clusters. Calculando clustering...")
+        print("\nCluster file does not exist. Calculating clustering...")
         print("-"*70)
 
-        # 1. Cargar bases definitivas.
+        # 1. Load definitive databases.
         Df_Generales, Df_Ballotage = Cargar_Bases_Definitivas(
             Ruta_Datos_Definitivos
         )
 
-        # 2. Preparar DataFrames para clustering.
+        # 2. Prepare DataFrames for clustering.
         Df_Combinado = Preparar_Dataframes_Clustering(
             Df_Generales, Df_Ballotage
         )
 
-        # 3. Crear vectores de respuestas.
+        # 3. Create response vectors.
         Df_Combinado = Crear_Vectores_Respuestas(Df_Combinado)
         Df_Combinado = Agregar_Variables_Co_Ct(Df_Combinado)
 
-        # 4. Calcular distancias de Hamming.
+        # 4. Calculate Hamming distances.
         Matriz_Conservadora, Matriz_Progresista, Ids = \
             Calcular_Distancias_Hamming(Df_Combinado)
 
-        # 5. Aplicar clustering.
+        # 5. Apply clustering.
         Labels_Conservadores, Labels_Progresistas = Aplicar_Clustering(
             Matriz_Conservadora,
             Matriz_Progresista,
@@ -813,24 +813,24 @@ def Ejecutar_Clustering_Completo(
             N_Clusters_Progresista=3
         )
 
-        # 6. Agregar labels al DataFrame.
+        # 6. Add labels to DataFrame.
         Df_Combinado['Conservative_Cluster'] = Labels_Conservadores
         Df_Combinado['Progressive_Cluster'] = Labels_Progresistas
 
-        # 7. Calcular medianas.
+        # 7. Calculate medians.
         Df_Combinado = Calcular_Medianas(Df_Combinado)
 
-        # 8. Exportar resultados.
+        # 8. Export results.
         Exportar_Resultados(Df_Combinado, Ruta_Salida)
 
-    # 9. Actualizar bases definitivas (siempre se ejecuta).
-    print("\nActualizando bases definitivas con columnas de cluster...")
+    # 9. Update definitive databases (always executed).
+    print("\nUpdating definitive databases with cluster columns...")
     Actualizar_Bases_Definitivas(
         Ruta_Datos_Definitivos,
         Df_Combinado
     )
 
-    # 10. Generar resumen en texto.
+    # 10. Generate text summary.
     Contenido_Reporte = Generar_Resumen_Clusters(
         Df_Combinado,
         Ruta_Salida,
@@ -839,7 +839,7 @@ def Ejecutar_Clustering_Completo(
     Guardar_Reporte_Clusters(Ruta_Reporte, Contenido_Reporte)
 
     print("\n" + "="*70)
-    print("CLUSTERING COMPLETADO")
+    print("CLUSTERING COMPLETED")
     print("="*70)
 
     return {
@@ -849,12 +849,12 @@ def Ejecutar_Clustering_Completo(
 
 
 # =============================================================================
-# EJECUCION PRINCIPAL.
+# MAIN EXECUTION.
 # =============================================================================
 
 if __name__ == "__main__":
 
-    # Configurar rutas.
+    # Configure paths.
     Ruta_Base = os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))
     )
@@ -866,7 +866,7 @@ if __name__ == "__main__":
         "Clustering.xlsx"
     )
 
-    # Ejecutar clustering.
+    # Execute clustering.
     Ruta_Reporte = os.path.join(
         Ruta_Base,
         "Results",
@@ -874,7 +874,7 @@ if __name__ == "__main__":
         "Report_Clusters.txt"
     )
 
-    # Ejecutar clustering.
+    # Execute clustering.
     Resultados = Ejecutar_Clustering_Completo(
         Ruta_Datos_Definitivos,
         Ruta_Salida,
