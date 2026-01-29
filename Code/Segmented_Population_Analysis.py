@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Analisis de poblaciones segmentadas.
+Segmented population analysis.
 
 """
 
@@ -11,7 +11,7 @@ from scipy import stats as Estadisticas
 
 
 # ------------------------------------------------------------
-# CONSTANTES.
+# CONSTANTS.
 # ------------------------------------------------------------
 
 Categorias_Validas = [
@@ -37,23 +37,22 @@ Todos_Los_Items = Items_Conservadores + Items_Progresistas
 
 
 # ------------------------------------------------------------
-# UTILIDADES GENERALES.
+# GENERAL UTILITIES.
 # ------------------------------------------------------------
 
 def Cargar_Bases_Datos(Ruta_Datos: str) -> dict:
 
     """
-    Carga bases de datos de generales y ballotage.
+    Loads General and Ballotage databases.
 
-    Parametros:
-    - Ruta_Datos: Ruta a la carpeta con los archivos.
+    Parameters:
+    - Ruta_Datos: Path to the folder with the files.
 
-    Retorna:
-    - Diccionario con dataframes.
+    Returns:
+    - Dictionary with dataframes.
 
-    Ejemplos:
+    Examples:
     - Cargar_Bases_Datos("Processed_Data")
-    
     """
 
     Datos = {}
@@ -76,18 +75,17 @@ def Filtrar_Por_Poblacion(
 ) -> Pandas.DataFrame:
 
     """
-    Filtra un dataframe por poblacion electoral.
+    Filters a dataframe by electoral population.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con los datos.
-    - Poblacion: Lista de categorias validas.
+    Parameters:
+    - Datos_Entrada: DataFrame with the data.
+    - Poblacion: List of valid categories.
 
-    Retorna:
-    - Dataframe filtrado.
+    Returns:
+    - Filtered DataFrame.
 
-    Ejemplos:
+    Examples:
     - Filtrar_Por_Poblacion(Datos, Poblacion_Izquierda)
-    
     """
 
     return Datos_Entrada[
@@ -98,17 +96,16 @@ def Filtrar_Por_Poblacion(
 def Calcular_Media_Y_Error(Valores: Numpy.ndarray) -> tuple:
 
     """
-    Calcula media, error estandar y cantidad de valores validos.
+    Calculates mean, standard error, and count of valid values.
 
-    Parametros:
-    - Valores: Array con datos.
+    Parameters:
+    - Valores: Array with data.
 
-    Retorna:
-    - Tupla con media, error estandar y cantidad valida.
+    Returns:
+    - Tuple with mean, standard error, and valid count.
 
-    Ejemplos:
+    Examples:
     - Calcular_Media_Y_Error(Numpy.array([1, 2, 3]))
-    
     """
 
     Valores_Array = Numpy.array(Valores, dtype = float)
@@ -138,19 +135,18 @@ def Formatear_Numero(
 ) -> str:
 
     """
-    Formatea un numero para el reporte.
+    Formats a number for the report.
 
-    Parametros:
-    - Valor: Numero a formatear.
-    - Decimales: Cantidad de decimales.
-    - Mostrar_Signo: Si agrega signo en positivos.
+    Parameters:
+    - Valor: Number to format.
+    - Decimales: Number of decimals.
+    - Mostrar_Signo: Whether to add a sign for positives.
 
-    Retorna:
-    - Numero formateado como texto.
+    Returns:
+    - Number formatted as text.
 
-    Ejemplos:
+    Examples:
     - Formatear_Numero(0.1234, Decimales = 2)
-    
     """
 
     if Numpy.isnan(Valor):
@@ -168,17 +164,16 @@ def Formatear_Numero(
 def Formatear_P_Valor(Valor_P: float) -> str:
 
     """
-    Formatea un p valor para el reporte.
+    Formats a p-value for the report.
 
-    Parametros:
-    - Valor_P: P valor a formatear.
+    Parameters:
+    - Valor_P: P-value to format.
 
-    Retorna:
-    - P valor en texto.
+    Returns:
+    - P-value as text.
 
-    Ejemplos:
+    Examples:
     - Formatear_P_Valor(0.004)
-    
     """
 
     if Numpy.isnan(Valor_P):
@@ -193,17 +188,16 @@ def Formatear_P_Valor(Valor_P: float) -> str:
 def Obtener_Significancia(Valor_P: float) -> str:
 
     """
-    Convierte p valor a marca de significancia.
+    Converts a p-value to a significance mark.
 
-    Parametros:
-    - Valor_P: P valor.
+    Parameters:
+    - Valor_P: P-value.
 
-    Retorna:
-    - Marca de significancia.
+    Returns:
+    - Significance mark.
 
-    Ejemplos:
+    Examples:
     - Obtener_Significancia(0.03)
-    
     """
 
     if Numpy.isnan(Valor_P):
@@ -225,19 +219,18 @@ def Test_Mann_Whitney(
 ) -> float:
 
     """
-    Aplica test Mann Whitney U con control de cantidad minima.
+    Applies Mann-Whitney U test with minimum count control.
 
-    Parametros:
-    - Valores_Uno: Array con valores del grupo uno.
-    - Valores_Dos: Array con valores del grupo dos.
-    - Minimo: Cantidad minima requerida por grupo.
+    Parameters:
+    - Valores_Uno: Array with values from group one.
+    - Valores_Dos: Array with values from group two.
+    - Minimo: Minimum count required per group.
 
-    Retorna:
-    - P valor del test.
+    Returns:
+    - Test p-value.
 
-    Ejemplos:
+    Examples:
     - Test_Mann_Whitney(Numpy.array([1]), Numpy.array([2]))
-    
     """
 
     if len(Valores_Uno) < Minimo or len(Valores_Dos) < Minimo:
@@ -261,19 +254,18 @@ def Test_Wilcoxon_Pareado(
 ) -> float:
 
     """
-    Aplica Wilcoxon pareado con control de cantidad minima.
+    Applies paired Wilcoxon with minimum count control.
 
-    Parametros:
-    - Valores_Uno: Serie con valores condicion uno.
-    - Valores_Dos: Serie con valores condicion dos.
-    - Minimo: Cantidad minima requerida.
+    Parameters:
+    - Valores_Uno: Series with values for condition one.
+    - Valores_Dos: Series with values for condition two.
+    - Minimo: Minimum count required.
 
-    Retorna:
-    - P valor del test.
+    Returns:
+    - Test p-value.
 
-    Ejemplos:
+    Examples:
     - Test_Wilcoxon_Pareado(Serie_Uno, Serie_Dos)
-    
     """
 
     Pares = Pandas.concat([Valores_Uno, Valores_Dos], axis = 1)
@@ -298,18 +290,17 @@ def Test_Wilcoxon_Contra_Cero(
 ) -> float:
 
     """
-    Aplica Wilcoxon contra cero con control de cantidad minima.
+    Applies Wilcoxon against zero with minimum count control.
 
-    Parametros:
-    - Valores: Array con diferencias.
-    - Minimo: Cantidad minima requerida.
+    Parameters:
+    - Valores: Array with differences.
+    - Minimo: Minimum count required.
 
-    Retorna:
-    - P valor del test.
+    Returns:
+    - Test p-value.
 
-    Ejemplos:
+    Examples:
     - Test_Wilcoxon_Contra_Cero(Numpy.array([0.1, 0.2]))
-    
     """
 
     if len(Valores) < Minimo:
@@ -328,17 +319,16 @@ def Test_Wilcoxon_Contra_Cero(
 class Generador_Reporte:
 
     """
-    Genera un reporte txt con lineas formateadas.
+    Generates a txt report with formatted lines.
 
-    Parametros:
-    - Sin parametros.
+    Parameters:
+    - No parameters.
 
-    Retorna:
-    - Instancia para agregar lineas.
+    Returns:
+    - Instance to add lines.
 
-    Ejemplos:
+    Examples:
     - Reporte = Generador_Reporte()
-    
     """
 
     def __init__(self) -> None:
@@ -360,7 +350,7 @@ class Generador_Reporte:
 
 
 # ------------------------------------------------------------
-# SECCION 1. CAMBIO DE OPINION DESGLOSADO.
+# SECTION 01. OPINION CHANGE BREAKDOWN.
 # ------------------------------------------------------------
 
 def Calcular_Media_Cambio(
@@ -371,20 +361,19 @@ def Calcular_Media_Cambio(
 ) -> tuple:
 
     """
-    Calcula media y error estandar para CO o CT por items.
+    Calculates mean and standard error for CO or CT by items.
 
-    Parametros:
-    - Datos_Entrada: Dataframe filtrado.
-    - Items: Lista de numeros de items.
-    - Direccion: Izq o Der.
-    - Tipo_Variable: CO o CT.
+    Parameters:
+    - Datos_Entrada: Filtered DataFrame.
+    - Items: List of item numbers.
+    - Direccion: Izq or Der.
+    - Tipo_Variable: CO or CT.
 
-    Retorna:
-    - Tupla con media, error, cantidad y valores.
+    Returns:
+    - Tuple with mean, error, count, and values.
 
-    Ejemplos:
+    Examples:
     - Calcular_Media_Cambio(Datos, Items, "Izq", "CO")
-    
     """
 
     Columnas = [
@@ -408,17 +397,16 @@ def Calcular_Datos_Desglosados(
 ) -> dict:
 
     """
-    Calcula CO y CT desglosado por poblacion y congruencia.
+    Calculates CO and CT broken down by population and congruence.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
 
-    Retorna:
-    - Diccionario con resultados y cantidades.
+    Returns:
+    - Dictionary with results and counts.
 
-    Ejemplos:
+    Examples:
     - Calcular_Datos_Desglosados(Datos)
-    
     """
 
     Datos_Izq = Filtrar_Por_Poblacion(
@@ -468,18 +456,17 @@ def Agregar_Seccion_01(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 1.
+    Adds section 01 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_01(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -621,7 +608,7 @@ def Agregar_Seccion_01(
 
 
 # ------------------------------------------------------------
-# SECCION 02. DIFERENCIA DE MEDIAS VS TOTAL.
+# SECTION 02. MEAN DIFFERENCE VS TOTAL.
 # ------------------------------------------------------------
 
 def Calcular_Area_Sombreada(
@@ -632,22 +619,21 @@ def Calcular_Area_Sombreada(
 ) -> dict:
 
     """
-    Calcula area sombreada vs media total sin asociar.
+    Calculates shaded area versus the unassociated total mean.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
-    - Poblacion: Lista de categorias de la poblacion.
-    - Items: Lista de items.
-    - Direccion: Izq o Der.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
+    - Poblacion: List of population categories.
+    - Items: List of items.
+    - Direccion: Izq or Der.
 
-    Retorna:
-    - Diccionario con diferencias, media, error y detalle.
+    Returns:
+    - Dictionary with differences, mean, error, and detail.
 
-    Ejemplos:
+    Examples:
     - Calcular_Area_Sombreada(
         Datos, Poblacion_Izquierda, Items, "Izq"
       )
-    
     """
 
     Datos_Total = Datos_Entrada[
@@ -691,18 +677,17 @@ def Agregar_Seccion_02(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 02.
+    Adds section 02 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_02(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -842,7 +827,7 @@ def Agregar_Seccion_02(
 
 
 # ------------------------------------------------------------
-# SECCION 03. CURVAS BASELINE PROPIA.
+# SECTION 03. OWN BASELINE CURVES.
 # ------------------------------------------------------------
 
 def Calcular_Medias_Por_Poblacion(
@@ -850,17 +835,16 @@ def Calcular_Medias_Por_Poblacion(
 ) -> dict:
 
     """
-    Calcula medias por poblacion con y sin asociacion.
+    Calculates means by population with and without association.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
 
-    Retorna:
-    - Diccionario con medias y orden de items.
+    Returns:
+    - Dictionary with means and item order.
 
-    Ejemplos:
+    Examples:
     - Calcular_Medias_Por_Poblacion(Datos)
-    
     """
 
     Datos_Izq = Filtrar_Por_Poblacion(
@@ -918,17 +902,16 @@ def Calcular_Significancia_Wilcoxon_Poblacion(
 ) -> dict:
 
     """
-    Calcula significancia Wilcoxon por item para poblaciones.
+    Calculates Wilcoxon significance per item for populations.
 
-    Parametros:
-    - Datos_Poblacion: Diccionario con datos de poblaciones.
+    Parameters:
+    - Datos_Poblacion: Dictionary with population data.
 
-    Retorna:
-    - Diccionario con p valores por item.
+    Returns:
+    - Dictionary with p-values per item.
 
-    Ejemplos:
+    Examples:
     - Calcular_Significancia_Wilcoxon_Poblacion(Datos_Poblacion)
-    
     """
 
     Orden_Items = Datos_Poblacion["Orden_Items"]
@@ -974,18 +957,17 @@ def Agregar_Seccion_03(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 03.
+    Adds section 03 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_03(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -1105,7 +1087,7 @@ def Agregar_Seccion_03(
 
 
 # ------------------------------------------------------------
-# SECCION 04. CURVAS CON MUESTRA BALANCEADA.
+# SECTION 04. CURVES WITH BALANCED SAMPLE.
 # ------------------------------------------------------------
 
 def Crear_Muestra_Balanceada(
@@ -1113,17 +1095,16 @@ def Crear_Muestra_Balanceada(
 ) -> dict:
 
     """
-    Crea muestra balanceada izquierda y derecha con semilla fija.
+    Creates a balanced left and right sample with a fixed seed.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
 
-    Retorna:
-    - Diccionario con submuestras y cantidades.
+    Returns:
+    - Dictionary with subsamples and counts.
 
-    Ejemplos:
+    Examples:
     - Crear_Muestra_Balanceada(Datos)
-    
     """
 
     Datos_Izq = Filtrar_Por_Poblacion(
@@ -1159,17 +1140,16 @@ def Calcular_Medias_Baseline_Balanceada(
 ) -> dict:
 
     """
-    Calcula medias con baseline balanceada.
+    Calculates means with a balanced baseline.
 
-    Parametros:
-    - Muestra: Diccionario con datos balanceados.
+    Parameters:
+    - Muestra: Dictionary with balanced data.
 
-    Retorna:
-    - Diccionario con medias y datos.
+    Returns:
+    - Dictionary with means and data.
 
-    Ejemplos:
+    Examples:
     - Calcular_Medias_Baseline_Balanceada(Muestra)
-    
     """
 
     Datos_Bal = Muestra["Datos_Bal"]
@@ -1220,18 +1200,17 @@ def Agregar_Seccion_04(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 04.
+    Adds section 04 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_04(Reporte, Datos)
-   
     """
 
     Reporte.Agregar_Separador("=")
@@ -1384,7 +1363,7 @@ def Agregar_Seccion_04(
 
 
 # ------------------------------------------------------------
-# SECCION 05. AREAS BASELINE PROPIA.
+# SECTION 05. OWN BASELINE AREAS.
 # ------------------------------------------------------------
 
 def Calcular_Area_Baseline_Propia(
@@ -1395,18 +1374,18 @@ def Calcular_Area_Baseline_Propia(
 ) -> dict:
 
     """
-    Calcula areas comparando poblacion consigo misma.
+    Calculates areas comparing a population with itself.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
-    - Poblacion: Lista de categorias.
-    - Items: Lista de items.
-    - Direccion: Izq o Der.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
+    - Poblacion: List of categories.
+    - Items: List of items.
+    - Direccion: Izq or Der.
 
-    Retorna:
-    - Diccionario con diferencias, media, error y detalle.
+    Returns:
+    - Dictionary with differences, mean, error, and detail.
 
-    Ejemplos:
+    Examples:
     - Calcular_Area_Baseline_Propia(
         Datos, Poblacion_Izquierda, Items, "Izq"
       )
@@ -1450,18 +1429,17 @@ def Agregar_Seccion_05(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 05.
+    Adds section 05 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_05(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -1620,7 +1598,7 @@ def Agregar_Seccion_05(
 
 
 # ------------------------------------------------------------
-# SECCION 28. AREAS CON MUESTRA BALANCEADA.
+# SECTION 28. AREAS WITH BALANCED SAMPLE.
 # ------------------------------------------------------------
 
 def Calcular_Area_Muestra_Balanceada(
@@ -1631,18 +1609,18 @@ def Calcular_Area_Muestra_Balanceada(
 ) -> dict:
 
     """
-    Calcula area vs baseline balanceada.
+    Calculates area versus a balanced baseline.
 
-    Parametros:
-    - Muestra: Diccionario con submuestras.
-    - Tipo_Poblacion: Izq o Der.
-    - Items: Lista de items.
-    - Direccion: Izq o Der.
+    Parameters:
+    - Muestra: Dictionary with subsamples.
+    - Tipo_Poblacion: Izq or Der.
+    - Items: List of items.
+    - Direccion: Izq or Der.
 
-    Retorna:
-    - Diccionario con diferencias, media, error y detalle.
+    Returns:
+    - Dictionary with differences, mean, error, and detail.
 
-    Ejemplos:
+    Examples:
     - Calcular_Area_Muestra_Balanceada(Muestra, "Izq", Items, "Izq")
     """
 
@@ -1688,18 +1666,17 @@ def Agregar_Seccion_06(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 06.
+    Adds section 06 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_06(Reporte, Datos)
-
     """
 
     Reporte.Agregar_Separador("=")
@@ -1709,7 +1686,7 @@ def Agregar_Seccion_06(
 
 
 # ------------------------------------------------------------
-# SECCION 07. TRES POBLACIONES BALANCEADAS.
+# SECTION 07. THREE BALANCED POPULATIONS.
 # ------------------------------------------------------------
 
 def Crear_Muestra_Balanceada_Tres_Poblaciones(
@@ -1717,17 +1694,16 @@ def Crear_Muestra_Balanceada_Tres_Poblaciones(
 ) -> dict:
 
     """
-    Crea muestra balanceada con tres poblaciones.
+    Creates a balanced sample with three populations.
 
-    Parametros:
-    - Datos_Entrada: Dataframe con datos.
+    Parameters:
+    - Datos_Entrada: DataFrame with data.
 
-    Retorna:
-    - Diccionario con submuestras.
+    Returns:
+    - Dictionary with subsamples.
 
-    Ejemplos:
+    Examples:
     - Crear_Muestra_Balanceada_Tres_Poblaciones(Datos)
-    
     """
 
     Datos_Izq = Filtrar_Por_Poblacion(
@@ -1771,17 +1747,16 @@ def Calcular_Medias_Tres_Poblaciones(
 ) -> dict:
 
     """
-    Calcula medias para tres poblaciones con baseline balanceada.
+    Calculates means for three populations with a balanced baseline.
 
-    Parametros:
-    - Muestra: Diccionario con submuestras.
+    Parameters:
+    - Muestra: Dictionary with subsamples.
 
-    Retorna:
-    - Diccionario con medias y datos.
+    Returns:
+    - Dictionary with means and data.
 
-    Ejemplos:
+    Examples:
     - Calcular_Medias_Tres_Poblaciones(Muestra)
-    
     """
 
     Datos_Bal = Muestra["Datos_Bal"]
@@ -1842,17 +1817,16 @@ def Calcular_Significancia_Tres_Poblaciones(
 ) -> dict:
 
     """
-    Calcula Wilcoxon por item para tres poblaciones.
+    Calculates Wilcoxon per item for three populations.
 
-    Parametros:
-    - Datos_Tres: Diccionario con datos y medias.
+    Parameters:
+    - Datos_Tres: Dictionary with data and means.
 
-    Retorna:
-    - Diccionario con p valores.
+    Returns:
+    - Dictionary with p-values.
 
-    Ejemplos:
+    Examples:
     - Calcular_Significancia_Tres_Poblaciones(Datos_Tres)
-    
     """
 
     Orden_Items = Datos_Tres["Orden_Items"]
@@ -1911,18 +1885,17 @@ def Agregar_Seccion_07(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 07.
+    Adds section 07 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_07(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -2034,7 +2007,7 @@ def Agregar_Seccion_07(
 
 
 # ------------------------------------------------------------
-# SECCION 08. CUANTIFICACION TRES POBLACIONES.
+# SECTION 08. THREE-POPULATION QUANTIFICATION.
 # ------------------------------------------------------------
 
 def Calcular_Area_Tres_Poblaciones(
@@ -2045,20 +2018,19 @@ def Calcular_Area_Tres_Poblaciones(
 ) -> dict:
 
     """
-    Calcula area por poblacion vs baseline balanceada.
+    Calculates area by population versus a balanced baseline.
 
-    Parametros:
-    - Muestra: Diccionario con submuestras.
-    - Tipo_Poblacion: Izq, Centro o Der.
-    - Items: Lista de items.
-    - Direccion: Izq, Der o Promedio.
+    Parameters:
+    - Muestra: Dictionary with subsamples.
+    - Tipo_Poblacion: Izq, Centro or Der.
+    - Items: List of items.
+    - Direccion: Izq, Der or Average.
 
-    Retorna:
-    - Diccionario con diferencias, media, error y detalle.
+    Returns:
+    - Dictionary with differences, mean, error, and detail.
 
-    Ejemplos:
+    Examples:
     - Calcular_Area_Tres_Poblaciones(Muestra, "Izq", Items, "Izq")
-    
     """
 
     Datos_Bal = Muestra["Datos_Bal"]
@@ -2125,18 +2097,17 @@ def Agregar_Seccion_08(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 08.
+    Adds section 08 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_08(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -2146,7 +2117,7 @@ def Agregar_Seccion_08(
 
 
 # ------------------------------------------------------------
-# SECCION 09. CENTRO CON DOS ASOCIACIONES.
+# SECTION 09. CENTER WITH TWO ASSOCIATIONS.
 # ------------------------------------------------------------
 
 def Calcular_Medias_Centro_Desglosado(
@@ -2154,17 +2125,16 @@ def Calcular_Medias_Centro_Desglosado(
 ) -> dict:
 
     """
-    Calcula medias con centro desglosado en dos asociaciones.
+    Calculates means with the center split into two associations.
 
-    Parametros:
-    - Muestra: Diccionario con submuestras.
+    Parameters:
+    - Muestra: Dictionary with subsamples.
 
-    Retorna:
-    - Diccionario con medias y datos.
+    Returns:
+    - Dictionary with means and data.
 
-    Ejemplos:
+    Examples:
     - Calcular_Medias_Centro_Desglosado(Muestra)
-    
     """
 
     Datos_Bal = Muestra["Datos_Bal"]
@@ -2223,17 +2193,16 @@ def Calcular_Significancia_Centro_Desglosado(
 ) -> dict:
 
     """
-    Calcula Wilcoxon por item con centro desglosado.
+    Calculates Wilcoxon per item with the center split.
 
-    Parametros:
-    - Datos_Tres: Diccionario con datos y medias.
+    Parameters:
+    - Datos_Tres: Dictionary with data and means.
 
-    Retorna:
-    - Diccionario con p valores.
+    Returns:
+    - Dictionary with p-values.
 
-    Ejemplos:
+    Examples:
     - Calcular_Significancia_Centro_Desglosado(Datos_Tres)
-    
     """
 
     Orden_Items = Datos_Tres["Orden_Items"]
@@ -2305,18 +2274,17 @@ def Agregar_Seccion_09(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 09.
+    Adds section 09 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_09(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -2473,7 +2441,7 @@ def Agregar_Seccion_09(
 
 
 # ------------------------------------------------------------
-# SECCION 10. CUANTIFICACION CENTRO DESGLOSADO.
+# SECTION 10. SPLIT-CENTER QUANTIFICATION.
 # ------------------------------------------------------------
 
 def Agregar_Seccion_10(
@@ -2482,18 +2450,17 @@ def Agregar_Seccion_10(
 ) -> None:
 
     """
-    Agrega al reporte la seccion 10.
+    Adds section 10 to the report.
 
-    Parametros:
-    - Reporte: Instancia del generador de reporte.
-    - Datos: Diccionario con dataframes.
+    Parameters:
+    - Reporte: Report generator instance.
+    - Datos: Dictionary with dataframes.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Agregar_Seccion_10(Reporte, Datos)
-    
     """
 
     Reporte.Agregar_Separador("=")
@@ -2657,21 +2624,21 @@ def Agregar_Seccion_10(
 
 
 # ------------------------------------------------------------
-# EJECUCION PRINCIPAL.
+# MAIN EXECUTION.
 # ------------------------------------------------------------
 
 def Ejecutar_Analisis_Completo() -> None:
 
     """
-    Ejecuta todo el analisis y genera el reporte final.
+    Runs the full analysis and generates the final report.
 
-    Parametros:
-    - Sin parametros.
+    Parameters:
+    - No parameters.
 
-    Retorna:
-    - Nada.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Ejecutar_Analisis_Completo()
     """
 

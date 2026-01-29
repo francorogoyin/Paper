@@ -5,7 +5,6 @@ Statistical analyses.
 This script contains functions to perform statistical analyses
 including Kruskal-Wallis, Dunn post-hoc, Wilcoxon, and Mann-Whitney
 tests on the processed databases.
-
 """
 
 import pandas as pd
@@ -87,7 +86,6 @@ def Traducir_Variable(Nombre_Variable: str) -> str:
 
     Returns:
         str: Translated variable name or original if not found.
-
     """
 
     return Mapeo_Variables_Es_En.get(Nombre_Variable, Nombre_Variable)
@@ -103,7 +101,6 @@ def Formatear_P_Valor(P_Valor: float) -> str:
 
     Returns:
         str: The formatted p-value as string (e.g., "2.12E-15").
-
     """
 
     if pd.isna(P_Valor):
@@ -127,7 +124,6 @@ def Cargar_Bases_Datos(Ruta_Carpeta: str) -> dict:
 
     Returns:
         dict: Dictionary with loaded databases.
-
     """
 
     dfs_Finales = {}
@@ -165,7 +161,6 @@ def Kruskal_Wallis_Por_Categoria(
 
     Returns:
         pd.DataFrame: Table with Kruskal-Wallis results.
-
     """
 
     # Filter only valid categories.
@@ -216,7 +211,6 @@ def Obtener_Columnas_CO_Items() -> tuple:
         tuple: (Columnas_CO_Pro_Izq, Columnas_CO_Pro_Der,
                 Columnas_CO_Con_Izq, Columnas_CO_Con_Der,
                 Todas_Columnas_CO)
-
     """
 
     Columnas_CO_Pro_Izq = [
@@ -255,7 +249,6 @@ def Obtener_Columnas_CT_Items() -> tuple:
         tuple: (Columnas_CT_Pro_Izq, Columnas_CT_Pro_Der,
                 Columnas_CT_Con_Izq, Columnas_CT_Con_Der,
                 Todas_Columnas_CT)
-
     """
 
     Columnas_CT_Pro_Izq = [
@@ -308,7 +301,6 @@ def Dunn_Post_Hoc(
 
     Returns:
         pd.DataFrame: Matrix of adjusted p-values.
-
     """
 
     # Filter valid categories and remove NaN.
@@ -342,7 +334,6 @@ def Extraer_Comparaciones_Significativas(
 
     Returns:
         list: List of dictionaries with significant comparisons.
-
     """
 
     Comparaciones = []
@@ -379,7 +370,6 @@ def Ejecutar_Dunn_Variables_Significativas(
 
     Returns:
         dict: Dictionary with Dunn matrices by variable.
-
     """
 
     Resultados_Dunn = {}
@@ -411,7 +401,6 @@ def Wilcoxon_Pareado(
 
     Returns:
         dict: Dictionary with test results.
-
     """
 
     # Remove NaN in both variables.
@@ -477,7 +466,6 @@ def Wilcoxon_Congruencia(
 
     Returns:
         dict: Test results.
-
     """
 
     Variable_1 = f'{Tipo}_Congruente'
@@ -502,7 +490,6 @@ def Wilcoxon_Congruencia_Por_Categoria(
 
     Returns:
         pd.DataFrame: Results by category.
-
     """
 
     Resultados = []
@@ -538,7 +525,6 @@ def Calcular_Significancia_Wilcoxon_Curvas_Asociacion(
 
     Returns:
         dict: P-values by item for right and left.
-
     """
 
     Orden_Items = Datos['Orden_Items']
@@ -602,7 +588,6 @@ def Calcular_Significancia_Wilcoxon_Baseline_Propia(
 
     Returns:
         dict: P-values by item for left and right.
-
     """
 
     Orden_Items = Datos['Orden_Items']
@@ -655,7 +640,6 @@ def Calcular_Significancia_Wilcoxon_Balanceada(
 
     Returns:
         dict: P-values by item for left and right.
-
     """
 
     Orden_Items = Datos['Orden_Items']
@@ -713,7 +697,6 @@ def Calcular_Significancia_Wilcoxon_Tres_Poblaciones(
 
     Returns:
         dict: P-values by item for left, center and right.
-
     """
 
     Orden_Items = Datos['Orden_Items']
@@ -793,7 +776,6 @@ def Calcular_Significancia_Wilcoxon_Centro_Dos_Asociaciones(
 
     Returns:
         dict: P-values by item for left, center and right.
-
     """
 
     Orden_Items = Datos['Orden_Items']
@@ -879,7 +861,6 @@ def Test_Mann_Whitney(Valores_1: list, Valores_2: list) -> float:
 
     """
     Performs Mann-Whitney U test to compare two groups.
-
     """
 
     if len(Valores_1) < 3 or len(Valores_2) < 3:
@@ -901,7 +882,6 @@ def Test_Wilcoxon_Contra_Cero(Valores: list) -> float:
     """
     Performs Wilcoxon signed-rank test against zero.
     Tests if differences are significantly different from 0.
-
     """
 
     if len(Valores) < 3:
@@ -918,7 +898,6 @@ def Obtener_Significancia_Str(P_Valor: float) -> str:
 
     """
     Converts p-value to significance string.
-
     """
 
     if P_Valor < 0.001:
@@ -952,7 +931,6 @@ def Mann_Whitney_Entre_Datasets(
 
     Returns:
         dict: Test results.
-
     """
 
     Datos_1 = df_1[Variable].dropna()
@@ -1024,7 +1002,6 @@ def Analisis_Kruskal_CO_Items(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     _, _, _, _, Todas_Columnas_CO = Obtener_Columnas_CO_Items()
@@ -1065,7 +1042,6 @@ def Analisis_Kruskal_CT_Items(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     _, _, _, _, Todas_Columnas_CT = Obtener_Columnas_CT_Items()
@@ -1102,7 +1078,6 @@ def Obtener_Columnas_Agregadas() -> list:
 
     Returns:
         list: List of aggregated column names.
-
     """
 
     # Aggregated CO variables.
@@ -1130,7 +1105,6 @@ def Analisis_Kruskal_Variables_Agregadas(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Todas_Agregadas = Obtener_Columnas_Agregadas()
@@ -1186,7 +1160,6 @@ def Analisis_Dunn_Variables_Agregadas(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -1250,7 +1223,6 @@ def Analisis_Dunn_Post_Hoc(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -1309,7 +1281,6 @@ def Analisis_Wilcoxon_Congruencia(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset and type.
-
     """
 
     Resultados = {'General': [], 'Por_Categoria': []}
@@ -1367,7 +1338,6 @@ def Analisis_Mann_Whitney_Entre_Elecciones(
 
     Returns:
         pd.DataFrame: Comparison results.
-
     """
 
     if 'Generales' not in dfs_Finales or 'Ballotage' not in dfs_Finales:
@@ -1418,7 +1388,6 @@ def Wilcoxon_Izq_vs_Der_Por_Item(
 
     Returns:
         pd.DataFrame: Results by item.
-
     """
 
     if Items is None:
@@ -1499,7 +1468,6 @@ def Analisis_Wilcoxon_Izq_vs_Der(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Resultados = {}
@@ -1541,7 +1509,6 @@ def Calcular_Diferencias_Izq_Der(
 
     Returns:
         pd.DataFrame: DataFrame with Diff_CO_Item_X columns.
-
     """
 
     if Items is None:
@@ -1579,7 +1546,6 @@ def Kruskal_Wallis_Diferencias_Entre_Poblaciones(
 
     Returns:
         pd.DataFrame: Kruskal-Wallis results by item.
-
     """
 
     if Items is None:
@@ -1655,7 +1621,6 @@ def Analisis_Diferencias_Entre_Poblaciones(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results with Kruskal-Wallis and Dunn.
-
     """
 
     Resultados = {'Kruskal': {}, 'Dunn': {}}
@@ -1777,7 +1742,6 @@ def Analisis_Kruskal_Autopercepciones(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Resultados = {}
@@ -1822,7 +1786,6 @@ def Analisis_Kruskal_Indices(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Resultados = {}
@@ -1867,7 +1830,6 @@ def Analisis_Kruskal_Cercanias(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Resultados = {}
@@ -1912,7 +1874,6 @@ def Analisis_Kruskal_Influencias(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Results by dataset.
-
     """
 
     Resultados = {}
@@ -1962,7 +1923,6 @@ def Analisis_Dunn_Autopercepciones(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -2027,7 +1987,6 @@ def Analisis_Dunn_Indices(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -2092,7 +2051,6 @@ def Analisis_Dunn_Cercanias(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -2157,7 +2115,6 @@ def Analisis_Dunn_Influencias(
 
     Returns:
         dict: Dunn results by dataset.
-
     """
 
     Resultados = {}
@@ -2225,7 +2182,6 @@ def Analisis_Control_Demografico(dfs_Finales: dict) -> dict:
 
     Returns:
         dict: Regression results for each election and type (CO, CT).
-
     """
 
     print("\nAnalysis controlling for Gender and Age...")
@@ -2373,7 +2329,6 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
 
     Returns:
         dict: Dictionary with all results.
-
     """
 
     print("="*70)
@@ -2599,7 +2554,6 @@ def Generar_Reporte_TXT(
         Todos_Resultados (dict): Dictionary with all results.
         dfs_Finales (dict): Dictionary with DataFrames.
         Ruta_Salida (str): Path to output TXT file.
-
     """
 
     Lineas = []
@@ -2617,7 +2571,6 @@ def Generar_Reporte_TXT(
     ):
         """
         Helper function to write Kruskal-Wallis sections.
-
         """
 
         Separador("=")
@@ -2654,7 +2607,6 @@ def Generar_Reporte_TXT(
     def Escribir_Dunn(Nombre_Seccion: str, Clave_Resultado: str):
         """
         Helper function to write Dunn post-hoc sections.
-
         """
 
         Separador("=")
@@ -3118,15 +3070,15 @@ def Generar_Reporte_TXT(
 def Crear_Carpeta_Tablas(Ruta_Base: str) -> str:
 
     """
-    Crear carpeta de tablas en Results/Tables.
+    Creates the tables folder in Results/Tables.
 
-    Parametros:
-    - Ruta_Base: Ruta base del proyecto.
+    Parameters:
+    - Ruta_Base: Project base path.
 
-    Retorna:
-    - Ruta_Tablas: Ruta a la carpeta de tablas.
+    Returns:
+    - Ruta_Tablas: Path to the tables folder.
 
-    Ejemplos:
+    Examples:
     - Ruta_Tablas = Crear_Carpeta_Tablas(Ruta_Base)
     """
 
@@ -3139,15 +3091,15 @@ def Crear_Carpeta_Tablas(Ruta_Base: str) -> str:
 def Determinar_Asteriscos(P_Valor: float) -> str:
 
     """
-    Determinar asteriscos de significancia por p-valor.
+    Determines significance asterisks by p-value.
 
-    Parametros:
-    - P_Valor: Valor p numerico.
+    Parameters:
+    - P_Valor: Numeric p-value.
 
-    Retorna:
-    - Asteriscos: Cadena de asteriscos.
+    Returns:
+    - Asteriscos: Asterisk string.
 
-    Ejemplos:
+    Examples:
     - Asteriscos = Determinar_Asteriscos(0.03)
     """
 
@@ -3170,18 +3122,18 @@ def Convertir_Matriz_Dunn_A_Filas(
 ) -> list:
 
     """
-    Convertir matriz Dunn a tabla larga de comparaciones.
+    Converts a Dunn matrix to a long comparison table.
 
-    Parametros:
-    - Matriz_Dunn: Matriz de p-valores ajustados.
-    - Dataset: Nombre del dataset.
-    - Variable: Nombre de la variable analizada.
-    - Item: Numero de item si aplica.
+    Parameters:
+    - Matriz_Dunn: Matrix of adjusted p-values.
+    - Dataset: Dataset name.
+    - Variable: Name of the analyzed variable.
+    - Item: Item number if applicable.
 
-    Retorna:
-    - Filas: Lista de diccionarios con comparaciones.
+    Returns:
+    - Filas: List of dictionaries with comparisons.
 
-    Ejemplos:
+    Examples:
     - Filas = Convertir_Matriz_Dunn_A_Filas(
       Matriz_Dunn,
       Dataset = "Generales",
@@ -3214,17 +3166,17 @@ def Exportar_Tabla_Kruskal(
 ) -> None:
 
     """
-    Exportar resultados de Kruskal a un xlsx.
+    Exports Kruskal results to an xlsx.
 
-    Parametros:
-    - Resultados: Diccionario por dataset con DataFrames.
-    - Ruta_Salida: Ruta del archivo xlsx.
-    - Tipo_Analisis: Etiqueta del analisis.
+    Parameters:
+    - Resultados: Dictionary by dataset with DataFrames.
+    - Ruta_Salida: Path to the xlsx file.
+    - Tipo_Analisis: Analysis label.
 
-    Retorna:
-    - Ninguno.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Exportar_Tabla_Kruskal(
       Resultados_Kruskal,
       Ruta_Salida = "Kruskal_CO_Items.xlsx",
@@ -3258,17 +3210,17 @@ def Exportar_Tabla_Dunn(
 ) -> None:
 
     """
-    Exportar resultados Dunn a un xlsx en formato largo.
+    Exports Dunn results to an xlsx in long format.
 
-    Parametros:
-    - Resultados_Dunn: Diccionario por dataset y variable.
-    - Ruta_Salida: Ruta del archivo xlsx.
-    - Tipo_Analisis: Etiqueta del analisis.
+    Parameters:
+    - Resultados_Dunn: Dictionary by dataset and variable.
+    - Ruta_Salida: Path to the xlsx file.
+    - Tipo_Analisis: Analysis label.
 
-    Retorna:
-    - Ninguno.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Exportar_Tabla_Dunn(
       Resultados_Dunn,
       Ruta_Salida = "Dunn_CO_Items.xlsx",
@@ -3312,16 +3264,16 @@ def Exportar_Tablas_Estadisticos(
 ) -> None:
 
     """
-    Exportar tablas xlsx de analisis estadisticos.
+    Exports xlsx tables of statistical analyses.
 
-    Parametros:
-    - Todos_Resultados: Diccionario con todos los resultados.
-    - Ruta_Tablas: Carpeta de salida.
+    Parameters:
+    - Todos_Resultados: Dictionary with all results.
+    - Ruta_Tablas: Output folder.
 
-    Retorna:
-    - Ninguno.
+    Returns:
+    - None.
 
-    Ejemplos:
+    Examples:
     - Exportar_Tablas_Estadisticos(Resultados, Ruta_Tablas)
     """
 
