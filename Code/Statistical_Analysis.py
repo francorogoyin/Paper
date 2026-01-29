@@ -88,6 +88,14 @@ def Traducir_Variable(Nombre_Variable: str) -> str:
         str: Translated variable name or original if not found.
     """
 
+    if Nombre_Variable.startswith('CDC_'):
+        Partes = Nombre_Variable.split('_')
+        if len(Partes) == 3:
+            Candidato = Partes[1]
+            Dimension = 'Izq_Der' if Partes[2] == '0' else \
+                        'Con_Pro' if Partes[2] == '1' else Partes[2]
+            return f"{Candidato}_{Dimension}"
+
     return Mapeo_Variables_Es_En.get(Nombre_Variable, Nombre_Variable)
 
 
@@ -1730,6 +1738,11 @@ Columnas_Influencias = [
     'Influencia_Prensa'
 ]
 
+Candidatos_Cdc = ['Massa', 'Bullrich', 'Schiaretti', 'Milei', 'Bregman']
+Columnas_Cdc_Izq_Der = [f'CDC_{Candidato}_0' for Candidato in Candidatos_Cdc]
+Columnas_Cdc_Con_Pro = [f'CDC_{Candidato}_1' for Candidato in Candidatos_Cdc]
+Columnas_Cdc_Todas = Columnas_Cdc_Izq_Der + Columnas_Cdc_Con_Pro
+
 
 def Analisis_Kruskal_Autopercepciones(dfs_Finales: dict) -> dict:
 
@@ -1802,6 +1815,48 @@ def Analisis_Kruskal_Indices(dfs_Finales: dict) -> dict:
 
         if not Columnas_Existentes:
             print("  No index columns found.")
+            continue
+
+        Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
+        Resultados[Nombre_df] = Tabla
+
+        print("\nResults:")
+        for _, Fila in Tabla.iterrows():
+            Marca = "***" if Fila['Valor_p'] < 0.001 else \
+                    "**" if Fila['Valor_p'] < 0.01 else \
+                    "*" if Fila['Valor_p'] < 0.05 else ""
+            print(f"  {Fila['Variable']}: "
+                  f"H={Fila['Estadistico_H']:.4f}, "
+                  f"p={Formatear_P_Valor(Fila['Valor_p'])} {Marca}")
+
+    return Resultados
+
+
+def Analisis_Kruskal_Cdc(dfs_Finales: dict) -> dict:
+
+    """
+    Executes Kruskal-Wallis for CDC candidate perception columns.
+
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+
+    Returns:
+        dict: Results by dataset.
+    """
+
+    Resultados = {}
+
+    for Nombre_df, df in dfs_Finales.items():
+        print(f"\n{'='*60}")
+        print(f"Kruskal-Wallis CDC Candidate Perceptions - {Nombre_df}")
+        print('='*60)
+
+        Columnas_Existentes = [
+            c for c in Columnas_Cdc_Todas if c in df.columns
+        ]
+
+        if not Columnas_Existentes:
+            print("  No CDC columns found.")
             continue
 
         Tabla = Kruskal_Wallis_Por_Categoria(df, Columnas_Existentes)
@@ -2020,6 +2075,66 @@ def Analisis_Dunn_Indices(
         Resultados[Nombre_df] = Resultados_Dunn
 
         # Show summary of significant comparisons.
+        for Variable, Matriz in Resultados_Dunn.items():
+            Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
+
+            if Comparaciones:
+                print(f"\n  {Variable}:")
+                for Comp in Comparaciones:
+                    print(f"    - {Comp['Categoria_1']} vs "
+                          f"{Comp['Categoria_2']}: "
+                          f"p={Formatear_P_Valor(Comp['Valor_p'])}")
+            else:
+                print(f"\n  {Variable}: No significant comparisons")
+
+        return Resultados
+
+
+def Analisis_Dunn_Cdc(
+    dfs_Finales: dict,
+    Resultados_Kruskal_Cdc: dict
+) -> dict:
+
+    """
+    Executes Dunn post-hoc for significant CDC candidate perceptions.
+
+    Parameters:
+        dfs_Finales (dict): Dictionary with DataFrames.
+        Resultados_Kruskal_Cdc (dict): Kruskal-Wallis results for CDC.
+
+    Returns:
+        dict: Dunn results by dataset.
+    """
+
+    Resultados = {}
+
+    for Nombre_df, df in dfs_Finales.items():
+        print(f"\n{'='*60}")
+        print(f"Dunn Post-Hoc CDC Perceptions - {Nombre_df}")
+        print('='*60)
+
+        Tabla_Kruskal = Resultados_Kruskal_Cdc.get(Nombre_df)
+
+        if Tabla_Kruskal is None:
+            print("  No Kruskal-Wallis results available.")
+            continue
+
+        Variables_Sig = Tabla_Kruskal[
+            Tabla_Kruskal['Significativo']
+        ]['Variable'].tolist()
+
+        if not Variables_Sig:
+            print("  No significant variables for post-hoc.")
+            continue
+
+        print(f"Variables for post-hoc: {len(Variables_Sig)}")
+
+        Resultados_Dunn = Ejecutar_Dunn_Variables_Significativas(
+            df, Variables_Sig
+        )
+
+        Resultados[Nombre_df] = Resultados_Dunn
+
         for Variable, Matriz in Resultados_Dunn.items():
             Comparaciones = Extraer_Comparaciones_Significativas(Matriz)
 
@@ -2395,16 +2510,23 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
     Todos_Resultados['Kruskal_Indices'] = \
         Analisis_Kruskal_Indices(dfs_Finales)
 
-    # 7. Kruskal-Wallis para cercanías a candidatos.
+    # 7. Kruskal-Wallis para percepciones CDC.
     print("\n" + "="*70)
-    print("7. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA")
+    print("7. KRUSKAL-WALLIS: PERCEPCIONES CDC POR CANDIDATO")
+    print("="*70)
+    Todos_Resultados['Kruskal_Cdc'] = \
+        Analisis_Kruskal_Cdc(dfs_Finales)
+
+    # 8. Kruskal-Wallis para cercanías a candidatos.
+    print("\n" + "="*70)
+    print("8. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA")
     print("="*70)
     Todos_Resultados['Kruskal_Cercanias'] = \
         Analisis_Kruskal_Cercanias(dfs_Finales)
 
-    # 8. Kruskal-Wallis para influencias (redes y prensa).
+    # 9. Kruskal-Wallis para influencias (redes y prensa).
     print("\n" + "="*70)
-    print("8. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA")
+    print("9. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA")
     print("="*70)
     Todos_Resultados['Kruskal_Influencias'] = \
         Analisis_Kruskal_Influencias(dfs_Finales)
@@ -2417,63 +2539,72 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
     print("# SECTION B: DUNN POST-HOC TESTS (Corrección Bonferroni)")
     print("#"*70)
 
-    # 8. Dunn post-hoc para CO items.
+    # 10. Dunn post-hoc para CO items.
     print("\n" + "="*70)
-    print("8. DUNN POST-HOC: ÍTEMS CO")
+    print("10. DUNN POST-HOC: ÍTEMS CO")
     print("="*70)
     Todos_Resultados['Dunn_CO'] = Analisis_Dunn_Post_Hoc(
         dfs_Finales,
         Todos_Resultados['Kruskal_CO_Items']
     )
 
-    # 9. Dunn post-hoc para CT items.
+    # 11. Dunn post-hoc para CT items.
     print("\n" + "="*70)
-    print("9. DUNN POST-HOC: ÍTEMS CT")
+    print("11. DUNN POST-HOC: ÍTEMS CT")
     print("="*70)
     Todos_Resultados['Dunn_CT'] = Analisis_Dunn_Post_Hoc(
         dfs_Finales,
         Todos_Resultados['Kruskal_CT_Items']
     )
 
-    # 10. Dunn post-hoc para variables agregadas.
+    # 12. Dunn post-hoc para variables agregadas.
     print("\n" + "="*70)
-    print("10. DUNN POST-HOC: VARIABLES AGREGADAS")
+    print("12. DUNN POST-HOC: VARIABLES AGREGADAS")
     print("="*70)
     Todos_Resultados['Dunn_Agregadas'] = Analisis_Dunn_Variables_Agregadas(
         dfs_Finales,
         Todos_Resultados['Kruskal_Agregadas']
     )
 
-    # 11. Dunn post-hoc para autopercepciones.
+    # 13. Dunn post-hoc para autopercepciones.
     print("\n" + "="*70)
-    print("11. DUNN POST-HOC: AUTOPERCEPCIONES")
+    print("13. DUNN POST-HOC: AUTOPERCEPCIONES")
     print("="*70)
     Todos_Resultados['Dunn_Autopercepciones'] = Analisis_Dunn_Autopercepciones(
         dfs_Finales,
         Todos_Resultados['Kruskal_Autopercepciones']
     )
 
-    # 12. Dunn post-hoc para índices.
+    # 14. Dunn post-hoc para índices.
     print("\n" + "="*70)
-    print("12. DUNN POST-HOC: ÍNDICES")
+    print("14. DUNN POST-HOC: ÍNDICES")
     print("="*70)
     Todos_Resultados['Dunn_Indices'] = Analisis_Dunn_Indices(
         dfs_Finales,
         Todos_Resultados['Kruskal_Indices']
     )
 
-    # 13. Dunn post-hoc para cercanías a candidatos.
+    # 15. Dunn post-hoc para percepciones CDC.
     print("\n" + "="*70)
-    print("13. DUNN POST-HOC: CERCANÍAS A CANDIDATOS")
+    print("15. DUNN POST-HOC: CDC POR CANDIDATO")
+    print("="*70)
+    Todos_Resultados['Dunn_Cdc'] = Analisis_Dunn_Cdc(
+        dfs_Finales,
+        Todos_Resultados['Kruskal_Cdc']
+    )
+
+    # 16. Dunn post-hoc para cercanías a candidatos.
+    print("\n" + "="*70)
+    print("16. DUNN POST-HOC: CERCANÍAS A CANDIDATOS")
     print("="*70)
     Todos_Resultados['Dunn_Cercanias'] = Analisis_Dunn_Cercanias(
         dfs_Finales,
         Todos_Resultados['Kruskal_Cercanias']
     )
 
-    # 14. Dunn post-hoc para influencias.
+    # 17. Dunn post-hoc para influencias.
     print("\n" + "="*70)
-    print("14. DUNN POST-HOC: INFLUENCIAS")
+    print("17. DUNN POST-HOC: INFLUENCIAS")
     print("="*70)
     Todos_Resultados['Dunn_Influencias'] = Analisis_Dunn_Influencias(
         dfs_Finales,
@@ -2488,23 +2619,23 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
     print("# SECTION C: PAIRED TESTS (WILCOXON AND MANN-WHITNEY)")
     print("#"*70)
 
-    # 14. Wilcoxon para congruencia ideológica.
+    # 18. Wilcoxon para congruencia ideológica.
     print("\n" + "="*70)
-    print("14. WILCOXON: CONGRUENCIA IDEOLÓGICA")
+    print("18. WILCOXON: CONGRUENCIA IDEOLÓGICA")
     print("="*70)
     Todos_Resultados['Wilcoxon_Congruencia'] = \
         Analisis_Wilcoxon_Congruencia(dfs_Finales)
 
-    # 15. Wilcoxon Izq vs Der por ítem.
+    # 19. Wilcoxon Izq vs Der por ítem.
     print("\n" + "="*70)
-    print("17. WILCOXON: IZQ VS DER POR ÍTEM (PAREADO)")
+    print("19. WILCOXON: IZQ VS DER POR ÍTEM (PAREADO)")
     print("="*70)
     Todos_Resultados['Wilcoxon_Izq_vs_Der'] = \
         Analisis_Wilcoxon_Izq_vs_Der(dfs_Finales)
 
-    # 16. Mann-Whitney entre elecciones.
+    # 20. Mann-Whitney entre elecciones.
     print("\n" + "="*70)
-    print("18. MANN-WHITNEY: GENERALES VS BALLOTAGE")
+    print("20. MANN-WHITNEY: GENERALES VS BALLOTAGE")
     print("="*70)
 
     # Variables to compare between elections.
@@ -2521,9 +2652,9 @@ def Ejecutar_Todos_Los_Analisis(Ruta_Datos: str) -> dict:
             Variables_Comparar
         )
 
-    # 17. Control por covariables demográficas.
+    # 21. Control por covariables demográficas.
     print("\n" + "="*70)
-    print("19. CONTROL POR GÉNERO Y EDAD (REGRESIÓN)")
+    print("21. CONTROL POR GÉNERO Y EDAD (REGRESIÓN)")
     print("="*70)
     Todos_Resultados['Control_Demografico'] = \
         Analisis_Control_Demografico(dfs_Finales)
@@ -2546,9 +2677,9 @@ def Generar_Reporte_TXT(
     in a readable manner.
 
     Report order:
-    - Section A: All Kruskal-Wallis (1-7)
-    - Section B: All Dunn post-hoc (8-13)
-    - Section C: Paired Wilcoxon and Mann-Whitney tests (14-16)
+    - Section A: All Kruskal-Wallis (1-9)
+    - Section B: All Dunn post-hoc (10-17)
+    - Section C: Paired Wilcoxon and Mann-Whitney tests (18-21)
 
     Parameters:
         Todos_Resultados (dict): Dictionary with all results.
@@ -2729,16 +2860,23 @@ def Generar_Reporte_TXT(
         "Índices de Progresismo, Conservadurismo y Positividad."
     )
 
-    # 7. Kruskal-Wallis Cercanías.
+    # 7. Kruskal-Wallis CDC.
     Escribir_Kruskal(
-        "7. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA",
+        "7. KRUSKAL-WALLIS: PERCEPCIONES CDC POR CANDIDATO",
+        'Kruskal_Cdc',
+        "Percepción Izq-Der y Con-Pro de cada candidato (CDC)."
+    )
+
+    # 8. Kruskal-Wallis Cercanías.
+    Escribir_Kruskal(
+        "8. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA",
         'Kruskal_Cercanias',
         "Cercanía a Massa, Bullrich, Bregman, Milei, Schiaretti."
     )
 
-    # 8. Kruskal-Wallis Influencias.
+    # 9. Kruskal-Wallis Influencias.
     Escribir_Kruskal(
-        "8. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA",
+        "9. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA",
         'Kruskal_Influencias',
         "Influencia percibida de Redes Sociales y Prensa."
     )
@@ -2751,45 +2889,51 @@ def Generar_Reporte_TXT(
     Separador("#")
     Agregar("")
 
-    # 9. Dunn CO Items.
+    # 10. Dunn CO Items.
     Escribir_Dunn(
-        "9. DUNN POST-HOC: ÍTEMS CO",
+        "10. DUNN POST-HOC: ÍTEMS CO",
         'Dunn_CO'
     )
 
-    # 10. Dunn CT Items.
+    # 11. Dunn CT Items.
     Escribir_Dunn(
-        "10. DUNN POST-HOC: ÍTEMS CT",
+        "11. DUNN POST-HOC: ÍTEMS CT",
         'Dunn_CT'
     )
 
-    # 11. Dunn Variables Agregadas.
+    # 12. Dunn Variables Agregadas.
     Escribir_Dunn(
-        "11. DUNN POST-HOC: VARIABLES AGREGADAS",
+        "12. DUNN POST-HOC: VARIABLES AGREGADAS",
         'Dunn_Agregadas'
     )
 
-    # 12. Dunn Autopercepciones.
+    # 13. Dunn Autopercepciones.
     Escribir_Dunn(
-        "12. DUNN POST-HOC: AUTOPERCEPCIONES",
+        "13. DUNN POST-HOC: AUTOPERCEPCIONES",
         'Dunn_Autopercepciones'
     )
 
-    # 13. Dunn Índices.
+    # 14. Dunn Índices.
     Escribir_Dunn(
-        "13. DUNN POST-HOC: ÍNDICES",
+        "14. DUNN POST-HOC: ÍNDICES",
         'Dunn_Indices'
     )
 
-    # 14. Dunn Cercanías.
+    # 15. Dunn CDC.
     Escribir_Dunn(
-        "14. DUNN POST-HOC: CERCANÍAS A CANDIDATOS",
+        "15. DUNN POST-HOC: CDC POR CANDIDATO",
+        'Dunn_Cdc'
+    )
+
+    # 16. Dunn Cercanías.
+    Escribir_Dunn(
+        "16. DUNN POST-HOC: CERCANÍAS A CANDIDATOS",
         'Dunn_Cercanias'
     )
 
-    # 15. Dunn Influencias.
+    # 17. Dunn Influencias.
     Escribir_Dunn(
-        "15. DUNN POST-HOC: INFLUENCIAS",
+        "17. DUNN POST-HOC: INFLUENCIAS",
         'Dunn_Influencias'
     )
 
@@ -2801,9 +2945,9 @@ def Generar_Reporte_TXT(
     Separador("#")
     Agregar("")
 
-    # 16. Wilcoxon Congruencia.
+    # 18. Wilcoxon Congruencia.
     Separador("=")
-    Agregar("16. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA")
+    Agregar("18. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA")
     Separador("=")
     Agregar("")
     Agregar("Comparación Congruente vs Incongruente (mismo participante)")
@@ -2816,7 +2960,7 @@ def Generar_Reporte_TXT(
     Resultados_Wilcoxon = Todos_Resultados.get('Wilcoxon_Congruencia', {})
 
     # Resultados generales.
-    Agregar("14.1 ANÁLISIS GENERAL (Todas las poblaciones)")
+    Agregar("18.1 ANÁLISIS GENERAL (Todas las poblaciones)")
     Separador("-", 50)
 
     for Resultado in Resultados_Wilcoxon.get('General', []):
@@ -2841,7 +2985,7 @@ def Generar_Reporte_TXT(
     Agregar("")
 
     # Resultados por categoría.
-    Agregar("14.2 ANÁLISIS POR CATEGORÍA")
+    Agregar("18.2 ANÁLISIS POR CATEGORÍA")
     Separador("-", 50)
 
     Resultados_Cat = Resultados_Wilcoxon.get('Por_Categoria', [])
@@ -2867,9 +3011,9 @@ def Generar_Reporte_TXT(
                     Agregar(f"\n    {Tipo} - Sin comparaciones significativas")
     Agregar("")
 
-    # 15. Wilcoxon Izq vs Der por ítem.
+    # 19. Wilcoxon Izq vs Der por ítem.
     Separador("=")
-    Agregar("17. WILCOXON PAREADO: IZQ VS DER POR ÍTEM")
+    Agregar("19. WILCOXON PAREADO: IZQ VS DER POR ÍTEM")
     Separador("=")
     Agregar("")
     Agregar("Compara CO_Item_X_Izq vs CO_Item_X_Der (mismo participante)")
@@ -2901,9 +3045,9 @@ def Generar_Reporte_TXT(
                         f"({Fila['Significancia']})")
         Agregar("")
 
-    # 16. Mann-Whitney entre elecciones.
+    # 20. Mann-Whitney entre elecciones.
     Separador("=")
-    Agregar("18. MANN-WHITNEY U: GENERALES VS BALLOTAGE")
+    Agregar("20. MANN-WHITNEY U: GENERALES VS BALLOTAGE")
     Separador("=")
     Agregar("")
     Agregar("Comparación de variables entre ambas elecciones (no pareado)")
@@ -2941,9 +3085,9 @@ def Generar_Reporte_TXT(
                         f"p = {Formatear_P_Valor(Fila['Valor_p'])}")
     Agregar("")
 
-    # 17. Control por covariables demográficas.
+    # 21. Control por covariables demográficas.
     Separador("=")
-    Agregar("19. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)")
+    Agregar("21. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)")
     Separador("=")
     Agregar("")
     Agregar("Verificación de que el efecto Congruente vs Incongruente")
@@ -3028,6 +3172,7 @@ def Generar_Reporte_TXT(
             ('Kruskal_Agregadas', 'Agregadas'),
             ('Kruskal_Autopercepciones', 'Autopercepciones'),
             ('Kruskal_Indices', 'Índices'),
+            ('Kruskal_Cdc', 'CDC'),
             ('Kruskal_Cercanias', 'Cercanías'),
             ('Kruskal_Influencias', 'Influencias')
         ]:
@@ -3303,6 +3448,11 @@ def Exportar_Tablas_Estadisticos(
         'Indices'
     )
     Exportar_Tabla_Kruskal(
+        Todos_Resultados.get('Kruskal_Cdc', {}),
+        os.path.join(Ruta_Tablas, 'Kruskal_Cdc.xlsx'),
+        'CDC'
+    )
+    Exportar_Tabla_Kruskal(
         Todos_Resultados.get('Kruskal_Cercanias', {}),
         os.path.join(Ruta_Tablas, 'Kruskal_Closeness.xlsx'),
         'Cercanias'
@@ -3349,6 +3499,11 @@ def Exportar_Tablas_Estadisticos(
         Todos_Resultados.get('Dunn_Indices', {}),
         os.path.join(Ruta_Tablas, 'Dunn_Indices.xlsx'),
         'Indices'
+    )
+    Exportar_Tabla_Dunn(
+        Todos_Resultados.get('Dunn_Cdc', {}),
+        os.path.join(Ruta_Tablas, 'Dunn_Cdc.xlsx'),
+        'CDC'
     )
     Exportar_Tabla_Dunn(
         Todos_Resultados.get('Dunn_Cercanias', {}),

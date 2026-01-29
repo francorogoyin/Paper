@@ -4,7 +4,7 @@ Proyecto de Tesis - Experimento Electoral Argentina 2023
 ================================================================================
 
 ################################################################################
-# SECCIÓN A: TESTS KRUSKAL-WALLIS
+# SECTION A: KRUSKAL-WALLIS TESTS
 ################################################################################
 
 ================================================================================
@@ -331,7 +331,41 @@ Resultados:
   Positivity_Index               H = 259.6077  p = 4.77E-54 ***
 
 ================================================================================
-7. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA
+7. KRUSKAL-WALLIS: PERCEPCIONES CDC POR CANDIDATO
+================================================================================
+
+Percepción Izq-Der y Con-Pro de cada candidato (CDC).
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 9/10
+
+Resultados:
+  Bullrich_Con_Pro               H = 640.8898  p = 2.95E-136 ***
+  Milei_Con_Pro                  H = 600.9786  p = 1.24E-127 ***
+  Bullrich_Izq_Der               H = 556.9668  p = 4.00E-118 ***
+  Milei_Izq_Der                  H = 402.1184  p = 1.04E-84 ***
+  Schiaretti_Con_Pro             H = 228.1880  p = 2.62E-47 ***
+  Schiaretti_Izq_Der             H = 163.4239  p = 1.84E-33 ***
+  Bregman_Con_Pro                H = 161.1224  p = 5.71E-33 ***
+  Massa_Con_Pro                  H = 140.4627  p = 1.43E-28 ***
+  Massa_Izq_Der                  H = 114.7308  p = 4.09E-23 ***
+  Bregman_Izq_Der                H =   3.3330  p = 6.49E-01 
+
+--------------------------------------------------------------------------------
+Dataset: Ballotage
+--------------------------------------------------------------------------------
+Variables significativas (p < 0.05): 4/4
+
+Resultados:
+  Milei_Con_Pro                  H = 295.7556  p = 8.19E-62 ***
+  Milei_Izq_Der                  H = 226.2302  p = 6.87E-47 ***
+  Massa_Izq_Der                  H = 106.6202  p = 2.12E-21 ***
+  Massa_Con_Pro                  H =  76.3829  p = 4.79E-15 ***
+
+================================================================================
+8. KRUSKAL-WALLIS: CERCANÍAS A CANDIDATOS POR CATEGORÍA
 ================================================================================
 
 Cercanía a Massa, Bullrich, Bregman, Milei, Schiaretti.
@@ -358,7 +392,7 @@ Resultados:
   Closeness_Massa                H = 457.5716  p = 1.14E-96 ***
 
 ================================================================================
-8. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA
+9. KRUSKAL-WALLIS: INFLUENCIAS POR CATEGORÍA
 ================================================================================
 
 Influencia percibida de Redes Sociales y Prensa.
@@ -382,11 +416,11 @@ Resultados:
   Written_Media_Influence        H =   6.3321  p = 2.75E-01 
 
 ################################################################################
-# SECCIÓN B: TESTS DUNN POST-HOC (Corrección Bonferroni)
+# SECTION B: DUNN POST-HOC TESTS (Corrección Bonferroni)
 ################################################################################
 
 ================================================================================
-9. DUNN POST-HOC: ÍTEMS CO
+10. DUNN POST-HOC: ÍTEMS CO
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -461,7 +495,7 @@ Dataset: Ballotage
   CO_Item_25_Izq: Sin comparaciones significativas
 
 ================================================================================
-10. DUNN POST-HOC: ÍTEMS CT
+11. DUNN POST-HOC: ÍTEMS CT
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -530,7 +564,7 @@ Dataset: Ballotage
     - Centre                    vs Right_Wing_Libertarian    p = 3.94E-02
 
 ================================================================================
-11. DUNN POST-HOC: VARIABLES AGREGADAS
+12. DUNN POST-HOC: VARIABLES AGREGADAS
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -562,7 +596,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 4.34E-02
 
 ================================================================================
-12. DUNN POST-HOC: AUTOPERCEPCIONES
+13. DUNN POST-HOC: AUTOPERCEPCIONES
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -648,7 +682,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 1.73E-07
 
 ================================================================================
-13. DUNN POST-HOC: ÍNDICES
+14. DUNN POST-HOC: ÍNDICES
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -692,46 +726,162 @@ Dataset: Generales
     - Moderate_Right_B          vs Progressivism             p = 2.90E-32
     - Progressivism             vs Right_Wing_Libertarian    p = 1.46E-20
 
+================================================================================
+15. DUNN POST-HOC: CDC POR CANDIDATO
+================================================================================
+
+--------------------------------------------------------------------------------
+Dataset: Generales
+--------------------------------------------------------------------------------
+
+  Bullrich_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 2.27E-07
+    - Centre                    vs Moderate_Right_B          p = 2.73E-05
+    - Centre                    vs Progressivism             p = 1.10E-11
+    - Left_Wing                 vs Moderate_Right_A          p = 8.89E-23
+    - Left_Wing                 vs Moderate_Right_B          p = 4.92E-52
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.17E-30
+    - Moderate_Right_A          vs Moderate_Right_B          p = 1.13E-04
+    - Moderate_Right_A          vs Progressivism             p = 1.69E-38
+    - Moderate_Right_B          vs Progressivism             p = 8.98E-81
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.02E-47
+
+  Milei_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 2.08E-07
+    - Centre                    vs Moderate_Right_B          p = 4.63E-05
+    - Centre                    vs Progressivism             p = 2.64E-09
+    - Centre                    vs Right_Wing_Libertarian    p = 2.41E-04
+    - Left_Wing                 vs Moderate_Right_A          p = 2.20E-16
+    - Left_Wing                 vs Moderate_Right_B          p = 4.43E-51
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.42E-44
+    - Moderate_Right_A          vs Moderate_Right_B          p = 1.69E-07
+    - Moderate_Right_A          vs Progressivism             p = 3.10E-23
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.35E-06
+    - Moderate_Right_B          vs Progressivism             p = 1.38E-69
+    - Progressivism             vs Right_Wing_Libertarian    p = 7.91E-59
+
+  Bullrich_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 1.77E-03
+    - Centre                    vs Moderate_Right_B          p = 8.02E-03
+    - Centre                    vs Progressivism             p = 5.31E-07
+    - Centre                    vs Right_Wing_Libertarian    p = 2.12E-08
+    - Left_Wing                 vs Moderate_Right_A          p = 5.68E-17
+    - Left_Wing                 vs Moderate_Right_B          p = 6.63E-26
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 5.69E-45
+    - Moderate_Right_A          vs Progressivism             p = 7.15E-32
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 3.75E-06
+    - Moderate_Right_B          vs Progressivism             p = 1.04E-45
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 7.55E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.75E-71
+
+  Milei_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 1.00E-02
+    - Centre                    vs Moderate_Right_B          p = 2.32E-02
+    - Centre                    vs Progressivism             p = 2.10E-04
+    - Centre                    vs Right_Wing_Libertarian    p = 3.06E-08
+    - Left_Wing                 vs Moderate_Right_A          p = 6.07E-08
+    - Left_Wing                 vs Moderate_Right_B          p = 5.15E-21
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 9.43E-41
+    - Moderate_Right_A          vs Moderate_Right_B          p = 1.76E-02
+    - Moderate_Right_A          vs Progressivism             p = 1.26E-13
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 7.84E-11
+    - Moderate_Right_B          vs Progressivism             p = 1.76E-32
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 2.33E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.46E-58
+
+  Schiaretti_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 4.08E-12
+    - Centre                    vs Progressivism             p = 1.18E-15
+    - Left_Wing                 vs Moderate_Right_A          p = 1.62E-09
+    - Left_Wing                 vs Moderate_Right_B          p = 2.35E-14
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 4.13E-08
+    - Moderate_Right_A          vs Progressivism             p = 4.02E-15
+    - Moderate_Right_B          vs Progressivism             p = 4.89E-22
+    - Progressivism             vs Right_Wing_Libertarian    p = 9.87E-13
+
+  Schiaretti_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 7.09E-06
+    - Centre                    vs Progressivism             p = 1.86E-07
+    - Left_Wing                 vs Moderate_Right_A          p = 4.23E-08
+    - Left_Wing                 vs Moderate_Right_B          p = 3.17E-10
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 6.59E-09
+    - Moderate_Right_A          vs Progressivism             p = 6.03E-12
+    - Moderate_Right_B          vs Progressivism             p = 6.56E-15
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.03E-12
+
+  Bregman_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 5.94E-06
+    - Centre                    vs Progressivism             p = 5.89E-06
+    - Left_Wing                 vs Moderate_Right_A          p = 2.09E-08
+    - Left_Wing                 vs Moderate_Right_B          p = 6.04E-19
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.68E-04
+    - Moderate_Right_A          vs Progressivism             p = 2.43E-09
+    - Moderate_Right_B          vs Progressivism             p = 3.85E-22
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 1.90E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.10E-04
+
+  Massa_Con_Pro:
+    - Centre                    vs Progressivism             p = 8.86E-04
+    - Left_Wing                 vs Progressivism             p = 6.22E-16
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.50E-02
+    - Moderate_Right_A          vs Progressivism             p = 1.86E-09
+    - Moderate_Right_B          vs Progressivism             p = 1.05E-15
+    - Moderate_Right_B          vs Right_Wing_Libertarian    p = 3.63E-04
+
+  Massa_Izq_Der:
+    - Centre                    vs Right_Wing_Libertarian    p = 8.05E-04
+    - Left_Wing                 vs Moderate_Right_A          p = 4.01E-05
+    - Left_Wing                 vs Moderate_Right_B          p = 7.18E-11
+    - Left_Wing                 vs Progressivism             p = 6.29E-11
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 7.00E-22
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 4.14E-05
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.38E-08
+
 --------------------------------------------------------------------------------
 Dataset: Ballotage
 --------------------------------------------------------------------------------
 
-  Progressivism_Index:
-    - Centre                    vs Left_Wing                 p = 4.37E-07
-    - Centre                    vs Moderate_Right_B          p = 2.04E-02
-    - Centre                    vs Progressivism             p = 6.58E-09
-    - Centre                    vs Right_Wing_Libertarian    p = 5.76E-03
-    - Left_Wing                 vs Moderate_Right_A          p = 1.49E-14
-    - Left_Wing                 vs Moderate_Right_B          p = 7.65E-33
-    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.18E-32
-    - Moderate_Right_A          vs Progressivism             p = 2.47E-18
-    - Moderate_Right_B          vs Progressivism             p = 5.82E-52
-    - Progressivism             vs Right_Wing_Libertarian    p = 8.19E-48
+  Milei_Con_Pro:
+    - Centre                    vs Left_Wing                 p = 1.18E-09
+    - Centre                    vs Progressivism             p = 2.01E-13
+    - Left_Wing                 vs Moderate_Right_A          p = 3.64E-03
+    - Left_Wing                 vs Moderate_Right_B          p = 1.10E-14
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.32E-22
+    - Moderate_Right_A          vs Progressivism             p = 6.95E-05
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 9.54E-04
+    - Moderate_Right_B          vs Progressivism             p = 3.35E-26
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.05E-36
 
-  Conservatism_Index:
-    - Centre                    vs Left_Wing                 p = 3.85E-08
-    - Centre                    vs Progressivism             p = 3.66E-10
-    - Centre                    vs Right_Wing_Libertarian    p = 1.49E-02
-    - Left_Wing                 vs Moderate_Right_A          p = 1.58E-06
-    - Left_Wing                 vs Moderate_Right_B          p = 1.92E-29
-    - Left_Wing                 vs Right_Wing_Libertarian    p = 3.49E-33
-    - Moderate_Right_A          vs Moderate_Right_B          p = 2.91E-02
-    - Moderate_Right_A          vs Progressivism             p = 3.12E-08
-    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 7.72E-04
-    - Moderate_Right_B          vs Progressivism             p = 2.04E-46
-    - Progressivism             vs Right_Wing_Libertarian    p = 4.68E-49
+  Milei_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 4.17E-03
+    - Centre                    vs Progressivism             p = 4.11E-05
+    - Left_Wing                 vs Moderate_Right_A          p = 2.02E-04
+    - Left_Wing                 vs Moderate_Right_B          p = 1.48E-12
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.14E-15
+    - Moderate_Right_A          vs Progressivism             p = 5.10E-07
+    - Moderate_Right_B          vs Progressivism             p = 7.63E-24
+    - Progressivism             vs Right_Wing_Libertarian    p = 4.06E-27
 
-  Positivity_Index:
-    - Centre                    vs Progressivism             p = 7.13E-10
-    - Left_Wing                 vs Moderate_Right_B          p = 8.22E-04
-    - Left_Wing                 vs Progressivism             p = 7.29E-10
-    - Left_Wing                 vs Right_Wing_Libertarian    p = 1.15E-04
-    - Moderate_Right_A          vs Progressivism             p = 1.56E-07
-    - Moderate_Right_B          vs Progressivism             p = 2.95E-28
-    - Progressivism             vs Right_Wing_Libertarian    p = 2.32E-27
+  Massa_Izq_Der:
+    - Centre                    vs Left_Wing                 p = 4.04E-04
+    - Centre                    vs Right_Wing_Libertarian    p = 4.04E-02
+    - Left_Wing                 vs Moderate_Right_A          p = 3.30E-02
+    - Left_Wing                 vs Moderate_Right_B          p = 1.19E-11
+    - Left_Wing                 vs Progressivism             p = 3.71E-07
+    - Left_Wing                 vs Right_Wing_Libertarian    p = 2.09E-20
+    - Moderate_Right_A          vs Right_Wing_Libertarian    p = 4.09E-04
+    - Moderate_Right_B          vs Progressivism             p = 3.24E-03
+    - Progressivism             vs Right_Wing_Libertarian    p = 1.86E-10
+
+  Massa_Con_Pro:
+    - Centre                    vs Progressivism             p = 2.87E-05
+    - Left_Wing                 vs Progressivism             p = 7.36E-07
+    - Moderate_Right_A          vs Progressivism             p = 7.85E-03
+    - Moderate_Right_B          vs Progressivism             p = 9.35E-06
+    - Progressivism             vs Right_Wing_Libertarian    p = 2.42E-05
 
 ================================================================================
-14. DUNN POST-HOC: CERCANÍAS A CANDIDATOS
+16. DUNN POST-HOC: CERCANÍAS A CANDIDATOS
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -841,7 +991,7 @@ Dataset: Ballotage
     - Progressivism             vs Right_Wing_Libertarian    p = 3.43E-48
 
 ================================================================================
-15. DUNN POST-HOC: INFLUENCIAS
+17. DUNN POST-HOC: INFLUENCIAS
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -855,11 +1005,11 @@ Dataset: Generales
     - Progressivism             vs Right_Wing_Libertarian    p = 2.53E-05
 
 ################################################################################
-# SECCIÓN C: TESTS PAREADOS (WILCOXON Y MANN-WHITNEY)
+# SECTION C: PAIRED TESTS (WILCOXON AND MANN-WHITNEY)
 ################################################################################
 
 ================================================================================
-16. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA
+18. WILCOXON PAREADO: CONGRUENCIA IDEOLÓGICA
 ================================================================================
 
 Comparación Congruente vs Incongruente (mismo participante)
@@ -868,7 +1018,7 @@ Definiciones:
   CONGRUENTE: Ítems Progresistas→Izq + Conservadores→Der
   INCONGRUENTE: Ítems Progresistas→Der + Conservadores→Izq
 
-14.1 ANÁLISIS GENERAL (Todas las poblaciones)
+18.1 ANÁLISIS GENERAL (Todas las poblaciones)
 --------------------------------------------------
 
   Generales - CO Congruente vs Incongruente:
@@ -903,7 +1053,7 @@ Definiciones:
     p-valor            = 5.82E-06 (***)
     --> DIFERENCIA SIGNIFICATIVA
 
-14.2 ANÁLISIS POR CATEGORÍA
+18.2 ANÁLISIS POR CATEGORÍA
 --------------------------------------------------
 
   Generales:
@@ -930,7 +1080,7 @@ Definiciones:
       - Moderate Right B          p = 3.39E-02 (*)
 
 ================================================================================
-17. WILCOXON PAREADO: IZQ VS DER POR ÍTEM
+19. WILCOXON PAREADO: IZQ VS DER POR ÍTEM
 ================================================================================
 
 Compara CO_Item_X_Izq vs CO_Item_X_Der (mismo participante)
@@ -976,7 +1126,7 @@ Dataset: Ballotage
   Item 23 (Conservador ): Δ = -0.1465, p = 1.50E-02 (*)
 
 ================================================================================
-18. MANN-WHITNEY U: GENERALES VS BALLOTAGE
+20. MANN-WHITNEY U: GENERALES VS BALLOTAGE
 ================================================================================
 
 Comparación de variables entre ambas elecciones (no pareado)
@@ -1018,7 +1168,7 @@ Variables sin diferencias significativas:
   CT_Con_Der           U = 1717493.0000, p = 5.31E-01
 
 ================================================================================
-19. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)
+21. CONTROL POR GÉNERO Y EDAD (REGRESIÓN OLS)
 ================================================================================
 
 Verificación de que el efecto Congruente vs Incongruente
@@ -1076,6 +1226,7 @@ Generales:
   KW Agregadas           : 4/12 sig.
   KW Autopercepciones    : 3/3 sig.
   KW Índices             : 3/3 sig.
+  KW CDC                 : 9/10 sig.
   KW Cercanías           : 5/5 sig.
   KW Influencias         : 1/2 sig.
 
@@ -1086,6 +1237,7 @@ Ballotage:
   KW Agregadas           : 2/12 sig.
   KW Autopercepciones    : 3/3 sig.
   KW Índices             : 3/3 sig.
+  KW CDC                 : 4/4 sig.
   KW Cercanías           : 2/2 sig.
   KW Influencias         : 0/2 sig.
 

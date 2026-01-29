@@ -38,6 +38,11 @@ Variables_Excluir = [
     'index'
 ]
 
+Candidatos_Cdc = ['Massa', 'Bullrich', 'Schiaretti', 'Milei', 'Bregman']
+Columnas_Cdc_Izq_Der = [f'CDC_{Candidato}_0' for Candidato in Candidatos_Cdc]
+Columnas_Cdc_Con_Pro = [f'CDC_{Candidato}_1' for Candidato in Candidatos_Cdc]
+Columnas_Cdc_Todas = Columnas_Cdc_Izq_Der + Columnas_Cdc_Con_Pro
+
 
 # =============================================================================
 # AUXILIARY FUNCTIONS.
@@ -129,6 +134,31 @@ def Determinar_Tipo_Variable(Serie: pd.Series) -> str:
 
     # Continuous.
     return 'continua'
+
+
+def Traducir_Variable_Cdc(Nombre_Variable: str) -> str:
+
+    """
+    Converts a CDC variable name to a legible label.
+
+    Parameters:
+        Nombre_Variable (str): Name like CDC_Milei_0.
+
+    Returns:
+        str: Human-readable label (e.g., 'Milei (Izq-Der)').
+    """
+
+    if not Nombre_Variable.startswith('CDC_'):
+        return Nombre_Variable
+
+    Partes = Nombre_Variable.split('_')
+    if len(Partes) != 3:
+        return Nombre_Variable
+
+    Candidato = Partes[1]
+    Dimension = 'Izq-Der' if Partes[2] == '0' else \
+                'Con-Pro' if Partes[2] == '1' else Partes[2]
+    return f"{Candidato} ({Dimension})"
 
 
 # =============================================================================
@@ -810,9 +840,49 @@ def Generar_Reporte_Descriptivo_TXT(
                     f"{Est['Maximo']:>8.2f}"
                 )
 
-            Agregar("")
+        Agregar("")
 
         Agregar("")
+
+        Columnas_Cdc_Existentes = [
+            c for c in Columnas_Cdc_Todas if c in Resultados_General
+        ]
+
+        if Columnas_Cdc_Existentes:
+            Separador("=")
+            Agregar("SECCIÓN 3: PERCEPCIONES CDC POR CANDIDATO")
+            Separador("=")
+            Agregar("")
+
+            Resultados_Por_Cat = Resultados_df.get('Por_Categoria', {})
+
+            for Variable in Columnas_Cdc_Existentes:
+                Est = Resultados_General.get(Variable, {}).get('Estadisticos', {})
+                Agregar(f"► {Traducir_Variable_Cdc(Variable)}")
+                Agregar(f"  N válidos: {Est.get('N_Validos', 0)} "
+                        f"(faltantes: {Est.get('N_Faltantes', 0)}, "
+                        f"{Formatear_Numero(Est.get('Porcentaje_Faltantes'))}%)")
+                Agregar(f"  Media: {Formatear_Numero(Est.get('Media'))}  |  "
+                        f"DE: {Formatear_Numero(Est.get('Desviacion_Estandar'))}")
+
+                Comparaciones_Cat = Resultados_Por_Cat.get(Variable, {})
+                if Comparaciones_Cat:
+                    Agregar("  Por categoría (Media ± DE):")
+                    for Categoria in Categorias_Validas:
+                        Res_Cat = Comparaciones_Cat.get(Categoria)
+                        if not Res_Cat:
+                            continue
+                        Est_Cat = Res_Cat.get('Estadisticos', {})
+                        if 'Media' not in Est_Cat:
+                            continue
+                        Media_Cat = Est_Cat.get('Media')
+                        DE_Cat = Est_Cat.get('Desviacion_Estandar')
+                        Agregar(f"    {Categoria:<25} "
+                                f"{Formatear_Numero(Media_Cat)} ± "
+                                f"{Formatear_Numero(DE_Cat)}")
+                Agregar("")
+
+            Agregar("")
 
     Separador("=")
     Agregar("FIN DEL REPORTE")
